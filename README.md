@@ -5,15 +5,13 @@
 ## Initialize package dependencies
 
 ```
-cd api/
 npm install
 ```
 
 ## Launch server
 
 ```
-cd api/bin/
-./www
+npm start
 ```
 
 Go to http://0.0.0.0:3000

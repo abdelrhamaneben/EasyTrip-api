@@ -9,4 +9,6 @@
 
 * **URL**
 
+    `GET` */categories*
+
     `GET` */activities*

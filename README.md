@@ -19,16 +19,9 @@ cd api/bin/
 Go to http://0.0.0.0:3000
 
 
-## Requests spec
+## API Documentation
 
-| TYPE     | PATH               | PARAMETERS         | REPLY  
-| ---------|:------------------:|:------------------:| -------------------:
-| GET      | /                  |                	 | 
-| GET      | /v1/themes         |                    |
-| GET      | /v1/activities     |                    |
-| GET      | /v1/services       |                    |
-
-
+See doc folder.
 
 ## DataBusinessObject Structure
 

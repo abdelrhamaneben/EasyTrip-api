@@ -29,16 +29,16 @@
     **Content:**
     ```
     {
-        categories: [
+        activities: [
             {
                 id: 12,
-                name: "Sport",
-                description: “Défouloir”
+                name: "Sport extrême",
+                description: “Sensationnel”
             },
             {
                 id: 23,
-                name: "Voyage",
-                description: “Dépaysement”
+                name: "Plage",
+                description: “Ensoleillé”
             }
         ]
     }```

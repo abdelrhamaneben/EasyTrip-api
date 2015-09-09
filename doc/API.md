@@ -12,3 +12,6 @@
     `GET` */categories*
 
     `GET` */activities*
+
+    `GET` */services/:id*
+    `GET` */services/?...* //TODO

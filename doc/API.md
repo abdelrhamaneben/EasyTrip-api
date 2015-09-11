@@ -45,6 +45,8 @@ None
 }
 ```
 
+----
+
 ## Show Activities for a category
 Returns json data about all activities of one category.
 ### URL
@@ -87,6 +89,8 @@ None
     error : "No data"
 }
 ```
+
+----
 
 ## Show Services
 Returns json data about a service.
@@ -134,12 +138,9 @@ None
 ```
 ### Error Response
 **Code:** 404 NOT FOUND
-**Content:**
-```
-{
-    error : "Service doesn't exist"
-}
-```
+**Content:** `{ error : "Service doesn't exist" }`
+
+----
 
 ## Search for Services
 Returns json data about services available in area for a category or an activity.
@@ -164,7 +165,7 @@ None
     [activity: 23]
 }
 ```
-###Success Response
+### Success Response
 **Code:** 200 OK
 **Content:**
 ```
@@ -191,7 +192,7 @@ None
     ]
 }
 ```
-### Error Response:
+### Error Response
 **Code:** 404 NOT FOUND
 **Content:**
 ```

@@ -11,8 +11,8 @@
 
     `GET` */categories*
     `GET` */categories/:id/activities*
-    `GET` */categories/:id/activities/:id/services/:id*
-    `GET` */categories/:id/activities/:id/services*
+    `GET` */services/:id*
+    `GET` */search*
 
 
 ----

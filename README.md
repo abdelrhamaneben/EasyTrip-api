@@ -41,3 +41,11 @@ See doc folder.
 		localisation: String ,
 		contact: String
 	}
+
+# Tests : 
+
+The tests use Expresso (additional nodeJS Plugin).
+You must install the command expresso to run tests.
+It's very easy, tape this command into /node_modules/expresso/ : make install
+
+then , you can launch the test with the commande : expresso test/* 

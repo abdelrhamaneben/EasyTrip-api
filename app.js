@@ -24,13 +24,14 @@ app.use('/v1', v1);
 // Define default URL
 app.get('/', function(req, res) {
   res.writeHead(200, {"Content-Type": 'application/json'});
-  res.write("{CurrentVersion : 'hello'}");
+  res.write('{CurrentVersion : "hello"}');
   res.end();
 });
 
 // Listen Port 3000
-app.listen(3000);
+var server = http.createServer(app).listen(3000);
 
+module.exports = server;
 
 /*
 // Sliman Part

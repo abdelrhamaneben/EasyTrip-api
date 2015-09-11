@@ -38,12 +38,7 @@ None
 ```
 ### Error Response
 **Code:** 444 NO RESPONSE <br />
-**Content:**
-```
-{
-    error : "No data"
-}
-```
+**Content:** `{ error : "No data" }`
 
 ----
 
@@ -76,19 +71,10 @@ None
 ```
 ### Error Response
 **Code:** 404 NOT FOUND <br />
-**Content:**
-```
-{
-    error : "Category doesn't exist"
-}
-```
+**Content:** `{ error : "Category doesn't exist" }`
+
 **Code:** 444 NO RESPONSE <br />
-**Content:** 
-```
-{
-    error : "No data"
-}
-```
+**Content:** `{ error : "No data" }`
 
 ----
 
@@ -103,7 +89,7 @@ Returns json data about a service.
 ### Data Params
 None
 ### Success Response
-**Code:** 200 OK
+**Code:** 200 OK <br />
 **Content:**
 ```
 {
@@ -137,7 +123,7 @@ None
 }
 ```
 ### Error Response
-**Code:** 404 NOT FOUND
+**Code:** 404 NOT FOUND <br /> 
 **Content:** `{ error : "Service doesn't exist" }`
 
 ----
@@ -166,7 +152,7 @@ None
 }
 ```
 ### Success Response
-**Code:** 200 OK
+**Code:** 200 OK <br />
 **Content:**
 ```
 {
@@ -193,17 +179,8 @@ None
 }
 ```
 ### Error Response
-**Code:** 404 NOT FOUND
-**Content:**
-```
-{
-    error : "Category or activity doesn't exist"
-}
-```
-**Code:** 444 NO RESPONSE
-**Content:**
-```
-{
-    error : "No data"
-}
-```
+**Code:** 404 NOT FOUND <br />
+**Content:** `{ error : "Category or activity doesn't exist" }`
+
+**Code:** 444 NO RESPONSE <br />
+**Content:** `{ error : "No data" }`

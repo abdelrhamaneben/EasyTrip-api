@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   response.send(res,contenu);
 });
 
-// on récupère toutes les catégories = themes
+// get all categories
 router.get('/categories', function(req, res, next) {
     pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
@@ -26,11 +26,11 @@ router.get('/categories', function(req, res, next) {
     });
 });
 
-// on récupère la liste des activités associées à une catégorie
+// get all activities for a specific category
 router.get('/categories/:id/activities', function(req, res, next) {
   pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var id_categorie = req.params.id; // on récupère l'id de la catégorie passé en paramétre
+      var id_categorie = req.params.id; // get the identifiant of the category in the url
       var query = client.query("SELECT * FROM services;"); //s JOIN categorie c ON s. ........ WHERE c.id = 1 ;");
       query.on('row', function(row) {
           results.push(row);
@@ -42,11 +42,11 @@ router.get('/categories/:id/activities', function(req, res, next) {
     });
 });
 
-// on récupère toutes les informations associées à un service
+// get informations for a specific service
 router.get('/services/:id', function(req, res, next, value){
   pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var id_service = req.params.id; // on récupère l'id passé en paramétre
+      var id_service = req.params.id; // get the identifiant of the service in the url
       var query = client.query("SELECT * FROM services s WHERE s.id = \""+id_service+"\";");
       query.on('row', function(row) {
           results.push(row);
@@ -58,13 +58,13 @@ router.get('/services/:id', function(req, res, next, value){
     });
 });
 
-// on effectue une recherche en fournissant la ville, la categorie, la zone (en min) et l'activité (optionnel)
+// search all services in an area : parameters ??
 router.get('/search', function(req, res, next) {
    var contenu = {services : 'list of services'};
    response.send(res,contenu);
 });
 
-// on récupère tous les services existants dans la base de données
+// get all services
 router.get('/services', function(req, res, next) {
     pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
@@ -80,7 +80,7 @@ router.get('/services', function(req, res, next) {
     });
 });
 
-// on récupère toutes les activités 
+// get all activities
 router.get('/activities', function(req, res, next) {
     pg.connect(config.connectionString, function(err, client, done) {
       var results = [];

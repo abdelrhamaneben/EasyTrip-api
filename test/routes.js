@@ -77,5 +77,35 @@ module.exports = {
     }, function(res){
       assert.ok(res);
     });
+  },
+  // should get all activities
+  'test /v1/activities': function(beforeExit){
+    assert.response(server, {
+      url: '/v1/activities',
+      method: 'GET'
+    },{
+      body: /^\{(\s)?activities(\s)?:(\s)?\[/ ,
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }, function(res){
+      assert.ok(res);
+    });
+  },
+  // should get all services
+  'test /v1/services': function(beforeExit){
+    assert.response(server, {
+      url: '/v1/services',
+      method: 'GET'
+    },{
+      body: /^\{(\s)?services(\s)?:(\s)?\[/ ,
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }, function(res){
+      assert.ok(res);
+    });
   }
 };

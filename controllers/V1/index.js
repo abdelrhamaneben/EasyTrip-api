@@ -84,7 +84,7 @@ router.get('/services', function(req, res, next) {
 router.get('/activities', function(req, res, next) {
     pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var query = client.query("SELECT * FROM activite;");
+      var query = client.query("SELECT * FROM Activite;");
       query.on('row', function(row) {
           results.push(row);
       });

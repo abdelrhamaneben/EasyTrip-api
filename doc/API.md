@@ -26,19 +26,19 @@ None
 {
     categories: [
         {
-            id: 12,
-            name: "Sport extrême"
+            "id": 12,
+            "name": "Sport extrême"
         },
         {
-            id: 23,
-            name: "Plage"
+            "id": 23,
+            "name": "Plage"
         }
     ]
 }
 ```
 ### Error Response
 **Code:** 444 NO RESPONSE <br />
-**Content:** `{ error : "No data" }`
+**Content:** `{ "error" : "No data" }`
 
 ----
 
@@ -59,22 +59,22 @@ None
 {
     activities: [
         {
-            id: 12,
-            name: "Parachutisme"
+            "id": 12,
+            "name": "Parachutisme"
         },
         {
-            id: 23,
-            name: “Fumnambulisme”
+            "id": 23,
+            "name": “Fumnambulisme”
         }
     ]
 }
 ```
 ### Error Response
 **Code:** 404 NOT FOUND <br />
-**Content:** `{ error : "Category doesn't exist" }`
+**Content:** `{ "error" : "Category doesn't exist" }`
 
 **Code:** 444 NO RESPONSE <br />
-**Content:** `{ error : "No data" }`
+**Content:** `{ "error" : "No data" }`
 
 ----
 
@@ -97,34 +97,34 @@ None
     name: “Plongée sous-marine”,
     description: “Les requins vous fascinent ?",
     pos-geo: {
-        lat: "51.05",
-        lon: "2.3667"
+        "lat": "51.05",
+        "lon": "2.3667"
     },
     address: {
-        street: "Rue de la mer",
-        num1: "23",
-        num2: "",
-        city: "Dunkerque",
-        zip-code: "59240",
-        country-code: "33"
+        "street: "Rue de la mer",
+        "num1": "23",
+        "num2": "",
+        "city": "Dunkerque",
+        "zip-code": "59240",
+        "country-code": "33"
     },
     contact-up: {
-        firstname: "Michel",
-        lastname: "DUMONT",
-        tel: "0600000000",
-        email: "michel.dumont@example.com"
+        "firstname": "Michel",
+        "lastname": "DUMONT",
+        "tel": "0600000000",
+        "email": "michel.dumont@example.com"
     },
     contact-ue: {
-        firstname: "Michel",
-        lastname: "DUMONT",
-        tel: "0600000000",
-        email: "michel.dumont@example.com"
+        "firstname": "Michel",
+        "lastname": "DUMONT",
+        "tel": "0600000000",
+        "email": "michel.dumont@example.com"
     }
 }
 ```
 ### Error Response
 **Code:** 404 NOT FOUND <br /> 
-**Content:** `{ error : "Service doesn't exist" }`
+**Content:** `{ "error" : "Service doesn't exist" }`
 
 ----
 
@@ -145,10 +145,10 @@ None
 **Content:**
 ```
 {
-    city: "Dunkerque",
-    category: 24,
-    area: 60,
-    [activity: 23]
+    "city": "Dunkerque",
+    "category": 24,
+    "area": 60,
+    ["activity": 23]
 }
 ```
 ### Success Response
@@ -158,21 +158,21 @@ None
 {
     services: [
         {
-            id: 23,
-            name: “Plongée sous-marine”,
-            description: “Les requins vous fascinent ?",
-            pos-geo: {
-                lat: "51.05",
-                lon: "2.3668"
+            "id": 23,
+            "name": “Plongée sous-marine”,
+            "description": “Les requins vous fascinent ?",
+            "pos-geo": {
+                "lat": "51.05",
+                "lon": "2.3668"
             }
         },
         {
-            id: 48,
-            name: “Plongée en mer”,
-            description: “Découvrez le grand bleu !",
-            pos-geo: {
-                lat: "51.05",
-                lon: "2.3668"
+            "id": 48,
+            "name": “Plongée en mer”,
+            "description": “Découvrez le grand bleu !",
+            "pos-geo": {
+                "lat": "51.05",
+                "lon": "2.3668"
             }
         }
     ]
@@ -180,7 +180,7 @@ None
 ```
 ### Error Response
 **Code:** 404 NOT FOUND <br />
-**Content:** `{ error : "Category or activity doesn't exist" }`
+**Content:** `{ "error" : "Category or activity doesn't exist" }`
 
 **Code:** 444 NO RESPONSE <br />
-**Content:** `{ error : "No data" }`
+**Content:** `{ "error" : "No data" }`

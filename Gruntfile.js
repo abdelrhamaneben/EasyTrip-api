@@ -3,32 +3,42 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['*.js', 'test/**/*.js', 'controllers/V1/**/*.js', 'models/**/*.js'],
+      src: [
+        '*.js',
+        'test/**/*.js',
+        'controllers/V1/**/*.js',
+        'models/**/*.js'],
       options: {
         globals: {
           node: true
         }
       }
     },
-    watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'jscs']
-    },
     jscs: {
-        src: ['*.js', 'test/**/*.js', 'controllers/V1/**/*.js', 'models/**/*.js'],
-        options: {
-          config: '.jscsrc'
-        }
+      src: [
+        '*.js',
+        'test/**/*.js',
+        'controllers/V1/**/*.js',
+        'models/**/*.js'],
+      options: {
+        config: '.jscsrc'
       }
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*.js']
+      }
+    }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-jscs');
 
-  grunt.registerTask('test', ['jshint']);
-  //grunt.registerTask('jscs', ['jscs']);
-  grunt.registerTask('watch', ['watch']);
-  grunt.registerTask('default', ['jshint', 'jscs']);
+  grunt.registerTask('test', ['jshint', 'jscs', 'mochaTest']);
+  grunt.registerTask('default', ['jshint', 'jscs', 'mochaTest']);
 
 };

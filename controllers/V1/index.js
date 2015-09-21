@@ -1,13 +1,13 @@
 var express = require('express');
-var response = require('../../models/response_m');
+var response = require('../../models/response_message');
 var router = express.Router();
 var pg = require('pg');
 var config = require('../../config/config');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  var contenu = {version : 'v1'};
-  response.send(res,contenu);
+router.get('/', function(req, res) {
+  var content = {version: 'v1'};
+  res.status(200).send(content);
 });
 
 // get all categories
@@ -93,12 +93,12 @@ router.get('/activities', function(req, res, next) {
           var contenu = {activities : results};
           response.send(res,contenu);
       });
-      
+
       if(err) {
         var error = { error : "No data" };
         res.writeHead(444, {"Content-Type": 'application/json'});
         res.write(JSON.stringify(error));
-        res.end();        
+        res.end();
       }
     });
 });

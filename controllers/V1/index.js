@@ -12,16 +12,16 @@ router.get('/', function(req, res) {
 
 // get all categories
 router.get('/categories', function(req, res, next) {
-    pg.connect(config.connectionString, function(err, client, done) {
+  pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var query = client.query("SELECT * FROM categories;");
+      var query = client.query('SELECT * FROM categories;');
       query.on('row', function(row) {
-          results.push(row);
+        results.push(row);
       });
       query.on('end', function() {
-          client.end();
-          var contenu = {categories : results};
-          response.send(res,contenu);
+        client.end();
+        var contenu = {categories: results};
+        response.send(res,contenu);
       });
     });
 });
@@ -30,78 +30,78 @@ router.get('/categories', function(req, res, next) {
 router.get('/categories/:id/activities', function(req, res, next) {
   pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var id_categorie = req.params.id; // get the identifiant of the category in the url
-      var query = client.query("SELECT * FROM services;"); //s JOIN categorie c ON s. ........ WHERE c.id = 1 ;");
+      var categoryId = req.params.id; // get the identifiant of the category in the url
+      var query = client.query('SELECT * FROM services;'); //s JOIN categorie c ON s. ........ WHERE c.id = 1 ;");
       query.on('row', function(row) {
-          results.push(row);
+        results.push(row);
       });
       query.on('end', function() {
-          client.end();
-          response.send(res,results);
+        client.end();
+        response.send(res,results);
       });
     });
 });
 
 // get informations for a specific service
-router.get('/services/:id', function(req, res, next, value){
+router.get('/services/:id', function(req, res, next, value) {
   pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var id_service = req.params.id; // get the identifiant of the service in the url
-      var query = client.query("SELECT * FROM services s WHERE s.id = \""+id_service+"\";");
+      var serviceId = req.params.id; // get the identifiant of the service in the url
+      var query = client.query('SELECT * FROM services s WHERE s.id = "' +
+        serviceId + '";');
       query.on('row', function(row) {
-          results.push(row);
+        results.push(row);
       });
       query.on('end', function() {
-          client.end();
-          response.send(res,results);
+        client.end();
+        response.send(res,results);
       });
     });
 });
 
 // search all services in an area : parameters ??
 router.get('/search', function(req, res, next) {
-   var contenu = {services : 'list of services'};
-   response.send(res,contenu);
+  var contenu = {services: 'list of services'};
+  response.send(res,contenu);
 });
 
 // get all services
 router.get('/services', function(req, res, next) {
-    pg.connect(config.connectionString, function(err, client, done) {
+  pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var query = client.query("SELECT * FROM services;");
+      var query = client.query('SELECT * FROM services;');
       query.on('row', function(row) {
-          results.push(row);
+        results.push(row);
       });
       query.on('end', function() {
-          client.end();
-          var contenu = {services : results};
-          response.send(res,contenu);
+        client.end();
+        var contenu = {services: results};
+        response.send(res,contenu);
       });
     });
 });
 
 // get all activities
 router.get('/activities', function(req, res, next) {
-    pg.connect(config.connectionString, function(err, client, done) {
+  pg.connect(config.connectionString, function(err, client, done) {
       var results = [];
-      var query = client.query("SELECT * FROM Activite;");
+      var query = client.query('SELECT * FROM Activite;');
       query.on('row', function(row) {
-          results.push(row);
+        results.push(row);
       });
       query.on('end', function() {
-          client.end();
-          var contenu = {activities : results};
-          response.send(res,contenu);
+        client.end();
+        var contenu = {activities: results};
+        response.send(res,contenu);
       });
 
-      if(err) {
-        var error = { error : "No data" };
-        res.writeHead(444, {"Content-Type": 'application/json'});
+      if (err) {
+        var error = {error: 'No data'};
+        res.writeHead(444, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(error));
         res.end();
       }
     });
 });
-
 
 module.exports = router;

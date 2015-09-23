@@ -21,7 +21,8 @@ module.exports = function(grunt) {
         'controllers/V1/**/*.js',
         'models/**/*.js'],
       options: {
-        config: '.jscsrc'
+        config: '.jscsrc',
+        fix: 'true'
       }
     },
     mochaTest: {

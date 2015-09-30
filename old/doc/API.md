@@ -97,28 +97,30 @@ None
     name: “Plongée sous-marine”,
     description: “Les requins vous fascinent ?",
     pos-geo: {
-        "lat": "51.05",
-        "lon": "2.3667"
+        lat: "51.05",
+        lon: "2.3667"
     },
+    area: 60, // distance en minute
+    price: "15~25", 
     address: {
-        "street: "Rue de la mer",
-        "num1": "23",
-        "num2": "",
-        "city": "Dunkerque",
-        "zip-code": "59240",
-        "country-code": "33"
+        street: "Rue de la mer",
+        num1: "23",
+        num2: "",
+        city: "Dunkerque",
+        zip-code: "59240",
+        country-code: "33"
     },
     contact-up: {
-        "firstname": "Michel",
-        "lastname": "DUMONT",
-        "tel": "0600000000",
-        "email": "michel.dumont@example.com"
+        firstname: "Michel",
+        lastname: "DUMONT",
+        tel: "0600000000",
+        email: "michel.dumont@example.com"
     },
     contact-ue: {
-        "firstname": "Michel",
-        "lastname": "DUMONT",
-        "tel": "0600000000",
-        "email": "michel.dumont@example.com"
+        firstname: "Michel",
+        lastname: "DUMONT",
+        tel: "0600000000",
+        email: "michel.dumont@example.com"
     }
 }
 ```

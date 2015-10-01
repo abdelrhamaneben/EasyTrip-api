@@ -1,0 +1,250 @@
+{
+  "data": {
+    "activity": [
+      {
+        "name": "neige",
+        "description": "Un peu de vacance à la neige",
+        "createdAt": "2015-10-01T19:24:47.358Z",
+        "updatedAt": "2015-10-01T19:24:47.369Z",
+        "id_activity": 8
+      }
+    ],
+    "category": [
+      {
+        "name": "Extrem-sport",
+        "description": "un peu de sport extrème",
+        "createdAt": "2015-10-01T18:57:19.839Z",
+        "updatedAt": "2015-10-01T18:57:19.839Z",
+        "id_category": 1
+      },
+      {
+        "name": "Soleil",
+        "description": "les activités liés au soseil",
+        "createdAt": "2015-10-01T18:57:50.112Z",
+        "updatedAt": "2015-10-01T18:57:50.112Z",
+        "id_category": 2
+      },
+      {
+        "name": "neige",
+        "description": "les activités liés à la neige",
+        "createdAt": "2015-10-01T18:59:31.910Z",
+        "updatedAt": "2015-10-01T18:59:31.910Z",
+        "id_category": 3
+      },
+      {
+        "name": "neige",
+        "description": "les activités liés à la neige",
+        "createdAt": "2015-10-01T19:00:10.076Z",
+        "updatedAt": "2015-10-01T19:00:10.076Z",
+        "id_category": 4
+      },
+      {
+        "createdAt": "2015-10-01T19:00:17.774Z",
+        "updatedAt": "2015-10-01T19:00:17.774Z",
+        "id_category": 5
+      }
+    ],
+    "category_activity": [],
+    "reservation": [],
+    "service": [],
+    "activity_categories__category_activities": [
+      {
+        "category_activities": 3,
+        "activity_categories": 8,
+        "id": 2
+      },
+      {
+        "category_activities": 4,
+        "activity_categories": 8,
+        "id": 3
+      }
+    ]
+  },
+  "schema": {
+    "activity": {
+      "id_activity": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "category": {
+      "id_category": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "category_activity": {
+      "activity": {
+        "type": "integer",
+        "model": "activity",
+        "foreignKey": true,
+        "alias": "activity"
+      },
+      "category": {
+        "type": "integer",
+        "model": "category",
+        "foreignKey": true,
+        "alias": "category"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "reservation": {
+      "id_res": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_up": {
+        "type": "integer"
+      },
+      "id_price": {
+        "type": "integer"
+      },
+      "id_service": {
+        "type": "integer"
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "d_to": {
+        "type": "datetime"
+      },
+      "nb_person": {
+        "type": "integer"
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "valid": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "service": {
+      "id_service": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_geo": {
+        "type": "integer",
+        "unique": true
+      },
+      "id_bu": {
+        "type": "integer"
+      },
+      "id_adress": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "activity_categories__category_activities": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "activity_categories": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "activity",
+        "on": "id_activity",
+        "via": "category_activities"
+      },
+      "category_activities": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "category",
+        "on": "id_category",
+        "via": "activity_categories"
+      }
+    }
+  },
+  "counters": {
+    "activity": {
+      "id_activity": 8
+    },
+    "category": {
+      "id_category": 5
+    },
+    "reservation": {},
+    "service": {},
+    "category_activity": {},
+    "activity_categories__category_activities": {
+      "id": 3
+    }
+  }
+}

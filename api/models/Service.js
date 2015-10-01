@@ -8,36 +8,36 @@
 module.exports = {
 
   attributes: {
-  	id_service {
+  	id_service :{
   			type : 'integer',
 	  	 	primaryKey: true,
 	  	 	autoIncrement: true,
 		    required: true
 		},
-    id_geo {
+    id_geo :{
     	type : 'integer',
     	required : true,
     	unique : true
     },
-    id_bu {
+    id_bu :{
     	type : 'integer',
     	required : true
     },
-    id_adress {
+    id_adress: {
     	type : 'integer'
     },
-    name {
+    name :{
     	type : 'string',
     	size : 50
     },
-    description {
+    description :{
 			type : 'string',
     	size : 200    
     },
-    d_create {
+    d_create :{
     	type : 'datetime'
 		},	    	
-    d_update {
+    d_update :{
     	type : 'datetime'
     }
   }

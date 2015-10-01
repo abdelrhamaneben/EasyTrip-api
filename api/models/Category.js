@@ -7,8 +7,21 @@
 
 module.exports = {
 
-  attributes: {
-
+	attributes: {
+		 id_category : {
+		 	type : 'integer',
+		 	primaryKey: true,
+		 	autoIncrement: true,
+	    required: true
+		 },
+		 name : {
+		 	type : 'string',
+		 	size : 50
+		 },
+		 description : {
+		 	type : 'string',
+		 	size : 200
+		 }
   }
 };
 

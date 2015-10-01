@@ -8,13 +8,39 @@
 module.exports = {
 
   attributes: {
-  	id_res : {}
-  	id_up : {}
-  	id_price : {}
-  	id_service : {} 
-  	d_from : {}
-  	d_to : {}
-  	
+  	 id_res {
+  			type : 'integer',
+	  	 	primaryKey: true,
+	  	 	autoIncrement: true,
+		    required: true
+		},
+    id_up {
+		 	type : 'integer'
+    },
+    id_price {
+   		type : 'integer'
+    },
+    id_service {
+   		type : 'integer'
+    },
+    d_from {
+   		type : 'datetime'
+    },
+    d_to {
+    	type : 'datetime'
+    },
+    nb_person {
+   		type : 'integer'
+    },
+    d_create {
+    	type : 'datetime'
+    },
+    d_update {
+    	type : 'datetime'
+    },
+    valid {
+    	type : 'boolean'	
+    }
   }
 };
 

@@ -48,32 +48,6 @@ module.exports = {
         Service.query("SELECT get_activities_from_posr(" + originLocation.lng + "," + originLocation.lat + "," + radius + ")",function(err, results) {
           if (err) return res.serverError(err);
 
-					// POURCHAQUE results
-					//-------------------------------------------------------
-					geocoder.geocode(destination, function ( err, data ) {
-	          destinationLocation = data.results[0].geometry.location;
-	          console.log("destinationLocation: " + destinationLocation.lat + ',' + destinationLocation.lng);
-
-	          console.log(">originLocation: " + originLocation.lat + ',' + originLocation.lng);
-	          console.log(">destinationLocation: " + destinationLocation.lat + ',' + destinationLocation.lng);
-
-	          // DETAILS DISTANCE SERVICE
-	          var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
-	          url += originLocation.lat + ',' + originLocation.lng;
-	          url += '&destinations=';
-	          url += destinationLocation.lat + ',' + destinationLocation.lng;
-	          url += '&language=fr-FR'
-
-	          request(url, function (error, response, body) {
-	            if (!error && response.statusCode == 200) {
-	              console.log(body) // Show the HTML for the Google homepage.
-
-	              return res.send(body);
-	            }
-	          });
-	          //---------------------------
-	        });
-					//-------------------------------------------------------
         });
       });
     };

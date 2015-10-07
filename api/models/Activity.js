@@ -8,7 +8,6 @@
 module.exports = {
 
   tableName: 'et_activity',
-
   attributes: {
   	 id_activity : {
   	 	type : 'integer',

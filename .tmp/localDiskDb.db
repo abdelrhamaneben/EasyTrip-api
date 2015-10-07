@@ -1,5 +1,6 @@
 {
   "data": {
+    "category_activity": [],
     "activity": [
       {
         "name": "neige",
@@ -44,7 +45,6 @@
         "id_category": 5
       }
     ],
-    "category_activity": [],
     "reservation": [],
     "service": [],
     "activity_categories__category_activities": [
@@ -61,6 +61,32 @@
     ]
   },
   "schema": {
+    "category_activity": {
+      "activity": {
+        "type": "integer",
+        "model": "activity",
+        "foreignKey": true,
+        "alias": "activity"
+      },
+      "category": {
+        "type": "integer",
+        "model": "category",
+        "foreignKey": true,
+        "alias": "category"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
     "activity": {
       "id_activity": {
         "type": "integer",
@@ -97,32 +123,6 @@
       "description": {
         "type": "string",
         "size": 200
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "category_activity": {
-      "activity": {
-        "type": "integer",
-        "model": "activity",
-        "foreignKey": true,
-        "alias": "activity"
-      },
-      "category": {
-        "type": "integer",
-        "model": "category",
-        "foreignKey": true,
-        "alias": "category"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
       },
       "createdAt": {
         "type": "datetime"

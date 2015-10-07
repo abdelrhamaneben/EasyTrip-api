@@ -34,7 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  "POST /search": {controller: "ServiceController", action: "search"}
 
   /***************************************************************************
   *                                                                          *

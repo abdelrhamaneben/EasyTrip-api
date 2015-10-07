@@ -26,11 +26,10 @@ module.exports = {
     var activities   = req.param('activities');
     var category  = req.param('category');
     var hours    = req.param('hours');
-    var location   = req.param('location');
+    //var location   = req.param('location');
 
     //-------------------------------------------------------
     var geocoder = require('geocoder');
-    var request = require('request');
 
     // POSITION DE L'UTILISATEUR à calculer avec location
     function getOriginDestinationInfo() {

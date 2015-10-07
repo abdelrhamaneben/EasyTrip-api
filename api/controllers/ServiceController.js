@@ -28,6 +28,15 @@ module.exports = {
           console.log(">originLocation: " + originLocation.lat + ',' + originLocation.lng);
           console.log(">destinationLocation: " + destinationLocation.lat + ',' + destinationLocation.lng);
 
+
+          // PROCEDURE BDD
+
+
+          // -------------------------
+
+
+
+          // DETAILS DISTANCE SERVICE
           var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
           url += originLocation.lat + ',' + originLocation.lng;
           url += '&destinations=';
@@ -41,6 +50,7 @@ module.exports = {
               return res.send(body);
             }
           });
+          //---------------------------
         });
       });
     };

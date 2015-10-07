@@ -7,6 +7,15 @@
 
 module.exports = {
 
+  /*
+          POST http://localhost:1337/search
+          Params:
+
+              {
+                   "origin": "Lille",
+                   "destination": "Arras"
+              }
+	*/
   search: function (req, res) {
     var geocoder = require('geocoder');
     var request = require('request');

@@ -31,7 +31,7 @@ module.exports = {
     	size : 50
     },
     description :{
-			type : 'string',
+		type : 'string',
     	size : 200    
     },
     d_create :{

@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  tableName: 'et_service',
+
   attributes: {
   	id_service :{
   			type : 'integer',
@@ -35,10 +37,12 @@ module.exports = {
     	size : 200    
     },
     d_create :{
-    	type : 'datetime'
+    	type : 'datetime',
+        autoCreatedAt: true
 		},	    	
     d_update :{
-    	type : 'datetime'
+    	type : 'datetime',
+        autoUpdatedAt: true
     }
   }
 };

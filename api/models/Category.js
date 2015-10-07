@@ -7,6 +7,8 @@
 
 module.exports = {
 
+	tableName: 'et_category',
+	
 	attributes: {
 		 id_category : {
 		 	type : 'integer',
@@ -23,10 +25,9 @@ module.exports = {
 		 	size : 200,
 		 	required: true
 		 },
-	     activities:{
-	            collection: 'activity',
-	            via: 'categories'
-	     }
+	   activities:{
+	    collection: 'activity',
+	    via: 'categories'
+	   }
   }
 };
-

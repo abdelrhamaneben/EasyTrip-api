@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  tableName: 'et_reservation',
+
   attributes: {
   	 id_res :{
   			type : 'integer',
@@ -33,12 +35,14 @@ module.exports = {
    		type : 'integer'
     },
     d_create :{
-    	type : 'datetime'
+    	type : 'datetime',
+      autoCreatedAt: true
     },
     d_update :{
-    	type : 'datetime'
+    	type : 'datetime',
+      autoUpdatedAt: true
     },
-    valid :{
+    valid : {
     	type : 'boolean'	
     }
   }

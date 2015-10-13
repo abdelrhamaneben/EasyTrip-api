@@ -15,6 +15,11 @@ module.exports = {
 	  	 	primaryKey: true,
 	  	 	autoIncrement: true
 	},
+    image : {
+        type : 'string',
+        size : 100,
+        defaultsTo: 'default.png'
+    },
     name :{
     	type : 'string',
     	size : 50

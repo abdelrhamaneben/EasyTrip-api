@@ -30,7 +30,8 @@ module.exports = {
       if(originLocation.lat >= 49 && originLocation.lat <= 51) {
         if(originLocation.lng >= 2 && originLocation.lng <= 3.7) {
           // retourne tous les services dans le nord
-          Service.find({activity : req.param('activities')}).exec(function (err, found){
+          Service.find({activity : req.param('activities')}).populate('contact').exec(function (err, found){
+            if(err) res.serverError();
             console.log("Services trouvés :");
             console.log(found);
             return res.json(found);
@@ -38,12 +39,12 @@ module.exports = {
         }
         else {
           console.log("pas dans le nord");
-          return res.json(null);
+          return res.json([]);
         }
       }
       else {
         console.log("pas dans le nord 2");
-          return res.json(null);
+          return res.json([]);
       }
     });
   }

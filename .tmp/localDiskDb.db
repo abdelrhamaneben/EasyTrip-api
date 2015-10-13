@@ -237,6 +237,7 @@
         "description": "stella plage",
         "activity": 1,
         "contact": 1,
+       	"image": "stella.jpg",
         "id_service": 1
       },
       {
@@ -244,6 +245,7 @@
         "description": "hardelot plage",
         "activity": 1,
         "contact": 2,
+	"image": "hardelot.jpg",
         "id_service": 2
       },
       {
@@ -251,55 +253,63 @@
         "description": "Le touquet",
         "activity": 2,
         "contact": 2,
-        "id_service": 3
+        "image": "touquet.jpg",	   
+	"id_service": 3
       },
       {
         "name": "Noeux-les-Mines ski",
         "description": "Noeux-les-Mines sur piste artificielle",
         "activity": 4,
         "contact": 3,
+	"image": "ski.jpg",
         "id_service": 4
       },
       {
         "name": "Befroi de lille",
         "description": "Grand Befroi de lille",
-        "activity": 6,
+        "activity": 7,
         "contact": 3,
+	"image": "beffroi.jpg",
         "id_service": 5
       },
       {
         "name": "Musée de l'Hospice Comtesse - Lille",
         "description": "Musée de l'Hospice Comtesse - Lille",
-        "activity": 6,
+        "activity": 7,
         "contact": 1,
+	"image": "comtesse.jpg",
         "id_service": 6
       },
       {
         "name": "Maison natale Charles de Gaulle - Lille",
         "description": "Maison natale Charles de Gaulle - Lille",
-        "activity": 6,
+        "activity": 7,
         "contact": 1,
+	"image": "charles.jpg",
         "id_service": 7
       },
       {
         "name": "Musée des Canonniers Sédentaires de Lille",
         "description": "Musée des Canonniers Sédentaires de Lille",
-        "activity": 6,
+        "activity": 7,
         "contact": 2,
+	"image": "canon.jpg",
         "id_service": 8
       },
       {
         "name": "Musée des Moulins - Villeneuve d'Ascq",
         "description": "Musée des Moulins - Villeneuve d'Ascq",
-        "activity": 6,
+        "activity": 7,
         "contact": 2,
+	"image": "moulin.jpg",
         "id_service": 9
       },
       {
         "name": "Musée de la poupée et du jouet ancien - Wambrechies",
         "description": "Musée de la poupée et du jouet ancien - Wambrechies",
-        "activity": 6,
+        "activity": 7,
         "contact": 3,
+	"image": "poupee.jpg",
         "id_service": 10
       }
     ],

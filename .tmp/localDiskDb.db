@@ -64,8 +64,248 @@
         "category_activities": 3,
         "activity_categories": 10,
         "id": 7
+      },
+      {
+        "category_activities": 1,
+        "activity_categories": 1,
+        "id": 8
+      },
+      {
+        "category_activities": 1,
+        "activity_categories": 2,
+        "id": 9
+      },
+      {
+        "category_activities": 2,
+        "activity_categories": 3,
+        "id": 10
+      },
+      {
+        "category_activities": 2,
+        "activity_categories": 4,
+        "id": 11
+      },
+      {
+        "category_activities": 3,
+        "activity_categories": 5,
+        "id": 12
+      },
+      {
+        "category_activities": 3,
+        "activity_categories": 6,
+        "id": 13
+      },
+      {
+        "category_activities": 3,
+        "activity_categories": 7,
+        "id": 14
+      },
+      {
+        "category_activities": 4,
+        "activity_categories": 8,
+        "id": 15
+      },
+      {
+        "category_activities": 4,
+        "activity_categories": 9,
+        "id": 16
+      },
+      {
+        "category_activities": 5,
+        "activity_categories": 10,
+        "id": 17
+      },
+      {
+        "category_activities": 5,
+        "activity_categories": 11,
+        "id": 18
       }
-    ]
+    ],
+    "et_activity": [
+      {
+        "name": "Swimming",
+        "description": "Swimming",
+        "id_activity": 1
+      },
+      {
+        "name": "jetski",
+        "description": "jetski",
+        "id_activity": 2
+      },
+      {
+        "name": "Climbing",
+        "description": "Climbing",
+        "id_activity": 3
+      },
+      {
+        "name": "ski",
+        "description": "ski",
+        "id_activity": 4
+      },
+      {
+        "name": "Musumes",
+        "description": "Musumes",
+        "id_activity": 5
+      },
+      {
+        "name": "nature",
+        "description": "nature",
+        "id_activity": 6
+      },
+      {
+        "name": "public places",
+        "description": "public places",
+        "id_activity": 7
+      },
+      {
+        "name": "Attration park",
+        "description": "Attration park",
+        "id_activity": 8
+      },
+      {
+        "name": "free jump",
+        "description": "free jump",
+        "id_activity": 9
+      },
+      {
+        "name": "yoga",
+        "description": "yoga",
+        "id_activity": 10
+      },
+      {
+        "name": "spa",
+        "description": "spa",
+        "id_activity": 11
+      }
+    ],
+    "et_address": [],
+    "et_category": [
+      {
+        "name": "Sea",
+        "description": "Sea",
+        "id_category": 1
+      },
+      {
+        "name": "Mountain",
+        "description": "Mountain",
+        "id_category": 2
+      },
+      {
+        "name": "Tourism",
+        "description": "Tourism",
+        "id_category": 3
+      },
+      {
+        "name": "Adventures",
+        "description": "Adventures",
+        "id_category": 4
+      },
+      {
+        "name": "Relax",
+        "description": "Relax",
+        "id_category": 5
+      }
+    ],
+    "et_contact": [
+      {
+        "name_first": "kevin",
+        "name_last": "once",
+        "phone": "0678543567",
+        "email": "kevin.once@cgi.com",
+        "id_contact": 1
+      },
+      {
+        "name_first": "abdelrhamane",
+        "name_last": "benhammou",
+        "phone": "0745543567",
+        "email": "abdelrhamane.benhammou@erdf-grdf.fr",
+        "id_contact": 2
+      },
+      {
+        "name_first": "anis",
+        "name_last": "tello",
+        "phone": "0645342234",
+        "email": "anis.tello@decathlon.com",
+        "id_contact": 3
+      }
+    ],
+    "et_geo_pos": [],
+    "et_reservation": [],
+    "et_service": [
+      {
+        "name": "stella plage",
+        "description": "stella plage",
+        "activity": 1,
+        "contact": 1,
+        "id_service": 1
+      },
+      {
+        "name": "hardelot plage",
+        "description": "hardelot plage",
+        "activity": 1,
+        "contact": 2,
+        "id_service": 2
+      },
+      {
+        "name": "Le touquet",
+        "description": "Le touquet",
+        "activity": 2,
+        "contact": 2,
+        "id_service": 3
+      },
+      {
+        "name": "Noeux-les-Mines ski",
+        "description": "Noeux-les-Mines sur piste artificielle",
+        "activity": 4,
+        "contact": 3,
+        "id_service": 4
+      },
+      {
+        "name": "Befroi de lille",
+        "description": "Grand Befroi de lille",
+        "activity": 6,
+        "contact": 3,
+        "id_service": 5
+      },
+      {
+        "name": "Musée de l'Hospice Comtesse - Lille",
+        "description": "Musée de l'Hospice Comtesse - Lille",
+        "activity": 6,
+        "contact": 1,
+        "id_service": 6
+      },
+      {
+        "name": "Maison natale Charles de Gaulle - Lille",
+        "description": "Maison natale Charles de Gaulle - Lille",
+        "activity": 6,
+        "contact": 1,
+        "id_service": 7
+      },
+      {
+        "name": "Musée des Canonniers Sédentaires de Lille",
+        "description": "Musée des Canonniers Sédentaires de Lille",
+        "activity": 6,
+        "contact": 2,
+        "id_service": 8
+      },
+      {
+        "name": "Musée des Moulins - Villeneuve d'Ascq",
+        "description": "Musée des Moulins - Villeneuve d'Ascq",
+        "activity": 6,
+        "contact": 2,
+        "id_service": 9
+      },
+      {
+        "name": "Musée de la poupée et du jouet ancien - Wambrechies",
+        "description": "Musée de la poupée et du jouet ancien - Wambrechies",
+        "activity": 6,
+        "contact": 3,
+        "id_service": 10
+      }
+    ],
+    "et_service_price": [],
+    "et_user_business": [],
+    "et_user_private": []
   },
   "schema": {
     "category_activity": {
@@ -238,6 +478,272 @@
         "on": "id_category",
         "via": "activity_categories"
       }
+    },
+    "et_activity": {
+      "id_activity": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      }
+    },
+    "et_address": {
+      "id_address": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "str_name": {
+        "type": "string",
+        "size": 100
+      },
+      "str_nbr": {
+        "type": "string",
+        "size": 5
+      },
+      "city": {
+        "type": "string",
+        "size": 50
+      },
+      "code_zip": {
+        "type": "integer"
+      },
+      "code_country": {
+        "type": "string",
+        "size": 5
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      }
+    },
+    "et_category": {
+      "id_category": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      }
+    },
+    "et_contact": {
+      "id_contact": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name_first": {
+        "type": "string",
+        "size": 50
+      },
+      "name_last": {
+        "type": "string",
+        "size": 200
+      },
+      "phone": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "size": 100
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      }
+    },
+    "et_geo_pos": {
+      "id_geo": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "geolati": {
+        "type": "float"
+      },
+      "geolong": {
+        "type": "float"
+      },
+      "source": {
+        "type": "string",
+        "size": 5
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      }
+    },
+    "et_reservation": {
+      "id_res": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_up": {
+        "type": "integer"
+      },
+      "id_price": {
+        "type": "integer"
+      },
+      "id_service": {
+        "type": "integer"
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "d_to": {
+        "type": "datetime"
+      },
+      "nb_person": {
+        "type": "integer"
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "valid": {
+        "type": "boolean"
+      }
+    },
+    "et_service": {
+      "id_service": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "activity": {
+        "type": "integer",
+        "model": "activity",
+        "foreignKey": true,
+        "alias": "activity"
+      },
+      "contact": {
+        "type": "integer",
+        "model": "contact",
+        "foreignKey": true,
+        "alias": "contact"
+      }
+    },
+    "et_service_price": {
+      "id_sp": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_service": {
+        "type": "integer"
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "d_to": {
+        "type": "datetime"
+      },
+      "nb_person_min": {
+        "type": "integer"
+      },
+      "nb_person_max": {
+        "type": "integer"
+      },
+      "price_pp": {
+        "type": "integer",
+        "size": 8
+      },
+      "promotion": {
+        "type": "boolean"
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "valid": {
+        "type": "boolean"
+      }
+    },
+    "et_user_business": {
+      "id_up": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_contact": {
+        "type": "integer",
+        "unique": true
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      }
+    },
+    "et_user_private": {
+      "id_ub": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_address": {
+        "type": "integer",
+        "unique": true
+      },
+      "id_contact": {
+        "type": "integer",
+        "unique": true
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      }
     }
   },
   "counters": {
@@ -251,7 +757,25 @@
     "service": {},
     "category_activity": {},
     "activity_categories__category_activities": {
-      "id": 7
-    }
+      "id": 18
+    },
+    "et_activity": {
+      "id_activity": 11
+    },
+    "et_address": {},
+    "et_category": {
+      "id_category": 5
+    },
+    "et_contact": {
+      "id_contact": 3
+    },
+    "et_geo_pos": {},
+    "et_reservation": {},
+    "et_service": {
+      "id_service": 10
+    },
+    "et_service_price": {},
+    "et_user_business": {},
+    "et_user_private": {}
   }
 }

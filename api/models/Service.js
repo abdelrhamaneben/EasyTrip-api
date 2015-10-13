@@ -13,21 +13,8 @@ module.exports = {
   	id_service :{
   			type : 'integer',
 	  	 	primaryKey: true,
-	  	 	autoIncrement: true,
-		    required: true
-		},
-    id_geo :{
-    	type : 'integer',
-    	required : true,
-    	unique : true
-    },
-    id_bu :{
-    	type : 'integer',
-    	required : true
-    },
-    id_adress: {
-    	type : 'integer'
-    },
+	  	 	autoIncrement: true
+	},
     name :{
     	type : 'string',
     	size : 50
@@ -43,6 +30,12 @@ module.exports = {
     d_update :{
     	type : 'datetime',
         autoUpdatedAt: true
+    },
+    activity :{
+        model:'activity'
+    },
+    contact :{
+        model:'contact'
     }
   }
 };

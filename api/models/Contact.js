@@ -24,19 +24,19 @@ module.exports = {
 		 	size : 200
 		 },
 		 phone : {
-		 	type: 'integer'
+		 	type: 'string'
 		 },
-	   email : {
-	    type : 'string',
+	   	email : {
+	    	type : 'string',
 		 	size : 100
-	   },
-	   d_create : {
-    	type : 'datetime',
-    	autoCreatedAt: true
+	  	},
+	   	d_create : {
+	    	type : 'datetime',
+	    	autoCreatedAt: true
 		 },	    	
-   	 d_update : {
-    	type : 'datetime',
-    	autoUpdatedAt: true
+   	 	d_update : {
+	    	type : 'datetime',
+	    	autoUpdatedAt: true
      }
    }
 };

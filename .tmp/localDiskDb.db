@@ -1,7 +1,7 @@
 {
   "data": {
     "category_activity": [],
-    "activity": [
+    "et_activity": [
       {
         "name": "test",
         "description": "test",
@@ -17,7 +17,7 @@
         "id_activity": 10
       }
     ],
-    "category": [
+    "et_category": [
       {
         "name": "Soleil",
         "description": "les activités liés au soseil",
@@ -52,8 +52,8 @@
         "id_category": 6
       }
     ],
-    "reservation": [],
-    "service": [],
+    "et_reservation": [],
+    "et_service": [],
     "activity_categories__category_activities": [
       {
         "category_activities": 3,
@@ -69,13 +69,13 @@
   },
   "schema": {
     "category_activity": {
-      "activity": {
+      "et_activity": {
         "type": "integer",
         "model": "activity",
         "foreignKey": true,
         "alias": "activity"
       },
-      "category": {
+      "et_category": {
         "type": "integer",
         "model": "category",
         "foreignKey": true,
@@ -94,7 +94,7 @@
         "type": "datetime"
       }
     },
-    "activity": {
+    "et_activity": {
       "id_activity": {
         "type": "integer",
         "primaryKey": true,
@@ -116,7 +116,7 @@
         "type": "datetime"
       }
     },
-    "category": {
+    "et_category": {
       "id_category": {
         "type": "integer",
         "primaryKey": true,
@@ -138,7 +138,7 @@
         "type": "datetime"
       }
     },
-    "reservation": {
+    "et_reservation": {
       "id_res": {
         "type": "integer",
         "primaryKey": true,
@@ -179,7 +179,7 @@
         "type": "datetime"
       }
     },
-    "service": {
+    "et_service": {
       "id_service": {
         "type": "integer",
         "primaryKey": true,
@@ -241,14 +241,14 @@
     }
   },
   "counters": {
-    "activity": {
+    "et_activity": {
       "id_activity": 10
     },
     "category": {
       "id_category": 6
     },
-    "reservation": {},
-    "service": {},
+    "et_reservation": {},
+    "et_service": {},
     "category_activity": {},
     "activity_categories__category_activities": {
       "id": 7

@@ -35,7 +35,7 @@ module.exports = {
 		var longitude 	= 454.34;
 		var latitude 	= 435.4;
 		// KM de RAYON
-		var raidus 		= 43.3;
+		var raidus 		= 43;
 		//-------------------------------------------------------
 		// Execute QUERY
 		Service.query("SELECT get_activities_from_posr(" + longitude + "," + latitude + "," + raidus + ")",function(err, results) {

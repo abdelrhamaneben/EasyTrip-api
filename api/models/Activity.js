@@ -7,8 +7,28 @@
 
 module.exports = {
 
+  tableName: 'et_activity',
+  
   attributes: {
-
+  	 id_activity : {
+  	 	type : 'integer',
+  	 	primaryKey: true,
+      autoIncrement: true
+  	 },
+  	 name : {
+  	 	type : 'string',
+  	 	size : 50,
+      required: true
+  	 },
+  	 description : {
+  	 	type : 'string',
+  	 	size : 200,
+      required: true
+  	 },
+     categories : {
+            collection: 'category',
+            via: 'activities'
+     }
   }
 };
 

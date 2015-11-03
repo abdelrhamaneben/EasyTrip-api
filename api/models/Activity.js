@@ -21,8 +21,7 @@ module.exports = {
   	 },
   	 description : {
   	 	type : 'string',
-  	 	size : 200,
-      required: true
+  	 	size : 200
   	 },
      categories : {
             collection: 'category',

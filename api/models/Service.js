@@ -15,11 +15,6 @@ module.exports = {
 	  	 	primaryKey: true,
 	  	 	autoIncrement: true
 	},
-    image : {
-        type : 'string',
-        size : 100,
-        defaultsTo: 'default.png'
-    },
     name :{
     	type : 'string',
     	size : 50
@@ -27,6 +22,16 @@ module.exports = {
     description :{
 		type : 'string',
     	size : 200    
+    },
+    tel :{
+        type : 'string',
+        size : 20    
+    },
+    lng :{
+            type : 'string',
+    },
+    lat :{
+            type : 'string',
     },
     d_create :{
     	type : 'datetime',
@@ -38,9 +43,6 @@ module.exports = {
     },
     activity :{
         model:'activity'
-    },
-    contact :{
-        model:'contact'
     }
   }
 };

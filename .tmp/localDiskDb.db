@@ -1,0 +1,257 @@
+{
+  "data": {
+    "category_activity": [],
+    "et_activity": [
+      {
+        "name": "test",
+        "description": "test",
+        "createdAt": "2015-10-06T19:35:35.982Z",
+        "updatedAt": "2015-10-06T19:35:36.000Z",
+        "id_activity": 9
+      },
+      {
+        "name": "test",
+        "description": "test",
+        "createdAt": "2015-10-06T19:38:31.413Z",
+        "updatedAt": "2015-10-06T19:38:31.430Z",
+        "id_activity": 10
+      }
+    ],
+    "et_category": [
+      {
+        "name": "Soleil",
+        "description": "les activités liés au soseil",
+        "createdAt": "2015-10-01T18:57:50.112Z",
+        "updatedAt": "2015-10-01T18:57:50.112Z",
+        "id_category": 2
+      },
+      {
+        "name": "neige",
+        "description": "les activités liés à la neige",
+        "createdAt": "2015-10-01T18:59:31.910Z",
+        "updatedAt": "2015-10-01T18:59:31.910Z",
+        "id_category": 3
+      },
+      {
+        "name": "neige",
+        "description": "les activités liés à la neige",
+        "createdAt": "2015-10-01T19:00:10.076Z",
+        "updatedAt": "2015-10-01T19:00:10.076Z",
+        "id_category": 4
+      },
+      {
+        "createdAt": "2015-10-01T19:00:17.774Z",
+        "updatedAt": "2015-10-01T19:00:17.774Z",
+        "id_category": 5
+      },
+      {
+        "name": "test",
+        "description": "test",
+        "createdAt": "2015-10-06T19:38:31.578Z",
+        "updatedAt": "2015-10-06T19:38:31.582Z",
+        "id_category": 6
+      }
+    ],
+    "et_reservation": [],
+    "et_service": [],
+    "activity_categories__category_activities": [
+      {
+        "category_activities": 3,
+        "activity_categories": 9,
+        "id": 5
+      },
+      {
+        "category_activities": 3,
+        "activity_categories": 10,
+        "id": 7
+      }
+    ]
+  },
+  "schema": {
+    "category_activity": {
+      "et_activity": {
+        "type": "integer",
+        "model": "activity",
+        "foreignKey": true,
+        "alias": "activity"
+      },
+      "et_category": {
+        "type": "integer",
+        "model": "category",
+        "foreignKey": true,
+        "alias": "category"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_activity": {
+      "id_activity": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_category": {
+      "id_category": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_reservation": {
+      "id_res": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_up": {
+        "type": "integer"
+      },
+      "id_price": {
+        "type": "integer"
+      },
+      "id_service": {
+        "type": "integer"
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "d_to": {
+        "type": "datetime"
+      },
+      "nb_person": {
+        "type": "integer"
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "valid": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_service": {
+      "id_service": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_geo": {
+        "type": "integer",
+        "unique": true
+      },
+      "id_bu": {
+        "type": "integer"
+      },
+      "id_adress": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "d_create": {
+        "type": "datetime"
+      },
+      "d_update": {
+        "type": "datetime"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "activity_categories__category_activities": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "activity_categories": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "activity",
+        "on": "id_activity",
+        "via": "category_activities"
+      },
+      "category_activities": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "category",
+        "on": "id_category",
+        "via": "activity_categories"
+      }
+    }
+  },
+  "counters": {
+    "et_activity": {
+      "id_activity": 10
+    },
+    "category": {
+      "id_category": 6
+    },
+    "et_reservation": {},
+    "et_service": {},
+    "category_activity": {},
+    "activity_categories__category_activities": {
+      "id": 7
+    }
+  }
+}

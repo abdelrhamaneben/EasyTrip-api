@@ -14,17 +14,14 @@ module.exports = {
 
 	process: function (req, res) {
 		passport.authenticate('local', function (err, user, info) {
+      sails.log.info(info);
+      sails.log.info(user);
 			if (err || !user) {
-				return res.send({
-					message: 'login failed'
-				});
-				res.send(err);
+				return res.send(err);
 			}
-			req.logIn(user, function(err) {
+			req.login(user, function(err) {
 				if (err) res.send(err);
-				return res.send({
-					message: 'login successful'
-				});
+				return res.send('login successful');
 			});
 		}) (req, res);
 	},

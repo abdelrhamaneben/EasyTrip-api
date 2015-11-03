@@ -3,25 +3,26 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt');
 
 function findById(id, fn) {
-  Contact.findOne(id).done(function(err, user) {
+  Contact.findOne(id).exec(function(err, user) {
     if (err) return fn(null, null);
 
     return fn(null, user)
   });
 }
 
-function findByEmail(mail, fn) {
+function findByEmail(username, fn) {
+  sails.log.info(username);
   Contact.findOne({
-    email: mail
-  }).done(function(err, user) {
+    email: username
+  }).exec(function(err, user) {
     if (err) return fn(null, null);
 
-    return fn(null, user)
+    return fn(null, user);
   });
 }
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.id_contact);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -31,12 +32,12 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new LocalStrategy(
-  function (email, password, done) {
+  function (username, password, done) {
     process.nextTick(function() {
-      findByEmail(email, function(err, user) {
+      findByEmail(username, function(err, user) {
         if (err) return done(null, err);
 
-        if (!user) return done(null, false, { message: 'Unknown user ' + email });
+        if (!user) return done(null, false, { message: 'Unknown user ' + username });
 
         bcrypt.compare(password, user.password, function( err, res) {
           if (!res) return done(null, false, { message: 'Invalid Password' });
@@ -44,10 +45,10 @@ passport.use(new LocalStrategy(
           var returnUser = {
             email: user.email,
             createdAt: user.createdAt,
-            id: user.id
+            id: user.id_contact
           };
 
-          return done(null, returnUser, { message: 'Lgged In Successfully'});
+          return done(null, returnUser, { message: 'Logged In Successfully'});
         });
       });
     });

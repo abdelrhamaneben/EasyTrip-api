@@ -36,6 +36,16 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  '/login': {
+    controller: 'AuthController',
+    action: 'login'
+  },
+
+  '/logout': {
+    controller: 'AuthController',
+    action: 'logout'
+  },
+
   "POST /search": {controller: "ServiceController", action: "search"}
 
   /***************************************************************************

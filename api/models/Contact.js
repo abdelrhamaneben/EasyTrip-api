@@ -5,6 +5,8 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
+var bcrypt = require('bcrypt');
+
 module.exports = {
 
 	tableName: 'et_contact',
@@ -28,16 +30,34 @@ module.exports = {
 		 },
 	   email : {
 	    type : 'string',
-		 	size : 100
+		 	size : 100,
+			required: true
 	   },
+		 password: {
+			 type: 'string',
+			 required: true
+		 },
 	   d_create : {
     	type : 'datetime',
     	autoCreatedAt: true
-		 },	    	
+		 },
    	 d_update : {
     	type : 'datetime',
     	autoUpdatedAt: true
      }
-   }
-};
+   },
 
+	 beforeCreate: function(contact, cb) {
+		 bcrypt.genSalt(10, function(err, salt) {
+			 bcrypt.hash(contact.password, salt, function(err, hash) {
+				 if (err) {
+					 console.log(err);
+					 cb(err);
+				 } else {
+					 contact.password = hash;
+					 cb(null, user);
+				 }
+			 });
+		 });
+	 }
+};

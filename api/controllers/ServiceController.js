@@ -13,7 +13,7 @@ module.exports = {
     if(!req.param('activities')) {
       res.badRequest("Need activities Params !!");
     }
-    var activities = JSON.parse(req.param('activities'));
+    var activities = req.param('activities');
     console.log(activities);
     var geocoder = require('geocoder');
 

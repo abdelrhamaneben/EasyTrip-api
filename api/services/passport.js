@@ -10,10 +10,10 @@ function findById(id, fn) {
   });
 }
 
-function findByEmail(username, fn) {
-  sails.log.info(username);
+function findByEmail(mail, fn) {
+  sails.log.info(mail);
   Contact.findOne({
-    email: username
+    email: mail
   }).exec(function(err, user) {
     if (err) return fn(null, null);
 
@@ -22,7 +22,8 @@ function findByEmail(username, fn) {
 }
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id_contact);
+  sails.log.info(user);
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -32,9 +33,9 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new LocalStrategy(
-  function (username, password, done) {
+  function (email, password, done) {
     process.nextTick(function() {
-      findByEmail(username, function(err, user) {
+      findByEmail(email, function(err, user) {
         if (err) return done(null, err);
 
         if (!user) return done(null, false, { message: 'Unknown user ' + username });

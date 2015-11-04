@@ -16,6 +16,7 @@ module.exports = {
 		passport.authenticate('local', function (err, user, info) {
       sails.log.info(info);
       sails.log.info(user);
+      sails.log.info(err);
 			if (err || !user) {
 				return res.send(err);
 			}
@@ -29,7 +30,19 @@ module.exports = {
 	logout: function (req, res) {
 		req.logout();
 		res.send('logout successful');
-	}
+	},
+
+  free: function (req, res) {
+    res.send('OK');
+  },
+
+  needLogin: function (req, res) {
+    sails.log.info("needLogin: " + req.user);
+    if (typeof(req.user) === 'undefined') {
+      res.redirect("/contact");
+    }
+    res.send('needLogin');
+  }
 };
 
 module.exports.blueprints = {

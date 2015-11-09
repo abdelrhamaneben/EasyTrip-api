@@ -30,10 +30,10 @@ describe('ServiceController', function() {
       	.expect(403, done);
     });
 
-     it('Search Function , need list of categories, and coordonate', function (done) {
+     it('Search Function , need list of activities, and coordonate', function (done) {
       request(sails.hooks.http.app)
         .put('/service/search')
-        .send({ latup: 1.1, latdown: 0.34, longright : 2.43, longleft : 1.34,  categories : '1,3' })
+        .send({ latup: 1.1, latdown: 0.34, longright : 2.43, longleft : 1.34,  activities : '1,3' })
         .expect(200, done);
     });
 

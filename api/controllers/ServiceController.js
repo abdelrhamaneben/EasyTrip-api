@@ -8,16 +8,8 @@
 module.exports = {
 	search: function (req, res) {
 		// VERIFICATION DES PARAMETRES NECESSAIRES
-		if(!req.param('location')) {
-			res.badRequest("Need Location Param !!");
-		}
-
-		if(!req.param('hours')) {
-			res.badRequest("Need hours Param !!");
-		}
-
-		if(!req.param('category')) {
-			res.badRequest("Need category Param !!");
+		if(!req.param('categories')) {
+			res.badRequest("Need list of categories Param !!");
 		}
 
 		if(!req.param('activities')) {

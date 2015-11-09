@@ -1,4 +1,4 @@
-/**
+ /**
 * Activity.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
@@ -8,6 +8,7 @@
 module.exports = {
 
   tableName: 'et_activity',
+
   attributes: {
   	 id_activity : {
   	 	type : 'integer',
@@ -26,6 +27,10 @@ module.exports = {
      categories : {
             collection: 'category',
             via: 'activities'
+     },
+     services : {
+        collection : 'service',
+        via : 'activites'
      }
   }
 };

@@ -16,14 +16,11 @@ module.exports = {
 	  	 	autoIncrement: true,
 		    required: true
 		},
-    id_up :{
-		 	type : 'integer'
+    customer : {
+		 	model : 'user'
     },
-    id_price :{
-   		type : 'integer'
-    },
-    id_service :{
-   		type : 'integer'
+    price :{
+   		model : 'servicePrice'
     },
     d_from :{
    		type : 'datetime'
@@ -34,16 +31,16 @@ module.exports = {
     nb_person :{
    		type : 'integer'
     },
-    d_create :{
+    valid : {
+      type : 'boolean'  
+    },
+    createdAt :{
     	type : 'datetime',
       autoCreatedAt: true
     },
-    d_update :{
+    updatedAt :{
     	type : 'datetime',
       autoUpdatedAt: true
-    },
-    valid : {
-    	type : 'boolean'	
     }
   }
 };

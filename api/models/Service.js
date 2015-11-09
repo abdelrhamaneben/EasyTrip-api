@@ -15,34 +15,43 @@ module.exports = {
 	  	 	primaryKey: true,
 	  	 	autoIncrement: true
 	},
+    geolon :{
+            type : 'string',
+    },
+    geolat :{
+            type : 'string',
+    },
+    creator : {
+        model : 'user'
+    },
+    address : {
+        model : 'address'
+    },
     name :{
-    	type : 'string',
-    	size : 50
+        type : 'string',
+        size : 50
     },
     description :{
 		type : 'string',
     	size : 200    
     },
-    tel :{
-        type : 'string',
-        size : 20    
+    image :{
+        type : 'string'
     },
-    lng :{
-            type : 'string',
+    link :{
+        type : 'string'
     },
-    lat :{
-            type : 'string',
-    },
-    d_create :{
+    createdAt :{
     	type : 'datetime',
         autoCreatedAt: true
-		},	    	
-    d_update :{
+	},	    	
+    updatedAt :{
     	type : 'datetime',
         autoUpdatedAt: true
     },
-    activity :{
-        model:'activity'
+    activities :{
+        collection : 'activity',
+        via : 'services'
     }
   }
 };

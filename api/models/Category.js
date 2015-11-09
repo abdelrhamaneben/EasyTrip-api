@@ -20,9 +20,16 @@ module.exports = {
 		 	size : 50,
 	    	required: true
 		 },
-	   activities:{
-	    collection: 'activity',
-	    via: 'categories'
-	   }
+		 description : {
+  	 		type : 'string',
+  	 		size : 200
+  	 	 },
+  	 	 image : {
+  	 		type : 'string'
+  	     },
+	   	 activities:{
+	     	collection: 'activity',
+	     	via: 'categories'
+	   	 }
   }
 };

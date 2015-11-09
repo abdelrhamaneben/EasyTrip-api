@@ -7,9 +7,28 @@
 
 module.exports = {
 
-	
+	// Search Service with Location and Activities
+	initsearch: function (req, res) {
+		if(!req.param('location')) {
+			res.badRequest("Need location Params !!");
+		}
+		var geocoder = require('geocoder');
+		var request = require('request');
+		geocoder.geocode(origin, function ( err, data ) {
+			if(err) res.serverError(err);
+
+        	originLocation = data.results[0].geometry.location;
+        	req.param("latup",originLocation.lat + 1);
+        	req.param("latdown",originLocation.lat - 1);
+        	req.param("longright",originLocation.lng + 1);
+        	req.param("longleft",originLocation.lng - 1);
+
+        	this.search(req,res);
+    	}
+
+	},
+	// Search Service with geo interval and Activities
 	search: function (req, res) {
-		// VERIFICATION DES PARAMETRES NECESSAIRES
 		
 		if(!req.param('activities') || typeof req.param('activities') !== 'array') {
 			res.badRequest("Need list of activities Params !!");

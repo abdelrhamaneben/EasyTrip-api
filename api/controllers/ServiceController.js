@@ -6,33 +6,37 @@
  */
 
 module.exports = {
+
+	
 	search: function (req, res) {
 		// VERIFICATION DES PARAMETRES NECESSAIRES
-		if(!req.param('categories')) {
-			res.badRequest("Need list of categories Param !!");
+		
+		if(!req.param('activities') || typeof req.param('activities') !== 'array') {
+			res.badRequest("Need list of activities Params !!");
+		}
+		if(!req.param('latup') || typeof req.param('latup') !== 'number') {
+			res.badRequest("Need latup Params !!");
+		}
+		if(!req.param('latdown') || typeof req.param('latdown') !== 'number') {
+			res.badRequest("Need latdown Params !!");
+		}
+		if(!req.param('longright') || typeof req.param('longright') !== 'number') {
+			res.badRequest("Need longright Params !!");
+		}
+		if(!req.param('longleft') || typeof req.param('longleft') !== 'number') {
+			res.badRequest("Need longleft Params !!");
 		}
 
-		if(!req.param('activities')) {
-			res.badRequest("Need activities Params !!");
-		}
-		var activities 	= req.param('activities');
-		var category	= req.param('category');
-		var hours		= req.param('hours');
-		var location 	= req.param('location');
-
-		//-------------------------------------------------------
-		// TO DO
-
-		// POSITION DE L'UTILISATEUR à calculer avec location
-		var longitude 	= 454.34;
-		var latitude 	= 435.4;
-		// KM de RAYON
-		var raidus 		= 43;
-		//-------------------------------------------------------
-		// Execute QUERY
-		Service.query("SELECT get_activities_from_posr(" + longitude + "," + latitude + "," + raidus + ")",function(err, results) {
-		  if (err) return res.serverError(err);
-		  return res.ok(results.rows);
+		Service.find({
+			geolati: { '>' : req.param('latdown')},
+			geolati: { '<' : req.param('latup')},
+			geolong: { '>' : req.param('longleft')},
+			geolong: { '<' : req.param('longright')},
+			activities : req.param('activities')
+		}).exec(function findCB(err, found){
+			if(err) res.serverError(err);
+		 	res.json(found);
 		});
+		
   }
 };

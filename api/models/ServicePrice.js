@@ -16,8 +16,8 @@ module.exports = {
 		 	autoIncrement: true,
 		 	unique : true
 		 },
-		 id_service : {
-		 	type : 'integer',
+		 service : {
+		 	model : 'service',
 		 },
 		 d_from : {
 		 	type : 'datetime'
@@ -31,23 +31,20 @@ module.exports = {
 	     nb_person_max : {
 			type : 'integer',
 	     },
-	     price_pp : {
+	     price_per_person : {
     		type : 'integer',
  			size : 8
 		 },	    	
    		 promotion : {
     		type : 'boolean'
     	 },
-    	 d_create : {
+    	 createdAt : {
     		type : 'datetime',
     		autoCreatedAt: true
 		 },	    	
-   		 d_update : {
+   		 updatedAt : {
     		type : 'datetime',
     		autoUpdatedAt: true
-    	 },
-    	 valid : {
-    		type : 'boolean'
-    	 } 
+    	 }
   	}
 };

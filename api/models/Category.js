@@ -21,13 +21,15 @@ module.exports = {
 	    	required: true
 		 },
 		 description : {
-		 	type : 'string',
-		 	size : 200,
-		 	required: true
-		 },
-	   activities:{
-	    collection: 'activity',
-	    via: 'categories'
-	   }
+  	 		type : 'string',
+  	 		size : 200
+  	 	 },
+  	 	 image : {
+  	 		type : 'string'
+  	     },
+	   	 activities:{
+	     	collection: 'activity',
+	     	via: 'categories'
+	   	 }
   }
 };

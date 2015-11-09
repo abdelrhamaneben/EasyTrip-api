@@ -15,7 +15,7 @@ module.exports = {
 	  	 	primaryKey: true,
 	  	 	autoIncrement: true,
 		    required: true
-		},
+	},
     geolati :{
     	type : 'float',
     	required : true
@@ -23,34 +23,46 @@ module.exports = {
     geolong :{
         type : 'float',
         required : true
+	},
+    creator : {
+        model : 'user'
     },
-    id_bu :{
-    	type : 'integer',
-    	required : true
-    },
-    id_adress: {
-    	type : 'integer'
+    address : {
+        model : 'address'
     },
     name :{
-    	type : 'string',
-    	size : 50
+        type : 'string',
+        size : 50
     },
     description :{
 		type : 'string',
     	size : 200    
     },
-    d_create :{
+    image :{
+        type : 'string'
+    },
+    link :{
+        type : 'string'
+    },
+    createdAt :{
     	type : 'datetime',
         autoCreatedAt: true
-		},	    	
-    d_update :{
+	},	    	
+    updatedAt :{
     	type : 'datetime',
         autoUpdatedAt: true
     },
+<<<<<<< HEAD
     activities : {
             collection: 'Activity',
             via: 'services'
      }
+=======
+    activities :{
+        collection : 'activity',
+        via : 'services'
+    }
+>>>>>>> presentation
   }
 };
 

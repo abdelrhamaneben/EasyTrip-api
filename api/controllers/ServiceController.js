@@ -7,6 +7,7 @@
 
 module.exports = {
 
+
 	// Search Service with Location and Activities
 	initsearch: function (req, res) {
 		if(!req.param('location')) {
@@ -56,6 +57,5 @@ module.exports = {
 			if(err) res.serverError(err);
 		 	res.json(found);
 		});
-		
   }
 };

@@ -15,10 +15,6 @@ module.exports = {
 		 	primaryKey: true,
 		 	autoIncrement: true
 		 },
-		 str_name : {
-		 	type : 'string',
-		 	size : 100
-		 },
 		 str_nbr : {
 		 	type : 'string',
 		 	size : 5
@@ -34,11 +30,11 @@ module.exports = {
 			type : 'string',
 		 	size : 5,
 	     },
-	     d_create : {
+	     createdAt : {
     		type : 'datetime',
     		autoCreatedAt: true
 		 },	    	
-   		 d_update : {
+   		 updatedAt : {
     		type : 'datetime',
     		autoUpdatedAt: true
     	}

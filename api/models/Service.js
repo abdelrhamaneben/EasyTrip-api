@@ -16,10 +16,13 @@ module.exports = {
 	  	 	autoIncrement: true,
 		    required: true
 		},
-    id_geo :{
-    	type : 'integer',
-    	required : true,
-    	unique : true
+    geolati :{
+    	type : 'float',
+    	required : true
+    },
+    geolong :{
+        type : 'float',
+        required : true
     },
     id_bu :{
     	type : 'integer',
@@ -43,7 +46,11 @@ module.exports = {
     d_update :{
     	type : 'datetime',
         autoUpdatedAt: true
-    }
+    },
+    activities : {
+            collection: 'Activity',
+            via: 'services'
+     }
   }
 };
 

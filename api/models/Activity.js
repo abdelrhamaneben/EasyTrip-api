@@ -28,6 +28,10 @@ module.exports = {
      categories : {
             collection: 'category',
             via: 'activities'
+     },
+    services : {
+            collection: 'service',
+            via: 'activities'
      }
   }
 };

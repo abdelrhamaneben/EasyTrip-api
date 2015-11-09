@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  tableName: 'et_user',
+  tableName: 'et_subscription',
 
   attributes: {
 	id_subscription : {

@@ -30,7 +30,7 @@ module.exports = {
      },
      services : {
         collection : 'service',
-        via : 'activites'
+        via : 'activities'
      }
   }
 };

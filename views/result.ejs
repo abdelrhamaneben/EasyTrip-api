@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EasyTiip</title>
+    <meta charset="utf8" />
+    <!-- Bootstrap Core CSS -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="styles/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/result.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</head>
+<body onload="initialize()">
+     
+    <header class="text-center">
+        <a href="/" style="float:left; color:white;">Retour</a>
+        <div id="titre" class="col-md-offset-5">
+
+            <h1 class="text-center">EasyTrip</h1>
+        </div>
+    </header>
+    <!-- APP  -->
+    <div class="col-md-12" id="app">
+       
+        <!-- Right part (Activities bar)  -->
+        <section id="l-part" class="col-md-2 col-xs-12">
+            <h4>Choose your activities</h4>
+            <ul class="list-group" id="list_activities">
+              <!-- List of activities -->
+            </ul>
+        </section>
+        <!-- Center part (List of services) -->
+        <section id="c-part"class="col-md-5 col-xs-12" style="overflow-y : scroll;height:100%;">
+          <!-- <div class="text-center">
+                <h5>Chargement des services ...</h5>
+                <i class="fa fa-spinner fa-spin fa-3x"></i>
+            </div>-->
+        </section>
+        <!-- Left part (Google map)  -->
+        <section id="r-part"class="col-md-5 col-xs-12">
+           <div id="map_canvas"></div>
+        </section>
+    </div>
+    <!-- jQuery -->
+    <script src="assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Controller JS -->
+    <script src="js/models/service.js"></script>
+    <script src="js/models/map_manager.js"></script>
+    <script src="js/models/activities_manager.js"></script>
+    <script src="js/models/services_manager.js"></script>
+
+    <!-- APP -->
+    <script type="text/javascript">
+       function initialize() {
+            // ----------------  Initialize Services ----------------- (Service Controller)
+            services_manager.load(null,[]);
+            services_manager.onClickService = function (service) {
+                map_manager.displayService(service);
+            };
+            // ----------- initialize Google Map and add marker  ------- (Map Controller)
+            map_manager.init(0,0);
+            map_manager.loadMarker(services_manager.data);
+            map_manager.resize();
+
+            map_manager.onMapChanged(function () {
+                reload();
+            });
+
+            // define action Click on Marker map
+            map_manager.clickOnMarker = function (service) { 
+                $('.part h3').css('color','#333');
+                $('#service_' + service.id_service + ' h3').css('color','#AF2A47');
+            };
+
+            // -------------  initialize List of Activities  --------- (Activities Controller)
+            activities_manager.clickOnActivity = function (id) {
+                reload();
+                $('.card').hide(350).show(300);
+
+            };
+
+            activities_manager.load();
+
+            function reload() {
+                var activities = activities_manager.getActivities();
+                var restangle = map_manager.getRectangle();
+                // NEED SEARCH 
+                services_manager.load(restangle,activities);
+                map_manager.loadMarker(services_manager.data);
+            }
+        }
+    </script>
+</body>
+
+</html>

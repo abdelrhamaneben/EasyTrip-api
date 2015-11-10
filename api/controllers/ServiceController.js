@@ -25,7 +25,7 @@ module.exports = {
         	req.param("longleft",originLocation.lng - 1);
 
         	this.search(req,res);
-    	}
+    	});
 
 	},
 	// Search Service with geo interval and Activities

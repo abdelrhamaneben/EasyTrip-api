@@ -52,17 +52,10 @@ module.exports = {
     	type : 'datetime',
         autoUpdatedAt: true
     },
-<<<<<<< HEAD
     activities : {
-            collection: 'Activity',
+            collection: 'activity',
             via: 'services'
      }
-=======
-    activities :{
-        collection : 'activity',
-        via : 'services'
-    }
->>>>>>> presentation
   }
 };
 

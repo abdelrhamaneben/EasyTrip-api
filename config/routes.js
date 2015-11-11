@@ -35,8 +35,19 @@ module.exports.routes = {
   '/': {
     view: 'index'
   },
+
   '/result': {
     view: 'result'
+  },
+
+  'get /user/login':{
+    controller: 'user',
+    action: 'login'
+  },
+
+  'post /user/login':{
+    controller: 'user',
+    action: 'passport_local'
   }
 
   /***************************************************************************

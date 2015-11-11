@@ -25,8 +25,7 @@ module.exports = {
 		size : 200
 	},
 	email : {
-	    type : 'string',
-	    email : true,
+	  type : 'string',
 		size : 100
 	},
 	phone : {
@@ -39,7 +38,7 @@ module.exports = {
 
 	role : {
 		type : 'string',
-		enum : ['business','private']
+		enum : ['business','private','admin']
 	},
 
 	password : {
@@ -64,4 +63,3 @@ module.exports = {
 	}
   }
 };
-

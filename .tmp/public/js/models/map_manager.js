@@ -49,7 +49,7 @@ var map_manager = {
 		    map: this.map
 		});
 		var infowindow = new google.maps.InfoWindow({
-		    content: "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><em>Tel : " +  service.tel + "</em></div>"
+		    content: "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : " +  service.address + "</em><br><em>Tel : " +  service.tel + "</em></div>"
 		});
 		this.infowindows.push(infowindow);
 		marker.addListener('click', function() {

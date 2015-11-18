@@ -15,8 +15,8 @@
     <link href="styles/stylish-portfolio.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="styles/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-        
+    
+             
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="styles/default.css" />
     <link rel="stylesheet" type="text/css" href="styles/component.css" />
@@ -45,7 +45,7 @@
 </head>
 <body>
     <video autoplay loop poster="" id="bgvid" muted>
-    <source src="videos\videoplayback.mp4" type="video/mp4" >
+    <source src="images\videoplayback.mp4" type="video/mp4" >
     </video>
     <header id="top" class="header">
         <div class="text-vertical-center" id="title">
@@ -59,8 +59,22 @@
     <div class="container animsition" id="afterSelectingCity">
             <center>
 				<br><br>
+                
                 <!-- h4 style="margin-bottom:20px;">What do you want to do?</h4-->
                 <h3 style="color:#fed136;text-decoration:underline;">Choose a category to begin the experience</h3>
+                
+                <div class="imgmenu mphotos-1 commune"> 
+                    <a href="/result" data="7"> 
+                        <div class="mphotos"> 
+                            <div class="mphoto"> 
+                                <img class="autosize" src="images/B.jpg" width="1140" height="300"></div> 
+                        </div> 
+                        <div class="title"> 
+                            <div class="valign"></div> 
+                            <div class="name">BEST DEALS</div> 
+                        </div> 
+                    </a> 
+                </div>                       
                 
                 <ul class="grid effect-5" id="grid">                
                 </ul>
@@ -75,6 +89,10 @@
     <!-- Script APP -->
     <script src="js/categories.js"></script>
     <script src="js/JsonCategory.js"></script>
+        
+    
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
     <script>
         // VIDEO
         var video = document.getElementById("bgvid");
@@ -122,7 +140,7 @@
             $('html, body').animate({
 			 scrollTop: $('#afterSelectingCity').offset().top
             }, 1000);
-        });
+        });        
     </script>
 
 </body>

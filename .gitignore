@@ -2,3 +2,4 @@ node_modules/
 .DS_STORE
 .tmp/public/
 .gitignore~
+assets/images/videoplayback.mp4

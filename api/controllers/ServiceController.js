@@ -8,6 +8,10 @@
 module.exports = {
 
 
+	admin : function (req,res) {
+		return res.view("admin/app/index");
+	},
+
 	// Search Service with Location and Activities
 	initsearch: function (req, res) {
 		if(!req.param('location')) {

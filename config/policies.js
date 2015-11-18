@@ -19,6 +19,9 @@
 
  module.exports.policies = {
      '*': 'isAuthenticated',
+     'admin': {
+     	'index': true
+     },
      'user': {
          '*': true
      }

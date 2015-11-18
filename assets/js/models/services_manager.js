@@ -2,15 +2,31 @@ var services_manager = {
  build : function () {
  	$('#c-part').html('');
  	$.each(this.data, function(i, item) {
- 		$('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
-           + " <div class=\"thumbnail\">"
-           + "<div class=\"caption\">"
-           + "<h3>" + item.name + "</h3>"
-           + "<p>" + item.description + "</p>"
-           + "<p><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Afficher</a></p>"
-           + "</div>"
-           + "</div>"
-           + "</div>"));
+
+        if(item.payed == 1 ){
+
+            console.log(item.img);
+            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
+               + "<div class=\"thumbnail\">"
+               + "<div class=\"caption\">"
+               + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
+               + "<h3>" + item.name + "</h3>"
+               + "<p>" + item.description + "</p>"
+               + "<p><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Afficher</a></p>"
+               + "</div>"
+               + "</div>"
+               + "</div>"));
+        }else {
+            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
+               + " <div class=\"thumbnail\">"
+               + "<div class=\"caption\">"
+               + "<h3>" + item.name + "</h3>"
+               + "<p>" + item.description + "</p>"
+               + "<p><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Afficher</a></p>"
+               + "</div>"
+               + "</div>"
+               + "</div>"));
+        }
  		});
  },
  click: function (id_service) {
@@ -59,11 +75,11 @@ var services_manager = {
         "longitude": "3.0750470000000405",
         "latitude": "50.629601",
         "id_service": 1,
-         "payed":1,
-         "img":"",
          "price":200,
          "minCapacity":1,
-         "maxCapacity":10         
+         "maxCapacity":10,         
+        "payed":1,
+        "img":"payed.jpg"
     },
     {
         "activity": {
@@ -75,7 +91,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.0528128999999353",
         "latitude": "50.6265093",
-        "id_service": 2
+        "id_service": 2,
+        "payed":1,
+        "img":"payed.jpg"
     },
     {
         "activity": {
@@ -87,7 +105,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.004167499999994",
         "latitude": "50.5621705",
-        "id_service": 3
+        "id_service": 3,
+        "payed":1,
+        "img":"payed.jpg"
     },
     {
         "activity": {
@@ -99,7 +119,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.065281300000038",
         "latitude": "50.6376666",
-        "id_service": 4
+        "id_service": 4,
+        "payed":0,
+        "img":""
     },
     {
         "activity": {
@@ -111,7 +133,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.0609351000000515",
         "latitude": "50.622411",
-        "id_service": 5
+        "id_service": 5,
+        "payed":0,
+        "img":"payed.png"
     },
     {
         "activity": {
@@ -123,7 +147,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.0680476",
         "latitude": "50.627104",
-        "id_service": 6
+        "id_service": 6,
+        "payed":0,
+        "img":""
     },
     {
         "activity": {
@@ -135,7 +161,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.048065299999962",
         "latitude": "50.6299156",
-        "id_service": 7
+        "id_service": 7,
+        "payed":0,
+        "img":""
     },
     {
         "activity": {
@@ -147,7 +175,9 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.059176100000059",
         "latitude": "50.6474069",
-        "id_service": 8
+        "id_service": 8,
+        "payed":0,
+        "img":""
     }
 ]
 };

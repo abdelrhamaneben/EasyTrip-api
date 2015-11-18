@@ -1,0 +1,50 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Mon compte</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <h1>
+            <small>Activites des 3 derniers jours</small>
+        </h1>
+    </div>
+    <div class="row">
+
+        <stats number="3" comments="Nouveaux services" colour="primary" type="support"></stats>
+        <stats number="12" comments="Nouveau clients prives" colour="green" type="user"></stats>
+        <stats number="2" comments="Nouveau client entreprise" colour="yellow" type="user"></stats>
+        <stats number="156" comments="Recherches" colour="red" type="shopping-cart"></stats>
+
+    </div>
+    
+    <!-- /.panel -->
+    <div class="row">
+        <div class="col-lg-8" id="line-chart" ng-controller="ChartCtrl">
+            <div class="panel panel-default">
+                <div class="panel-heading">Activite du site</div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                            click="line.onClick" series="line.series"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                </div>
+                <!-- /.panel-heading -->
+                <notifications></notifications> 
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>

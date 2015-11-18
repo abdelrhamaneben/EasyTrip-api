@@ -75,6 +75,9 @@ var services_manager = {
         "longitude": "3.0750470000000405",
         "latitude": "50.629601",
         "id_service": 1,
+         "price":200,
+         "minCapacity":1,
+         "maxCapacity":10,         
         "payed":1,
         "img":"festival.png"
     },

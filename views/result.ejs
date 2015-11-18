@@ -9,6 +9,9 @@
     <!-- Custom CSS -->
     <link href="styles/font-awesome.min.css" rel="stylesheet">
     <link href="styles/result.css" rel="stylesheet">
+    
+    <!--    Jquery-->
+    <link href="styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet"> 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,6 +32,33 @@
         </div>
     </header>
     <!-- APP  -->
+     
+    <div class="col-md-12" id="filter">
+<!--
+        <div class="form-group col-md-offset-0  col-md-1">
+            <label for="dateStart"> From </label>
+            <div class="input-group">                                
+                <input type="text" id="dateStart">
+            </div>
+        </div>                        
+        <div class="form-group col-md-offset-1  col-md-1">
+            <label for="dateEnd"> To </label>
+            <div class="input-group">  
+                <input type="text" id="dateEnd" >
+            </div>
+        </div>
+-->
+<!--
+        <div class="form-group col-md-offset-1  col-md-1">
+            <label for="title"> Title </label>
+            <div class="input-group">  
+                <input type="text" id="title" >
+            </div>
+        </div>
+-->
+    </div>
+        
+    
     <div class="col-md-12" id="app">
        
         <!-- Right part (Activities bar)  -->
@@ -38,8 +68,9 @@
               <!-- List of activities -->
             </ul>
         </section>
-        <!-- Center part (List of services) -->
+        <!-- Center part (List of services) -->      
         <section id="c-part"class="col-md-5 col-xs-12" style="overflow-y : scroll;height:100%;">
+            
           <!-- <div class="text-center">
                 <h5>Chargement des services ...</h5>
                 <i class="fa fa-spinner fa-spin fa-3x"></i>
@@ -53,6 +84,10 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
+    <!--    DatePicker-->
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -63,7 +98,19 @@
     <script src="js/models/services_manager.js"></script>
 
     <!-- APP -->
-    <script type="text/javascript">
+    <script>
+        //Dates
+       $( "#dateStart" ).datepicker({
+            minDate: 0,
+            onSelect: function (dateText, inst) {
+                var date = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateText);
+                $("#dateEnd").datepicker("option", "minDate", date);
+            }
+        });
+        $( "#dateEnd" ).datepicker();
+    </script>
+    
+    <script type="text/javascript"> 
        function initialize() {
             // ----------------  Initialize Services ----------------- (Service Controller)
             services_manager.load(null,[]);
@@ -102,6 +149,19 @@
                 map_manager.loadMarker(services_manager.data);
             }
         }
+        
+        
+        $('#title').keyup(function(){
+//            $( ".card > div > div > h3" ).css({ background: "#ccc", color: "blue" });
+            
+            var valThis = $(this).val();
+            $(".card > div > div > h3").each(function(){
+                this.css({ background: "#ccc", color: "blue" });
+            /* var text = $(this).text().toLowerCase();
+                (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide(); */        
+            });
+        });
+        
     </script>
 </body>
 

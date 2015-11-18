@@ -58,7 +58,12 @@ var services_manager = {
         "tel": "0678545676",
         "longitude": "3.0750470000000405",
         "latitude": "50.629601",
-        "id_service": 1
+        "id_service": 1,
+         "payed":1,
+         "img":"",
+         "price":200,
+         "minCapacity":1,
+         "maxCapacity":10         
     },
     {
         "activity": {

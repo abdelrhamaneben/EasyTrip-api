@@ -56,8 +56,14 @@
     box-shadow: 0 0 30px #787878; 
 }
 
+.banner:hover {
+    -moz-box-shadow: 0 0 30px #787878; 
+    -webkit-box-shadow: 0 0 30px #787878; 
+    box-shadow: 0 0 30px #787878; 
+}
+
 .autosize:hover{
-    opacity: 0.85
+    opacity: 0.85    
 }
 
 #titre {

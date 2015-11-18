@@ -1,6 +1,8 @@
 /**
 * This object manage the google map on the view
 */
+var styles = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"simplified"},{"hue":"#0066ff"},{"saturation":74},{"lightness":100}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"off"},{"weight":0.6},{"saturation":-85},{"lightness":61}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#5f94ff"},{"lightness":26},{"gamma":5.86}]}];
+
 var map_manager = {
 
 	// la matrice donne l'ecart en degré entre le centre de la map et les bordures selon le Zoom
@@ -39,7 +41,8 @@ var map_manager = {
 		this.map = new google.maps.Map(document.getElementById("map_canvas"), {
         	zoom: 8,
         	center: new google.maps.LatLng(longitude, latitude),
-        	mapTypeId: google.maps.MapTypeId.ROADMAP
+        	mapTypeId: google.maps.MapTypeId.ROADMAP,
+        	styles: styles,streetViewControl:false
     	});
 	},
 	// this function add a marker to google map

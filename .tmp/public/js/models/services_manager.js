@@ -7,7 +7,7 @@ var services_manager = {
 
             console.log(item.img);
             $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
-               + "<div class=\"thumbnail\">"
+               + "<div class=\"thumbnail payed\">"
                + "<div class=\"caption\">"
                + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
                + "<h3>" + item.name + "</h3>"

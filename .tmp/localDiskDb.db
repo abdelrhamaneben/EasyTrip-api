@@ -1,0 +1,338 @@
+{
+  "data": {
+    "et_activity": [],
+    "et_address": [],
+    "et_category": [
+      {
+        "name": "un jolie nom2",
+        "description": "Une jolie description2",
+        "image": "blabla2.jpg",
+        "id_category": 2
+      }
+    ],
+    "et_reservation": [],
+    "et_service": [],
+    "et_service_price": [],
+    "et_subscription": [],
+    "et_user": [],
+    "activity_categories__category_activities": [],
+    "activity_services__service_activities": []
+  },
+  "schema": {
+    "et_activity": {
+      "id_activity": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      }
+    },
+    "et_address": {
+      "id_address": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "str_nbr": {
+        "type": "string",
+        "size": 5
+      },
+      "city": {
+        "type": "string",
+        "size": 50
+      },
+      "code_zip": {
+        "type": "integer"
+      },
+      "code_country": {
+        "type": "string",
+        "size": 5
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_category": {
+      "id_category": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "image": {
+        "type": "string"
+      }
+    },
+    "et_reservation": {
+      "id_res": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "customer": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "customer"
+      },
+      "price": {
+        "type": "integer",
+        "model": "serviceprice",
+        "foreignKey": true,
+        "alias": "price"
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "d_to": {
+        "type": "datetime"
+      },
+      "nb_person": {
+        "type": "integer"
+      },
+      "valid": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_service": {
+      "id_service": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "geolati": {
+        "type": "float"
+      },
+      "geolong": {
+        "type": "float"
+      },
+      "creator": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "creator"
+      },
+      "address": {
+        "type": "integer",
+        "model": "address",
+        "foreignKey": true,
+        "alias": "address"
+      },
+      "name": {
+        "type": "string",
+        "size": 50
+      },
+      "description": {
+        "type": "string",
+        "size": 200
+      },
+      "image": {
+        "type": "string"
+      },
+      "link": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_service_price": {
+      "id_sp": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "service": {
+        "type": "integer",
+        "model": "service",
+        "foreignKey": true,
+        "alias": "service"
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "d_to": {
+        "type": "datetime"
+      },
+      "nb_person_min": {
+        "type": "integer"
+      },
+      "nb_person_max": {
+        "type": "integer"
+      },
+      "price_per_person": {
+        "type": "integer",
+        "size": 8
+      },
+      "promotion": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "et_subscription": {
+      "id_subscription": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "d_from": {
+        "type": "datetime"
+      },
+      "nb_month": {
+        "type": "integer"
+      }
+    },
+    "et_user": {
+      "id_user": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "name_first": {
+        "type": "string",
+        "size": 50
+      },
+      "name_last": {
+        "type": "string",
+        "size": 200
+      },
+      "email": {
+        "type": "string",
+        "size": 100
+      },
+      "phone": {
+        "type": "string"
+      },
+      "address": {
+        "type": "integer",
+        "model": "address",
+        "foreignKey": true,
+        "alias": "address"
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "business",
+          "private",
+          "admin"
+        ]
+      },
+      "password": {
+        "type": "string"
+      },
+      "subscription": {
+        "type": "integer",
+        "model": "subscription",
+        "foreignKey": true,
+        "alias": "subscription"
+      },
+      "subscribed": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "activity_categories__category_activities": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "activity_categories": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "activity",
+        "on": "id_activity",
+        "via": "category_activities"
+      },
+      "category_activities": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "category",
+        "on": "id_category",
+        "via": "activity_categories"
+      }
+    },
+    "activity_services__service_activities": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "activity_services": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "activity",
+        "on": "id_activity",
+        "via": "service_activities"
+      },
+      "service_activities": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "service",
+        "on": "id_service",
+        "via": "activity_services"
+      }
+    }
+  },
+  "counters": {
+    "et_activity": {},
+    "et_address": {},
+    "et_category": {
+      "id_category": 2
+    },
+    "et_reservation": {},
+    "et_service": {},
+    "et_service_price": {},
+    "et_subscription": {},
+    "et_user": {},
+    "activity_categories__category_activities": {},
+    "activity_services__service_activities": {}
+  }
+}

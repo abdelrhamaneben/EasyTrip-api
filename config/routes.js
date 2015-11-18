@@ -33,7 +33,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'index'
+    view: 'index'/*,
+    locals: {
+      layout: null
+    }*/
   },
 
   '/result': {

@@ -1,5 +1,10 @@
 var categoryJson = {    
     categories : [
+        {
+			img: "images/D.jpg",
+			name: "Weekend Deals",
+			id_category : 5		
+		},
 		{
 			img: "images/1.jpg",
 			name: "Culture"	,

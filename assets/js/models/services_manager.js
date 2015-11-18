@@ -79,7 +79,7 @@ var services_manager = {
          "minCapacity":1,
          "maxCapacity":10,         
         "payed":1,
-        "img":"payed.jpg"
+        "img":"festival.png"
     },
     {
         "activity": {
@@ -93,7 +93,7 @@ var services_manager = {
         "latitude": "50.6265093",
         "id_service": 2,
         "payed":1,
-        "img":"payed.jpg"
+        "img":"accordeon.jpg"
     },
     {
         "activity": {
@@ -101,13 +101,13 @@ var services_manager = {
             "id_activity": 1
         },
         "name": "Clef de soleil",
-        "description": "Chaque été, le Festival Clef de Soleil ouvre les portes de la musique classique aux lillois",
+        "description": "Chaque été, le Festival ouvre les portes de la musique classique",
         "tel": "0678545676",
         "longitude": "3.004167499999994",
         "latitude": "50.5621705",
         "id_service": 3,
         "payed":1,
-        "img":"payed.jpg"
+        "img":"soleil.jpg"
     },
     {
         "activity": {

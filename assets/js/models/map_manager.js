@@ -47,12 +47,26 @@ var map_manager = {
 	},
 	// this function add a marker to google map
 	addMarker: function (service) {
-		var marker = new google.maps.Marker({
+		var optionMarker = {
 		    position: new google.maps.LatLng(service.latitude,service.longitude),
-		    map: this.map
-		});
+		    map: this.map,
+		    icon : "images/star.png"
+		};
+		if(service.payed == 1) {
+			optionMarker.icon = "images/stargreat.png";
+		}
+		var marker = new google.maps.Marker(optionMarker);
+		
+		var cc = null;
+		if(service.payed == 1) {
+			cc = "<div><h3>" + service.name + "</h3><div><center><img style='width:150px;height:150px;' src='/images/" + service.img + "' /></center></div><div><p>" + service.description + "<p/><p>Address : <b>" +  service.address + "</b></p><p>Tel : <b>" +  service.tel + "</b></p></div></div>";
+		}
+		else {
+			cc = "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : <b>" +  service.address + "</b></em><br><em>Tel : <b>" +  service.tel + "</b></em></div>";
+		}
 		var infowindow = new google.maps.InfoWindow({
-		    content: "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : " +  service.address + "</em><br><em>Tel : " +  service.tel + "</em></div>"
+
+		    content: cc
 		});
 		this.infowindows.push(infowindow);
 		marker.addListener('click', function() {

@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="styles/default.css" />
     <link rel="stylesheet" type="text/css" href="styles/component.css" />
     <link rel="stylesheet" type="text/css" href="styles/categories.css" />
+    <link rel="stylesheet" type="text/css" href="styles/toastr.min.css" />
     <script src="js/modernizr.custom.js"></script>
     <style>
         video { 
@@ -42,7 +43,7 @@
         }
     </style>
 </head>
-<body>
+<body >
     <video autoplay loop poster="" id="bgvid" muted>
     <source src="images\videoplayback.mp4" type="video/mp4" >
     </video>
@@ -63,7 +64,7 @@
                 <h3 style="color:#fed136;text-decoration:underline;">Choose a category to begin the experience</h3>
                 
                 <div class="imgmenu mphotos-1 commune"> 
-                    <a href="/result" data="7"> 
+                    <a href="#top" data="7"> 
                         <div class="mphotos"> 
                             <div class="mphoto"> 
                                 <img class="autosize" src="images/B.jpg" width="1140" height="300"></div> 
@@ -92,6 +93,7 @@
     
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/toastr.min.js"></script>
     <script>
         // VIDEO
         var video = document.getElementById("bgvid");
@@ -125,14 +127,14 @@
             console.log(id);
             var city = $('#city').val();
             console.log(city);
-            /*if(city) {
-                localStorage.setItem("category", id);
-                localStorage.setItem("location", city);
-                $(location).attr('href',"result.html");
-            }else {
-                $('html,body').animate({'scrollTop' : 0},1000);
-               
-            }*/
+
+            if(city == "") {
+                toastr["info"]("Please enter a starting place");
+            }
+            else {
+                toastr["success"]("Redirection ...");
+                $(location).attr('href',"/result?location=" + city + "&category=" + id);
+            }
         });
 		
 		$('#btnDisplayForm').click(function (){

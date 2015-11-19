@@ -33,14 +33,13 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'index'/*,
-    locals: {
-      layout: null
-    }*/
+    controller: 'web',
+    action: 'index'
   },
 
   '/result': {
-    view: 'result'
+    controller: 'web',
+    action: 'result'
   },
 
   'get /user/login':{

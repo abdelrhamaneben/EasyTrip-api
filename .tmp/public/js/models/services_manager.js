@@ -4,8 +4,6 @@ var services_manager = {
  	$.each(this.data, function(i, item) {
 
         if(item.payed == 1 ){
-
-            console.log(item.img);
             $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
                + "<div class=\"thumbnail payed\">"
                + "<div class=\"caption\">"

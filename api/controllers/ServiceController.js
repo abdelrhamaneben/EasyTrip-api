@@ -50,7 +50,7 @@ module.exports = {
 		if(!req.param('longleft') || typeof req.param('longleft') !== 'number') {
 			res.badRequest("Need longleft Params !!");
 		}
-
+		/*
 		Service.find({
 			geolati: { '>' : req.param('latdown')},
 			geolati: { '<' : req.param('latup')},
@@ -58,6 +58,10 @@ module.exports = {
 			geolong: { '<' : req.param('longright')},
 			activities : req.param('activities')
 		}).exec(function findCB(err, found){
+			if(err) res.serverError(err);
+		 	res.json(found);
+		});*/
+		Service.find().exec(function findCB(err, found){
 			if(err) res.serverError(err);
 		 	res.json(found);
 		});

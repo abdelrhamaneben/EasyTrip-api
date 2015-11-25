@@ -124,15 +124,12 @@
 
         $('.imgmenu a').click(function () {
             var id = $(this).attr('data');
-            console.log(id);
             var city = $('#city').val();
-            console.log(city);
-
             if(city == "") {
                 toastr["info"]("Please enter a starting place");
             }
             else {
-                toastr["success"]("Redirection ...");
+                toastr["info"]("Lancement de la recherche ...");
                 $(location).attr('href',"/result?location=" + city + "&category=" + id);
             }
         });

@@ -16,7 +16,8 @@ var services_manager = {
           ((item.price>= priceMin && item.price<=priceMax)  || (priceMin=='' && item.price<=priceMax) || (item.price>= priceMin && priceMax=='')
             || (priceMin=='' && priceMax=='')) &&
           ((dateStart >= dateFrom && (dateEnd<=dateTo || item.toDate=='')) || (dateStart >= dateFrom && $('#dateEnd').val()=='') || 
-           ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='') || ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
+           ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='' ) || 
+           ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
         if(item.payed == 1 ){
             $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
@@ -24,8 +25,8 @@ var services_manager = {
                + "<div class=\"caption row\">"
                + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
                + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
-                + "<p>" + item.description + "</p>"
-                + "<p>Price : <b>" + item.price + " €</b></p>"
+               + "<p>" + item.description + "</p>"
+               + "<p>Price : <b>" + item.price + " €</b></p>"
         + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p></div>"
         + "</div>"
                + "</div>"
@@ -98,7 +99,9 @@ var services_manager = {
          "minCapacity":1,
          "maxCapacity":10,         
         "payed":1,
-        "img":"festival.png"
+        "img":"festival.png",
+         "fromDate":"2014-01-01",
+         "toDate":"2020-01-01"
     },
     {
         "activity": {
@@ -114,7 +117,9 @@ var services_manager = {
         "latitude": "50.6265093",
         "id_service": 2,
         "payed":1,
-        "img":"accordeon.jpg"
+        "img":"accordeon.jpg",
+        "fromDate":"2015-01-01",
+         "toDate":"2016-01-01"
     },
     {
         "activity": {
@@ -130,7 +135,9 @@ var services_manager = {
         "latitude": "50.5621705",
         "id_service": 3,
         "payed":1,
-        "img":"soleil.jpg"
+        "img":"soleil.jpg",
+        "fromDate":"2016-01-01",
+         "toDate":""
     },
     {
         "activity": {
@@ -146,7 +153,9 @@ var services_manager = {
         "latitude": "50.6376666",
         "id_service": 4,
         "payed":0,
-        "img":""
+        "img":"",
+        "fromDate":"2016-03-01",
+         "toDate":"2016-05-01"
     },
     {
         "activity": {
@@ -162,7 +171,9 @@ var services_manager = {
         "latitude": "50.622411",
         "id_service": 5,
         "payed":0,
-        "img":"payed.png"
+        "img":"payed.png",
+        "fromDate":"2014-01-01",
+         "toDate":""
     },
     {
         "activity": {
@@ -178,7 +189,9 @@ var services_manager = {
         "latitude": "50.627104",
         "id_service": 6,
         "payed":0,
-        "img":""
+        "img":"",
+        "fromDate":"2015-01-01",
+         "toDate":"2015-11-30"
     },
     {
         "activity": {
@@ -194,7 +207,9 @@ var services_manager = {
         "latitude": "50.6299156",
         "id_service": 7,
         "payed":0,
-        "img":""
+        "img":"",
+        "fromDate":"2014-01-01",
+         "toDate":"2020-01-01"
     },
     {
         "activity": {
@@ -210,7 +225,9 @@ var services_manager = {
         "latitude": "50.6474069",
         "id_service": 8,
         "payed":0,
-        "img":""
+        "img":"",
+        "fromDate":"2014-01-01",
+         "toDate":"2020-01-01"
     }
 ]
 };

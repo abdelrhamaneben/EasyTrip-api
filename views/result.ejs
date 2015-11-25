@@ -9,6 +9,7 @@
     <!-- Custom CSS -->
     <link href="styles/font-awesome.min.css" rel="stylesheet">
     <link href="styles/result.css" rel="stylesheet">
+    <link href="styles/animate.css" rel="stylesheet">
     
     <!--    Jquery-->
     <link href="styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet"> 
@@ -39,54 +40,65 @@
         <!-- Right part (Filter / Activities bar)  -->
             
         <section id="l-part" class="col-md-2 col-xs-12">
+            
             <!--  Filter    -->
-            <button type="button" class="btn btn-default" id="showFilter">Show Filters </button>
-            <button type="button" class="btn btn-default" id="hideFilter">Hide Filters </button>
-            <div href="#" id="filters">
-                <div class="row">
-                    <h5><strong>Activity:</strong></h5>
-                </div>
+            <button type="button" class="btn btn-default" id="showFilter" >Show Filters </button>
+            <button type="button" class="btn btn-default" id="hideFilter" >Hide Filters </button>
+            <div href="#" id="filters"  class>
                 <div class="row">
                     <h5><strong>Price:</strong></h5>
+                    <div class="col-xs-3">
+                        <p>Min</p>
+                    </div>
+                    <div class="col-xs-7">
+                    <input type="text" id="priceMin" class="form-control filter">
+                    </div>
+                    <div class="col-xs-3">
+                        <p>Max</p>
+                    </div>
+                    <div class="col-xs-7">
+                        <input type="text" id="priceMax" class="form-control filter">                        
+                    </div>
                 </div>    
                 
                 <div class="row">
                     <h5><strong>People:</strong></h5>
-                    <div class="col-xs-6">
-                      <input class="form-control" id="people" type="text">
+                    <div class="col-xs-6 col-sm-offset-3">
+                      <input class="form-control filter" id="capacity" type="text">
                     </div>
                 </div>
                 <div class="row">
                     <h5><strong>Service:</strong></h5>
+                    <div class="col-xs-9 col-sm-offset-3">
+                      <input class="form-control  filter" id="service" type="text">
+                    </div>
                 </div>
                 <div class="row">
                     <h5><strong>Dates:</strong></h5>
-                    <div class="row">
-                        <div class="col-xs-7">
-                            <!--                        <label for="dateStar"> From </label>-->
+                    <div class="col-xs-3">
                         <p>From</p>
-                        <div class="input-group">                                
-                            <input type="text" id="dateStart" class="form-control">
-                        </div>
-                        </div>
-
-                    </div>                        
-                    <div class="row">
-                        <div class="col-xs-7">
-                            <p >To </p>
-                            <div class="input-group">  
-                                <input type="text" id="dateEnd" class="form-control">
-                            </div>
-                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                    <input type="text" id="dateStart" class="form-control filter" onchange="filter()">
+                    </div>
+                    <div class="col-xs-3">
+                        <p>To</p>
+                    </div>
+                    <div class="col-xs-7">
+                        <input type="text" id="dateEnd" class="form-control filter" onchange="filter()">                        
                     </div>
                 </div>                
                 
             </div>
+            
             <!--  Activities-->
-            <h4>Choose your activities</h4>
-            <ul class="list-group" id="list_activities">
-              <!-- List of activities -->
-            </ul>
+            <div id = "activities" class="animated fadeInLeft">
+                <h4>Choose your activities</h4>
+                <ul class="list-group" id="list_activities">
+                  <!-- List of activities -->
+                </ul>
+            </div>
+            
         </section>
         
         <!-- Center part (List of services) -->      
@@ -114,23 +126,58 @@
     <script src="js/models/activities_manager.js"></script>
     <script src="js/models/services_manager.js"></script>
 
-    <!-- APP -->
-    <script>
-        //Dates
+    <!-- APP -->    
+    <script type="text/javascript"> 
+        //------ FILTERS
+        $('#hideFilter').hide();
+           $('#filters').hide();
+        
+        var animationIn = 'animated fadeInLeft';
+        var animationOut = 'animated fadeOutLeft';
+        var animationUp = 'bounceInUp';
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        
+        $('.filter').keyup(function(){
+            services_manager.build();
+        });
+                
+        $('#showFilter').click(function (){            
+            $('#filters').addClass(animationIn).one(animationEnd,function(){ $(this).removeClass(animationIn);});
+            $('#filters').show();
+            $('#showFilter').hide();
+            $('#hideFilter').show();            
+        });
+        
+        $('#hideFilter').click(function (){
+            $('#filters').addClass(animationOut).one(animationEnd,
+                function(){ 
+                    $(this).removeClass(animationOut);
+                    $('#filters').hide();
+                    $('#activities').removeClass(animationIn);
+                    $('#activities').addClass(animationUp);
+                $('#hideFilter').hide();
+            $('#showFilter').show();
+                    
+            });       
+        });
+        
+         //Dates
        $( "#dateStart" ).datepicker({
             minDate: 0,
             onSelect: function (dateText, inst) {
                 var date = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateText);
                 $("#dateEnd").datepicker("option", "minDate", date);
+                services_manager.build();
             }
         });
-        $( "#dateEnd" ).datepicker();
-    </script>
-    
-    <script type="text/javascript"> 
-       function initialize() {
-           $('#hideFilter').hide();
-           $('#filters').hide();
+        $( "#dateEnd" ).datepicker({
+            onSelect: function(){
+                services_manager.build();
+            }            
+        });
+        
+        
+       function initialize() {    
            
             // ----------------  Initialize Services ----------------- (Service Controller)
             services_manager.load(null,[]);
@@ -170,28 +217,7 @@
             }
            
         }
-        
-        $('#showFilter').click(function (){
-            $('#filters').show();
-            $('#showFilter').hide();
-            $('#hideFilter').show();
-        });
-        $('#hideFilter').click(function (){
-            $('#filters').hide();
-            $('#hideFilter').hide();
-            $('#showFilter').show();
-        });
-        
-        $('#title').keyup(function(){
-//            $( ".card > div > div > h3" ).css({ background: "#ccc", color: "blue" });
             
-            var valThis = $(this).val();
-            $(".card > div > div > h3").each(function(){
-                this.css({ background: "#ccc", color: "blue" });
-            /* var text = $(this).text().toLowerCase();
-                (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide(); */        
-            });
-        });
         
     </script>
 </body>

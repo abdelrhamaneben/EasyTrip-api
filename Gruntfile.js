@@ -14,6 +14,29 @@
 
 module.exports = function(grunt) {
 
+	grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    jshint: {
+      files: ['*.js', 'api/**/*.js', 'assets/admin/app/**/*.js'],
+      options: {
+        globals: {
+          node: true
+        }
+      }
+    },
+    jscs: {
+        src: ['*.js', 'api/**/*.js', 'assets/admin/app/**/*.js'],
+        options: {
+          config: '.jscsrc'
+        }
+      }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jscs');
+
+  grunt.registerTask('check', ['jshint', 'jscs']);
+
 
 	// Load the include-all library in order to require all of our grunt
 	// configurations and task registrations dynamically.

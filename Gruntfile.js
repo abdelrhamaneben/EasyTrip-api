@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['*.js', 'api/**/*.js', 'assets/**/*.js'],
+      files: ['*.js', 'api/**/*.js', 'assets/admin/app/**/*.js'],
       options: {
         globals: {
           node: true
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       }
     },
     jscs: {
-        src: ['*.js', 'api/**/*.js', 'assets/**/*.js'],
+        src: ['*.js', 'api/**/*.js', 'assets/admin/app/**/*.js'],
         options: {
           config: '.jscsrc'
         }

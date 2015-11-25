@@ -78,6 +78,7 @@ var services_manager = {
             });*/
     this.build(this.data);
  }
+
  ,
  // Temporal data
  data : [

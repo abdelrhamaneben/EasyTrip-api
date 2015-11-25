@@ -50,10 +50,10 @@ var map_manager = {
 		var optionMarker = {
 		    position: new google.maps.LatLng(service.latitude,service.longitude),
 		    map: this.map,
-		    icon : "images/star.png"
+		    icon : "images/dot-grey.png"
 		};
 		if(service.payed == 1) {
-			optionMarker.icon = "images/stargreat.png";
+			optionMarker.icon = "images/dot-red.png";
 		}
 		var marker = new google.maps.Marker(optionMarker);
 		

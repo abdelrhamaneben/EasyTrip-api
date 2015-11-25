@@ -44,8 +44,7 @@ var services_manager = {
                    + "</div>"
                    + "</div>"));
             }
-        }
-        
+        }       
         
  		});
  },

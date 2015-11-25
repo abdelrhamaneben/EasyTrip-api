@@ -86,3 +86,8 @@ body { height: 100%; margin: 0px; padding: 0px }
     color:white !important;
     background-color:#337ab7 !important;
 }
+
+.caption img {
+    width:50vw;
+    heigth:50vh;
+}

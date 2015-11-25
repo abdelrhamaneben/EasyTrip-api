@@ -6,13 +6,13 @@ var services_manager = {
         if(item.payed == 1 ){
             $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
                + "<div class=\"thumbnail payed\">"
-               + "<div class=\"caption\">"
+               + "<div class=\"caption row\">"
                + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
-               + "<h3>" + item.name + "</h3>"
-               + "<p>" + item.description + "</p>"
-               + "<p>Price : <b>" + item.price + " €</b></p>"
-               + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p>"
-               + "</div>"
+               + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
+		+ "<p>" + item.description + "</p>"
+		+ "<p>Price : <b>" + item.price + " €</b></p>"
+		+ "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p></div>"
+		+ "</div>"
                + "</div>"
                + "</div>"));
         }else {

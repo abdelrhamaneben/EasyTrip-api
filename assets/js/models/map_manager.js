@@ -1,6 +1,8 @@
 /**
 * This object manage the google map on the view
 */
+var styles = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"simplified"},{"hue":"#0066ff"},{"saturation":74},{"lightness":100}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"off"},{"weight":0.6},{"saturation":-85},{"lightness":61}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#5f94ff"},{"lightness":26},{"gamma":5.86}]}];
+
 var map_manager = {
 
 	// la matrice donne l'ecart en degré entre le centre de la map et les bordures selon le Zoom
@@ -39,17 +41,32 @@ var map_manager = {
 		this.map = new google.maps.Map(document.getElementById("map_canvas"), {
         	zoom: 8,
         	center: new google.maps.LatLng(longitude, latitude),
-        	mapTypeId: google.maps.MapTypeId.ROADMAP
+        	mapTypeId: google.maps.MapTypeId.ROADMAP,
+        	styles: styles,streetViewControl:false
     	});
 	},
 	// this function add a marker to google map
 	addMarker: function (service) {
-		var marker = new google.maps.Marker({
+		var optionMarker = {
 		    position: new google.maps.LatLng(service.latitude,service.longitude),
-		    map: this.map
-		});
+		    map: this.map,
+		    icon : "images/dot-grey.png"
+		};
+		if(service.payed == 1) {
+			optionMarker.icon = "images/dot-red.png";
+		}
+		var marker = new google.maps.Marker(optionMarker);
+		
+		var cc = null;
+		if(service.payed == 1) {
+			cc = "<div><h3>" + service.name + "</h3><div><center><img style='width:150px;height:150px;' src='/images/" + service.img + "' /></center></div><div><p>" + service.description + "<p/><p>Address : <b>" +  service.address + "</b></p><p>Tel : <b>" +  service.tel + "</b></p></div></div>";
+		}
+		else {
+			cc = "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : <b>" +  service.address + "</b></em><br><em>Tel : <b>" +  service.tel + "</b></em></div>";
+		}
 		var infowindow = new google.maps.InfoWindow({
-		    content: "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : " +  service.address + "</em><br><em>Tel : " +  service.tel + "</em></div>"
+
+		    content: cc
 		});
 		this.infowindows.push(infowindow);
 		marker.addListener('click', function() {

@@ -72,6 +72,22 @@ body { height: 100%; margin: 0px; padding: 0px }
 	background-color:#1369B3;
 }
 
-.card {
+.thumbnail:hover, .thumbnail:focus {
+    -moz-box-shadow: 0 0 10px #fed136; 
+    -webkit-box-shadow: 0 0 10px #fed136; 
+    box-shadow: 0 0 10px #fed136; 
+}
 
+.thumbnail {
+     border:2px solid #fed136 !important;
+}
+
+.list-group-item:hover, .list-group-item:focus {
+    color:white !important;
+    background-color:#337ab7 !important;
+}
+
+.caption img {
+    width:50vw;
+    heigth:50vh;
 }

@@ -1,8 +1,7 @@
 var services_manager = {
  build : function () {
- 	$('#c-part').html('');
- 	$.each(this.data, function(i, item) {
-        
+    $('#c-part').html('');
+    $.each(this.data, function(i, item) {
         var priceMin = $('#priceMin').val();
         var priceMax = $('#priceMax').val();
         var capacity = $('#capacity').val();
@@ -19,34 +18,32 @@ var services_manager = {
           ((dateStart >= dateFrom && (dateEnd<=dateTo || item.toDate=='')) || (dateStart >= dateFrom && $('#dateEnd').val()=='') || 
            ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='') || ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
-            
-            if(item.payed == 1 ){
-                console.log(item.img);
-                $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
-                   + "<div class=\"thumbnail\">"
-                   + "<div class=\"caption\">"
-                   + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
-                   + "<h3>" + item.name + "</h3>"
-                   + "<p>" + item.description + "</p>"
-                   + "<p><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p>"
-                   + "</div>"
-                   + "</div>"
-                   + "</div>"));
-            }else {
-                $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
-                   + " <div class=\"thumbnail\">"
-                   + "<div class=\"caption\">"
-                   + "<h3>" + item.name + "</h3>"
-                   + "<p>" + item.description + "</p>"
-                    + "<p> Address : " + item.address + "</p>"
-                   + "<p><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p>"
-                   + "</div>"
-                   + "</div>"
-                   + "</div>"));
-            }
-        }       
-        
- 		});
+        if(item.payed == 1 ){
+            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
+               + "<div class=\"thumbnail payed\">"
+               + "<div class=\"caption row\">"
+               + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
+               + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
+                + "<p>" + item.description + "</p>"
+                + "<p>Price : <b>" + item.price + " €</b></p>"
+        + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p></div>"
+        + "</div>"
+               + "</div>"
+               + "</div>"));
+        }else {
+            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
+               + " <div class=\"thumbnail\">"
+               + "<div class=\"caption\">"
+               + "<h3>" + item.name + "</h3>"
+               + "<p>" + item.description + "</p>"
+                + "<p> Address : " + item.address + "</p>"
+               + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p>"
+               + "</div>"
+               + "</div>"
+               + "</div>"));
+        }
+     }
+        });
  },
  click: function (id_service) {
     for(var i = 0;i < this.data.length;i++) {
@@ -79,7 +76,8 @@ var services_manager = {
               }
             });*/
     this.build(this.data);
- } ,
+ }
+ ,
  // Temporal data
  data : [
      {
@@ -88,20 +86,18 @@ var services_manager = {
             "id_activity": 1
         },
         "name": "Les paradis artificiels",
-        "description": "L'immanquable festival de musiques tendances a lieu chaque année au printemps",
+        "description": "L'immanquable festival de musiques tendances a lieu chaque année au printemps",
         "tel": "0678545676",
          "price" : 76,
         "longitude": "3.0750470000000405",
         "address" : "5 rue solferino Lille",
         "latitude": "50.629601",
-        "id_service": 1,                
-        "payed":1,
-        "img":"festival.png",
+        "id_service": 1,
          "price":200,
          "minCapacity":1,
-         "maxCapacity":10,
-         "fromDate":"2014-01-01",
-         "toDate":"2020-01-01"
+         "maxCapacity":10,         
+        "payed":1,
+        "img":"festival.png"
     },
     {
         "activity": {
@@ -109,7 +105,7 @@ var services_manager = {
             "id_activity": 1
         },
         "name": "Wazemmes l'Accordéon",
-        "description": "Le festival Wazemmes l'Accordéon a su redonner ses lettres de noblesse au piano à bretelles",
+        "description": "Le festival Wazemmes l'Accordéon a su redonner ses lettres de noblesse au piano à bretelles",
         "tel": "0678545676",
          "price" : 53,
         "longitude": "3.0528128999999353",
@@ -117,12 +113,7 @@ var services_manager = {
         "latitude": "50.6265093",
         "id_service": 2,
         "payed":1,
-        "img":"accordeon.jpg",
-         "price":300,
-         "minCapacity":1,
-         "maxCapacity":5,
-         "fromDate":"2015-01-20",
-         "toDate":"2016-02-01"
+        "img":"accordeon.jpg"
     },
     {
         "activity": {
@@ -138,12 +129,7 @@ var services_manager = {
         "latitude": "50.5621705",
         "id_service": 3,
         "payed":1,
-        "img":"soleil.jpg",
-         "price":250,
-         "minCapacity":1,
-         "maxCapacity":1000,
-         "fromDate":"2016-06-20",
-         "toDate":"2016-06-21"
+        "img":"soleil.jpg"
     },
     {
         "activity": {
@@ -159,12 +145,7 @@ var services_manager = {
         "latitude": "50.6376666",
         "id_service": 4,
         "payed":0,
-        "img":"",
-         "price":90,
-         "minCapacity":1,
-         "maxCapacity":100,
-         "fromDate":"2016-01-31",
-         "toDate":""
+        "img":""
     },
     {
         "activity": {
@@ -180,19 +161,14 @@ var services_manager = {
         "latitude": "50.622411",
         "id_service": 5,
         "payed":0,
-        "img":"payed.png",
-         "price":60,
-         "minCapacity":1,
-         "maxCapacity":200,
-         "fromDate":"2016-03-14",
-         "toDate":"2016-11-30"
+        "img":"payed.png"
     },
     {
         "activity": {
             "name": "Apprendre",
             "id_activity": 4
         },
-        "name": "Yamaha Music School Lille",
+        "name": "Yamaha Music School Lille",
         "description": "École de musique",
         "tel": "0678545676",
          "price" : 21,
@@ -201,12 +177,7 @@ var services_manager = {
         "latitude": "50.627104",
         "id_service": 6,
         "payed":0,
-        "img":"",
-         "price":80,
-         "minCapacity":1,
-         "maxCapacity":15,
-         "fromDate":"2015-01-01",
-         "toDate":""
+        "img":""
     },
     {
         "activity": {
@@ -222,12 +193,7 @@ var services_manager = {
         "latitude": "50.6299156",
         "id_service": 7,
         "payed":0,
-        "img":"",
-         "price":100,
-         "minCapacity":1,
-         "maxCapacity":20,
-         "fromDate":"2015-05-05",
-         "toDate":""
+        "img":""
     },
     {
         "activity": {
@@ -243,12 +209,7 @@ var services_manager = {
         "latitude": "50.6474069",
         "id_service": 8,
         "payed":0,
-        "img":"",
-         "price":70,
-         "minCapacity":1,
-         "maxCapacity":8,
-         "fromDate":"2015-03-01",
-         "toDate":"2015-11-30"
+        "img":""
     }
 ]
 };

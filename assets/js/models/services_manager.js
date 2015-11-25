@@ -37,6 +37,7 @@ var services_manager = {
                + "<h3>" + item.name + "</h3>"
                + "<p>" + item.description + "</p>"
                 + "<p> Address : " + item.address + "</p>"
+                + "<p>Price : <b>" + item.price + " €</b></p>"
                + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p>"
                + "</div>"
                + "</div>"

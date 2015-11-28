@@ -10,52 +10,51 @@ module.exports = {
   tableName: 'et_service',
 
   attributes: {
-  	id_service :{
-  			type : 'integer',
-	  	 	primaryKey: true,
-	  	 	autoIncrement: true,
-		    required: true
-	},
-    geolati :{
-    	type : 'float',
-    	required : true
+    id_service: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true,
+      required: true
     },
-    geolong :{
-        type : 'float',
-        required : true
-	},
-    creator : {
-        model : 'user'
+    geolati: {
+      type: 'float',
+      required: true
     },
-    address : {
-        model : 'address'
+    geolong: {
+      type: 'float',
+      required: true
     },
-    name :{
-        type : 'string',
-        size : 50
+    creator: {
+      model: 'user'
     },
-    description :{
-		type : 'string',
-    	size : 200    
+    address: {
+      model: 'address'
     },
-    image :{
-        type : 'string'
+    name: {
+      type: 'string',
+      size: 50
     },
-    link :{
-        type : 'string'
+    description: {
+      type: 'string',
+      size: 200
     },
-    createdAt :{
-    	type : 'datetime',
-        autoCreatedAt: true
-	},	    	
-    updatedAt :{
-    	type : 'datetime',
-        autoUpdatedAt: true
+    image: {
+      type: 'string'
     },
-    activities : {
-            collection: 'activity',
-            via: 'services'
-     }
+    link: {
+      type: 'string'
+    },
+    createdAt: {
+      type: 'datetime',
+      autoCreatedAt: true
+    },
+    updatedAt: {
+      type: 'datetime',
+      autoUpdatedAt: true
+    },
+    activities: {
+      collection: 'activity',
+      via: 'services'
+    }
   }
 };
-

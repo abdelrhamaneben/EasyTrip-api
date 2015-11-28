@@ -7,37 +7,36 @@
 
 module.exports = {
 
-	tableName: 'et_address',
+  tableName: 'et_address',
 
-	attributes: {
-		 id_address : {
-		 	type : 'integer',
-		 	primaryKey: true,
-		 	autoIncrement: true
-		 },
-		 str_nbr : {
-		 	type : 'string',
-		 	size : 5
-		 },
-		 city : {
-		 	type: 'string',
-		 	size : 50
-		 },
-	     code_zip : {
-	     	type : 'integer'
-	     },
-	     code_country : {
-			type : 'string',
-		 	size : 5,
-	     },
-	     createdAt : {
-    		type : 'datetime',
-    		autoCreatedAt: true
-		 },	    	
-   		 updatedAt : {
-    		type : 'datetime',
-    		autoUpdatedAt: true
-    	}
-  	}
+  attributes: {
+    id_address: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true
+    },
+    str_nbr: {
+      type: 'string',
+      size: 5
+    },
+    city: {
+      type: 'string',
+      size: 50
+    },
+    code_zip: {
+      type: 'integer'
+    },
+    code_country: {
+      type: 'string',
+      size: 5,
+    },
+    createdAt: {
+      type: 'datetime',
+      autoCreatedAt: true
+    },
+    updatedAt: {
+      type: 'datetime',
+      autoUpdatedAt: true
+    }
+  }
 };
-

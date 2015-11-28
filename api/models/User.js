@@ -11,55 +11,55 @@ module.exports = {
 
   attributes: {
 
-	id_user : {
-  	 	type : 'integer',
-  	 	primaryKey: true,
-      	autoIncrement: true
-  	},
-	name_first : {
-		type : 'string',
-		size : 50
-	},
-	name_last : {
-		type : 'string',
-		size : 200
-	},
-	email : {
-	  type : 'string',
-		size : 100
-	},
-	phone : {
-		 type: 'string'
-	},
+    id_user: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true
+    },
+    name_first: {
+      type: 'string',
+      size: 50
+    },
+    name_last: {
+      type: 'string',
+      size: 200
+    },
+    email: {
+      type: 'string',
+      size: 100
+    },
+    phone: {
+      type: 'string'
+    },
 
-	address : {
-		model : 'address'
-	},
+    address: {
+      model: 'address'
+    },
 
-	role : {
-		type : 'string',
-		enum : ['business','private','admin']
-	},
+    role: {
+      type: 'string',
+      enum: ['business','private','admin']
+    },
 
-	password : {
-		type : 'string',
-	},
+    password: {
+      type: 'string',
+    },
 
-	subscription : {
-		model : 'subscription'
-	},
-	subscribed : {
-		type : 'boolean',
-		defaultsTo : false
-	},
+    subscription: {
+      model: 'subscription'
+    },
+    subscribed: {
+      type: 'boolean',
+      defaultsTo: false
+    },
 
-	createdAt : {
-		type : 'datetime',
-		autoUpdatedAt: true
-	},
-	updatedAt : {
-		type : 'datetime',
-		autoUpdatedAt: true
-	}
+    createdAt: {
+      type: 'datetime',
+      autoUpdatedAt: true
+    },
+    updatedAt: {
+      type: 'datetime',
+      autoUpdatedAt: true
+    }
   }
 };

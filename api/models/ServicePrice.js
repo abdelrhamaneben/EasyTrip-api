@@ -7,44 +7,44 @@
 
 module.exports = {
 
-    tableName: 'et_service_price',
+  tableName: 'et_service_price',
 
-	attributes: {
-		 id_sp : {
-		 	type : 'integer',
-		 	primaryKey: true,
-		 	autoIncrement: true,
-		 	unique : true
-		 },
-		 service : {
-		 	model : 'service',
-		 },
-		 d_from : {
-		 	type : 'datetime'
-		 },
-		 d_to : {
-		 	type : 'datetime'
-		 },
-	     nb_person_min : {
-	     	type : 'integer'
-	     },
-	     nb_person_max : {
-			type : 'integer',
-	     },
-	     price_per_person : {
-    		type : 'integer',
- 			size : 8
-		 },	    	
-   		 promotion : {
-    		type : 'boolean'
-    	 },
-    	 createdAt : {
-    		type : 'datetime',
-    		autoCreatedAt: true
-		 },	    	
-   		 updatedAt : {
-    		type : 'datetime',
-    		autoUpdatedAt: true
-    	 }
-  	}
+  attributes: {
+    id_sp: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true
+    },
+    service: {
+      model: 'service',
+    },
+    d_from: {
+      type: 'datetime'
+    },
+    d_to: {
+      type: 'datetime'
+    },
+    nb_person_min: {
+      type: 'integer'
+    },
+    nb_person_max: {
+      type: 'integer',
+    },
+    price_per_person: {
+      type: 'integer',
+      size: 8
+    },
+    promotion: {
+      type: 'boolean'
+    },
+    createdAt: {
+      type: 'datetime',
+      autoCreatedAt: true
+    },
+    updatedAt: {
+      type: 'datetime',
+      autoUpdatedAt: true
+    }
+  }
 };

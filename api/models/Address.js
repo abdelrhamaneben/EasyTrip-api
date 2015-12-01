@@ -19,6 +19,10 @@ module.exports = {
 		 	type : 'string',
 		 	size : 5
 		 },
+		 str_name : {
+		 	type : 'string',
+		 	size : 100
+		 },
 		 city : {
 		 	type: 'string',
 		 	size : 50

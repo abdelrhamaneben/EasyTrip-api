@@ -38,6 +38,10 @@ module.exports = {
    		 promotion : {
     		type : 'boolean'
     	 },
+    	 businessDay : {
+    	 	type : 'string',
+    	 	size : 250
+    	 },
     	 createdAt : {
     		type : 'datetime',
     		autoCreatedAt: true

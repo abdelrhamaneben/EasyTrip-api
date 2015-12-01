@@ -24,6 +24,9 @@ module.exports = {
   	 	type : 'string',
   	 	size : 200
   	 },
+     image :{
+        type : 'string'
+     },
      categories : {
             collection: 'category',
             via: 'activities'

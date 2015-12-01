@@ -44,6 +44,9 @@ module.exports = {
     link :{
         type : 'string'
     },
+    premium :{
+        type: 'boolean'
+    },
     createdAt :{
     	type : 'datetime',
         autoCreatedAt: true

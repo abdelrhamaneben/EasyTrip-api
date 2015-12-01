@@ -7,29 +7,29 @@
 
 module.exports = {
 
-	tableName: 'et_category',
-	
-	attributes: {
-		 id_category : {
-		 	type : 'integer',
-		 	primaryKey: true,
-		 	autoIncrement: true
-		 },
-		 name : {
-		 	type : 'string',
-		 	size : 50,
-	    	required: true
-		 },
-		 description : {
-  	 		type : 'string',
-  	 		size : 200
-  	 	 },
-  	 	 image : {
-  	 		type : 'string'
-  	     },
-	   	 activities:{
-	     	collection: 'activity',
-	     	via: 'categories'
-	   	 }
+  tableName: 'et_category',
+
+  attributes: {
+    id_category: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true
+    },
+    name: {
+      type: 'string',
+      size: 50,
+      required: true
+    },
+    description: {
+      type: 'string',
+      size: 200
+    },
+    image: {
+      type: 'string'
+    },
+    activities: {
+      collection: 'activity',
+      via: 'categories'
+    }
   }
 };

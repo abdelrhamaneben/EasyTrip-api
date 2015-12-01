@@ -10,17 +10,16 @@ module.exports = {
   tableName: 'et_subscription',
 
   attributes: {
-	id_subscription : {
-  	 	type : 'integer',
-  	 	primaryKey: true,
-      	autoIncrement: true
-  	},
-	d_from : {
-		type : 'datetime'
-	},
-	nb_month : {
-		type : 'integer',
-	}
+    id_subscription: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true
+    },
+    d_from: {
+      type: 'datetime'
+    },
+    nb_month: {
+      type: 'integer',
+    }
   }
 };
-

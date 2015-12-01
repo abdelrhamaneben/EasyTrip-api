@@ -45,7 +45,9 @@
 </head>
 <body >
     <video autoplay loop poster="" id="bgvid" muted>
-    <source src="images\videoplayback.mp4" type="video/mp4" >
+    <source src="images/videoplayback.mp4" type="video/mp4" >
+    <source src="images/videoplayback.avi" type="video/avi" >
+    <source src="images/videoplayback.webm" type="video/webm" >
     </video>
     <header id="top" class="header">
         <div class="text-vertical-center" id="title">
@@ -124,15 +126,12 @@
 
         $('.imgmenu a').click(function () {
             var id = $(this).attr('data');
-            console.log(id);
             var city = $('#city').val();
-            console.log(city);
-
             if(city == "") {
                 toastr["info"]("Please enter a starting place");
             }
             else {
-                toastr["success"]("Redirection ...");
+                toastr["info"]("Lancement de la recherche ...");
                 $(location).attr('href',"/result?location=" + city + "&category=" + id);
             }
         });

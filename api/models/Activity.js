@@ -10,14 +10,14 @@ module.exports = {
   tableName: 'et_activity',
 
   attributes: {
-  	 id_activity : {
-  	 	type : 'integer',
-  	 	primaryKey: true,
+    id_activity: {
+      type: 'integer',
+      primaryKey: true,
       autoIncrement: true
-  	 },
-  	 name : {
-  	 	type : 'string',
-  	 	size : 50,
+    },
+    name: {
+      type: 'string',
+      size: 50,
       required: true
   	 },
   	 description : {
@@ -37,4 +37,3 @@ module.exports = {
      }
   }
 };
-

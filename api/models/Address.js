@@ -7,7 +7,7 @@
 
 module.exports = {
 
-	tableName: 'et_address',
+  tableName: 'et_address',
 
 	attributes: {
 		 id_address : {
@@ -44,4 +44,3 @@ module.exports = {
     	}
   	}
 };
-

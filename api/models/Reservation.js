@@ -10,38 +10,37 @@ module.exports = {
   tableName: 'et_reservation',
 
   attributes: {
-  	 id_res :{
-  			type : 'integer',
-	  	 	primaryKey: true,
-	  	 	autoIncrement: true,
-		    required: true
-		},
-    customer : {
-		 	model : 'user'
+    id_res: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true,
+      required: true
     },
-    price :{
-   		model : 'servicePrice'
+    customer: {
+      model: 'user'
     },
-    d_from :{
-   		type : 'datetime'
+    price: {
+      model: 'servicePrice'
     },
-    d_to :{
-    	type : 'datetime'
+    d_from: {
+      type: 'datetime'
     },
-    nb_person :{
-   		type : 'integer'
+    d_to: {
+      type: 'datetime'
     },
-    valid : {
-      type : 'boolean'  
+    nb_person: {
+      type: 'integer'
     },
-    createdAt :{
-    	type : 'datetime',
+    valid: {
+      type: 'boolean'
+    },
+    createdAt: {
+      type: 'datetime',
       autoCreatedAt: true
     },
-    updatedAt :{
-    	type : 'datetime',
+    updatedAt: {
+      type: 'datetime',
       autoUpdatedAt: true
     }
   }
 };
-

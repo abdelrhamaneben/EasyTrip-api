@@ -59,10 +59,10 @@ var map_manager = {
 		
 		var cc = null;
 		if(service.payed == 1) {
-			cc = "<div><h3>" + service.name + "</h3><div><center><img style='width:150px;height:150px;' src='/images/" + service.img + "' /></center></div><div><p>" + service.description + "<p/><p>Address : <b>" +  service.address + "</b></p><p>Tel : <b>" +  service.tel + "</b></p></div></div>";
+			cc = "<div><h3>" + service.name + "</h3><div><center><img style='width:150px;height:150px;' src='/images/" + service.img + "' /></center></div><div><p>" + service.description + "<p/><p>Address : <b>" +  service.address + "</b></p><p>Tel : <b>" +  service.tel + "</b></p><p>Email : <a href='mailto:"+service.email+"'>"+service.email+"</a></p><p>Website : <a href='http://"+service.website+"'>"+ service.website+"</a></p></div></div>";
 		}
 		else {
-			cc = "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : <b>" +  service.address + "</b></em><br><em>Tel : <b>" +  service.tel + "</b></em></div>";
+			cc = "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : <b>" +  service.address + "</b></em><br><em>Tel : <b>" +  service.tel + "</b></em><br><em>Email : <b><a href='mailto:"+service.email+"'>" +  service.email + "</a></b></em><br><em>Website : </em><b> <a href='http://"+service.website+"'>"+ service.website+"</a></b></div>";
 		}
 		var infowindow = new google.maps.InfoWindow({
 

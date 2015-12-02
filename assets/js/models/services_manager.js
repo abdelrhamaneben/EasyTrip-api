@@ -102,7 +102,9 @@ var services_manager = {
         "payed":1,
         "img":"festival.png",
          "fromDate":"2014-01-01",
-         "toDate":"2020-01-01"
+         "toDate":"2020-01-01",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     },
     {
         "activity": {
@@ -120,7 +122,9 @@ var services_manager = {
         "payed":1,
         "img":"accordeon.jpg",
         "fromDate":"2015-01-01",
-         "toDate":"2016-01-01"
+         "toDate":"2016-01-01",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     },
     {
         "activity": {
@@ -138,7 +142,9 @@ var services_manager = {
         "payed":1,
         "img":"soleil.jpg",
         "fromDate":"2016-01-01",
-         "toDate":""
+         "toDate":"",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     },
     {
         "activity": {
@@ -174,7 +180,9 @@ var services_manager = {
         "payed":0,
         "img":"payed.png",
         "fromDate":"2014-01-01",
-         "toDate":""
+         "toDate":"",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     },
     {
         "activity": {
@@ -192,7 +200,9 @@ var services_manager = {
         "payed":0,
         "img":"",
         "fromDate":"2015-01-01",
-         "toDate":"2015-11-30"
+         "toDate":"2015-11-30",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     },
     {
         "activity": {
@@ -210,7 +220,9 @@ var services_manager = {
         "payed":0,
         "img":"",
         "fromDate":"2014-01-01",
-         "toDate":"2020-01-01"
+         "toDate":"2020-01-01",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     },
     {
         "activity": {
@@ -228,7 +240,9 @@ var services_manager = {
         "payed":0,
         "img":"",
         "fromDate":"2014-01-01",
-         "toDate":"2020-01-01"
+         "toDate":"2020-01-01",
+         "email":'email@enterprise.com',
+         "website":'www.nameEnterprice.com'
     }
 ]
 };

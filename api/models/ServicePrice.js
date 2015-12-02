@@ -7,7 +7,7 @@
 
 module.exports = {
 
-    tableName: 'et_service_price',
+  tableName: 'et_service_price',
 
 	attributes: {
 		 id_sp : {
@@ -37,6 +37,10 @@ module.exports = {
 		 },	    	
    		 promotion : {
     		type : 'boolean'
+    	 },
+    	 businessDay : {
+    	 	type : 'string',
+    	 	size : 250
     	 },
     	 createdAt : {
     		type : 'datetime',

@@ -7,7 +7,7 @@
 
 module.exports = {
 
-	tableName: 'et_address',
+  tableName: 'et_address',
 
 	attributes: {
 		 id_address : {
@@ -18,6 +18,10 @@ module.exports = {
 		 str_nbr : {
 		 	type : 'string',
 		 	size : 5
+		 },
+		 str_name : {
+		 	type : 'string',
+		 	size : 100
 		 },
 		 city : {
 		 	type: 'string',
@@ -40,4 +44,3 @@ module.exports = {
     	}
   	}
 };
-

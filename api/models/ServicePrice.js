@@ -17,7 +17,7 @@ module.exports = {
 		 	unique : true
 		 },
 		 service : {
-		 	model : 'service',
+		 	model : 'service'
 		 },
 		 d_from : {
 		 	type : 'datetime'
@@ -29,7 +29,7 @@ module.exports = {
 	     	type : 'integer'
 	     },
 	     nb_person_max : {
-			type : 'integer',
+			type : 'integer'
 	     },
 	     price_per_person : {
     		type : 'integer',

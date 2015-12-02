@@ -13,9 +13,9 @@ module.exports = {
   	id_service :{
   			type : 'integer',
 	  	 	primaryKey: true,
-	  	 	autoIncrement: true,
-		    required: true
-	},
+	  	 	autoIncrement: true
+    },
+    
     geolati :{
     	type : 'float',
     	required : true
@@ -45,7 +45,8 @@ module.exports = {
         type : 'string'
     },
     premium :{
-        type: 'boolean'
+        type: 'boolean',
+        defaultsTo : false
     },
     createdAt :{
     	type : 'datetime',

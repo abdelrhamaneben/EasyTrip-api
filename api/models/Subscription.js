@@ -19,7 +19,7 @@ module.exports = {
       type: 'datetime'
     },
     nb_month: {
-      type: 'integer',
+      type: 'integer'
     }
   }
 };

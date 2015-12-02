@@ -30,9 +30,9 @@ module.exports = {
 	     code_zip : {
 	     	type : 'integer'
 	     },
-	     code_country : {
+	     country : {
 			type : 'string',
-		 	size : 5,
+		 	size : 50
 	     },
 	     createdAt : {
     		type : 'datetime',

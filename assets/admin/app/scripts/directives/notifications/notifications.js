@@ -11,7 +11,7 @@ angular.module('sbAdminApp')
 		return {
         templateUrl:'scripts/directives/notifications/notifications.html',
         restrict: 'E',
-        replace: true,
+        replace: true
     	}
 	});
 

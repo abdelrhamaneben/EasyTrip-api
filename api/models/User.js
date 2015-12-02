@@ -42,7 +42,7 @@ module.exports = {
     },
 
     password: {
-      type: 'string',
+      type: 'string'
     },
 
     subscription: {

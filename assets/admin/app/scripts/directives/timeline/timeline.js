@@ -11,6 +11,6 @@ angular.module('sbAdminApp')
     return {
         templateUrl:'scripts/directives/timeline/timeline.html',
         restrict: 'E',
-        replace: true,
+        replace: true
     }
   });

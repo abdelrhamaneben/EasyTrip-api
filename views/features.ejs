@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EasyTrip</title>
+    <meta charset="utf8" />
+    <!-- Bootstrap Core CSS -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="styles/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/result.css" rel="stylesheet">
+    <link href="styles/feature.css" rel="stylesheet">
+    <link href="styles/animate.css" rel="stylesheet">
+    
+    <!--    Jquery-->
+    <link href="styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet"> 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</head>
+<body>
+     
+    <header class="text-center">
+        <a href="/" style="float:left; color:white;">Go HOME</a>
+        <div id="titre" class="col-md-offset-5">
+            <h1 class="text-center">EasyTrip</h1>
+        </div>
+    </header>
+
+    <!-- APP  -->
+    <div class="col-md-8 col-md-offset-2 feature-app" >
+        <div class="row" id="row-img">
+            <img src="/images/10.jpg" class="col-md-4 img img-responsive img-rounded" />
+            <div class="col-md-5 col-md-offset-1">
+                <h4>Appréciation générale</h4>
+                <table class="table table-hover ">
+                    <tbody>
+                        <tr><td>Générale</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>
+                        <tr><td>qualité</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>
+                        <tr><td>Ambiance</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>
+                        <tr><td>....</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+           <div class="panel panel-default col-md-12">
+              <h5>Informations</h5>
+              <div class="panel-body">
+                <ul>
+                    <li>Auteur : Homer Simpson</li>
+                    <li>Description : bar de mau, super alcoolisant</li>
+                    <li>Prix : 2$</li>
+                    <li>Adresse : 43 rue de l'alcoolisme</li>
+                    <li>Horaire : 7/7 H</li>
+                <ul>
+              </div>
+            </div>
+        </div>
+        <div class="row chat-panel" >
+                <div>
+                    <div class="panel-body">
+                        <ul class="chat">
+                            <li class="left clearfix"><span class="chat-img pull-left">
+                                <img src="/images/anonymous-male.png" alt="User Avatar" class="img-circle img-responsive" />
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Abdel</strong> <small class="pull-right text-muted">
+                                            <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                        dolor, quis ullamcorper ligula sodales.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="right clearfix"><span class="chat-img pull-right">
+                                <img src="/images/anonymous-male.png" alt="User Avatar" class="img-circle img-responsive" />
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                        <strong class="pull-right primary-font">Kévin</strong>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                        dolor, quis ullamcorper ligula sodales.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="left clearfix"><span class="chat-img pull-left">
+                                <img src="/images/anonymous-male.png" alt="User Avatar" class="img-circle img-responsive" />
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Gissel</strong> <small class="pull-right text-muted">
+                                            <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                        dolor, quis ullamcorper ligula sodales.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="right clearfix"><span class="chat-img pull-right">
+                                <img src="/images/anonymous-male.png" alt="User Avatar" class="img-circle img-responsive" />
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                        <strong class="pull-right primary-font">Homer</strong>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                        dolor, quis ullamcorper ligula sodales.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <h5>Donner votre opinion</h5>
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--  JAVASCRIPT  -->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!--    DatePicker-->
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

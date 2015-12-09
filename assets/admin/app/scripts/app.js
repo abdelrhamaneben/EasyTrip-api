@@ -39,7 +39,10 @@ $stateProvider
                     }),
                     $ocLazyLoad.load({
                         name:'sbAdminApp',
-                        files:['scripts/controllers/chartContoller.js']
+                        files:[
+                            'scripts/controllers/chartContoller.js',
+                            'scripts/controllers/activityCtrl.js'
+                        ]
                     })
                   },
             loadMyDirectives:function($ocLazyLoad){
@@ -131,10 +134,10 @@ $stateProvider
         url:'/admin/category/add'
     })
 
-
     .state('admin.activityView',{
         templateUrl:'views/admin/activity_view.html',
-        url:'/admin/activity/'
+        url:'/admin/activity/',
+        controller: 'activityCtrl'
     })
     .state('admin.activityAdd',{
         templateUrl:'views/admin/activity_add.html',
@@ -158,8 +161,7 @@ $stateProvider
         url:'/admin/service/edit'
     })
 
-
- .state('user', {
+    .state('user', {
         url:'/user',
         templateUrl: 'views/user/main.html',
         resolve: {

@@ -33,6 +33,8 @@ module.exports = {
       });
 
     });
+  },
+  feature: function(req, res) {
+    res.view('features');
   }
-
 };

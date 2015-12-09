@@ -41,7 +41,10 @@ module.exports.routes = {
     controller: 'web',
     action: 'result'
   },
-
+  '/feature': {
+    controller: 'web',
+    action: 'feature'
+  },
   'get /user/login':{
     controller: 'user',
     action: 'login'

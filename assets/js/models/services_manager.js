@@ -5,41 +5,42 @@ var services_manager = {
         var priceMin = $('#priceMin').val();
         var priceMax = $('#priceMax').val();
         var capacity = $('#capacity').val();
-        var service = $('#service').val();
+        var service = $('#service').val().toUpperCase();
         var dateStart = new Date($('#dateStart').val());
         var dateEnd = new Date($('#dateEnd').val());
         var dateFrom = new Date(item.fromDate);
         var dateTo = new Date(item.toDate);
-        
+
+//        Filters
         if((capacity>=item.minCapacity && capacity<=item.maxCapacity || capacity =='') &&
-          (item.name.indexOf(service) != -1 || service=='') &&
+          (item.name.toUpperCase().indexOf(service) != -1 || service=='') &&
           ((item.price>= priceMin && item.price<=priceMax)  || (priceMin=='' && item.price<=priceMax) || (item.price>= priceMin && priceMax=='')
             || (priceMin=='' && priceMax=='')) &&
-          ((dateStart >= dateFrom && (dateEnd<=dateTo || item.toDate=='')) || (dateStart >= dateFrom && $('#dateEnd').val()=='') || 
-           ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='' ) || 
+          ((dateStart >= dateFrom && (dateEnd<=dateTo || item.toDate=='')) || (dateStart >= dateFrom && $('#dateEnd').val()=='') ||
+           ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='' ) ||
            ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
         if(item.payed == 1 ){
-            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
+            $('#c-part').append($("<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_service + "\");' id=\"service_" + item.id_service + "\">"
                + "<div class=\"thumbnail payed\">"
                + "<div class=\"caption row\">"
                + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
                + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
                + "<p>" + item.description + "</p>"
                + "<p>Price : <b>" + item.price + " €</b></p>"
-        + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p></div>"
+        + "<p class='text-right'></p></div>"
         + "</div>"
                + "</div>"
                + "</div>"));
         }else {
-            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
+            $('#c-part').append($("<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_service + "\");' id=\"service_" + item.id_service + "\">"
                + " <div class=\"thumbnail\">"
                + "<div class=\"caption\">"
                + "<h3>" + item.name + "</h3>"
                + "<p>" + item.description + "</p>"
                 + "<p> Address : " + item.address + "</p>"
                 + "<p>Price : <b>" + item.price + " €</b></p>"
-               + "<p class='text-right'><a onclick='services_manager.click(\"service_" + item.id_service + "\");' class=\"btn btn-primary\" role=\"button\">Show</a></p>"
+               + "<p class='text-right'></p>"
                + "</div>"
                + "</div>"
                + "</div>"));
@@ -98,7 +99,7 @@ var services_manager = {
         "id_service": 1,
          "price":200,
          "minCapacity":1,
-         "maxCapacity":10,         
+         "maxCapacity":100,
         "payed":1,
         "img":"festival.png",
          "fromDate":"2014-01-01",
@@ -124,7 +125,9 @@ var services_manager = {
         "fromDate":"2015-01-01",
          "toDate":"2016-01-01",
          "email":'email@enterprise.com',
-         "website":'www.nameEnterprice.com'
+         "website":'www.nameEnterprice.com',
+         "minCapacity":1,
+         "maxCapacity":20,
     },
     {
         "activity": {
@@ -144,7 +147,9 @@ var services_manager = {
         "fromDate":"2016-01-01",
          "toDate":"",
          "email":'email@enterprise.com',
-         "website":'www.nameEnterprice.com'
+         "website":'www.nameEnterprice.com',
+        "minCapacity":1,
+         "maxCapacity":200,
     },
     {
         "activity": {
@@ -162,7 +167,9 @@ var services_manager = {
         "payed":0,
         "img":"",
         "fromDate":"2016-03-01",
-         "toDate":"2016-05-01"
+         "toDate":"2016-05-01",
+        "minCapacity":1,
+         "maxCapacity":80,
     },
     {
         "activity": {
@@ -182,7 +189,9 @@ var services_manager = {
         "fromDate":"2014-01-01",
          "toDate":"",
          "email":'email@enterprise.com',
-         "website":'www.nameEnterprice.com'
+         "website":'www.nameEnterprice.com',
+        "minCapacity":1,
+         "maxCapacity":15,
     },
     {
         "activity": {
@@ -202,7 +211,9 @@ var services_manager = {
         "fromDate":"2015-01-01",
          "toDate":"2015-11-30",
          "email":'email@enterprise.com',
-         "website":'www.nameEnterprice.com'
+         "website":'www.nameEnterprice.com',
+        "minCapacity":1,
+         "maxCapacity":20,
     },
     {
         "activity": {
@@ -222,7 +233,9 @@ var services_manager = {
         "fromDate":"2014-01-01",
          "toDate":"2020-01-01",
          "email":'email@enterprise.com',
-         "website":'www.nameEnterprice.com'
+         "website":'www.nameEnterprice.com',
+        "minCapacity":5,
+         "maxCapacity":25,
     },
     {
         "activity": {
@@ -242,7 +255,10 @@ var services_manager = {
         "fromDate":"2014-01-01",
          "toDate":"2020-01-01",
          "email":'email@enterprise.com',
-         "website":'www.nameEnterprice.com'
+         "website":'www.nameEnterprice.com',
+        "minCapacity":2,
+         "maxCapacity":12,
     }
 ]
+    
 };

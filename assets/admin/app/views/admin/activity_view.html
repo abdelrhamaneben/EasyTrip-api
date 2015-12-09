@@ -8,18 +8,18 @@
 		<!-- /.panel-heading -->
 		<div class="panel-body">
 			<div class="dataTable_wrapper">
-				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+				<table class="table table-striped table-bordered table-hover" id="table_activities">
 					<thead>
 					<tr>
-						<th>Client</th>
+						<th>Identifiant</th>
 						<th>Nom</th>
+						<th>Description</th>
+						<th>Image</th>
 						<th>Categorie</th>
-						<th># services</th>
-						<th>Etat</th>
 					</tr>
 					</thead>
 					<tbody>
-					<tr class="odd gradeX">
+					<!--<tr class="odd gradeX">
 						<td>Trident</td>
 						<td>Internet Explorer 4.0</td>
 						<td>Win 95+</td>
@@ -418,7 +418,8 @@
 						<td>-</td>
 						<td class="center">-</td>
 						<td class="center">U</td>
-					</tr>
+					</tr>-->
+
 					</tbody>
 				</table>
 			</div>
@@ -430,4 +431,46 @@
 <!-- /.col-lg-12 -->
 
 
+<script type="text/javascript">
+var activities = document.getElementById('table_activities').getElementsByTagName('tbody')[0];
+$.ajax({
+      method: "GET",
+      url: "http://localhost:1337/activity",
+      async : false,
+      dataType : "json",
+      contentType : "application/json",
+      success : function (data) {
+      	console.log(data[0]);
+        for(var i = 0; i < data.length; i++){     
+            // Insert a row in the table at the last row
+			var newRow   = activities.insertRow(activities.rows.length);
 
+			// Insert a cell in the row at index 0
+			var newCell  = newRow.insertCell(0);
+			var newText  = document.createTextNode(data[i].id_activity)
+			newCell.appendChild(newText);     
+
+			var newCell  = newRow.insertCell(1);
+			newText  = document.createTextNode(data[i].name);
+			newCell.appendChild(newText);     
+
+			var newCell  = newRow.insertCell(2);
+			newText  = document.createTextNode(data[i].description);
+			newCell.appendChild(newText);   
+
+			var newCell  = newRow.insertCell(3);
+			newText  = document.createTextNode(data[i].image);
+			newCell.appendChild(newText);  
+
+			var newCell  = newRow.insertCell(4);
+			newText  = document.createTextNode(data[i].categories[0].name);
+			newCell.appendChild(newText);   
+
+        }
+      },
+      error : function () {
+        console.log("failed");
+      }
+    });
+
+</script>

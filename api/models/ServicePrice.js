@@ -36,7 +36,8 @@ module.exports = {
  			size : 8
 		 },	    	
    		 promotion : {
-    		type : 'boolean'
+    		type : 'boolean',
+    		defaultsTo : false
     	 },
     	 businessDay : {
     	 	type : 'string',

@@ -113,6 +113,10 @@ $stateProvider
         templateUrl:'views/public/login.html',
         url:'/login'
     })
+    .state('signup',{
+        templateUrl:'views/public/signup.html',
+        url:'/signup'
+    })
 
     .state('admin.categoryView',{
         templateUrl:'views/admin/category_view.html',

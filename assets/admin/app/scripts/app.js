@@ -41,7 +41,8 @@ $stateProvider
                         name:'sbAdminApp',
                         files:[
                             'scripts/controllers/chartContoller.js',
-                            'scripts/controllers/activityCtrl.js'
+                            'scripts/controllers/activityCtrl.js',
+                            'scripts/controllers/loginCtrl.js'
                         ]
                     })
                   },
@@ -114,11 +115,23 @@ $stateProvider
 
     .state('login',{
         templateUrl:'views/public/login.html',
-        url:'/login'
+        url:'/login',
+        controller: 'loginCtrl',
+        resolve: {
+            loadMyFile:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name:'sbAdminApp',
+                    files:[
+                        'scripts/controllers/loginCtrl.js'
+                    ]
+                })
+            }
+        }
     })
     .state('signup',{
         templateUrl:'views/public/signup.html',
-        url:'/signup'
+        url:'/signup',
+        controller: 'loginCtrl'
     })
 
     .state('admin.categoryView',{

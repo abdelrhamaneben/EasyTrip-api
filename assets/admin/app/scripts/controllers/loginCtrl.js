@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbAdminApp')
-  .controller('loginCtrl', function($scope,$http,$location) {
+  .controller('loginCtrl', function($scope,$http,$location,$rootScope,$state) {
 
     /*$scope.loginfct = function() {
         console.log('cocou');
@@ -28,13 +28,18 @@ angular.module('sbAdminApp')
                 contentType : "application/x-www-form-urlencoded"
             }
           }).success(function(data, status) {
-
+            // mettre un timer quelque part, bien que non nécessaire pk THEN renvoie un chargement
           }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
-                //$location.path('admin.home').replace();
-                //$scope.$apply();
-                alert('connexion ok :)');
+                //$location.path('admin.home');
+                // $scope.$apply();
+
+                $state.go('admin.home');
+
+                //alert('connexion ok :)');
+
+                //$location.url('admin/home/');
               }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.

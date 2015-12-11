@@ -13,6 +13,12 @@ module.exports = {
         return next();
       } else {
            console.log('auth ko > ok');
+
+           // email : elouadi.slimane@yahoo.fr
+           // passw : pass
+           // urole : admin
+
+
             // TODO tester la légitimité du log !
             //req.session.userid = ...;
             //req.session.authenticated = true;

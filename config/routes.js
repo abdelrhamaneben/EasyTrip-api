@@ -56,6 +56,8 @@ module.exports.routes = {
   },
 
 
+
+
    /**
     *   ADMINISTRARION PART
     */
@@ -69,11 +71,24 @@ module.exports.routes = {
     controller: 'api',
     action: 'login'
   },
+  'get /adminAPI/logout': {
+    controller: 'api',
+    action: 'logout'
+  },
+  'post /adminAPI/singup': {
+    controller: 'api',
+    action: 'signup'
+  },
+
   // Tous les autres lien adminAPI nécessitent une authentification
-  'get /adminAPI/*': {
+  /*'get /adminAPI/*': {
     controller: 'admin',
     action: 'auth'
   },
+  'post /adminAPI/*': {
+    controller: 'admin',
+    action: 'auth'
+  },*/
 
   // CATEGRIE
   'get /adminAPI/category/':{

@@ -98,6 +98,11 @@ module.exports.routes = {
   'post /adminAPI/category':{
     controller: 'apicategory',
     action: 'postCategory'
+  },
+
+  'get /adminAPI/stat/':{
+    controller: 'api',
+    action: 'getstat'
   }
 
   /***************************************************************************

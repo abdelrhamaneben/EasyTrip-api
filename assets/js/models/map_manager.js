@@ -56,13 +56,37 @@ var map_manager = {
 			optionMarker.icon = "images/dot-red.png";
 		}
 		var marker = new google.maps.Marker(optionMarker);
-		
+
 		var cc = null;
 		if(service.payed == 1) {
-			cc = "<div><h3>" + service.name + "</h3><div><center><img style='width:150px;height:150px;' src='/images/" + service.img + "' /></center></div><div><p>" + service.description + "<p/><p>Address : <b>" +  service.address + "</b></p><p>Tel : <b>" +  service.tel + "</b></p><p>Email : <a href='mailto:"+service.email+"'>"+service.email+"</a></p><p>Website : <a href='http://"+service.website+"'>"+ service.website+"</a></p></div></div>";
+			cc = "<div><h3>" + service.name
+						+ "</h3><div><center><img style='width:150px;height:150px;' src='/images/"
+						+ service.img + "' /></center></div><div><p>"
+						+ service.description + "<p/><p>Address : <b>"
+						+  service.address + "</b></p><p>Tel : <b>"
+						+  service.tel
+						+ "</b></p><p>Email : <a href='mailto:"+service.email+"'>"+service.email+"</a></p><p>Website : <a href='http://"+service.website+"'>"+ service.website+"</a></p>"
+						/*Google share button*/
+						+ "<a style=\"float:right;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
+						+	"'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
+						+	"src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
+						+ "</div></div>";
 		}
 		else {
-			cc = "<div><h3>" + service.name + "</h3><p>" + service.description + "<p/><br><em>Address : <b>" +  service.address + "</b></em><br><em>Tel : <b>" +  service.tel + "</b></em><br><em>Email : <b><a href='mailto:"+service.email+"'>" +  service.email + "</a></b></em><br><em>Website : </em><b> <a href='http://"+service.website+"'>"+ service.website+"</a></b></div>";
+			cc = "<div><h3>" + service.name + "</h3><p>"
+			+ service.description
+			+ "<p/><br><em>Address : <b>"
+			+ service.address
+			+ "</b></em><br><em>Tel : <b>"
+			+ service.tel
+			+ "</b></em><br><em>Email : <b><a href='mailto:"+service.email+"'>"
+			+  service.email + "</a></b></em><br><em>Website : </em><b> <a href='http://"+service.website+"'>"
+			+ service.website+"</a></b>"
+			/*Google share button*/
+			+ "<a style=\"float:right;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
+			+	"'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
+			+	"src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/> </a>"
+			+"</div>";
 		}
 		var infowindow = new google.maps.InfoWindow({
 
@@ -87,7 +111,7 @@ var map_manager = {
 			this.infowindows[i].close();
 		}
 	},
-	//adapte le centre et le zoom selon les markers 
+	//adapte le centre et le zoom selon les markers
 	resize: function () {
 		this.resized = true;
 		var bounds 		= new google.maps.LatLngBounds();
@@ -102,7 +126,7 @@ var map_manager = {
 	getRectangle : function ( ) {
 		var zoom 		= this.map.getZoom();
 		var coordinate 	= this.map.getCenter();
-		
+
 		var ecartLat 	= this.matrice[zoom].lat;
 		var ecartLng 	= this.matrice[zoom].lng;
 		var centerLat 	= coordinate.lat();

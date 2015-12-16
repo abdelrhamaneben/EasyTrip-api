@@ -21,6 +21,10 @@
     /*'*': 'isAuthenticated',*/
 
      'user': {
-         '*': true
+       '*': 'sessionAuthAdmin',
+       'find': true
+     },
+     'activity' : {
+       'destroy' : 'sessionAuthAdmin'
      }
  }

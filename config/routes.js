@@ -55,9 +55,54 @@ module.exports.routes = {
     action: 'passport_local'
   },
 
-  'get /admin': {
+
+
+
+   /**
+    *   ADMINISTRARION PART
+    */
+  // redirection vers angularJS
+  'get /admin/': {
     controller: 'admin',
     action: 'index'
+  },
+  // lien de connexion adminAPI
+  'post /adminAPI/login': {
+    controller: 'api',
+    action: 'login'
+  },
+  'get /adminAPI/logout': {
+    controller: 'api',
+    action: 'logout'
+  },
+  'post /adminAPI/singup': {
+    controller: 'api',
+    action: 'signup'
+  },
+
+  // Tous les autres lien adminAPI nécessitent une authentification
+  /*'get /adminAPI/*': {
+    controller: 'admin',
+    action: 'auth'
+  },
+  'post /adminAPI/*': {
+    controller: 'admin',
+    action: 'auth'
+  },*/
+
+  // CATEGRIE
+  'get /adminAPI/category/':{
+    controller: 'apicategory',
+    action: 'getCategory'
+  },
+  'post /adminAPI/category':{
+    controller: 'apicategory',
+    action: 'postCategory'
+  },
+
+  'get /adminAPI/stat/':{
+    controller: 'api',
+    action: 'getstat'
   }
 
   /***************************************************************************

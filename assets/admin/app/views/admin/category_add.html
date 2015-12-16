@@ -16,27 +16,27 @@
 
 						<!-- INPUT TEXT -->
 						<div class="form-group">
-							<label>Nom de la categorie *</label>
-							<input class="form-control">
+							<label for="category_name">Nom de la categorie *</label>
+							<input class="form-control" id="category_name">
 							<p class="help-block">Example: Voyage, sport, culture</p>
 						</div>
 
 						<!-- TEXT AREA -->
 						<div class="form-group">
-							<label>Description de la categorie *</label>
-							<textarea class="form-control" rows="3"></textarea>
+							<label for="category_description">Description de la categorie *</label>
+							<textarea class="form-control" rows="3" id="category_description"></textarea>
 						</div>
 
 						<!-- FILE INPUT -->
 						<div class="form-group">
-							<label>Image principale de la categorie *</label>
-							<input type="file">
+							<label for="category_image">Image principale de la categorie *</label>
+							<input type="file" id="category_image">
 						</div>
 
 						<p class="help-block">Les champs marques d'un * sont obligatoire</p>
 
 						<!-- SUBMIT BUTTON -->
-						<button type="submit" class="btn btn-default">Ajouter une categorie</button>
+						<button type="submit" id="submit" class="btn btn-default">Ajouter une categorie</button>
 
 						<!-- RESET BUTTON -->
 						<button type="reset" class="btn btn-default">Annuler</button>
@@ -171,6 +171,41 @@
 	<!-- /.row -->
 </div>
 
+ <script>
+
+	var category_image_blob = "";
+	var fileInput = document.querySelector('#category_image');
+	fileInput.addEventListener('change', function() {
+	    var reader = new FileReader();
+	    reader.addEventListener('load', function() {
+	        //console.log('Contenu du fichier "' + fileInput.files[0].name + '" :\n\n' + reader.result);
+			category_image_blob = reader.result;
+	    }, false);
+	    reader.readAsDataURL(fileInput.files[0]);
+	}, false);
+
+    $("#submit").click(function(e) {
+        e.preventDefault();
+        var category_name = $("#category_name").val();
+        var category_description = $("#category_description").val();
+
+        var data = '{'
+          +'"name" : "' + category_name + '",'
+          +'"image" : "' + category_image_blob + '",'
+          +'"description" : "' + category_description + '"'
+        +'}';
+
+        console.log(data);
+        $.ajax({
+              method : "POST",
+              url : "http://localhost:1337/category",
+              data : data,
+              dataType : "json",
+              contentType : "application/json"
+        });
+    });
+
+ </script>
 
 
 

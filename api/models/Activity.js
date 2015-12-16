@@ -19,21 +19,21 @@ module.exports = {
       type: 'string',
       size: 50,
       required: true
-  	 },
-  	 description : {
-  	 	type : 'string',
-  	 	size : 200
-  	 },
-     image :{
-        type : 'string'
-     },
-     categories : {
-            collection: 'category',
-            via: 'activities'
-     },
-     services : {
-        collection : 'service',
-        via : 'activities'
-     }
+    },
+    description: {
+      type: 'string',
+      size: 200
+    },
+    image: {
+      type: 'string'
+    },
+    categories: {
+      collection: 'category',
+      via: 'activities'
+    },
+    services: {
+      collection: 'service',
+      via: 'activities'
+    }
   }
 };

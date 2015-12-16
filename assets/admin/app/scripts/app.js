@@ -42,6 +42,8 @@ $stateProvider
                         files:[
                             'scripts/controllers/chartContoller.js',
                             'scripts/controllers/activityCtrl.js',
+                            'scripts/controllers/categoryCtrl.js',
+                            'scripts/controllers/serviceCtrl.js',
                             'scripts/controllers/loginCtrl.js'
                         ]
                     })
@@ -136,7 +138,9 @@ $stateProvider
 
     .state('admin.categoryView',{
         templateUrl:'views/admin/category_view.html',
-        url:'/admin/category'
+        url:'/admin/category',
+        controller: 'categoryCtrl'
+
     })
     .state('admin.categoryEdit',{
         templateUrl:'views/admin/category_add.html',
@@ -163,7 +167,8 @@ $stateProvider
 
     .state('admin.serviceView',{
         templateUrl:'views/admin/service_view.html',
-        url:'/admin/service/'
+        url:'/admin/service/',
+        controller: 'serviceCtrl'
     })
     .state('admin.serviceAdd',{
         templateUrl:'views/admin/service_add.html',

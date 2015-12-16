@@ -14,8 +14,8 @@
 						<th>Identifiant</th>
 						<th>Nom</th>
 						<th>Description</th>
-						<th>Image</th>
 						<th>Categorie</th>
+						<th>Image</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -23,8 +23,12 @@
 						<td>{{activity.id_activity}}</td>
 						<td>{{activity.name}}</td>
 						<td>{{activity.description}}</td>
-						<td> <img data-ng-src="{activity.image}}"></td>
-						<td>{{activity.category[0].name}}</td>
+						<td>
+							<div ng-repeat="cat in activity.categories">
+								{{cat.name}}
+							</div>
+						</td>
+						<td> <img data-ng-src="{{activity.image}}" height="42" width="42"></td>
 					</tr>
 					</tbody>
 				</table>

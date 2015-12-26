@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
-module.exports = {
-  http: {
-    customMiddleware: function(app) {
-      console.log('Express middleware for password');
-      app.use(passport.initialize());
-      app.use(passport.session());
-    }
-  }
-};
-=======
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
 
@@ -38,4 +24,3 @@ passport.use(new LocalStrategy({
         });
     }
 ));
->>>>>>> f542c03390e06e2da7f68fe3ec497c132e95e93e

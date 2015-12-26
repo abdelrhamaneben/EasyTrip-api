@@ -13,37 +13,52 @@ module.exports = {
   	id_service :{
   			type : 'integer',
 	  	 	primaryKey: true,
-	  	 	autoIncrement: true,
-		    required: true
-		},
-    id_geo :{
-    	type : 'integer',
-    	required : true,
-    	unique : true
+	  	 	autoIncrement: true
     },
-    id_bu :{
-    	type : 'integer',
+    
+    geolati :{
+    	type : 'float',
     	required : true
     },
-    id_adress: {
-    	type : 'integer'
+    geolong :{
+        type : 'float',
+        required : true
+	},
+    creator : {
+        model : 'user'
+    },
+    address : {
+        model : 'address'
     },
     name :{
-    	type : 'string',
-    	size : 50
+        type : 'string',
+        size : 50
     },
     description :{
 		type : 'string',
     	size : 200    
     },
-    d_create :{
+    image :{
+        type : 'string'
+    },
+    link :{
+        type : 'string'
+    },
+    premium :{
+        type: 'boolean',
+        defaultsTo : false
+    },
+    createdAt :{
     	type : 'datetime',
         autoCreatedAt: true
-		},	    	
-    d_update :{
+	},	    	
+    updatedAt :{
     	type : 'datetime',
         autoUpdatedAt: true
-    }
+    },
+    activities : {
+            collection: 'activity',
+            via: 'services'
+     }
   }
 };
-

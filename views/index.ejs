@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+	<!-- metadata -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EasyTrip</title>
+	
+	<!-- Bootstrap Core CSS -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles/stylish-portfolio.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="styles/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+             
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="styles/default.css" />
+    <link rel="stylesheet" type="text/css" href="styles/component.css" />
+    <link rel="stylesheet" type="text/css" href="styles/categories.css" />
+    <link rel="stylesheet" type="text/css" href="styles/toastr.min.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <style>
+        video { 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .form-control-width {        
+            min-width: 0;
+            width: 22%;
+            display: inline;
+        }
+    </style>
+</head>
+<body >
+    <video autoplay loop poster="" id="bgvid" muted>
+    <source src="images\videoplayback.mp4" type="video/mp4" >
+    <source src="images\videoplayback.avi" type="video/avi" >
+    <source src="images\videoplayback.webm" type="video/webm" >
+    </video>
+    <header id="top" class="header">
+        <div class="text-vertical-center" id="title">
+            <h1>EasyTrip</h1>
+            <br>
+            <input class="form-control form-control-width" id="city" placeholder="Tell us where you are"  type="text">
+            <br><br>
+            <a href="#" id="btnDisplayForm" class="btn btn-dark btn-md">We will tell you where to go</a></
+        </div>
+    </header>
+    <div class="container animsition" id="afterSelectingCity">
+            <center>
+				<br><br>
+                
+                <!-- h4 style="margin-bottom:20px;">What do you want to do?</h4-->
+                <h3 style="color:#fed136;text-decoration:underline;">Choose a category to begin the experience</h3>
+                
+                <div class="imgmenu mphotos-1 commune"> 
+                    <a href="#top" data="7"> 
+                        <div class="mphotos"> 
+                            <div class="mphoto"> 
+                                <img class="autosize" src="images/B.jpg" width="1140" height="300"></div> 
+                        </div> 
+                        <div class="title"> 
+                            <div class="valign"></div> 
+                            <div class="name">BEST DEALS</div> 
+                        </div> 
+                    </a> 
+                </div>                       
+                
+                <ul class="grid effect-5" id="grid">                
+                </ul>
+            </center>            
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/imagesloaded.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/AnimOnScroll.js"></script>
+    
+    <!-- Script APP -->
+    <script src="js/categories.js"></script>
+    <script src="js/JsonCategory.js"></script>
+        
+    
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script>
+        // VIDEO
+        var video = document.getElementById("bgvid");
+        function vidFade() {
+          video.classList.add("stopfade");
+        }
+
+        video.addEventListener('ended', function()
+        {
+            // only functional if "loop" is removed 
+            video.pause();
+            vidFade();
+        }, false); 
+        video.play();
+
+
+        // CATEGORIES
+        categories.data = categoryJson.categories;
+        var results = categories.Build();
+        $('#grid').html(results);
+        
+        // creation de l'animation slider
+        new AnimOnScroll( document.getElementById( 'grid' ), {
+            minDuration : 0.4,
+            maxDuration : 0.7,
+            viewportFactor : 0.2
+        } );
+
+        $('.imgmenu a').click(function () {
+            var id = $(this).attr('data');
+            var city = $('#city').val();
+            if(city == "") {
+                toastr["info"]("Please enter a starting place");
+            }
+            else {
+                toastr["info"]("Lancement de la recherche ...");
+                $(location).attr('href',"/result?location=" + city + "&category=" + id);
+            }
+        });
+		
+		$('#btnDisplayForm').click(function (){
+            $('html, body').animate({
+			 scrollTop: $('#afterSelectingCity').offset().top
+            }, 1000);
+        });        
+    </script>
+
+</body>
+   <!-- ----------SCRIPTS---------- --> 
+     <!-- Include Google Maps JS API -->
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key= AIzaSyAyVD3_uVmC0hN-rYUCuzkjCeLrvHWUOBg"></script>
+
+    <!-- Custom JS code to bind to Autocomplete API -->
+    <script type="text/javascript" src="js/autocomplete.js"></script>
+</html>

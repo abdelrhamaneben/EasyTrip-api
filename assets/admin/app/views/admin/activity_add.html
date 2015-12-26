@@ -1,0 +1,243 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Activites</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+
+
+		<div class="panel-heading">
+			Ajouter une nouvelle activite
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-lg-8">
+					<form role="form">
+
+						<!-- INPUT TEXT -->
+						<div class="form-group">
+							<label for="activity_name">Nom de l'activite *</label>
+							<input class="form-control" id="activity_name">
+							<p class="help-block">Example: Paint-ball, footbal, shopping...</p>
+						</div>
+
+						<!-- TEXT AREA -->
+						<div class="form-group">
+							<label for="activity_description">Description de l'activite *</label>
+							<textarea class="form-control" rows="3" id="activity_description"></textarea>
+						</div>
+
+						<!-- FILE INPUT -->
+						<div class="form-group">
+							<label for="activity_image">Image principale de l'activite *</label>
+							<input type="file" id="activity_image">
+						</div>
+
+						<!-- LISTE DEROULANTE -->
+						<div class="form-group">
+							<label for="activity_category">A quel Categorie l'activite appartient-elle ?</label>
+							<select class="form-control" id="activity_category">
+            				</select>
+							<!--<select class="form-control">
+								<option>Sport</option>
+								<option>Culture</option>
+								<option>Detente</option>
+								<option>Voyage</option>
+								<option>Fête</option>
+							</select>-->
+						</div>
+
+						<p class="help-block">Les champs marques d'un * sont obligatoire</p>
+
+						<!-- SUBMIT BUTTON -->
+						<button type="submit" id="submit" class="btn btn-default">Ajouter une activite</button>
+
+						<!-- RESET BUTTON -->
+						<button type="reset" class="btn btn-default">Annuler</button>
+
+
+						<!-- INPUT TEXT PLACEHOLDER -->
+						<!--<div class="form-group">
+							<label>Text Input with Placeholder</label>
+							<input class="form-control" placeholder="Enter text">
+						</div>
+
+						<!-- STATIC CONTROL (=LABEL) -->
+						<!--<div class="form-group">
+							<label>Static Control</label>
+							<p class="form-control-static">email@example.com</p>
+						</div>
+
+						<!-- FILE INPUT -->
+						<!--<div class="form-group">
+							<label>File input</label>
+							<input type="file">
+						</div>
+
+						<!-- TEXT AREA -->
+						<!--<div class="form-group">
+							<label>Text area</label>
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+
+						<!-- CHECK BOXES -->
+						<!--<div class="form-group">
+							<label>Checkboxes</label>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value="">Checkbox 1
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value="">Checkbox 2
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value="">Checkbox 3
+								</label>
+							</div>
+						</div>
+
+						<!-- INLINE CHECK BOXES -->
+						<!--<div class="form-group">
+							<label>Inline Checkboxes</label>
+							<label class="checkbox-inline">
+								<input type="checkbox">1
+							</label>
+							<label class="checkbox-inline">
+								<input type="checkbox">2
+							</label>
+							<label class="checkbox-inline">
+								<input type="checkbox">3
+							</label>
+						</div>
+
+						<!-- RADIO BUTTONS -->
+						<!--<div class="form-group">
+							<label>Radio Buttons</label>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Radio 1
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Radio 2
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Radio 3
+								</label>
+							</div>
+						</div>
+
+						<!-- INLINE RADIO BUTTONS -->
+						<!--<div class="form-group">
+							<label>Inline Radio Buttons</label>
+							<label class="radio-inline">
+								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+							</label>
+						</div>
+
+						<!-- LISTE DEROULANTE -->
+						<!--<div class="form-group">
+							<label>Selects</label>
+							<select class="form-control">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</div>
+
+						<!-- MULTIPLE SELECT -->
+						<!--<div class="form-group">
+							<label>Multiple Selects</label>
+							<select multiple class="form-control">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</div>
+
+						<!-- SUBMIT BUTTON -->
+						<!--<button type="submit" class="btn btn-default">Submit Button</button>
+
+						<!-- RESET BUTTON -->
+						<!--<button type="reset" class="btn btn-default">Reset Button</button>-->
+					</form>
+				</div>
+	</div>
+	<!-- /.row -->
+</div>
+
+<script>
+
+      activity_category = document.getElementById('activity_category');
+      $.ajax({
+          method: "GET",
+          url: "http://localhost:1337/category",
+          async : false,
+          dataType : "json",
+          contentType : "application/json",
+          success : function (data) {
+          	console.log(data);
+            for(var i= 0; i < data.length; i++){
+                activity_category.options[activity_category.options.length] = new Option(data[i].name, data[i].id_category);
+            }
+          },
+          error : function () {
+            console.log("failed");
+          }
+     });
+
+	var activity_image_blob = "";
+	var fileInput = document.querySelector('#activity_image');
+	fileInput.addEventListener('change', function() {
+	    var reader = new FileReader();
+	    reader.addEventListener('load', function() {
+	        //console.log('Contenu du fichier "' + fileInput.files[0].name + '" :\n\n' + reader.result);
+			activity_image_blob = reader.result;
+	    }, false);
+	    reader.readAsDataURL(fileInput.files[0]);
+	}, false);
+
+
+    $("#submit").click(function(e) {
+        e.preventDefault();
+        var activity_name = $("#activity_name").val();
+        var activity_description = $("#activity_description").val();
+        var activity_category = $("#activity_category").val();
+        //var activity_image = $("#activity_image").val();
+        var data = '{'
+          +'"categories" : "' + activity_category + '",'
+          +'"name" : "' + activity_name + '",'
+          +'"image" : "' + activity_image_blob + '",'
+          +'"description" : "' + activity_description + '"'
+        +'}';
+
+        console.log(data);
+        $.ajax({
+              method : "POST",
+              url : "http://localhost:1337/activity",
+              data : data,
+              dataType : "json",
+              contentType : "application/json"
+        });
+    });
+ </script>
+
+
+

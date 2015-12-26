@@ -7,7 +7,7 @@
 
 module.exports = {
 
-    tableName: 'et_service_price',
+  tableName: 'et_service_price',
 
 	attributes: {
 		 id_sp : {
@@ -16,8 +16,8 @@ module.exports = {
 		 	autoIncrement: true,
 		 	unique : true
 		 },
-		 id_service : {
-		 	type : 'integer',
+		 service : {
+		 	model : 'service'
 		 },
 		 d_from : {
 		 	type : 'datetime'
@@ -29,25 +29,27 @@ module.exports = {
 	     	type : 'integer'
 	     },
 	     nb_person_max : {
-			type : 'integer',
+			type : 'integer'
 	     },
-	     price_pp : {
+	     price_per_person : {
     		type : 'integer',
  			size : 8
 		 },	    	
    		 promotion : {
-    		type : 'boolean'
+    		type : 'boolean',
+    		defaultsTo : false
     	 },
-    	 d_create : {
+    	 businessDay : {
+    	 	type : 'string',
+    	 	size : 250
+    	 },
+    	 createdAt : {
     		type : 'datetime',
     		autoCreatedAt: true
 		 },	    	
-   		 d_update : {
+   		 updatedAt : {
     		type : 'datetime',
     		autoUpdatedAt: true
-    	 },
-    	 valid : {
-    		type : 'boolean'
-    	 } 
+    	 }
   	}
 };

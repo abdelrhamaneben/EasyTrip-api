@@ -14,15 +14,17 @@ angular.module('sbAdminApp')
       //templateUrl:'scripts/directives/sidebar/sidebar.html',
       restrict: 'E',
       replace: true,
-      scope: {
+      scope :{
+        isAdmin: '='
       },
-      controller:function($scope){
+      controller:function($scope, $rootScope){
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
+
+        $scope.isAdmin = $rootScope.isAdmin;
         
         $scope.check = function(x){
-          
           if(x==$scope.collapseVar)
             $scope.collapseVar = 0;
           else
@@ -30,12 +32,15 @@ angular.module('sbAdminApp')
         };
         
         $scope.multiCheck = function(y){
-          
           if(y==$scope.multiCollapseVar)
             $scope.multiCollapseVar = 0;
           else
             $scope.multiCollapseVar = y;
         };
+
+        $scope.isAdminf = function() {
+            return $rootScope.isAdmin;
+        }
       }
     }
   }]);

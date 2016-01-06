@@ -81,6 +81,13 @@ module.exports.routes = {
     action: 'auth'
   },*/
 
+    // STATS
+    // A déplacer dans la partie admin [ 'get /adminAPI/stats/':{ ]
+    'get /adminAPI/stats/':{
+      controller: 'apistat',
+      action: 'getStat'
+    },
+
   // CATEGRIE
   'get /adminAPI/category/':{
     controller: 'apicategory',

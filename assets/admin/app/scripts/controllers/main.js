@@ -7,6 +7,19 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope,$position,$http) {
+  .controller('MainCtrl', function($scope,$rootScope,$position,$http) {
+
+
+    // initialisation de variables globales
+    if ($rootScope.globalIsInit == 'undefined' || !$rootScope.globalIsInit || $rootScope.globalIsInit == false) {
+
+        console.log("initialisation de variables globales");
+
+
+        $rootScope.globalIsInit = true;
+    }
+
+
+
 
   });

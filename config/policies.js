@@ -22,7 +22,7 @@
 
      'user': {
        '*': 'sessionAuthAdmin',
-       'find': true
+       'find': false
      },
      'activity' : {
        'destroy' : 'sessionAuthAdmin'

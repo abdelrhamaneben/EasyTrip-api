@@ -3,12 +3,16 @@
         <ul class="nav in" id="side-menu">
             <sidebar-search></sidebar-search>
 
-            <li ui-sref-active="active">
-                <a ui-sref="admin.home"><i class="fa fa-dashboard fa-fw"></i> Activity (a)</a>
+            <li ui-sref-active="active" ng-if="isAdminf()">
+                <a ui-sref="admin.home"><i class="fa fa-dashboard fa-fw"></i>Tableau d'administration admin</a>
+            </li>
+
+            <li ui-sref-active="active" ng-if="!isAdminf()">
+                <a ui-sref="user.home"><i class="fa fa-dashboard fa-fw"></i>Tableau d'administration</a>
             </li>
 
 
-            <li ng-class="{active: collapseVar==2}">{{dropDown}}
+            <li ng-class="{active: collapseVar==2}" ng-if="isAdminf()">{{dropDown}}
                 <a href="" ng-click="check(2)"><i class="fa fa-wrench fa-fw"></i> Category<span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" collapse="collapseVar!=2">
@@ -22,7 +26,7 @@
                 <!-- /.nav-second-level -->
             </li>
 
-            <li ng-class="{active: collapseVar==1}">{{dropDown}}
+            <li ng-class="{active: collapseVar==1}" ng-if="isAdminf()">{{dropDown}}
                 <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Activites<span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" collapse="collapseVar!=1">
@@ -49,11 +53,6 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-
-            <li ui-sref-active="active">
-                <a ui-sref="user.home"><i class="fa fa-dashboard fa-fw"></i> Your activity (u)</a>
-            </li>
-
 
         </ul>
     </div>

@@ -60,8 +60,10 @@ module.exports = {
 
             req.session.userid = user.id_user;
             req.session.authenticated = true;
+            res.set('isAdmin', req.session.admin);
+
             console.log('authentified');
-            res.send(200);
+            res.ok('isAdmin');
 
             }
         });

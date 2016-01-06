@@ -23,6 +23,7 @@ angular.module('sbAdminApp')
         $scope.multiCollapseVar = 0;
 
         $scope.isAdmin = $rootScope.isAdmin;
+        $scope.user = $rootScope.user;
         
         $scope.check = function(x){
           if(x==$scope.collapseVar)

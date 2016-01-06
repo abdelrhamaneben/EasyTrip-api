@@ -11,7 +11,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "GET",
-            url: "http://localhost:1337/adminAPI/stats/",
+            url: ($rootScope.apiAddress+"stats/"),
             async : true,
             dataType : "json",
             contentType : "application/json"

@@ -72,14 +72,14 @@ module.exports.routes = {
   },
 
   // Tous les autres lien adminAPI nécessitent une authentification
-  /*'get /adminAPI/*': {
+  'get /adminAPI/*': {
     controller: 'admin',
     action: 'auth'
   },
   'post /adminAPI/*': {
     controller: 'admin',
     action: 'auth'
-  },*/
+  },
 
     // STATS
     // A déplacer dans la partie admin [ 'get /adminAPI/stats/':{ ]
@@ -90,12 +90,12 @@ module.exports.routes = {
 
   // CATEGRIE
   'get /adminAPI/category/':{
-    controller: 'apicategory',
-    action: 'getCategory'
+    controller: 'category',
+    action: 'getCategoryByUser'
   },
   'post /adminAPI/category':{
-    controller: 'apicategory',
-    action: 'postCategory'
+    controller: 'category',
+    action: 'getCategoryByUser'
   },
 
   'get /adminAPI/stat/':{

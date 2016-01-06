@@ -63,7 +63,7 @@ module.exports = {
             res.set('isAdmin', req.session.admin);
 
             console.log('authentified');
-            res.ok('isAdmin');
+            res.ok(user);
 
             }
         });

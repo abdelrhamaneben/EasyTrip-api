@@ -21,7 +21,9 @@ angular.module('sbAdminApp')
                 // this callback will be called asynchronously
                 // when the response is available
 
-                if (response.data == 'isAdmin') {
+                $rootScope.user = response.data;
+
+                if ($rootScope.user.role == 'admin') {
                     $rootScope.isAdmin = true;
                     console.log('user is admin');
                     $state.go('admin.home');

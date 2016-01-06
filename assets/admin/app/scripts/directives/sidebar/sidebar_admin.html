@@ -1,7 +1,19 @@
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav in" id="side-menu">
+
             <sidebar-search></sidebar-search>
+
+            <div style="padding-left:25px;">
+                <li>
+                    <p>{{name_first}} {{name_last}}</p>
+                    <p>{{user.email}}</></p>
+                    <p ng-if="user.role == 'admin'">is admin</p>
+                    <p ng-if="user.role != 'admin'">Business user</p>
+                    <p ng-if="user.subscribed == 'true'">Has suscription</p>
+                    <p ng-if="user.subscribed == 'false'">Has no suscription</p>
+                </li>
+            </div>
 
             <li ui-sref-active="active" ng-if="isAdminf()">
                 <a ui-sref="admin.home"><i class="fa fa-dashboard fa-fw"></i>Tableau d'administration admin</a>

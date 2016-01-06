@@ -29,7 +29,7 @@ module.exports = {
 
   },
 
-  postCategory: function(req, res) {
+  postCategoryByUser: function(req, res) {
     //TODO
     res.redirect('http://bing.com');
   }

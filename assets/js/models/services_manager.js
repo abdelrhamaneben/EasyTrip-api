@@ -28,8 +28,10 @@ var services_manager = {
                + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
                + "<p>" + item.description + "</p>"
                + "<p>Price : <b>" + item.price + " €</b></p>"
-        + "<p class='text-right'></p></div>"
-        + "</div>"
+               + "<p class='text-right'></p>"
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"showPopup\" >Review</button>"  
+               +"</div>"
+               + "</div>"
                + "</div>"
                + "</div>"));
         }else {
@@ -41,6 +43,7 @@ var services_manager = {
                 + "<p> Address : " + item.address + "</p>"
                 + "<p>Price : <b>" + item.price + " €</b></p>"
                + "<p class='text-right'></p>"
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"showPopup\" >Review</button>"   
                + "</div>"
                + "</div>"
                + "</div>"));

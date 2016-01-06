@@ -19,14 +19,14 @@ describe('CategoryController', function() {
   it('should be fail, disable add category', function (done) {
     request(sails.hooks.http.app)
     .post('/category')
-    .send({ name: 'test', description: 'test', activities : '1,3' })
+    .send({ name: 'test'})
     .expect(403, done);
   });
 
   it('should be fail, disable update category', function (done) {
     request(sails.hooks.http.app)
     .put('/category/1')
-    .send({ name: 'test', description: 'test', activities : '1,3' })
+    .send({ name: 'test' })
     .expect(403, done);
   });
 

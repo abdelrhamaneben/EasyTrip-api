@@ -35,7 +35,9 @@
      }
      ,
      'category' : {
-       'destroy' : 'sessionAuthAdmin'
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin',
+       'update' : 'sessionAuthAdmin'
      }
      ,
      'service' : {

@@ -21,10 +21,34 @@
     /*'*': 'isAuthenticated',*/
 
      'user': {
-       '*': 'sessionAuthAdmin',
-       'find': true
+       '*': 'sessionAuthAdmin'
      },
      'activity' : {
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin',
+       'update' : 'sessionAuthAdmin'
+     }
+     ,
+     'Address' : {
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin'
+     }
+     ,
+     'category' : {
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin',
+       'update' : 'sessionAuthAdmin'
+     }
+     ,
+     'service' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'servicePrice' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'subscription' : {
        'destroy' : 'sessionAuthAdmin'
      }
  }

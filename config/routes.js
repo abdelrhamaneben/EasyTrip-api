@@ -60,10 +60,10 @@ module.exports.routes = {
 
     // STATS
     // A déplacer dans la partie admin [ 'get /admin/stats/':{ ]
-    'get /admin/stats/':{
-      controller: 'stats',
-      action: 'getStats'
-    },
+  'get /admin/stats/':{
+    controller: 'stats',
+    action: 'getStats'
+  },
 
   // CATEGRIE
   'get /admin/category/':{

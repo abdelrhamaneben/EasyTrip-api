@@ -19,14 +19,14 @@ describe('ActivityController', function() {
     it('should be fail, disable add activity', function (done) {
       request(sails.hooks.http.app)
         .post('/activity')
-        .send({ name: 'test', description: 'test', categories : '1,3' })
+        .send({ name: 'test' })
       	.expect(403, done);
     });
 
     it('should be fail, disable update activity', function (done) {
       request(sails.hooks.http.app)
-        .put('/activity')
-        .send({ name: 'test', description: 'test', categories : '1,3' })
+        .put('/activity/1')
+        .send({ name: 'test' })
       	.expect(403, done);
     });
 

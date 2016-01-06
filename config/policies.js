@@ -24,11 +24,14 @@
        '*': 'sessionAuthAdmin'
      },
      'activity' : {
-       'destroy' : 'sessionAuthAdmin'
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin',
+       'update' : 'sessionAuthAdmin'
      }
      ,
      'Address' : {
-       'destroy' : 'sessionAuthAdmin'
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin'
      }
      ,
      'category' : {

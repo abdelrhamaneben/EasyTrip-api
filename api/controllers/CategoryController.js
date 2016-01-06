@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  getCategory: function(req, res) {
+  getCategoryByUser: function(req, res) {
 
     var id = req.session.userid;
 

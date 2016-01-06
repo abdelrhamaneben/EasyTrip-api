@@ -7,7 +7,7 @@
             <div style="padding-left:25px;">
                 <li>
                     <p>{{name_first}} {{name_last}}</p>
-                    <p>{{user.email}}</></p>
+                    <p>{{user.email}}</p>
                     <p ng-if="user.role == 'admin'">is admin</p>
                     <p ng-if="user.role != 'admin'">Business user</p>
                     <p ng-if="user.subscribed == 'true'">Has suscription</p>

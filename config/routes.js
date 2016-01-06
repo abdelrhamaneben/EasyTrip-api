@@ -59,25 +59,25 @@ module.exports.routes = {
   },
 
     // STATS
-    // A déplacer dans la partie admin [ 'get /adminAPI/stats/':{ ]
+    // A déplacer dans la partie admin [ 'get /admin/stats/':{ ]
     'get /admin/stats/':{
-      controller: 'apistat',
-      action: 'getStat'
+      controller: 'stats',
+      action: 'getStats'
     },
 
   // CATEGRIE
-  'get /adminAPI/category/':{
+  'get /admin/category/':{
     controller: 'category',
     action: 'getCategoryByUser'
   },
-  'post /adminAPI/category':{
+  'post /admin/category':{
     controller: 'category',
     action: 'getCategoryByUser'
   },
 
-  'get /adminAPI/stat/':{
+  'get /admin/stat/':{
     controller: 'api',
-    action: 'getstat'
+    action: 'getStats'
   }
 
   /***************************************************************************

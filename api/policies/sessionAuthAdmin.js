@@ -13,5 +13,5 @@ module.exports = function(req, res, next) {
     return next();
   }
   // not authentificated so redirect to login
-  return res.redirect('/');
+  return res.forbidden('require authentificated Admin');
 };

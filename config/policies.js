@@ -21,10 +21,29 @@
     /*'*': 'isAuthenticated',*/
 
      'user': {
-       '*': 'sessionAuthAdmin',
-       'find': true
+       '*': 'sessionAuthAdmin'
      },
      'activity' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'Address' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'category' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'service' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'servicePrice' : {
+       'destroy' : 'sessionAuthAdmin'
+     }
+     ,
+     'subscription' : {
        'destroy' : 'sessionAuthAdmin'
      }
  }

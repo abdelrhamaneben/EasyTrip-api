@@ -1,7 +1,7 @@
 
 module.exports = {
 
-  getStat: function(req, res) {
+  getStats: function(req, res) {
 
     console.log("Get stats")
 

@@ -7,7 +7,7 @@
 
 module.exports = {
 
-    getstat: function(req, res) {
+    getStats: function(req, res) {
 
         console.log('API get statistiques');
 

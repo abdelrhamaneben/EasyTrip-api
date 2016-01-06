@@ -9,7 +9,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "POST",
-            url: "http://localhost:1337/adminAPI/login",
+            url: "http://localhost:1337/admin/login",
             async : false,
             data : user,
             headers: {
@@ -47,7 +47,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
               method: "POST",
-              url: "http://localhost:1337/adminAPI/signup",
+              url: "http://localhost:1337/admin/signup",
               async : false,
               data: user,
               withCredentials: false,

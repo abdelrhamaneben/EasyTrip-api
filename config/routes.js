@@ -57,33 +57,10 @@ module.exports.routes = {
     controller: 'admin',
     action: 'index'
   },
-  // lien de connexion adminAPI
-  'post /adminAPI/login': {
-    controller: 'api',
-    action: 'login'
-  },
-  'get /adminAPI/logout': {
-    controller: 'api',
-    action: 'logout'
-  },
-  'post /adminAPI/singup': {
-    controller: 'api',
-    action: 'signup'
-  },
-
-  // Tous les autres lien adminAPI nécessitent une authentification
-  'get /adminAPI/*': {
-    controller: 'admin',
-    action: 'auth'
-  },
-  'post /adminAPI/*': {
-    controller: 'admin',
-    action: 'auth'
-  },
 
     // STATS
     // A déplacer dans la partie admin [ 'get /adminAPI/stats/':{ ]
-    'get /adminAPI/stats/':{
+    'get /admin/stats/':{
       controller: 'apistat',
       action: 'getStat'
     },

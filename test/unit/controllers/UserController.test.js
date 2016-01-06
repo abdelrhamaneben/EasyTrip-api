@@ -2,7 +2,7 @@ var request = require('supertest');
 
 describe('UserController', function() {
 
-  describe('Test ActivityController', function() {
+/*  describe('Test ActivityController', function() {
     it('should return List of user', function (done) {
       request(sails.hooks.http.app)
         .get('/user')
@@ -30,6 +30,6 @@ describe('UserController', function() {
       	.expect(403, done);
     });
 
-  });
+  });*/
 
 });

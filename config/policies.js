@@ -41,7 +41,9 @@
      }
      ,
      'service' : {
-       'destroy' : 'sessionAuthAdmin'
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthUser',
+       'update' : 'sessionAuthUser'
      }
      ,
      'servicePrice' : {

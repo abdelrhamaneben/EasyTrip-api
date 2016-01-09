@@ -30,7 +30,7 @@
     "sails-disk": "~0.10.0",
     "sails-memory": "^0.10.5",
     "sails-postgresql": "^0.10.16",
-    "should": "^7.1.0"
+    "should": "^8.0.2"
   },
   "scripts": {
     "debug": "node debug app.js",

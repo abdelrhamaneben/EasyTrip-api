@@ -1,6 +1,5 @@
 var Sails = require('sails');
 var Barrels = require('barrels');
-require('should');
 
 // Global before hook
 before(function (done) {

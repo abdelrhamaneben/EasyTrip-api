@@ -16,6 +16,7 @@
 						<th>Description</th>
 						<th>Categorie</th>
 						<th>Image</th>
+						<th>Action</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -29,6 +30,12 @@
 							</div>
 						</td>
 						<td> <img data-ng-src="{{activity.image}}" height="42" width="42"></td>
+						<td>
+							<button type="button" class="btn-xs btn-primary" 
+								ng-click="editActivity(activity.id_activity)">Éditer</button>
+							<button type="button" class="btn-xs btn-danger" 
+								ng-click="deleteActivity(activity.id_activity)">Supprimer</button>
+						</td>
 					</tr>
 					</tbody>
 				</table>

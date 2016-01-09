@@ -148,7 +148,8 @@ $stateProvider
     })
     .state('admin.categoryAdd',{
         templateUrl:'views/admin/category_add.html',
-        url:'/admin/category/add'
+        url:'/admin/category/add',
+        controller: 'categoryCtrl'
     })
 
     .state('admin.activityView',{
@@ -158,7 +159,8 @@ $stateProvider
     })
     .state('admin.activityAdd',{
         templateUrl:'views/admin/activity_add.html',
-        url:'/admin/activity/add'
+        url:'/admin/activity/add',
+        controller: 'activityCtrl'
     })
     .state('admin.activityEdit',{
         templateUrl:'views/admin/activity_add.html',

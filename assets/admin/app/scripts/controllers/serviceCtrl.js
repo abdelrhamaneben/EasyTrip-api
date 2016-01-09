@@ -18,4 +18,15 @@ angular.module('sbAdminApp')
           });
       };
 
+      $scope.deleteService = function(id_service){
+          var httpRequest = $http({
+            method: "DELETE",
+            url: "http://localhost:1337/service/" + id_service,
+            async : false
+          }).success(function() {
+            //$route.reload();
+            $scope.loadServices();
+          });
+      };
+
 });

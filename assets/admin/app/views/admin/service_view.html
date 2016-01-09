@@ -22,6 +22,7 @@
 						<th>Longitude</th>
 						<th>Nom de l'entreprise</th>
 						<th>Premium</th>
+						<th>Action</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -48,6 +49,12 @@
 						</td>
 						<td ng-if="!service.premium">
 							Non
+						</td>
+						<td>
+							<button type="button" class="btn-xs btn-primary" 
+								ng-click="editService(service.id_service)">Éditer</button>
+							<button type="button" class="btn-xs btn-danger" 
+								ng-click="deleteService(service.id_service)">Supprimer</button>
 						</td>
 					</tr>
 					</tbody>

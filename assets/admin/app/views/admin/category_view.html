@@ -15,6 +15,7 @@
 						<th>Nom</th>
 						<th>Description</th>
 						<th>Image</th>
+						<th>Action</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -23,6 +24,12 @@
 						<td>{{category.name}}</td>
 						<td>{{category.description}}</td>
 						<td> <img data-ng-src="{{category.image}}" height="42" width="42"></td>
+						<td>
+							<button type="button" class="btn-xs btn-primary" 
+								ng-click="editCategory(category.id_category)">Éditer</button>
+							<button type="button" class="btn-xs btn-danger" 
+								ng-click="deleteCategory(category.id_category)">Supprimer</button>
+						</td>
 					</tr>
 					</tbody>
 				</table>

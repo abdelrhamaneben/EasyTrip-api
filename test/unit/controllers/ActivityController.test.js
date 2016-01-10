@@ -1,5 +1,4 @@
 var request = require('supertest');
-var request = require('supertest');
 
 describe('ActivityController', function() {
 

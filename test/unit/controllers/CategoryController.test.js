@@ -1,4 +1,3 @@
-
 var request = require('supertest');
 
 describe('CategoryController', function() {

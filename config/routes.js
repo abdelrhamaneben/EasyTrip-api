@@ -41,6 +41,10 @@ module.exports.routes = {
     controller: 'web',
     action: 'result'
   },
+  '/search': {
+    controller: 'service',
+    action: 'search'
+  },
   '/feature': {
     controller: 'web',
     action: 'feature'

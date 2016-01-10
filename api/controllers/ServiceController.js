@@ -31,22 +31,20 @@ module.exports = {
   },
   // Search Service with geo interval and Activities
   search: function(req, res) {
-
-    if (!req.param('activities') ||
-        typeof req.param('activities') !== 'object') {
-      res.badRequest('Need list of activities Params !!');
+    if (!req.param('activities') || typeof req.param('activities') !== 'object') {
+      return res.badRequest('Need list of activities Params !!');
     }
     if (!req.param('latup') || typeof req.param('latup') !== 'number') {
-      res.badRequest('Need latup Params !!');
+      return res.badRequest('Need latup Params !!');
     }
     if (!req.param('latdown') || typeof req.param('latdown') !== 'number') {
-      res.badRequest('Need latdown Params !!');
+      return res.badRequest('Need latdown Params !!');
     }
     if (!req.param('longright') || typeof req.param('longright') !== 'number') {
-      res.badRequest('Need longright Params !!');
+      return res.badRequest('Need longright Params !!');
     }
     if (!req.param('longleft') || typeof req.param('longleft') !== 'number') {
-      res.badRequest('Need longleft Params !!');
+      return res.badRequest('Need longleft Params !!');
     }
     /*
     		Service.find({
@@ -59,11 +57,11 @@ module.exports = {
     			if(err) res.serverError(err);
     		 	res.json(found);
     		});*/
-    Service.find().exec(function findCB(err, found) {
+    Service.find().exec(function finding(err, found) {
       if (err) {
-        res.serverError(err);
+        return res.serverError(err);
       }
-      res.json(found);
+      return res.json(found);
     });
   }
 };

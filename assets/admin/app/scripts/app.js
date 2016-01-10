@@ -174,7 +174,9 @@ $stateProvider
     })
     .state('admin.serviceAdd',{
         templateUrl:'views/admin/service_add.html',
-        url:'/admin/service/edit'
+        url:'/admin/service/add',
+        controller: 'serviceCtrl'
+
     })
     .state('admin.serviceEdit',{
         templateUrl:'views/admin/service_add.html',

@@ -23,7 +23,7 @@ describe('Activity model', function() {
   });
 
   describe('create', function() {
-    it ('should create a activity', function(done) {
+    it ('should create an activity', function(done) {
       Activity.create({name: "DEADBEEF"}).exec(function(err, activity) {
         should.not.exist(err);
         should.exist(activity);
@@ -37,7 +37,7 @@ describe('Activity model', function() {
       });
     });
 
-    it ('should not create a activity without parameters', function(done) {
+    it ('should not create an activity without parameters', function(done) {
       Activity.create().exec(function(err, activity) {
         should.exist(err);
         should.not.exist(activity);
@@ -46,7 +46,7 @@ describe('Activity model', function() {
       });
     });
 
-    it ('should not create a activity with an id', function(done) {
+    it ('should not create an activity with an id', function(done) {
       Activity.create({id_activity: 1, name: 'TEST'}).exec(function(err, activity) {
         should.not.exist(err);
         should.exist(activity);
@@ -62,7 +62,7 @@ describe('Activity model', function() {
       });
     });
 
-    it ('should not create a activity without name', function(done) {
+    it ('should not create an activity without name', function(done) {
       Activity.create().exec(function(err, activity) {
         should.exist(err);
         should.not.exist(activity);
@@ -73,7 +73,7 @@ describe('Activity model', function() {
   });
 
   describe('update', function() {
-    it ('should update a activity', function(done) {
+    it ('should update an activity', function(done) {
       Activity.create({name: "BEET"}).exec(function(err, activity) {
         should.not.exist(err);
         should.exist(activity);
@@ -104,7 +104,7 @@ describe('Activity model', function() {
   });
 
   describe('delete', function() {
-    it ('should delete a activity', function(done) {
+    it ('should delete an activity', function(done) {
       Activity.create({name: "BED"}).exec(function(err, activity) {
         should.not.exist(err);
         should.exist(activity);

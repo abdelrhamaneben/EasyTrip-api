@@ -28,11 +28,16 @@ var services_manager = {
                + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
                + "<p>" + item.description + "</p>"
                + "<p>Price : <b>" + item.price + " €</b></p>"
-        + "<p class='text-right'></p></div>"
+/*Social Network sharing buttons*/
+		+ "<p><a style=\"float: right; width: 15%; height: 15%;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
+		+ "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
+		+ "src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
++"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://fil.univ-lille1.fr/\">Tweet</a></p>"
+        + "</div>"
         + "</div>"
                + "</div>"
                + "</div>"));
-        }else {
+       }else {
             $('#c-part').append($("<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_service + "\");' id=\"service_" + item.id_service + "\">"
                + " <div class=\"thumbnail\">"
                + "<div class=\"caption\">"
@@ -40,13 +45,19 @@ var services_manager = {
                + "<p>" + item.description + "</p>"
                 + "<p> Address : " + item.address + "</p>"
                 + "<p>Price : <b>" + item.price + " €</b></p>"
-               + "<p class='text-right'></p>"
+/*Social Network sharing buttons*/
+		+ "<p> <a style=\"float: right; width: 8%; height: 8%;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
+		+ "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
+		+ "src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
++"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://fil.univ-lille1.fr/\">Tweet</a> </p>"
+
                + "</div>"
                + "</div>"
                + "</div>"));
         }
      }
         });
+       twttr.widgets.load();
  },
  click: function (id_service) {
     for(var i = 0;i < this.data.length;i++) {

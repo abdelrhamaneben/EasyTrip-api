@@ -29,6 +29,33 @@ describe('UserController', function() {
       	.expect(403, done);
     });
 
+     it('Bad Request on login whitout params', function (done) {
+      request(sails.hooks.http.app)
+        .get('/user/login')
+        .send({ })
+        .expect(400, done);
+    });
+    it('Bad Request on login whitout email param', function (done) {
+      request(sails.hooks.http.app)
+        .post('/user/login')
+        .send({ password : 'blablabla'})
+        .expect(400, done);
+    });
+
+     it('Bad Request on login whitout password param', function (done) {
+      request(sails.hooks.http.app)
+        .post('/user/login')
+        .send({ email : 'abdelrhamane@hotmail.fr'})
+        .expect(400, done);
+    });
+
+     it('Bad Request on invalid email', function (done) {
+      request(sails.hooks.http.app)
+        .post('/user/login')
+        .send({ email : 'bad email', password : 'kscdj'})
+        .expect(400, done);
+    });
+
   });
 
 });

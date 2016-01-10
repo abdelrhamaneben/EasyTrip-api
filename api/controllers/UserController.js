@@ -8,21 +8,21 @@
 module.exports = {
 
   login: function(req, res) {
-      console.log('API login controller')
-
-
       if (!req.param('email')) {
         return res.badRequest('Need a username');
       }
       if (!req.param('password')) {
         return res.badRequest('Need a password');
       }
+      var validator = require('validator');
 
       var user;
       var mail = req.param('email');
-      var pass = req.param('password')
-      console.log('login - mail: ' + mail);
-      console.log('login - pass: ' + pass);
+      var pass = req.param('password');
+
+      if(!validator.isEmail(mail)) {
+         return res.badRequest('Invalid Email');
+      }
 
       User.findOne({email:mail})
           .exec(function (err,user) {

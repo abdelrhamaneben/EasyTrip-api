@@ -51,11 +51,12 @@ describe('Category model', function() {
         should.not.exist(err);
         should.exist(category);
 
+        // findOne because category exist even if category already exist. Need to verify if original is not modified.
         Category.findOne({id_category: 1}).exec(function(err, category) {
           should.not.exist(err);
           should.exist(category);
 
-          should(category).have.property('name').not.equal('TEST');
+          should(category).have.property('name').not.eql('TEST');
 
           done();
         });

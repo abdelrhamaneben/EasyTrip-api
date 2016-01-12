@@ -13,8 +13,7 @@ module.exports = {
     id_res: {
       type: 'integer',
       primaryKey: true,
-      autoIncrement: true,
-      required: true
+      autoIncrement: true
     },
     customer: {
       model: 'user'

@@ -12,7 +12,7 @@ module.exports = {
     if (!req.param('category')) {
       return res.badRequest('Need location Params !!');
     }
-    var geocoder = require('geocoder');
+    /*var geocoder = require('geocoder');
 
     geocoder.geocode(req.param('location'), function(err, data) {
       if (err) {
@@ -24,7 +24,7 @@ module.exports = {
       var latdown = req.param('latdown',originLocation.lat - 1);
       var longright = req.param('longright',originLocation.lng + 1);
       var longleft = req.param('longleft',originLocation.lng - 1);
-
+      */
       return res.view('result',{
         'latup':  latup,
         'latdown': latdown,
@@ -33,7 +33,7 @@ module.exports = {
         'category': req.param('category')
       });
 
-    });
+    //});
   },
   feature: function(req, res) {
     if (!req.param('service')) {

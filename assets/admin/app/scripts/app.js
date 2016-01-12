@@ -249,6 +249,7 @@ $stateProvider
                   name:'sbAdminApp',
                   files:[
                     'scripts/controllers/main.js',
+                    'scripts/controllers/dashboardCtrl.js',
                     'scripts/directives/timeline/timeline.js',
                     'scripts/directives/notifications/notifications.js',
                     'scripts/directives/chat/chat.js',

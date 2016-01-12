@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="dashboardCtrl" ng-init="loadStatsUser()">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Mon compte</h1>
@@ -8,37 +8,76 @@
     <!-- /.row -->
     <div class="row">
         <h1>
-            <small>Activites des 3 derniers jours</small>
+            <small>Activites ces 7 derniers jours</small>
         </h1>
     </div>
+
     <div class="row">
 
-        <stats number="2" comments="# services" colour="primary" type="support"></stats>
-        <stats number="17" comments="# recherches" colour="green" type="user"></stats>
-        <stats number="1" comments="# promotions" colour="yellow" type="shopping-cart"></stats>
-        <stats number="9" comments="# recent activity" colour="red" type="user"></stats>
+        <stats number="{{stats.nbvue7d}}" comments="# nv vues" colour="primary" type="user"></stats>
+        <stats number="{{stats.nbcmt7d}}" comments="# nv commenntaires" colour="primary" type="user"></stats>
+        <stats number="{{stats.nveval7d}}" comments="# nv eval" colour="green" type="support"></stats>
+        <stats number="{{stats.eval7d}}" comments="# dernière eval" colour="red" type="shopping-cart"></stats>
 
     </div>
-    
+    <div class="row">
+        <h1>
+            <small>Progression ces 15 derniers jours</small>
+        </h1>
+
+        <stats number="{{ ( 100 / stats.nbvue15d * (stats.nbnbvue15d - stats.nbvue90d/6)) | number : 2 }}" comments="% nv vue" colour="yellow" type="user"></stats>
+        <stats number="{{ ( 100 / stats.nbcmt15d * (stats.nbcmt15d - stats.nbcmt90d/6)) | number : 2 }}" comments="% nv commentaire" colour="yellow" type="user"></stats>
+        <stats number="{{ ( 100 / stats.nveval15d * (stats.nveval15d- stats.nveval90d/6)) | number : 2 }}" comments="% nv evaluation" colour="yellow" type="user"></stats>
+        <stats number="{{ (stats.eval15d - ((stats.eval15d + stats.eval30d + stats.eval45d + stats.eval60d + stats.eval75d + stats.eval90d)/6)) | number : 2 }} " comments="evol moyenne des evaluations" colour="yellow" type="shopping-cart"></stats>
+
+    </div>
+
     <!-- /.panel -->
     <div class="row">
+
         <div class="col-lg-8" id="line-chart" ng-controller="ChartCtrl">
+            <h1>
+                <small>Activités sur 90 jours</small>
+            </h1>
+
             <div class="panel panel-default">
-                <div class="panel-heading">Activite du site</div>
+                <div class="panel-heading">Vues et Commentaires utilisateur</div>
                 <div class="panel-body">
-                    <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
-                            click="line.onClick" series="line.series"></canvas>
+                    <canvas id="lineVisite" class="chart chart-line chart-xl" data="lineVisite.data" labels="lineVisite.labels" legend="true"
+                            click="lineVisite.onClick" series="lineVisite.series"></canvas>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Nombre d'évaluations</div>
+                <div class="panel-body">
+                    <canvas id="lineInscription" class="chart chart-line chart-xl" data="lineInscription.data" labels="lineInscription.labels" legend="true"
+                            click="lineInscription.onClick" series="lineInscription.series"></canvas>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Evaluation moyenne</div>
+                <div class="panel-body">
+                    <canvas id="lineService" class="chart chart-line chart-xl" data="lineService.data" labels="lineService.labels" legend="true"
+                            click="lineService.onClick" series="lineService.series"></canvas>
+                </div>
+            </div>
+
         </div>
+
+
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
+            <h1>
+                <small>Dernières actualités</small>
+            </h1>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    <i class="fa fa-bell fa-fw"></i> Notifications
                 </div>
                 <!-- /.panel-heading -->
-                <notifications></notifications> 
+                <notifications></notifications>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->

@@ -106,6 +106,88 @@ angular.module('sbAdminApp')
 
         };
 
-      //};
 
+      $scope.loadStatsUser = function() {
+
+          var httpRequest = $http({
+            method: "GET",
+            url: ($rootScope.apiAddress+"stats/"),
+            async : true,
+            dataType : "json",
+            contentType : "application/json"
+          }).success(function(datar, status) {
+            console.log("récup user stat ok");
+            $scope.stats = datar;
+
+
+
+            $scope.lineVisite = {
+              labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
+              series: [ '# commentaires' , '# vues'],
+              data: [
+                  [
+                       (datar.nbcmt90d-datar.nbcmt75d),
+                       (datar.nbcmt75d-datar.nbcmt60d),
+                       (datar.nbcmt60d-datar.nbcmt45d),
+                       (datar.nbcmt45d-datar.nbcmt30d),
+                       (datar.nbcmt30d-datar.nbcmt15d),
+                       (datar.nbcmt15d-datar.nbcmt7d),
+                       datar.nbcmt7d
+                   ],[
+                      (datar.nbvue90d-datar.nbvue75d),
+                      (datar.nbvue75d-datar.nbvue60d),
+                      (datar.nbvue60d-datar.nbvue45d),
+                      (datar.nbvue45d-datar.nbvue30d),
+                      (datar.nbvue30d-datar.nbvue15d),
+                      (datar.nbvue15d-datar.nbvue7d),
+                      datar.nbvue7d
+                  ]
+              ],
+              onClick: function (points, evt) {
+                console.log(points, evt);
+              }
+            };
+
+            $scope.lineInscription = {
+              labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
+              series: [ '# evaluations'],
+              data: [
+                  [
+                      (datar.nveval90d-datar.nveval75d),
+                      (datar.nveval75d-datar.nveval60d),
+                      (datar.nveval60d-datar.nveval45d),
+                      (datar.nveval45d-datar.nveval30d),
+                      (datar.nveval30d-datar.nveval15d),
+                      (datar.nveval15d-datar.nveval7d),
+                      datar.nveval7d
+                  ]
+              ],
+              onClick: function (points, evt) {
+                console.log(points, evt);
+              }
+            };
+
+
+
+          $scope.lineService = {
+              labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
+              series: [ 'Evaluation moyenne' ],
+              data: [
+                  [
+                      datar.eval90d,
+                      datar.eval75d,
+                      datar.eval60d,
+                      datar.eval45d,
+                      datar.eval30d,
+                      datar.eval15d,
+                      datar.eval7d
+                  ]
+              ],
+              onClick: function (points, evt) {
+                console.log(points, evt);
+              }
+            };
+
+          });
+      };
 });

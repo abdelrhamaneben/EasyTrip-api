@@ -32,8 +32,8 @@ module.exports = {
            // urole : admin
 
            // TODO tester la légitimité du log !
-           //req.session.userid = ...;
-           //req.session.authenticated = true;
+           // req.session.userid = ...;
+           // req.session.authenticated = true;
            console.log('user not connected > please login');
            res.badRequest('You sneeky lizzard, you must log in to use the api !');
       }

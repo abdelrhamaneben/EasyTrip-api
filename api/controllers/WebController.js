@@ -25,14 +25,18 @@ module.exports = {
       var longright = req.param('longright',originLocation.lng + 1);
       var longleft = req.param('longleft',originLocation.lng - 1);
       */
-      return res.view('result',{
-        'latup':  latup,
-        'latdown': latdown,
-        'longright': longright,
-        'longleft': longleft,
-        'category': req.param('category')
+      Service.find().exec(function finding(err, found) {
+        if (err) {
+          return res.serverError(err);
+        }
+       return res.view('result',{
+        'activities' : [],
+        'category': req.param('category'),
+        'services' : found,
+        'latitude' : 48.856614,
+        'longitude' : 2.3522219
+        });
       });
-
     //});
   },
   feature: function(req, res) {

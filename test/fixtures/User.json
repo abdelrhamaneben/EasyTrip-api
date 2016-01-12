@@ -1,0 +1,26 @@
+[
+  {
+    "name_first": "Slimane",
+    "name_last": " El Ouadi",
+    "email": "elouadi.slimane@yahoo.fr",
+    "phone": "0652195295",
+    "address": 1,
+    "role": "admin",
+    "password": "pass",
+    "subscription": 1,
+    "subscribed": false,
+    "id_user": 1
+  },
+  {
+    "email": "jvdurieu@live.be",
+    "name_first": "jv",
+    "name_last": "d",
+    "phone": "003456789",
+    "role": "business",
+    "password": "pass",
+    "subscription": 2,
+    "address": 2,
+    "subscribed": false,
+    "id_user": 2
+  }
+]

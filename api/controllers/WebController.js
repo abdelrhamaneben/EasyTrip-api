@@ -2,14 +2,15 @@
 module.exports = {
 
   index: function(req, res) {
-    res.view('index');
+    return res.view('index');
   },
   result: function(req, res) {
+
     if (!req.param('location')) {
-      res.badRequest('Need location Params !!');
+      return res.badRequest('Need location Params !!');
     }
     if (!req.param('category')) {
-      res.badRequest('Need location Params !!');
+      return res.badRequest('Need location Params !!');
     }
     var geocoder = require('geocoder');
 
@@ -24,7 +25,7 @@ module.exports = {
       var longright = req.param('longright',originLocation.lng + 1);
       var longleft = req.param('longleft',originLocation.lng - 1);
 
-      res.view('result',{
+      return res.view('result',{
         'latup':  latup,
         'latdown': latdown,
         'longright': longright,
@@ -35,6 +36,9 @@ module.exports = {
     });
   },
   feature: function(req, res) {
-    res.view('features');
+    if (!req.param('service')) {
+      return res.badRequest('Need ServiceId Params !!');
+    }
+    return res.view('features');
   }
 };

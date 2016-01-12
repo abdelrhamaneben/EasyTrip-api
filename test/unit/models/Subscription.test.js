@@ -1,28 +1,28 @@
 var should = require('should');
 
-describe('Category model', function() {
+describe('Subscription model', function() {
   describe('misc', function() {
     it ('should not be empty', function(done) {
-      Category.find().exec(function(err, categories) {
-        categories.length.should.not.be.eql(0);
+      Subscription.find().exec(function(err, subscriptions) {
+        subscriptions.length.should.not.be.eql(0);
 
         done();
       });
     });
 
-    it ('should contain a specific category', function(done) {
-      Category.findOne({name: 'Sport'}).exec(function(err, category) {
-        should(category).exist;
+    it ('should contain a specific subscription', function(done) {
+      Subscription.findOne({id_subscription: 1}).exec(function(err, subscription) {
+        should(subscription).exist;
         should(err).not.exist;
 
-        should(category).have.property('description').eql('Pour les amateurs de sport ');
+        should(subscription).have.property('d_from').eql('2016-01-01T10:25:06.184Z');
 
         done();
       });
     });
   });
 
-  describe('create', function() {
+  /*describe('create', function() {
     it ('should create a category', function(done) {
       Category.create({name: "DEADBEEF"}).exec(function(err, category) {
         should.not.exist(err);
@@ -127,5 +127,5 @@ describe('Category model', function() {
         });
       });
     });
-  });
+  });*/
 });

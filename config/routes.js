@@ -41,6 +41,10 @@ module.exports.routes = {
     controller: 'web',
     action: 'result'
   },
+  '/search': {
+    controller: 'service',
+    action: 'search'
+  },
   '/feature': {
     controller: 'web',
     action: 'feature'
@@ -57,50 +61,27 @@ module.exports.routes = {
     controller: 'admin',
     action: 'index'
   },
-  // lien de connexion adminAPI
-  'post /adminAPI/login': {
-    controller: 'api',
-    action: 'login'
-  },
-  'get /adminAPI/logout': {
-    controller: 'api',
-    action: 'logout'
-  },
-  'post /adminAPI/singup': {
-    controller: 'api',
-    action: 'signup'
-  },
-
-  // Tous les autres lien adminAPI nécessitent une authentification
-  'get /adminAPI/*': {
-    controller: 'admin',
-    action: 'auth'
-  },
-  'post /adminAPI/*': {
-    controller: 'admin',
-    action: 'auth'
-  },
 
     // STATS
-    // A déplacer dans la partie admin [ 'get /adminAPI/stats/':{ ]
-    'get /adminAPI/stats/':{
-      controller: 'apistat',
-      action: 'getStat'
-    },
+    // A déplacer dans la partie admin [ 'get /admin/stats/':{ ]
+  'get /admin/stats/':{
+    controller: 'stats',
+    action: 'getStats'
+  },
 
   // CATEGRIE
-  'get /adminAPI/category/':{
+  'get /admin/category/':{
     controller: 'category',
     action: 'getCategoryByUser'
   },
-  'post /adminAPI/category':{
+  'post /admin/category':{
     controller: 'category',
     action: 'getCategoryByUser'
   },
 
-  'get /adminAPI/stat/':{
+  'get /admin/stat/':{
     controller: 'api',
-    action: 'getstat'
+    action: 'getStats'
   }
 
   /***************************************************************************

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="serviceCtrl" ng-init="loadActivities()">
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">Service</h1>
@@ -44,12 +44,10 @@
 						<!-- LISTE DEROULANTE -->
 						<div class="form-group">
 							<label for="service_activity">A quel activite le service appartient-il ? *</label>
-							<select class="form-control" id="service_activity">
-								<!--<option>Sport</option>
-								<option>Culture</option>
-								<option>Detente</option>
-								<option>Voyage</option>
-								<option>Fête</option>-->
+							<select id="service_activity">
+								<option ng-repeat="activity in activities" value="{{activity.id_activity}}">
+									{{activity.name}}
+								</option>
 							</select>
 						</div>
 
@@ -102,31 +100,6 @@
 						<div class="form-group">
 							<label>Journees ouvertes</label>
 							<p class="help-block">Exemple : 8h30-11h30 13h00-18h00</p>
-
-							<!--<select multiple class="form-control" id="service_days" 
-							onChange="console.log( service_days.value );">
-								<option>lundi matin</option>
-								<option>lundi apres-midi</option>
-								<option>lundi soir</option>
-								<option>mardi matin</option>
-								<option>mardi apres-midi</option>
-								<option>mardi soir</option>
-								<option>mercredi matin</option>
-								<option>mercredi apres-midi</option>
-								<option>mercredi soir</option>
-								<option>jeudi matin</option>
-								<option>jeudi apres-midi</option>
-								<option>jeudi soir</option>
-								<option>vendredi matin</option>
-								<option>vendredi apres-midi</option>
-								<option>vendredi soir</option>
-								<option>samedi matin</option>
-								<option>samedi apres-midi</option>
-								<option>samedi soir</option>
-								<option>dimanche matin</option>
-								<option>dimanche apres-midi</option>
-								<option>dimanche soir</option>
-							</select>-->
 							<table class="table table-striped table-bordered table-hover" id="table_opening_days">
 								<thead>
 									<tr>
@@ -173,7 +146,7 @@
 						<p class="help-block">Les champs marques d'un * sont obligatoire</p>
 
 						<!-- SUBMIT BUTTON -->
-						<button type="submit" id="submit" class="btn btn-default">Ajouter un service</button>
+						<button type="submit" id="submit" class="btn btn-default" ng-click="addService()">Ajouter un service</button>
 
 						<!-- RESET BUTTON -->
 						<button type="reset" class="btn btn-default">Annuler</button>
@@ -185,179 +158,3 @@
 			</div>
 	<!-- /.row -->
 </div>
-
-<script type="text/javascript">
-
-	service_activity = document.getElementById('service_activity');
-
-	$.ajax({
-	      method: "GET",
-	      url: "http://localhost:1337/activity",
-	      async : false,
-	      dataType : "json",
-	      contentType : "application/json",
-	      success : function (data) {
-	        for(var i= 0; i < data.length; i++){
-	            service_activity.options[service_activity.options.length] = new Option(data[i].name, data[i].id_activity);
-	        }
-	      },
-	      error : function () {
-	        console.log("failed");
-	      }
-	});
-
-	var service_image_blob = "";
-	var fileInput = document.querySelector('#service_image');
-	fileInput.addEventListener('change', function() {
-	    var reader = new FileReader();
-	    reader.addEventListener('load', function() {
-	        //console.log('Contenu du fichier "' + fileInput.files[0].name + '" :\n\n' + reader.result);
-			service_image_blob = reader.result;
-	    }, false);
-	    reader.readAsDataURL(fileInput.files[0]);
-	}, false);
-
-
-    $("#submit").click(function(e) {
-    	// this string will represents all businessDay 
-    	var businessDay = "";
-
-    	var monday_opening_hours = document.getElementById('monday_opening_hours');
-    	var tuesday_opening_hours = document.getElementById('tuesday_opening_hours');
-    	var wednesday_opening_hours = document.getElementById('wednesday_opening_hours');
-    	var thursday_opening_hours = document.getElementById('thursday_opening_hours');
-    	var friday_opening_hours = document.getElementById('friday_opening_hours');
-    	var saturday_opening_hours = document.getElementById('saturday_opening_hours');
-    	var sunday_opening_hours = document.getElementById('sunday_opening_hours');
-
-
-		var service_geolati = document.getElementById('service_geolati');
-		var service_geolong = document.getElementById('service_geolong');
-		var service_name = document.getElementById('service_name');
-		var service_description = document.getElementById('service_description');
-		var service_image = document.getElementById('service_image');
-		var service_activity = document.getElementById('service_activity');
-		var service_link = document.getElementById('service_link');
-
-
-    	if(monday_opening_hours.value.length != 0){
-    		businessDay += "Lundi "+ monday_opening_hours.value + ";";
-    	}
-    	if(tuesday_opening_hours.value.length != 0){
-    		businessDay += "Mardi "+ tuesday_opening_hours.value + ";";
-    	}
-    	if(wednesday_opening_hours.value.length != 0){
-    		businessDay += "Mercredi "+ wednesday_opening_hours.value + ";";
-    	}
-    	if(thursday_opening_hours.value.length != 0){
-    		businessDay += "Jeudi "+ thursday_opening_hours.value + ";";
-    	}
-    	if(friday_opening_hours.value.length != 0){
-    		businessDay += "Vendredi "+ friday_opening_hours.value + ";";
-    	}
-    	if(saturday_opening_hours.value.length != 0){
-    		businessDay += "Samedi "+ saturday_opening_hours.value + ";";
-    	}
-    	if(sunday_opening_hours.value.length != 0){
-    		businessDay += "Dimanche "+ sunday_opening_hours.value + ";";
-    	}
-
-
-		console.log(businessDay);
-    	console.log(service_geolati.value);
-		console.log(service_geolong.value);
-		console.log(service_name.value);
-		console.log(service_description.value);
-		console.log(service_image_blob);
-		console.log(service_activity.value);
-		console.log(service_link.value);
-
-    	// ajout de l'adresse
-    	var address_str_nbr = document.getElementById('address_str_nbr');
-		var address_str_name = document.getElementById('address_str_name');
-		var address_code_zip = document.getElementById('address_code_zip');
-		var address_city = document.getElementById('address_city');
-		var address_country = document.getElementById('address_country');
-
-		console.log(address_str_nbr.value);
-		console.log(address_str_name.value);
-		console.log(address_code_zip.value);
-		console.log(address_city.value);
-		console.log(address_country.value);
-
-        var data = '{'
-          +'"str_nbr" : "' + address_str_nbr.value + '",'
-          +'"str_name" : "' + address_str_name.value + '",'
-          +'"code_zip" : "' + address_code_zip.value + '",'
-          +'"city" : "' + address_city.value + '",'
-          +'"country" : "' + address_country.value + '"'
-        +'}';
-
-		var service_d_to = document.getElementById('service_d_to');
-		var service_d_from = document.getElementById('service_d_from');
-		var service_nb_person_min = document.getElementById('service_nb_person_min');
-		var service_nb_person_max = document.getElementById('service_nb_person_max');
-		var service_price_pp = document.getElementById('service_price_pp');
-
-		var tmp = service_d_from.value.split("/");
-		service_d_from.value = new Date(tmp[2], tmp[1] - 1, tmp[0]);
-
-		tmp = service_d_to.value.split("/");
-		service_d_to.value = new Date(tmp[2], tmp[1] - 1, tmp[0]);
-
-        console.log(data);
-        $.ajax({
-              method : "POST",
-              url : "http://localhost:1337/address",
-              data : data,
-              dataType : "json",
-              contentType : "application/json",
-              success : function(response){
-              	  console.log(response);
-              	  var id_address = response.id_address;
-				  var data = '{'
-			          +'"creator" : 2,'
-			          +'"activities" : "' + service_activity.value + '",'
-			          +'"geolati" : "' + service_geolati.value + '",'
-			          +'"geolong" : "' + service_geolong.value + '",'
-			          +'"address" : ' + id_address + ','
-			          +'"name" : "' + service_name.value + '",'
-			          +'"description" : "' + service_description.value + '",'
-			          +'"image" : "' + service_image_blob + '",'
-			          +'"link" : "' + service_link.value + '"'
-			        +'}';
-
-              	  $.ajax({
-		              method : "POST",
-		              url : "http://localhost:1337/service",
-		              data : data,
-		              dataType : "json",
-		              contentType : "application/json",
-		              success : function(response){
-		              	  console.log(response);            	  
-		              	  var id_service = response.id_service;
-						  var data = '{'
-						  	  +'"service" : "' + id_service + '",'
-					          +'"d_from" : "' + service_d_from.value + '",'
-					          +'"d_to" : "' + service_d_to.value + '",'
-					          +'"nb_person_min" : "' + service_nb_person_min.value + '",'
-					          +'"nb_person_max" : "' + service_nb_person_max.value + '",'
-					          +'"price_per_person" : ' + service_price_pp.value + ','
-					          +'"businessDay" : "' + businessDay + '"'
-					        +'}';
-		              	  $.ajax({
-				              method : "POST",
-				              url : "http://localhost:1337/serviceprice",
-				              data : data,
-				              dataType : "json",
-				              contentType : "application/json"
-				          });
-		              }
-		          });
-            }
-        });
-
-    });
-
-
-</script>

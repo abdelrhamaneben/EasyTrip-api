@@ -13,7 +13,7 @@
     
     <!--    Jquery-->
     <link href="styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet"> 
-
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,6 +22,7 @@
     <![endif]-->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+   <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </head>
 <body onload="initialize()">
      
@@ -32,9 +33,7 @@
             <h1 class="text-center">EasyTrip</h1>
         </div>
     </header>
-    <!-- APP  -->
-
-    
+    <!-- APP  -->    
     <div class="col-md-12" id="app">
        
         <!-- Right part (Filter / Activities bar)  -->
@@ -45,6 +44,43 @@
             <button type="button" class="btn btn-default" id="showFilter" >Show Filters </button>
             <button type="button" class="btn btn-default" id="hideFilter" >Hide Filters </button>
             <div href="#" id="filters"  class>
+                <table class="table table-hover ">
+                    <tbody>
+                        <tr><td>
+                            <h5><strong>Price:</strong></h5>
+                    <div class="col-xs-6 ">
+                        <p>Min</p><input type="text" id="priceMin" class="form-control filter">
+                    </div>
+                    <div class="col-xs-6">
+                        <p>Max</p><input type="text" id="priceMax" class="form-control filter">                        
+                    </div>
+                            </td></tr>
+                        <tr><td>
+                            <h5><strong>Capacity:</strong></h5>
+                    <div class="col-xs-12">
+                      <input class="form-control filter" id="capacity" type="text">
+                    </div>
+                            </td></tr>
+                        <tr><td>
+                            <h5><strong>Service:</strong></h5>
+                    <div class="col-xs-12">
+                      <input class="form-control  filter" id="service" type="text">
+                    </div>
+                            </td></tr>
+                        <tr><td>
+                            <h5><strong>Dates:</strong></h5>
+                    <div class="col-xs-12">
+                        <p>From</p><input type="text" id="dateStart" class="form-control filter" onchange="filter()">
+                    </div>
+                    <div class="col-xs-12">
+                        <p>To</p><input type="text" id="dateEnd" class="form-control filter" onchange="filter()">                        
+                    </div>
+                            </td></tr>
+                        
+                    </tbody>
+                </table>
+                
+<!--
                 <div class="row">
                     <h5><strong>Price:</strong></h5>
                     <div class="col-xs-5 col-sm-offset-1">
@@ -56,7 +92,7 @@
                 </div>                    
                 <div class="row">
                     <h5><strong>Capacity:</strong></h5>
-                    <div class="col-xs-6 col-sm-offset-1">
+                    <div class="col-xs-9 col-sm-offset-1">
                       <input class="form-control filter" id="capacity" type="text">
                     </div>
                 </div>
@@ -68,13 +104,14 @@
                 </div>
                 <div class="row">
                     <h5><strong>Dates:</strong></h5>
-                    <div class="col-xs-7 col-sm-offset-1">
+                    <div class="col-xs-9 col-sm-offset-1">
                         <p>From</p><input type="text" id="dateStart" class="form-control filter" onchange="filter()">
                     </div>
-                    <div class="col-xs-7 col-sm-offset-1">
+                    <div class="col-xs-9 col-sm-offset-1">
                         <p>To</p><input type="text" id="dateEnd" class="form-control filter" onchange="filter()">                        
                     </div>
                 </div>                
+-->
                 <hr>
             </div>
             
@@ -103,7 +140,6 @@
     <!--    DatePicker-->
     <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
 
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -112,11 +148,13 @@
     <script src="js/models/map_manager.js"></script>
     <script src="js/models/activities_manager.js"></script>
     <script src="js/models/services_manager.js"></script>
-
+    
     <!-- APP -->    
     <script type="text/javascript"> 
-        //------ FILTERS
-        $('#showFilter').hide();
+        
+        //------ FILTERS     
+        $('#filters').hide();
+        $('#hideFilter').hide();
         
         var animationIn = 'animated fadeInLeft';
         var animationOut = 'animated fadeOutLeft';
@@ -162,6 +200,9 @@
             }            
         });
         
+        function review(service){
+            $(location).attr('href',"/feature?service="+service);
+        }
         
        function initialize() {    
            
@@ -170,6 +211,7 @@
             services_manager.onClickService = function (service) {
                 map_manager.displayService(service);
             };
+           
             // ----------- initialize Google Map and add marker  ------- (Map Controller)
             map_manager.init(0,0);
             map_manager.loadMarker(services_manager.data);
@@ -201,9 +243,8 @@
                 services_manager.load(restangle,activities);
                 map_manager.loadMarker(services_manager.data);
             }           
+
         }
-            
-        
     </script>
 </body>
 

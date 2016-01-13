@@ -14,6 +14,14 @@
     
     <!--    Jquery-->
     <link href="styles/jquery-ui-1.9.2.custom.min.css" rel="stylesheet"> 
+    
+    <!--    Bootstrap dialog-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--    rating-->
+    <link rel="stylesheet" href="styles/stars.css">
+    <link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,15 +46,21 @@
         <div class="row" id="row-img">
             <img src="/images/10.jpg" class="col-md-4 img img-responsive img-rounded" />
             <div class="col-md-7 col-md-offset-1">
+                <div class="col-md-7 col-md-offset-9">
+                        <button type="button" class="btn btn-primary" id="showPopup" >Give a Review </button>
+                    </div>
                 <h4>Appréciation générale</h4>
                 <table class="table table-hover ">
                     <tbody>
                         <tr><td>Générale</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star-o"/><i class="fa fa-star-o"/></td></tr>
                         <tr><td>qualité</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star-o"/></td></tr>
                         <tr><td>Ambiance</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>
-                        <tr><td>...</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>
+                        <tr><td>Price</td><td><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/><i class="fa fa-star"/></td></tr>                    
                     </tbody>
+                    
+                    
                 </table>
+                
             </div>
         </div>
         <div class="row">
@@ -125,6 +139,7 @@
                             </li>
                         </ul>
                     </div>
+<!--
                     <div class="panel-footer">
                         <h5>Donner votre opinion</h5>
                         <div class="input-group">
@@ -135,6 +150,7 @@
                             </span>
                         </div>
                     </div>
+-->
                 </div>
             </div>
         </div>
@@ -145,6 +161,39 @@
     <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <!--    Bootstrap dialog-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+    <!-- Controller JS -->
+    <script src="js/models/services_manager.js"></script>
+    <script>
+            //Bootstrap dialog
+        $('#showPopup').click(function(){
+            BootstrapDialog.show({
+                title: 'Review service',
+                message: function(dialog) {
+                    var $content = services_manager.popup(1);
+                    return $content;
+                },
+                buttons: [{
+                    cssClass: 'btn-primary',
+                    label: 'Save',
+                    action: function(dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+            //alert("hola");
+        });
+        
+        //        rating
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46156385-1', 'cssscript.com');
+          ga('send', 'pageview');
+    </script>
 </body>
 
 </html>

@@ -18,16 +18,13 @@ module.exports = {
       if (err) {
         res.serverError(err);
       }
-
       originLocation = data.results[0].geometry.location;
       req.param('latup',originLocation.lat + 1);
       req.param('latdown',originLocation.lat - 1);
       req.param('longright',originLocation.lng + 1);
       req.param('longleft',originLocation.lng - 1);
-
       this.search(req,res);
     });
-
   },
   // Search Service with geo interval and Activities
   search: function(req, res) {
@@ -46,7 +43,7 @@ module.exports = {
     if (!req.param('longleft') || typeof req.param('longleft') !== 'number') {
       return res.badRequest('Need longleft Params !!');
     }
-    /*
+      /*
     		Service.find({
     			geolati: { '>' : req.param('latdown')},
     			geolati: { '<' : req.param('latup')},

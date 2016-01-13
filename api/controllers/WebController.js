@@ -2,7 +2,14 @@
 module.exports = {
 
   index: function(req, res) {
-    return res.view('index');
+      Category.find().exec(function finding(err, found) {
+      if (err) {
+          return res.serverError(err);
+      }
+      return res.view('index',{
+        'categories' : found,
+        });
+    });
   },
   result: function(req, res) {
 

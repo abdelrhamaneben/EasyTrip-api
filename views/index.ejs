@@ -78,7 +78,10 @@
                     </a> 
                 </div>                       
                 
-                <ul class="grid effect-5" id="grid">                
+                <ul class="grid effect-5" id="grid">
+                <% for(var i=0; i<categories.length; i++) {%>
+                   <li class='imgmenu mphotos-1 commune' > <a href='#top' data='<%= categories[i].name %>'> <div class='mphotos'> <div class='mphoto'> <img class='autosize' src='images/<%= categories[i].image %>'</li>
+                <% } %>                
                 </ul>
             </center>            
     </div>
@@ -90,7 +93,6 @@
     
     <!-- Script APP -->
     <script src="js/categories.js"></script>
-    <script src="js/JsonCategory.js"></script>
         
     
     <!-- Bootstrap -->
@@ -113,9 +115,9 @@
 
 
         // CATEGORIES
-        categories.data = categoryJson.categories;
+        /*categories.data = [];
         var results = categories.Build();
-        $('#grid').html(results);
+        $('#grid').html(results);*/
         
         // creation de l'animation slider
         new AnimOnScroll( document.getElementById( 'grid' ), {

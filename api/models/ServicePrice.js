@@ -13,8 +13,7 @@ module.exports = {
 		 id_sp : {
 		 	type : 'integer',
 		 	primaryKey: true,
-		 	autoIncrement: true,
-		 	unique : true
+		 	autoIncrement: true
 		 },
 		 service : {
 		 	model : 'service'
@@ -34,7 +33,7 @@ module.exports = {
 	     price_per_person : {
     		type : 'integer',
  			size : 8
-		 },	    	
+		 },
    		 promotion : {
     		type : 'boolean',
     		defaultsTo : false
@@ -46,7 +45,7 @@ module.exports = {
     	 createdAt : {
     		type : 'datetime',
     		autoCreatedAt: true
-		 },	    	
+		 },
    		 updatedAt : {
     		type : 'datetime',
     		autoUpdatedAt: true

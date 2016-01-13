@@ -66,10 +66,6 @@ var map_manager = {
 						+  service.address + "</b></p><p>Tel : <b>"
 						+  service.tel
 						+ "</b></p><p>Email : <a href='mailto:"+service.email+"'>"+service.email+"</a></p><p>Website : <a href='http://"+service.website+"'>"+ service.website+"</a></p>"
-						/*Google share button*/
-						+ "<a style=\"float:right;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
-						+	"'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
-						+	"src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
 						+ "</div></div>";
 		}
 		else {
@@ -82,10 +78,6 @@ var map_manager = {
 			+ "</b></em><br><em>Email : <b><a href='mailto:"+service.email+"'>"
 			+  service.email + "</a></b></em><br><em>Website : </em><b> <a href='http://"+service.website+"'>"
 			+ service.website+"</a></b>"
-			/*Google share button*/
-			+ "<a style=\"float:right;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
-			+	"'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
-			+	"src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/> </a>"
 			+"</div>";
 		}
 		var infowindow = new google.maps.InfoWindow({

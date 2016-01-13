@@ -1,0 +1,24 @@
+[
+  {
+    "id_sp": 1,
+    "service": 1,
+    "d_from": "2016-03-01T10:25:06.184Z",
+    "d_to": "2016-03-02T10:25:06.184Z",
+    "nb_person_min": 1,
+    "nb_person_max" : 5,
+    "price_per_person" : 10,
+    "promotion": true,
+    "businessDay": "Lundi 8h59-12h59 13h57-19h25;Mardi 8h59-12h59 13h57-19h25;Dimanche 18h59-12h59"
+  },
+  {
+    "id_sp": 2,
+    "service": 2,
+    "d_from": "2016-01-01T10:25:06.184Z",
+    "d_to": "2016-01-25T10:25:06.184Z",
+    "nb_person_min": 1,
+    "nb_person_max" : 5,
+    "price_per_person" : 10,
+    "promotion": true,
+    "businessDay": "Lundi 9h00-12h00 13h30-17h30;Mardi 9h00-12h00 13h30-17h30;Dimanche 9h00-12h00"
+  }
+]

@@ -21,7 +21,7 @@ var services_manager = {
            ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
         if(item.payed == 1 ){
-            $('#c-part').append($("<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_service + "\");' id=\"service_" + item.id_service + "\">"
+            $('#c-part').append($("<div class=\"card\" id=\"service_" + item.id_service + "\">"
                + "<div class=\"thumbnail payed\">"
                + "<div class=\"caption row\">"
                + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
@@ -29,13 +29,16 @@ var services_manager = {
                + "<p>" + item.description + "</p>"
                + "<p>Price : <b>" + item.price + " €</b></p>"
                + "<p class='text-right'></p>"
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"showPopup\" >Review</button>"  
+               + "<div class=\row\"><div class=\"col-md-3\"><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button></div><div class=\"col-md-3 col-md-offset-4\">"
+               +"<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div>"
+               +"</div>"                                 
+               
                +"</div>"
                + "</div>"
                + "</div>"
                + "</div>"));
         }else {
-            $('#c-part').append($("<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_service + "\");' id=\"service_" + item.id_service + "\">"
+            $('#c-part').append($("<div class=\"card\"  id=\"service_" + item.id_service + "\">"
                + " <div class=\"thumbnail\">"
                + "<div class=\"caption\">"
                + "<h3>" + item.name + "</h3>"
@@ -43,7 +46,10 @@ var services_manager = {
                 + "<p> Address : " + item.address + "</p>"
                 + "<p>Price : <b>" + item.price + " €</b></p>"
                + "<p class='text-right'></p>"
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"showPopup\" >Review</button>"   
+               + "<div class=\row\"><div class=\"col-md-2 col-md-offset-6\">"                      
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button></div><div class=\"col-md-2 \"></div></div>"  
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button>"  
+                                  
                + "</div>"
                + "</div>"
                + "</div>"));
@@ -84,42 +90,25 @@ var services_manager = {
     this.build(this.data);
  } ,
 
-build_questions : function(){    
-    var html="";
-    $.each(this.questions, function(i, item) {
-        html = html + "<div><row><h4>"+item.question+"</h4></row>"+
-            "<div class=\"cont\"><div class=\"stars\"><form action=\"\">"+
-            "<input class=\"star star-5\" id=\""+item.id+"-5\" type=\"radio\" name=\"star\"/>"+
-            "<label class=\"star star-5\" for=\""+item.id+"-5\"></label>"+
-            "<input class=\"star star-4\" id=\""+item.id+"-4\" type=\"radio\" name=\"star\"/>"+
-            "<label class=\"star star-4\" for=\""+item.id+"-4\"></label>"+
-            "<input class=\"star star-3\" id=\""+item.id+"-3\" type=\"radio\" name=\"star\"/>"+
-            "<label class=\"star star-3\" for=\""+item.id+"-3\"></label>"+
-            "<input class=\"star star-2\" id=\""+item.id+"-2\" type=\"radio\" name=\"star\"/>"+
-            "<label class=\"star star-2\" for=\""+item.id+"-2\"></label>"+
-            "<input class=\"star star-1\" id=\""+item.id+"-1\" type=\"radio\" name=\"star\"/>"+
-            "<label class=\"star star-1\" for=\""+item.id+"-1\"></label>"+
-            "</form></div></div>";
-    });
-    return html;
-},
 popup : function(idService){
     var item = this.data[1];
     var html = "";
+    
     if(item.payed == 1 ){
-            html = "<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_seQrvice + "\");' id=\"service_" + item.id_service + "\">"
+            html= html+"<div class=\"card\" id=\"service_" + item.id_service + "\">"
                + "<div class=\"thumbnail payed\">"
                + "<div class=\"caption row\">"
                + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + item.img + "' /></div>"
                + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
                + "<p>" + item.description + "</p>"
                + "<p>Price : <b>" + item.price + " €</b></p>"
-        + "<p class='text-right'></p></div>"
-        + "</div>"
+               + "<p class='text-right'></p>"
+               +"</div>"
+               + "</div>"
                + "</div>"
                + "</div>";
         }else {
-            html = "<div class=\"card\" onclick='services_manager.click(\"service_" + item.id_service + "\");' id=\"service_" + item.id_service + "\">"
+            html= html+"<div class=\"card\"  id=\"service_" + item.id_service + "\">"
                + " <div class=\"thumbnail\">"
                + "<div class=\"caption\">"
                + "<h3>" + item.name + "</h3>"
@@ -131,7 +120,28 @@ popup : function(idService){
                + "</div>"
                + "</div>";
         }
-    html = html + this.build_questions();
+    
+    html= html+"<table class=\"table table-hover \"></tbody>";
+    
+    $.each(this.questions, function(i, item) {
+        html = html + "<tr><td><h5>"+item.question+"</h5></td><td>"+
+            "<div class=\"cont\"><div class=\"stars\"><form action=\"\">"+
+            "<input class=\"star star-5\" id=\""+item.id+"-5\" type=\"radio\" name=\"star\"/>"+
+            "<label class=\"star star-5\" for=\""+item.id+"-5\"></label>"+
+            "<input class=\"star star-4\" id=\""+item.id+"-4\" type=\"radio\" name=\"star\"/>"+
+            "<label class=\"star star-4\" for=\""+item.id+"-4\"></label>"+
+            "<input class=\"star star-3\" id=\""+item.id+"-3\" type=\"radio\" name=\"star\"/>"+
+            "<label class=\"star star-3\" for=\""+item.id+"-3\"></label>"+
+            "<input class=\"star star-2\" id=\""+item.id+"-2\" type=\"radio\" name=\"star\"/>"+
+            "<label class=\"star star-2\" for=\""+item.id+"-2\"></label>"+
+            "<input class=\"star star-1\" id=\""+item.id+"-1\" type=\"radio\" name=\"star\"/>"+
+            "<label class=\"star star-1\" for=\""+item.id+"-1\"></label>"+
+            "</form></div></td></tr>";        
+    });
+    html = html + "</tbody></table>"+
+        "<div><div class=\"form-group\"><h5>Comment</h5>"+
+        "<textarea class=\"form-control\" rows=\"2\" id=\"comment\"></textarea>"+
+        "</div>";    
     return html;
 },
  // Temporal data questions

@@ -9,7 +9,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "POST",
-            url: "http://localhost:1337/adminAPI/login",
+            url: "http://localhost:1337/admin/login",
             async : false,
             data : user,
             headers: {
@@ -20,7 +20,19 @@ angular.module('sbAdminApp')
           }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
-                $state.go('admin.home');
+
+                $rootScope.user = response.data;
+
+                if ($rootScope.user.role == 'admin') {
+                    $rootScope.isAdmin = true;
+                    console.log('user is admin');
+                    $state.go('admin.home');
+                } else {
+                    $rootScope.isAdmin = false;
+                    console.log('user is not admin');
+                    $state.go('user.home');
+                }
+
               }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
@@ -35,7 +47,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
               method: "POST",
-              url: "http://localhost:1337/adminAPI/signup",
+              url: "http://localhost:1337/admin/signup",
               async : false,
               data: user,
               withCredentials: false,

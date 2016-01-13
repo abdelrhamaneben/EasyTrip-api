@@ -21,7 +21,11 @@
     /*'*': 'isAuthenticated',*/
 
      'user': {
-       '*': 'sessionAuthAdmin'
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthAdmin',
+       'update' : 'sessionAuthAdmin',
+       'find' : 'sessionAuthAdmin',
+       'findOrCreate' : 'sessionAuthAdmin'
      },
      'activity' : {
        'destroy' : 'sessionAuthAdmin',
@@ -31,7 +35,10 @@
      ,
      'Address' : {
        'destroy' : 'sessionAuthAdmin',
-       'create' : 'sessionAuthAdmin'
+       'create' : 'sessionAuthAdmin',
+       'update' : 'sessionAuthAdmin',
+       'find' : 'sessionAuthAdmin',
+       'findOrCreate' : 'sessionAuthAdmin'
      }
      ,
      'category' : {
@@ -41,7 +48,9 @@
      }
      ,
      'service' : {
-       'destroy' : 'sessionAuthAdmin'
+       'destroy' : 'sessionAuthAdmin',
+       'create' : 'sessionAuthUser',
+       'update' : 'sessionAuthUser'
      }
      ,
      'servicePrice' : {

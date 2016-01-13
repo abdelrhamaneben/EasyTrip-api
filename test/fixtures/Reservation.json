@@ -1,0 +1,20 @@
+[
+  {
+    "id_res": 1,
+    "customer": 1,
+    "price": 1,
+    "d_from": "2016-01-11T10:25:06.184Z",
+    "d_to": "2016-02-11T10:25:06.184Z",
+    "nb_person": 3,
+    "valid": true
+  },
+  {
+    "id_res": 2,
+    "customer": 2,
+    "price": 2,
+    "d_from": "2016-02-11T10:25:06.184Z",
+    "d_to": "2016-03-11T10:25:06.184Z",
+    "nb_person": 5,
+    "valid": false
+  }
+]

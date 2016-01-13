@@ -1,42 +1,85 @@
 var request = require('supertest');
 
 describe('ServiceController', function() {
-
   describe('Test ServiceController', function() {
-    it('should return List of service', function (done) {
+    it('should  Allow, GET services', function (done) {
       request(sails.hooks.http.app)
         .get('/service')
         .expect('Content-Type', /json/)
       	.expect(200, done);
     });
-
-    it('should be fail, disable drop service', function (done) {
+    it('should Not Allow, DELETE service', function (done) {
       request(sails.hooks.http.app)
         .delete('/service/1')
       	.expect(403, done);
     });
-
-    it('should be fail, disable add service', function (done) {
+    it('should Not Allow, POST service', function (done) {
       request(sails.hooks.http.app)
-        .post('/service')
-        .send({ name: 'test', description: 'test', categories : '1,3' })
+        .post('/service/1')
+        .send({ geolati: 1.2, geolong : 52.1 })
       	.expect(403, done);
     });
-
-    it('should be fail, disable update activity', function (done) {
+    it('should Not Allow, PUT activity', function (done) {
       request(sails.hooks.http.app)
-        .put('/activity')
-        .send({ name: 'test', description: 'test', categories : '1,3' })
+        .put('/service/1')
+        .send({  geolati: 1.2, geolong : 52.1  })
       	.expect(403, done);
     });
-
-     it('Search Function , need list of activities, and coordonate', function (done) {
+    it('BadRequest without every params', function (done) {
       request(sails.hooks.http.app)
-        .put('/service/search')
-        .send({ latup: 1.1, latdown: 0.34, longright : 2.43, longleft : 1.34,  activities : '1,3' })
+        .post('/search')
+        .send({   })
+        .expect(400, done);
+    });
+    it('Good request with every params', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({  activities :  [1,3], latup : 1.43, latdown : 3.45, longright : 3.43,longleft : 43.4})
         .expect(200, done);
     });
-
+    it('BadRequest without activities params', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({latup : 1.43, latdown : 3.45, longright : 3.43,longleft : 43.4})
+        .expect(400, done);
+      
+    });
+    it('BadRequest activities param with Wrong Type (String)', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({ activities : 'blabla', latup : 1.43, latdown : 3.45, longright : 3.43,longleft : 43.4})
+        .expect(400, done);
+    });
+    it('BadRequest activities param with Wrong Type (Numeric)', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({ activities : 34, latup : 1.43, latdown : 3.45, longright : 3.43,longleft : 43.4})
+        .expect(400, done);
+    });
+    it('BadRequest without latup param', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({  activities :  [1,3], latdown : 3.45, longright : 3.43,longleft : 43.4})
+        .expect(400, done);
+    });
+    it('BadRequest without latdown param', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({  activities :  [1,3], latup : 3.45, longright : 3.43,longleft : 43.4})
+        .expect(400, done);
+    });
+    it('BadRequest without longright param', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({  activities :  [1,3], latup : 3.45, latdown : 3.43,longleft : 43.4})
+        .expect(400, done);
+    });
+    it('BadRequest without longleft param', function (done) {
+      request(sails.hooks.http.app)
+        .post('/search')
+        .send({  activities :  [1,3], latup : 3.45, latdown : 3.43,longright : 43.4})
+        .expect(400, done);
+    });
   });
 
 });

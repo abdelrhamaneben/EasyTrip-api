@@ -15,87 +15,67 @@ describe('Subscription model', function() {
         should(subscription).exist;
         should(err).not.exist;
 
-        should(subscription).have.property('d_from').eql('2016-01-01T10:25:06.184Z');
+        should(subscription).have.property('d_from').eql(new Date("2016-01-01T10:25:06.184Z"));
 
         done();
       });
     });
   });
 
-  /*describe('create', function() {
-    it ('should create a category', function(done) {
-      Category.create({name: "DEADBEEF"}).exec(function(err, category) {
+  describe('create', function() {
+    it ('should create a subscription', function(done) {
+      Subscription.create({d_from: new Date("2016-01-01T10:25:06.184Z"), nb_month: 5}).exec(function(err, subscription) {
         should.not.exist(err);
-        should.exist(category);
+        should.exist(subscription);
 
-        Category.findOne({name: 'DEADBEEF'}).exec(function(err, category) {
+        Subscription.findOne({id_subscription: subscription.id_subscription}).exec(function(err, subscription) {
           should.not.exist(err);
-          should.exist(category);
+          should.exist(subscription);
 
           done();
         });
       });
     });
 
-    it ('should not create a category without parameters', function(done) {
-      Category.create().exec(function(err, category) {
-        should.exist(err);
-        should.not.exist(category);
-
-        done();
-      });
-    });
-
-    it ('should not create a category with an id', function(done) {
-      Category.create({id_category: 1, name: 'TEST'}).exec(function(err, category) {
+    it ('should not create a subscription wich already exist', function(done) {
+      Subscription.create({id_subscription: 1, d_from: new Date("2016-01-01T11:41:12.184Z"), nb_month: 42}).exec(function(err, subscription) {
         should.not.exist(err);
-        should.exist(category);
+        should.exist(subscription);
 
-        Category.findOne({id_category: 1}).exec(function(err, category) {
+        // findOne because subscription exist even if category already exist. Need to verify if original is not modified.
+        Subscription.findOne({id_subscription: 1}).exec(function(err, subscription) {
           should.not.exist(err);
-          should.exist(category);
+          should.exist(subscription);
 
-          should(category).have.property('name').not.equal('TEST');
+          should(subscription).have.property('d_from').not.eql(new Date("2016-01-01T11:41:12.184Z"));
 
           done();
         });
-      });
-    });
-
-    it ('should not create a category without name', function(done) {
-      Category.create().exec(function(err, category) {
-        should.exist(err);
-        should.not.exist(category);
-
-        done();
       });
     });
   });
 
   describe('update', function() {
-    it ('should update a category', function(done) {
-      Category.create({name: "BEET"}).exec(function(err, category) {
+    it ('should update a subscription', function(done) {
+      Subscription.create({id_subscription: 654, d_from: new Date("2016-01-01T11:41:12.184Z"), nb_month: 42}).exec(function(err, subscription) {
         should.not.exist(err);
-        should.exist(category);
+        should.exist(subscription);
 
-        Category.findOne({name: 'BEET'}).exec(function(err, category) {
+        Subscription.findOne({id_subscription: 654}).exec(function(err, subscription) {
           should.not.exist(err);
-          should.exist(category);
+          should.exist(subscription);
 
-          Category.update({name: 'BEET'}, {name: 'BEEF'}).exec(function(err, category) {
+          Subscription.update({id_subscription: 654}, {nb_month: 666}).exec(function(err, subscription) {
             should.not.exist(err);
-            should.exist(category);
+            should.exist(subscription);
 
-            Category.findOne({name: 'BEET'}).exec(function(err, category) {
+            Subscription.findOne({id_subscription: 654}).exec(function(err, subscription) {
               should.not.exist(err);
-              should.not.exist(category);
+              should.exist(subscription);
 
-              Category.findOne({name: 'BEEF'}).exec(function(err, category) {
-                should.not.exist(err);
-                should.exist(category);
+              should(subscription).have.property('nb_month').eql(666);
 
-                done();
-              });
+              done();
             });
           });
         });
@@ -104,22 +84,22 @@ describe('Subscription model', function() {
   });
 
   describe('delete', function() {
-    it ('should delete a category', function(done) {
-      Category.create({name: "BED"}).exec(function(err, category) {
+    it ('should delete a subscription', function(done) {
+      Subscription.create({id_subscription: 457, d_from: new Date("2026-01-01T11:41:12.184Z"), nb_month: 22}).exec(function(err, subscription) {
         should.not.exist(err);
-        should.exist(category);
+        should.exist(subscription);
 
-        Category.findOne({name: 'BED'}).exec(function(err, category) {
+        Subscription.findOne({id_subscription: 457}).exec(function(err, subscription) {
           should.not.exist(err);
-          should.exist(category);
+          should.exist(subscription);
 
-          Category.destroy({name: "BED"}).exec(function(err, category) {
+          Subscription.destroy({id_subscription: 457}).exec(function(err, subscription) {
             should.not.exist(err);
-            should.exist(category);
+            should.exist(subscription);
 
-            Category.findOne({name: 'BED'}).exec(function(err, category) {
+            Subscription.findOne({id_subscription: 457}).exec(function(err, subscription) {
               should.not.exist(err);
-              should.not.exist(category);
+              should.not.exist(subscription);
 
               done();
             });
@@ -127,5 +107,5 @@ describe('Subscription model', function() {
         });
       });
     });
-  });*/
+  });
 });

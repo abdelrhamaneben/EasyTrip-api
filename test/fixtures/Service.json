@@ -1,0 +1,24 @@
+[
+  {
+    "creator": 1,
+    "geolati": 54.1234,
+    "geolong": 23.1234,
+    "address": 2,
+    "name": "Paint ball olympique le possedon",
+    "description": "Bienvenue au Paint ball olympique le possedon",
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQ",
+    "premium": false,
+    "id_service": 1
+  },
+  {
+    "creator": 2,
+    "geolati": 54.1234,
+    "geolong": 23.1234,
+    "address": 1,
+    "name": "Nom du service",
+    "description": "Description du service",
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAADGUoyxRCPEq",
+    "premium": false,
+    "id_service": 2
+  }
+]

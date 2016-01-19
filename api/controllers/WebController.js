@@ -19,6 +19,35 @@ module.exports = {
     if (!req.param('category')) {
       return res.badRequest('Need location Params !!');
     }
+
+    Category.findOne({ id_category : req.param('category') }).populate('activities').exec(function finding(err, cat){
+      if (err) {
+          return res.serverError(err);
+      }
+      Service.find().exec(function finding(err, found) {
+        if (err) {
+          return res.serverError(err);
+        }
+        console.log(found);
+       return res.view('result',{
+        'activities' : cat.activities,
+        'category': cat.name,
+        'services' : found,
+        'latitude' : 48.856614,
+        'longitude' : 2.3522219
+        });
+      });
+    });
+
+   /* if(req.param('location').indexOf("Lille") == -1) {
+      return res.view('result',{
+        'activities' : [],
+        'category': req.param('category'),
+        'services' : [],
+        'latitude' : 48.856614,
+        'longitude' : 2.3522219
+        });
+    }
     /*var geocoder = require('geocoder');
 
     geocoder.geocode(req.param('location'), function(err, data) {
@@ -32,18 +61,6 @@ module.exports = {
       var longright = req.param('longright',originLocation.lng + 1);
       var longleft = req.param('longleft',originLocation.lng - 1);
       */
-      Service.find().exec(function finding(err, found) {
-        if (err) {
-          return res.serverError(err);
-        }
-       return res.view('result',{
-        'activities' : [],
-        'category': req.param('category'),
-        'services' : found,
-        'latitude' : 48.856614,
-        'longitude' : 2.3522219
-        });
-      });
     //});
   },
   feature: function(req, res) {

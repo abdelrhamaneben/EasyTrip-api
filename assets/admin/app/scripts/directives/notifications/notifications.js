@@ -19,7 +19,7 @@ angular.module('sbAdminApp')
 
             var httpRequest = $http({
                 method: "GET",
-                url: "http://localhost:1337/adminAPI/logout",
+                url: "http://localhost:1337/user/logout",
                 async : false,
                 headers: {}
             }).success(function(data, status) {

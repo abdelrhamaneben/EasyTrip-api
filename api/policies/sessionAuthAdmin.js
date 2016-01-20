@@ -8,10 +8,11 @@
  *
  */
 module.exports = function(req, res, next) {
+
   // Need authentificated user to execute controller
   if(req.session.authenticated  && req.session.admin) {
     return next();
   }
   // not authentificated so redirect to login
-  return res.redirect('/');
+  return res.forbidden('require authentificated Admin');
 };

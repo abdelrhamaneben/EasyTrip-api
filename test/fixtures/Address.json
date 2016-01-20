@@ -1,0 +1,18 @@
+[
+  {
+    "str_nbr": "17",
+    "str_name": "général de gaulle",
+    "code_zip": 62880,
+    "city": "Vendin le vieil",
+    "country": "France",
+    "id_address": 1
+  },
+  {
+    "str_nbr": "1",
+    "str_name": "lavoisier",
+    "code_zip": 59370,
+    "city": "Mons en baroeul",
+    "country": "France",
+    "id_address": 2
+  }
+]

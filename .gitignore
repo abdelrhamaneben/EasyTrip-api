@@ -3,3 +3,5 @@ node_modules/
 .tmp/public/
 .gitignore~
 assets/images/videoplayback.mp4
+assets/images/videoplayback.avi
+assets/images/videoplayback.webm

@@ -1,0 +1,12 @@
+[
+  {
+    "id_subscription": 1,
+    "d_from": "2016-01-01T10:25:06.184Z",
+    "nb_month": 1
+  },
+  {
+    "id_subscription": 2,
+    "d_from": "2016-03-01T10:25:06.184Z",
+    "nb_month": 3
+  }
+]

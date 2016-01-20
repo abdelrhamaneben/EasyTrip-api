@@ -2,7 +2,7 @@
 
 
 angular.module('sbAdminApp')
-  .controller('activityCtrl', function($scope,$http) {
+  .controller('activityCtrl', function($scope,$http,$location,$rootScope) {
 
       $scope.activities = [];
       $scope.categories = [];
@@ -43,7 +43,7 @@ angular.module('sbAdminApp')
           });
       };
 
-      $scope.editAcvitity = function(id_activity){
+      $scope.editActivity = function(id_activity){
         var httpRequest = $http({              
             method : "GET",
             url : "http://localhost:1337/activity/" + id_activity,
@@ -54,6 +54,39 @@ angular.module('sbAdminApp')
             $location.path('/admin/admin/activity/edit');
         });
       }
+
+      $scope.updateActivity = function(id_activity){
+        /*var image = "";
+        var fileInput = document.querySelector('#activity_image');
+        fileInput.addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.addEventListener('load', function() {
+            image = reader.result;
+            }, false);
+            reader.readAsDataURL(fileInput.files[0]);
+        }, false);
+        */
+        var name = $("#activity_name").val();
+        var description = $("#activity_description").val();
+        var category = $("#activity_category").val();
+
+        var data = '{'
+            +'"categories" : "' + category + '",'
+            +'"name" : "' + name + '",'
+           // +'"image" : "' + image + '",'
+            +'"description" : "' + description + '"'
+          +'}';
+
+        var httpRequest = $http({ 
+            method : "POST",
+            url : "http://localhost:1337/activity/" + id_activity,
+            data : data,
+            dataType : "json",
+            contentType : "application/json"
+        }).success(function() {
+            alert("L'activité a bien été modifiée.");
+        });
+      };
 
       $scope.addActivity = function(){
         var image = "";

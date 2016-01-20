@@ -38,13 +38,41 @@ angular.module('sbAdminApp')
             dataType : "json",
             contentType : "application/json"
         }).success(function(data, status){
-            //$scope.categoryToEdit = data;
-            console.log(data);
-            console.log(data.name);
             $rootScope.categoryToEdit = data;
             $location.path('/admin/admin/category/edit');
         });
       }
+
+      $scope.updateCategory = function(id_category){
+        /*var image = "";
+        var fileInput = document.querySelector('#category_image');
+        fileInput.addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.addEventListener('load', function() {
+            image = reader.result;
+            }, false);
+            reader.readAsDataURL(fileInput.files[0]);
+        }, false);
+        */
+        var name = $("#category_name").val();
+        var description = $("#category_description").val();
+
+        var data = '{'
+          +'"name" : "' + name + '",'
+         // +'"image" : "' + image + '",'
+          +'"description" : "' + description + '"'
+        +'}';
+
+        var httpRequest = $http({              
+            method : "POST",
+            url : "http://localhost:1337/category/" + id_category,
+            data : data,
+            dataType : "json",
+            contentType : "application/json"
+        }).success(function() {
+            alert("La catégorie a bien été modifiée.");
+        });
+      };
 
       $scope.addCategory = function(){
         var image = "";

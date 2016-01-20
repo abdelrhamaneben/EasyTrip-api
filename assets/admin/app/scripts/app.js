@@ -165,7 +165,7 @@ $stateProvider
         controller: 'activityCtrl'
     })
     .state('admin.activityEdit',{
-        templateUrl:'views/admin/activity_add.html',
+        templateUrl:'views/admin/activity_edit.html',
         url:'/admin/activity/edit',
         controller: 'activityCtrl'
     })

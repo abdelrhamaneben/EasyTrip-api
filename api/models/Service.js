@@ -26,7 +26,12 @@ module.exports = {
 	},
     creator : {
         model : 'user'
-    },
+    }
+,
+ service_prices : {
+	 collection: 'servicePrice',
+    	via: 'service'
+},
     address : {
         model : 'address'
     },

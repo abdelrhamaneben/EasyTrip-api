@@ -1,5 +1,8 @@
 # easytrip
 
+Travis:
+[![Build Status](https://travis-ci.org/abdelrhamaneben/EasyTrip-api.svg)](https://travis-ci.org/abdelrhamaneben/EasyTrip-api)
+
 # Commit convention
 
 ## The seven rules of a great git commit message

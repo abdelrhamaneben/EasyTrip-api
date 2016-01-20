@@ -42,7 +42,7 @@ describe('Activity model', function() {
       });
     });
 
-    it ('should not create an activity with an id which already axist', function(done) {
+    it ('should not create an activity with an id which already exist', function(done) {
       Activity.create({id_activity: 1, name: 'TEST'}).exec(function(err, activity) {
         should.not.exist(err);
         should.exist(activity);

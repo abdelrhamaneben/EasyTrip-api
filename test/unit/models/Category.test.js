@@ -11,10 +11,11 @@ describe('Category model', function() {
     });
 
     it ('should contain a specific category', function(done) {
-      Category.findOne({name: 'Sport'}).exec(function(err, category) {
+      Category.findOne({id_category: 2}).exec(function(err, category) {
         should(category).exist;
         should(err).not.exist;
 
+        should(category).have.property('name').eql('Sport');
         should(category).have.property('description').eql('Pour les amateurs de sport ');
 
         done();
@@ -24,16 +25,11 @@ describe('Category model', function() {
 
   describe('create', function() {
     it ('should create a category', function(done) {
-      Category.create({name: "DEADBEEF"}).exec(function(err, category) {
+      Category.create({name: 'DEADBEEF'}).exec(function(err, category) {
         should.not.exist(err);
         should.exist(category);
 
-        Category.findOne({name: 'DEADBEEF'}).exec(function(err, category) {
-          should.not.exist(err);
-          should.exist(category);
-
-          done();
-        });
+        done();
       });
     });
 
@@ -46,7 +42,7 @@ describe('Category model', function() {
       });
     });
 
-    it ('should not create a category with an id', function(done) {
+    it ('should not create a category with an id which already exist', function(done) {
       Category.create({id_category: 1, name: 'TEST'}).exec(function(err, category) {
         should.not.exist(err);
         should.exist(category);
@@ -75,29 +71,19 @@ describe('Category model', function() {
 
   describe('update', function() {
     it ('should update a category', function(done) {
-      Category.create({name: "BEET"}).exec(function(err, category) {
+      Category.create({name: 'BEET'}).exec(function(err, category) {
         should.not.exist(err);
         should.exist(category);
 
-        Category.findOne({name: 'BEET'}).exec(function(err, category) {
+        Category.findOne({id_category: category.id_category}).exec(function(err, category) {
           should.not.exist(err);
           should.exist(category);
 
-          Category.update({name: 'BEET'}, {name: 'BEEF'}).exec(function(err, category) {
+          Category.update({id_category: category.id_category}, {name: 'BEEF'}).exec(function(err, category) {
             should.not.exist(err);
             should.exist(category);
 
-            Category.findOne({name: 'BEET'}).exec(function(err, category) {
-              should.not.exist(err);
-              should.not.exist(category);
-
-              Category.findOne({name: 'BEEF'}).exec(function(err, category) {
-                should.not.exist(err);
-                should.exist(category);
-
-                done();
-              });
-            });
+            done();
           });
         });
       });
@@ -106,19 +92,19 @@ describe('Category model', function() {
 
   describe('delete', function() {
     it ('should delete a category', function(done) {
-      Category.create({name: "BED"}).exec(function(err, category) {
+      Category.create({name: 'BED'}).exec(function(err, category) {
         should.not.exist(err);
         should.exist(category);
 
-        Category.findOne({name: 'BED'}).exec(function(err, category) {
+        Category.findOne({id_category: category.id_category}).exec(function(err, category) {
           should.not.exist(err);
           should.exist(category);
 
-          Category.destroy({name: "BED"}).exec(function(err, category) {
+          Category.destroy({id_category: category.id_category}).exec(function(err, category) {
             should.not.exist(err);
             should.exist(category);
 
-            Category.findOne({name: 'BED'}).exec(function(err, category) {
+            Category.findOne({id_category: category.id_category}).exec(function(err, category) {
               should.not.exist(err);
               should.not.exist(category);
 

@@ -1,6 +1,11 @@
-
+/**
+*
+*
+*/
 module.exports = {
-
+  /**
+  *
+  */
   index: function(req, res) {
       Category.find().exec(function finding(err, found) {
       if (err) {
@@ -11,6 +16,9 @@ module.exports = {
         });
     });
   },
+  /**
+  *
+  */
   result: function(req, res) {
 
     if (!req.param('location')) {
@@ -20,16 +28,19 @@ module.exports = {
       return res.badRequest('Need location Params !!');
     }
 
+    // Get selected Category 
     Category.findOne({ id_category : req.param('category') }).populate('activities').exec(function finding(err, cat){
       if (err) {
           return res.serverError(err);
       }
-      Service.find().exec(function finding(err, found) {
+      // Category not exist
+      if((cat === undefined)) return res.serverError("Impossible to find category");
+      // Get List of service
+      Service.find().populate('activities').populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
         if (err) {
           return res.serverError(err);
         }
-        console.log(found);
-       return res.view('result',{
+      return res.view('result',{
         'activities' : cat.activities,
         'category': cat.name,
         'services' : found,
@@ -38,31 +49,10 @@ module.exports = {
         });
       });
     });
-
-   /* if(req.param('location').indexOf("Lille") == -1) {
-      return res.view('result',{
-        'activities' : [],
-        'category': req.param('category'),
-        'services' : [],
-        'latitude' : 48.856614,
-        'longitude' : 2.3522219
-        });
-    }
-    /*var geocoder = require('geocoder');
-
-    geocoder.geocode(req.param('location'), function(err, data) {
-      if (err) {
-        res.serverError(err);
-      }
-
-      originLocation = data.results[0].geometry.location;
-      var latup =  req.param('latup',originLocation.lat + 1);
-      var latdown = req.param('latdown',originLocation.lat - 1);
-      var longright = req.param('longright',originLocation.lng + 1);
-      var longleft = req.param('longleft',originLocation.lng - 1);
-      */
-    //});
   },
+  /**
+  *
+  */
   feature: function(req, res) {
     if (!req.param('service')) {
       return res.badRequest('Need ServiceId Params !!');

@@ -80,8 +80,7 @@
             <div id = "activities" class="animated fadeInLeft">
                 <h4>Choose your activities</h4>
                 <ul class="list-group" id="list_activities">
-                     List of activities 
-
+                     List of activities
                     <% for(var i=0; i< activities.length; i++) {%>
                         <li class='list-group-item' data-id='<%= activities[i].id_activity %>' ><%= activities[i].name %></li>
                     <% } %>  
@@ -167,10 +166,11 @@
         <% for(var i=0; i< services.length; i++) {%>
         services_manager.data.push(
          {
-            "activity": {
-                "name": "Festival",
-                "id_activity": 1
-            },
+            "activities": [
+             <% for(var j=0; j< services[i].activities.length; j++) { %>
+                <%= services[i].activities[j].id_activity + "," %>
+             <% } %> 
+            ],
             "name": "<%= services[i].name %>",
             "description": "<%= services[i].description %>",
             "tel": "<%= services[i].creator.phone %>",
@@ -186,7 +186,16 @@
              "fromDate":"2014-01-01",
              "toDate":"2020-01-01",
              "email":'<%= services[i].creator.email %>',
-             "website":'www.nameEnterprice.com'
+             "website":'www.nameEnterprice.com',
+             "prices" : [
+                 <% for(var j=0; j< services[i].servicePrices.length; j++) { %>
+                   { 'price' : <%= services[i].servicePrices[j].price_per_person  %>,
+                    'fromDate' : '<%= services[i].servicePrices[j].d_from  %>',
+                    'toDate' : '<%= services[i].servicePrices[j].d_to  %>',
+                    'businessDay' :  '<%= services[i].servicePrices[j].businessDay  %>'
+                    },
+                 <% } %> 
+             ]
         });
         <% } %>  
         

@@ -20,47 +20,33 @@ var services_manager = {
            ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='' ) ||
            ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
-        if(item.payed == true ){
-            $('#c-part').append($(
-        "<div class=\"card\" id=\"service_" + item.id_service + "\">"
+        
+        var itemService = "<div class=\"card\" id=\"service_" + item.id_service + "\">"
             + "<div class=\"thumbnail payed\">"
-                + "<div class=\"caption row\">"
-                    + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='" + item.img + "' /></div>"
-                    + "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
-                    + "<p>" + item.description + "</p>"
-                    + "<p>Price : <b>" + item.price + " €</b></p>"
-		      + "<div ><a style=\"float: right; width: 15%; height: 15%;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
-		      + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
-		          + "src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
-                +"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://fil.univ-lille1.fr/\">Tweet</a></div>"
-                 + "<div class='float:left;'><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button></div><div class=\"col-md-2 \"></div></div>"  
+                + "<div class=\"caption row\">";
+        if(item.payed){
+          itemService  += "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='" + item.img + "' /></div>";
+        }
+        
+        itemService += "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
+                      + "<p>" + item.description + "</p>"
+                      + "<p>Price : <b>" + item.price + " €</b></p><br>"
+                    + "</div>"
+                + "</div>"
+                 + "<div class='col-md-7' >"
+          +"<a style=\" width: 25px; height: 25px;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
+          + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img style=\" width: 25px; height: 25px;\" "
+              + "src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
+                +"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://fil.univ-lille1.fr/\">Tweet</a>"
+                 + "<button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button></div><div class=\"col-md-2 \"></div></div>"  
                + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div>"  
             + "</div>"
-        + "</div>"
-               + "</div>"
-        + "</div>"));
-       }else {
-            $('#c-part').append($("<div class=\"card\"  id=\"service_" + item.id_service + "\">"
+              + "</div>"
+            + "</div>";
 
-               + " <div class=\"thumbnail\">"
-               + "<div class=\"caption\">"
-               + "<h3>" + item.name + "</h3>"
-               + "<p>" + item.description + "</p>"
-                + "<p> Address : " + item.address + "</p>"
-                + "<p>Price : <b>" + item.price + " €</b></p>"
-               + "<p class='text-right'></p>"
-               + "<div class=\row\"><div class=\"col-md-2 col-md-offset-6\">"                      
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button></div><div class=\"col-md-2 \"></div></div>"  
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button>"  
-                + "<p> <a style=\"float: right; width: 8%; height: 8%;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
-                + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img "
-                + "src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
-                +"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://fil.univ-lille1.fr/\">Tweet</a> </p>"
-               + "</div>"
-               + "</div>"
-               + "</div>"));
+              
+        $('#c-part').append($(itemService));
         }
-     }
         });
        twttr.widgets.load();
  },

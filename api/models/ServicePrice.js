@@ -19,10 +19,10 @@ module.exports = {
 		 	model : 'service'
 		 },
 		 d_from : {
-		 	type : 'datetime'
+		 	type : 'date'
 		 },
 		 d_to : {
-		 	type : 'datetime'
+		 	type : 'date'
 		 },
 	     nb_person_min : {
 	     	type : 'integer'

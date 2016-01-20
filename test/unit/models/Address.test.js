@@ -42,7 +42,7 @@ describe('Address model', function() {
       });
     });
 
-    it ('should not create an address with an id', function(done) {
+    it ('should not create an address with an id which already exist', function(done) {
       Address.create({id_address: 1, str_nbr: '666', str_name: 'hell street', code_zip: 66666, city: 'Nyan', country: 'Lol'}).exec(function(err, address) {
         should.not.exist(err);
         should.exist(address);
@@ -55,6 +55,51 @@ describe('Address model', function() {
 
           done();
         });
+      });
+    });
+
+    it ('should not create an address without str_name', function(done) {
+      Address.create({id_address: 12424, str_nbr: '666', code_zip: 66666, city: 'Nyan', country: 'Lol'}).exec(function(err, address) {
+        should.exist(err);
+        should.not.exist(address);
+
+        done();
+      });
+    });
+
+    it ('should not create an address without str_nbr', function(done) {
+      Address.create({id_address: 12424, str_name: 'Hell street', code_zip: 66666, city: 'Nyan', country: 'Lol'}).exec(function(err, address) {
+        should.exist(err);
+        should.not.exist(address);
+
+        done();
+      });
+    });
+
+    it ('should not create an address without code_zip', function(done) {
+      Address.create({id_address: 12424, str_nbr: '666', str_name: 'Hell street', city: 'Nyan', country: 'Lol'}).exec(function(err, address) {
+        should.exist(err);
+        should.not.exist(address);
+
+        done();
+      });
+    });
+
+    it ('should not create an address without city', function(done) {
+      Address.create({id_address: 12424, str_nbr: '666', str_name: 'Hell street', code_zip: 66666, country: 'Lol'}).exec(function(err, address) {
+        should.exist(err);
+        should.not.exist(address);
+
+        done();
+      });
+    });
+
+    it ('should not create an address without country', function(done) {
+      Address.create({id_address: 12424, str_nbr: '666', str_name: 'Hell street', code_zip: 66666, city: 'Nyan'}).exec(function(err, address) {
+        should.exist(err);
+        should.not.exist(address);
+
+        done();
       });
     });
   });

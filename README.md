@@ -1,5 +1,8 @@
 # easytrip
 
+Travis:
+https://travis-ci.org/abdelrhamaneben/EasyTrip-api.svg
+
 # Commit convention
 
 ## The seven rules of a great git commit message

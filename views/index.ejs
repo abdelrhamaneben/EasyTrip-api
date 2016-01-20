@@ -80,7 +80,23 @@
                 
                 <ul class="grid effect-5" id="grid">
                 <% for(var i=0; i<categories.length; i++) {%>
-                   <li class='imgmenu mphotos-1 commune' > <a href='#top' data='<%= categories[i].id_category %>'> <div class='mphotos'> <div class='mphoto'> <img class='autosize' src='images/<%= categories[i].image %>'</li>
+                   <li>
+                        <div class='imgmenu mphotos-1 commune' >
+                            <a href='#top' data="<%= categories[i].id_category %>">
+                                <div class='mphotos'>
+                                    <div class='mphoto'>
+                                        <img class='autosize' src='images/<%= categories[i].image %>' />
+                                    </div> 
+                                </div> 
+                                <div class='title'> 
+                                    <div class='valign'>
+                                    </div>
+                                    <div class='name'><%= categories[i].name %>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
                 <% } %>                
                 </ul>
             </center>            

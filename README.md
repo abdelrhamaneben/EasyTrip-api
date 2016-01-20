@@ -1,7 +1,7 @@
 # easytrip
 
 Travis:
-https://travis-ci.org/abdelrhamaneben/EasyTrip-api.svg
+[![Build Status](https://travis-ci.org/abdelrhamaneben/EasyTrip-api.svg)](https://travis-ci.org/abdelrhamaneben/EasyTrip-api)
 
 # Commit convention
 

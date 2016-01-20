@@ -10,7 +10,6 @@ module.exports = {
   tableName: 'et_user',
 
   attributes: {
-
     id_user: {
       type: 'integer',
       primaryKey: true,
@@ -18,33 +17,35 @@ module.exports = {
     },
     name_first: {
       type: 'string',
-      size: 50
+      size: 50,
+      required: true
     },
     name_last: {
       type: 'string',
-      size: 200
+      size: 200,
+      required: true
     },
     email: {
       type: 'string',
-      size: 100
+      size: 100,
+      required: true
     },
     phone: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
-
     address: {
       model: 'address'
     },
-
     role: {
       type: 'string',
-      enum: ['business','private','admin']
+      enum: ['business','private','admin'],
+      defaultsTo: 'private'
     },
-
     password: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
-
     subscription: {
       model: 'subscription'
     },
@@ -52,7 +53,6 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
-
     createdAt: {
       type: 'datetime',
       autoUpdatedAt: true

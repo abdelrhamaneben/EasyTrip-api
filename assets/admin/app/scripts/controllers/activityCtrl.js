@@ -6,6 +6,7 @@ angular.module('sbAdminApp')
 
       $scope.activities = [];
       $scope.categories = [];
+      $rootScope.activityToEdit;
 
       $scope.loadActivities = function() {
           var httpRequest = $http({
@@ -41,6 +42,18 @@ angular.module('sbAdminApp')
               $scope.categories = data;
           });
       };
+
+      $scope.editAcvitity = function(id_activity){
+        var httpRequest = $http({              
+            method : "GET",
+            url : "http://localhost:1337/activity/" + id_activity,
+            dataType : "json",
+            contentType : "application/json"
+        }).success(function(data, status){
+            $rootScope.activityToEdit = data;
+            $location.path('/admin/admin/activity/edit');
+        });
+      }
 
       $scope.addActivity = function(){
         var image = "";

@@ -2,9 +2,10 @@
 
 
 angular.module('sbAdminApp')
-  .controller('categoryCtrl', function($scope,$http) {
+  .controller('categoryCtrl', function($scope,$http,$location,$rootScope) {
 
       $scope.categories = [];
+      $rootScope.categoryToEdit;
 
       $scope.loadCategories = function() {
           var httpRequest = $http({
@@ -29,6 +30,21 @@ angular.module('sbAdminApp')
             alert("La catégorie a bien été supprimée.");
           });
       };
+
+      $scope.editCategory = function(id_category){
+        var httpRequest = $http({              
+            method : "GET",
+            url : "http://localhost:1337/category/" + id_category,
+            dataType : "json",
+            contentType : "application/json"
+        }).success(function(data, status){
+            //$scope.categoryToEdit = data;
+            console.log(data);
+            console.log(data.name);
+            $rootScope.categoryToEdit = data;
+            $location.path('/admin/admin/category/edit');
+        });
+      }
 
       $scope.addCategory = function(){
         var image = "";

@@ -17,19 +17,19 @@
 						<!-- INPUT TEXT -->
 						<div class="form-group">
 							<label for="category_name">Nom de la categorie *</label>
-							<input class="form-control" id="category_name">
+							<input class="form-control" id="category_name" value="{{categoryToEdit.name}}">
 						</div>
 
 						<!-- TEXT AREA -->
 						<div class="form-group">
 							<label for="category_description">Description de la categorie *</label>
-							<textarea class="form-control" rows="3" id="category_description"></textarea>
+							<textarea class="form-control" rows="3" id="category_description" >{{categoryToEdit.description}}</textarea>
 						</div>
 
 						<!-- FILE INPUT -->
 						<div class="form-group">
 							<label for="category_image">Image principale de la categorie *</label>
-							<input type="file" id="category_image">
+							<input type="file" id="category_image" value="{{categoryToEdit.image}}">
 						</div>
 
 						<p class="help-block">Les champs marques d'un * sont obligatoire</p>

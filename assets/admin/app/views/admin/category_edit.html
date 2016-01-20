@@ -1,0 +1,49 @@
+<div class="container-fluid" ng-controller="categoryCtrl">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Category</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+
+
+		<div class="panel-heading">
+			Modification de la catégorie
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-lg-8">
+					<form role="form">
+
+						<!-- INPUT TEXT -->
+						<div class="form-group">
+							<label for="category_name">Nom de la categorie *</label>
+							<input class="form-control" id="category_name">
+						</div>
+
+						<!-- TEXT AREA -->
+						<div class="form-group">
+							<label for="category_description">Description de la categorie *</label>
+							<textarea class="form-control" rows="3" id="category_description"></textarea>
+						</div>
+
+						<!-- FILE INPUT -->
+						<div class="form-group">
+							<label for="category_image">Image principale de la categorie *</label>
+							<input type="file" id="category_image">
+						</div>
+
+						<p class="help-block">Les champs marques d'un * sont obligatoire</p>
+
+						<!-- SUBMIT BUTTON -->
+						<button type="submit" id="submit" class="btn btn-default" ng-click="updateCategory()">Modifier la categorie</button>
+
+						<!-- RESET BUTTON -->
+						<button type="reset" class="btn btn-default">Annuler</button>
+
+					</form>
+				</div>
+
+
+	</div>
+	<!-- /.row -->
+</div>

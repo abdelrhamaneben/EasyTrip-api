@@ -59,5 +59,6 @@ angular.module('sbAdminApp')
         }).success(function() {
             alert("La catégorie a bien été ajoutée.");
         });
-    };
+      };
+
 });

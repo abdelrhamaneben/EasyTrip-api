@@ -143,8 +143,9 @@ $stateProvider
 
     })
     .state('admin.categoryEdit',{
-        templateUrl:'views/admin/category_add.html',
-        url:'/admin/category/edit'
+        templateUrl:'views/admin/category_edit.html',
+        url:'/admin/category/edit',
+        controller: 'categoryCtrl'
     })
     .state('admin.categoryAdd',{
         templateUrl:'views/admin/category_add.html',

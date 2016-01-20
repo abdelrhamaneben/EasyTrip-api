@@ -84,11 +84,6 @@ module.exports.routes = {
     action: 'getCategoryByUser'
   },
 
-  'get /admin/stat/':{
-    controller: 'api',
-    action: 'getStats'
-  }
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

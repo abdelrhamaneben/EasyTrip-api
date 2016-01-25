@@ -11,7 +11,7 @@ var services_manager = {
         var dateFrom = new Date(item.fromDate);
         var dateTo = new Date(item.toDate);
 
-//        Filters
+        //  Filters
         if((capacity>=item.minCapacity && capacity<=item.maxCapacity || capacity =='') &&
           (item.name.toUpperCase().indexOf(service) != -1 || service=='') &&
           ((item.price>= priceMin && item.price<=priceMax)  || (priceMin=='' && item.price<=priceMax) || (item.price>= priceMin && priceMax=='')
@@ -28,19 +28,16 @@ var services_manager = {
           itemService  += "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='" + item.img + "' /></div>";
         }
         
-        itemService += "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
-                      + "<p>" + item.description + "</p>"
-                      + "<p>Price : <b>" + item.price + " €</b></p><br>"
-                    + "</div>"
-                + "</div>"
-                 + "<div class='col-md-7' >"
-          +"<a style=\" width: 25px; height: 25px;\" href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
-          + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img style=\" width: 25px; height: 25px;\" "
-              + "src=\"https://www.gstatic.com/images/icons/gplus-32.png\" alt=\"Share on Google+\"/></a>"
-                +"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://fil.univ-lille1.fr/\">Tweet</a>"
-                 + "<button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button></div><div class=\"col-md-2 \"></div></div>"  
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div>"  
-            + "</div>"
+        itemService +=  "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
+                        + "<p>" + item.description + "</p>"
+                        + "<p>Price : <b>" + item.price + " €</b></p><br>"
+                        + "</div>" 
+          +"<div class='col-md-12'><div style='float:left;margin-left:20px;'>"
+                +"<a href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
+          + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\" class='fa fa-google-plus-square fa-2x'></a><a href=\"https://twitter.com/share\" class=\"fa fa-twitter-square fa-2x\" data-url=\"http://fil.univ-lille1.fr/\"></a></div>"
+                 + "<div style='float:right;padding-right:30px;'><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button>"  
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div></div>"  
+              + "</div>"
               + "</div>"
             + "</div>";
 

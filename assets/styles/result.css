@@ -91,4 +91,14 @@ body { height: 100%; margin: 0px; padding: 0px }
     width:50vw;
     heigth:50vh;
 }
-
+.fa, .fa:hover , .fa:focus{
+    text-decoration:none;
+    cursor:pointer;
+     margin-left:10px;
+}
+.fa-google-plus-square {
+    color:#F44336;
+}
+.fa-google-plus-square:hover {
+    color:#D32F2F;
+}

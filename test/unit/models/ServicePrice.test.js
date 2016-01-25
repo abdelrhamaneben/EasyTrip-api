@@ -80,6 +80,78 @@ describe('ServicePrice model', function() {
         });
       });
     });
+
+    it ('should not create a servicePrice with d_from', function(done) {
+      ServicePrice.create({
+        "id_sp": 1,
+        "service": 2,
+        "d_to": "2016-01-25T10:25:06.184Z",
+        "nb_person_min": 1,
+        "nb_person_max" : 5,
+        "price_per_person" : 10,
+        "promotion": true,
+        "businessDay": "Dimanche 9h00-12h00"
+      }).exec(function(err, servicePrice) {
+        should.exist(err);
+        should.not.exist(servicePrice);
+
+        done();
+      });
+    });
+
+    it ('should not create a servicePrice with d_to', function(done) {
+      ServicePrice.create({
+        "id_sp": 1,
+        "service": 2,
+        "d_from": "2016-01-01T10:25:06.184Z",
+        "nb_person_min": 1,
+        "nb_person_max" : 5,
+        "price_per_person" : 10,
+        "promotion": true,
+        "businessDay": "Dimanche 9h00-12h00"
+      }).exec(function(err, servicePrice) {
+        should.exist(err);
+        should.not.exist(servicePrice);
+
+        done();
+      });
+    });
+
+    it ('should not create a servicePrice with price_per_person', function(done) {
+      ServicePrice.create({
+        "id_sp": 1,
+        "service": 2,
+        "d_from": "2016-01-01T10:25:06.184Z",
+        "d_to": "2016-01-25T10:25:06.184Z",
+        "nb_person_min": 1,
+        "nb_person_max" : 5,
+        "promotion": true,
+        "businessDay": "Dimanche 9h00-12h00"
+      }).exec(function(err, servicePrice) {
+        should.exist(err);
+        should.not.exist(servicePrice);
+
+        done();
+      });
+    });
+
+    it ('should not create a servicePrice with price_per_person', function(done) {
+      ServicePrice.create({
+        "id_sp": 1,
+        "service": 2,
+        "d_from": "2016-01-01T10:25:06.184Z",
+        "d_to": "2016-01-25T10:25:06.184Z",
+        "nb_person_min": 1,
+        "nb_person_max" : 5,
+        "promotion": true,
+        "businessDay": "Dimanche 9h00-12h00"
+      }).exec(function(err, servicePrice) {
+        should.exist(err);
+        should.not.exist(servicePrice);
+
+        done();
+      });
+    });
   });
 
   describe('update', function() {

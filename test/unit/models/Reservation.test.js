@@ -68,6 +68,38 @@ describe('Reservation model', function() {
         });
       });
     });
+
+    it ('should not create a reservation without nb_person', function(done) {
+      Reservation.create({
+        "customer": 1,
+        "price": 1,
+        "d_from": "2016-01-11T10:25:06.184Z",
+        "d_to": "2016-02-11T10:25:06.184Z",
+        "valid": true,
+        "id_res": 1
+      }).exec(function(err, reservation) {
+        should.exist(err);
+        should.not.exist(reservation);
+
+        done();
+      });
+    });
+
+    it ('should not create a reservation without d_from', function(done) {
+      Reservation.create({
+        "customer": 1,
+        "price": 1,
+        "d_to": "2016-02-11T10:25:06.184Z",
+        "nb_person": 5,
+        "valid": true,
+        "id_res": 1
+      }).exec(function(err, reservation) {
+        should.exist(err);
+        should.not.exist(reservation);
+
+        done();
+      });
+    });
   });
 
   describe('update', function() {

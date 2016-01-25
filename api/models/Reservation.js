@@ -22,13 +22,15 @@ module.exports = {
       model: 'servicePrice'
     },
     d_from: {
-      type: 'datetime'
+      type: 'datetime',
+      required: true
     },
     d_to: {
       type: 'datetime'
     },
     nb_person: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     valid: {
       type: 'boolean'

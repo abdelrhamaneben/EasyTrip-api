@@ -60,4 +60,10 @@
      'subscription' : {
        'destroy' : 'sessionAuthAdmin'
      }
+     ,
+     'judgement' : {
+       'destroy' : 'sessionAuthUser',
+       'create' : 'sessionAuthUser',
+       'update' : 'sessionAuthUser'
+     }
  }

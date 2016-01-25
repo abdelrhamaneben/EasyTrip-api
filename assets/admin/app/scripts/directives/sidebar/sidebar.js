@@ -41,6 +41,7 @@ angular.module('sbAdminApp')
 
         $scope.isAdminf = function() {
             return $rootScope.isAdmin;
+            //return true;
         }
       }
     }

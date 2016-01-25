@@ -15,9 +15,6 @@ module.exports = {
 		 	primaryKey: true,
 		 	autoIncrement: true
 		 },
-		 service : {
-		 	model : 'service'
-		 },
 		 d_from : {
 		 	type : 'datetime'
 		 },

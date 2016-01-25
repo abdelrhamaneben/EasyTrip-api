@@ -59,6 +59,9 @@ module.exports = {
     activities : {
             collection: 'activity',
             via: 'services'
-     }
+    },
+    servicePrice : {
+        model : 'servicePrice'
+    }
   }
 };

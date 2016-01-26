@@ -2,16 +2,18 @@
 angular.module('sbAdminApp')
   .controller('dashboardCtrl', function($scope,$rootScope,$http) {
 
-      $scope.stats = [];
-      $scope.lineVisite = [];
-      $scope.lineInscription = [];
-      $scope.lineService = [];
-
       $scope.loadStats = function() {
+
+          /*$scope.stats = 0;
+          $scope.lineVisite = 0;
+          $scope.lineInscription = 0;
+          $scope.lineService = 0;
+          */
 
           var httpRequest = $http({
             method: "GET",
-            url: ($rootScope.apiAddress+"stats/"),
+            url: ("http://localhost:1337/admin/stats/"),
+            //url: ($rootScope.apiAddress+"stats/"),
             async : true,
             dataType : "json",
             contentType : "application/json"
@@ -109,16 +111,34 @@ angular.module('sbAdminApp')
 
       $scope.loadStatsUser = function() {
 
+        console.log("load stats user");
+
+
+          /*$scope.stats = 0;
+          $scope.lineVisite = 0;
+          $scope.lineInscription = 0;
+          $scope.lineService = 0;
+            */
+
+          if ($rootScope.hasGotStats == true) {
+
+            $scope.stats = $rootScope.globalStats.stats;
+            $scope.lineService = $rootScope.globalStats.lineService;
+            $scope.lineInscription = $rootScope.globalStats.lineInscription;
+            $scope.lineVisite = $rootScope.globalStats.lineVisite;
+
+          } else {
+
           var httpRequest = $http({
             method: "GET",
-            url: ($rootScope.apiAddress+"stats/"),
+            url: ("http://localhost:1337/admin/stats/"),
+            //url: ($rootScope.apiAddress+"stats/"),
             async : true,
             dataType : "json",
             contentType : "application/json"
           }).success(function(datar, status) {
             console.log("récup user stat ok");
             $scope.stats = datar;
-
 
 
             $scope.lineVisite = {
@@ -153,13 +173,13 @@ angular.module('sbAdminApp')
               series: [ '# evaluations'],
               data: [
                   [
-                      (datar.nveval90d-datar.nveval75d),
-                      (datar.nveval75d-datar.nveval60d),
-                      (datar.nveval60d-datar.nveval45d),
-                      (datar.nveval45d-datar.nveval30d),
-                      (datar.nveval30d-datar.nveval15d),
-                      (datar.nveval15d-datar.nveval7d),
-                      datar.nveval7d
+                      (datar.nbeval90d-datar.nbeval75d),
+                      (datar.nbeval75d-datar.nbeval60d),
+                      (datar.nbeval60d-datar.nbeval45d),
+                      (datar.nbeval45d-datar.nbeval30d),
+                      (datar.nbeval30d-datar.nbeval15d),
+                      (datar.nbeval15d-datar.nbeval7d),
+                      datar.nbeval7d
                   ]
               ],
               onClick: function (points, evt) {
@@ -189,5 +209,13 @@ angular.module('sbAdminApp')
             };
 
           });
+
+        $rootScope.globalStats = {};
+        $rootScope.globalStats.stats = $scope.stats;
+        $rootScope.globalStats.lineService = $scope.lineService;
+        $rootScope.globalStats.lineInscription = $scope.lineInscription;
+        $rootScope.globalStats.lineVisite = $scope.lineVisite;
+      }
+
       };
 });

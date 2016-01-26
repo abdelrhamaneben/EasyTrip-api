@@ -16,7 +16,7 @@
 
         <stats number="{{stats.nbvue7d}}" comments="# nv vues" colour="primary" type="user"></stats>
         <stats number="{{stats.nbcmt7d}}" comments="# nv commenntaires" colour="primary" type="user"></stats>
-        <stats number="{{stats.nveval7d}}" comments="# nv eval" colour="green" type="support"></stats>
+        <stats number="{{stats.nbeval7d}}" comments="# nv eval" colour="green" type="support"></stats>
         <stats number="{{stats.eval7d}}" comments="# dernière eval" colour="red" type="shopping-cart"></stats>
 
     </div>
@@ -27,7 +27,7 @@
 
         <stats number="{{ ( 100 / stats.nbvue15d * (stats.nbnbvue15d - stats.nbvue90d/6)) | number : 2 }}" comments="% nv vue" colour="yellow" type="user"></stats>
         <stats number="{{ ( 100 / stats.nbcmt15d * (stats.nbcmt15d - stats.nbcmt90d/6)) | number : 2 }}" comments="% nv commentaire" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nveval15d * (stats.nveval15d- stats.nveval90d/6)) | number : 2 }}" comments="% nv evaluation" colour="yellow" type="user"></stats>
+        <stats number="{{ ( 100 / stats.nbeval15d * (stats.nveval15d- stats.nveval90d/6)) | number : 2 }}" comments="% nv evaluation" colour="yellow" type="user"></stats>
         <stats number="{{ (stats.eval15d - ((stats.eval15d + stats.eval30d + stats.eval45d + stats.eval60d + stats.eval75d + stats.eval90d)/6)) | number : 2 }} " comments="evol moyenne des evaluations" colour="yellow" type="shopping-cart"></stats>
 
     </div>
@@ -35,7 +35,7 @@
     <!-- /.panel -->
     <div class="row">
 
-        <div class="col-lg-8" id="line-chart" ng-controller="ChartCtrl">
+        <div class="col-lg-8" id="line-chart">
             <h1>
                 <small>Activités sur 90 jours</small>
             </h1>

@@ -2,7 +2,7 @@
 
 
 angular.module('sbAdminApp')
-  .controller('serviceCtrl', function($scope,$http) {
+  .controller('serviceCtrl', function($scope,$rootScope,$http,$location,$state) {
 
       $scope.services = [];
       $scope.activities = [];
@@ -31,7 +31,6 @@ angular.module('sbAdminApp')
           });
       };
 
-
       $scope.loadActivities = function(){
           var httpRequest = $http({
             method: "GET",
@@ -43,7 +42,6 @@ angular.module('sbAdminApp')
             $scope.activities = data;
         });
       };
-
 
       $scope.addService = function(){
           var service_image_blob = "";
@@ -190,6 +188,103 @@ angular.module('sbAdminApp')
               });
           });
       };
+
+      $scope.detailService = function(id_service) {
+
+        //alert("show stat service: " + id_service);
+        $rootScope.serviceIdDetail = id_service;
+        $state.go('admin.servicestat');
+        //$state.go('admin.home');
+      };
+
+      $scope.stats = [];
+      $scope.lineVues = [];
+      $scope.lineEvalCmt = [];
+      $scope.lineEval = [];
+      $scope.loadStats = function() {
+
+          alert("load stat unitiare");
+
+          var id_service = 2;//$rootScope.id_service;
+
+          var httpRequest = $http({
+            method: "GET",
+            url: ("http://localhost:1337/admin/stats/"+id_service),
+            async : true,
+            dataType : "json",
+            contentType : "application/json"
+          }).success(function(datar, status) {
+            console.log("récup admin stat ok");
+            $scope.stats = datar;
+
+            $scope.lineVues = {
+              labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
+              series: [ '# vues' ],
+              data: [
+                  [
+                      (datar.nbvue90d-datar.nbvue75d),
+                      (datar.nbvue75d-datar.nbvue60d),
+                      (datar.nbvue60d-datar.nbvue45d),
+                      (datar.nbvue45d-datar.nbvue30d),
+                      (datar.nbvue30d-datar.nbvue15d),
+                      (datar.nbvue15d-datar.nbvue7d),
+                      datar.nbvue7d
+                  ]
+              ],
+              onClick: function (points, evt) {
+                console.log(points, evt);
+              }
+            };
+
+            $scope.lineEvalCmt = {
+              labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
+              series: [ '# évaluations', '# commentaires' ],
+              data: [
+                  [
+                      (datar.nveval90d-datar.nveval75d),
+                      (datar.nveval75d-datar.nveval60d),
+                      (datar.nveval60d-datar.nveval45d),
+                      (datar.nveval45d-datar.nveval30d),
+                      (datar.nveval30d-datar.nveval15d),
+                      (datar.nveval15d-datar.nveval7d),
+                      datar.nveval7d
+                  ],[
+                      (datar.nbcmt90d-datar.nbcmt75d),
+                      (datar.nbcmt75d-datar.nbcmt60d),
+                      (datar.nbcmt60d-datar.nbcmt45d),
+                      (datar.nbcmt45d-datar.nbcmt30d),
+                      (datar.nbcmt30d-datar.nbcmt15d),
+                      (datar.nbcmt15d-datar.nbcmt7d),
+                      datar.nbcmt7d
+                  ]
+              ],
+              onClick: function (points, evt) {
+                console.log(points, evt);
+              }
+            };
+
+          $scope.lineEval = {
+              labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
+              series: [ 'évaluation' ],
+              data: [
+                  [
+                      (datar.eval90d-datar.eval75d),
+                      (datar.eval75d-datar.eval60d),
+                      (datar.eval60d-datar.eval45d),
+                      (datar.eval45d-datar.eval30d),
+                      (datar.eval30d-datar.eval15d),
+                      (datar.eval15d-datar.eval7d),
+                      datar.eval7d
+                  ]
+              ],
+              onClick: function (points, evt) {
+                console.log(points, evt);
+              }
+            };
+
+          });
+
+        };
 
 
 });

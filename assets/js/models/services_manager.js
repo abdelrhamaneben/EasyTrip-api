@@ -22,7 +22,7 @@ var services_manager = {
           ){
         
         var itemService = "<div class=\"card\" id=\"service_" + item.id_service + "\">"
-            + "<div class=\"thumbnail payed\">"
+            + "<div class=\"thumbnail\">"
                 + "<div class=\"caption row\">";
         if(item.payed){
           itemService  += "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='" + item.img + "' /></div>";

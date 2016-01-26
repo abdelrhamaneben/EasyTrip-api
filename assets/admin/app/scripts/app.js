@@ -44,7 +44,8 @@ $stateProvider
                             'scripts/controllers/activityCtrl.js',
                             'scripts/controllers/categoryCtrl.js',
                             'scripts/controllers/serviceCtrl.js',
-                            'scripts/controllers/loginCtrl.js'
+                            'scripts/controllers/loginCtrl.js',
+                            'scripts/controllers/accountCtrl.js'
                         ]
                     })
                   },
@@ -186,8 +187,31 @@ $stateProvider
         url:'/admin/service/edit',
         controller: 'serviceCtrl'
     })
+    .state('admin.account',{
+        templateUrl:'views/admin/account_edit.html',
+        url:'/admin/account_edit'
+    })
+    .state('admin.servicestat',{
+        url:'/service/stat',
+        controller: 'serviceCtrl',//Ctrl',
+        templateUrl:'views/admin/service_stat.html',
+        resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'scripts/directives/timeline/timeline.js',
+                    'scripts/directives/notifications/notifications.js',
+                    'scripts/directives/chat/chat.js',
+                    'scripts/directives/dashboard/stats/stats.js'
+                    ]
+                })
+            }
+        }
+    })
 
-    .state('user', {
+
+    /*.state('user', {
         url:'/user',
         templateUrl: 'views/user/main.html',
         resolve: {
@@ -250,10 +274,10 @@ $stateProvider
 
             }
         }
-    })
+    })*/
     .state('user.home',{
         url:'/home',
-        controller: 'MainCtrl',
+        //controller: 'dashboardCtrl',//Ctrl',
         templateUrl:'views/user/home.html',
         resolve: {
             loadMyFiles:function($ocLazyLoad) {

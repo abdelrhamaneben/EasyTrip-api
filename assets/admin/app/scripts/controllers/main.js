@@ -14,10 +14,10 @@ angular.module('sbAdminApp')
     if ($rootScope.globalIsInit == 'undefined' || !$rootScope.globalIsInit || $rootScope.globalIsInit == false) {
 
         console.log("initialisation de variables globales");
-        $rootScope.apiAddress = "http://localhost:1337/admin/";
-        $rootScope.user;
+        //$rootScope.apiAddress = "http://localhost:1337/admin/";
+        //$rootScope.user;
 
-        $rootScope.globalIsInit = true;
+        //$rootScope.globalIsInit = 1;
     }
 
 

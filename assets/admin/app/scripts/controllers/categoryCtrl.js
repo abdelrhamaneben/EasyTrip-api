@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('sbAdminApp')
   .controller('categoryCtrl', function($scope,$http,$location,$rootScope) {
 

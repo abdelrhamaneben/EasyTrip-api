@@ -17,7 +17,7 @@ angular.module('sbAdminApp')
       scope :{
         isAdmin: '='
       },
-      controller:function($scope, $rootScope){
+      controller:function($scope,$rootScope,$location,$state){
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;

@@ -9,17 +9,20 @@ body {
     height: 100%;
 }
 
+
 html {
     width: 100%;
     height: 100%;
 }
 
 header {
-    background-color:#fed136;
+    background-color:#FDD835;
     margin:0px;
     padding:5px;
     margin-left:0px;
-    margin-bottom:20px;
+    margin-bottom:20px  ;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    text-shadow: -1px 0 #FBC02D, 0 1px #FBC02D, 1px 0 #FBC02D, 0 -1px #FBC02D;
 
 }
 
@@ -73,13 +76,13 @@ body { height: 100%; margin: 0px; padding: 0px }
 }
 
 .thumbnail:hover, .thumbnail:focus {
-    -moz-box-shadow: 0 0 10px #fed136; 
-    -webkit-box-shadow: 0 0 10px #fed136; 
-    box-shadow: 0 0 10px #fed136; 
+    -moz-box-shadow: 0 0 5px #fed136; 
+    -webkit-box-shadow: 0 0 5px #fed136;
 }
 
 .thumbnail {
-     border:2px solid #fed136 !important;
+     border-right:2px solid lightgrey !important;
+      border-bottom:2px solid lightgrey !important;
 }
 
 .list-group-item:hover, .list-group-item:focus {

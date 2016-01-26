@@ -16,6 +16,36 @@
       {
         "name": "Learn",
         "id_activity": 16
+      },
+      {
+        "name": "Mer",
+        "description": "Mer",
+        "id_activity": 17
+      },
+      {
+        "name": "Luxe et prestige",
+        "description": "Luxe et prestige",
+        "id_activity": 18
+      },
+      {
+        "name": "Insolite",
+        "description": "Insolite",
+        "id_activity": 19
+      },
+      {
+        "name": "Saint-valentin",
+        "description": "Saint-valentin",
+        "id_activity": 20
+      },
+      {
+        "name": "famille",
+        "description": "famille",
+        "id_activity": 21
+      },
+      {
+        "name": "Charme",
+        "description": "Charme",
+        "id_activity": 22
       }
     ],
     "et_address": [
@@ -530,6 +560,36 @@
         "category_activities": 30,
         "activity_categories": 16,
         "id": 14
+      },
+      {
+        "category_activities": 25,
+        "activity_categories": 17,
+        "id": 15
+      },
+      {
+        "category_activities": 25,
+        "activity_categories": 18,
+        "id": 16
+      },
+      {
+        "category_activities": 25,
+        "activity_categories": 19,
+        "id": 17
+      },
+      {
+        "category_activities": 25,
+        "activity_categories": 20,
+        "id": 18
+      },
+      {
+        "category_activities": 25,
+        "activity_categories": 21,
+        "id": 19
+      },
+      {
+        "category_activities": 25,
+        "activity_categories": 22,
+        "id": 20
       }
     ],
     "activity_services__service_activities": [
@@ -873,7 +933,7 @@
   },
   "counters": {
     "et_activity": {
-      "id_activity": 16
+      "id_activity": 22
     },
     "et_address": {
       "id_address": 27
@@ -893,7 +953,7 @@
       "id_user": 5
     },
     "activity_categories__category_activities": {
-      "id": 14
+      "id": 20
     },
     "activity_services__service_activities": {
       "id": 15

@@ -132,5 +132,39 @@ module.exports = {
       req.session.userid = null;
       req.session.authenticated = false;
       res.send(200);
+  },
+
+  getData: function(req, res) {
+
+    var serviceId = req.param('userId');
+
+    var userData = {};
+    userData.name_last = "Abdel";
+    userData.name_first = "ledba";
+    userData.email = "ed@gmail.com";
+    userData.phone = "003245678990";
+    userData.address_country = "FR";
+    userData.address_code_zip = "59000";
+    userData.address_city = "LILLE";
+    userData.address_str_name = "rue x";
+    userData.address_str_nbr = "42";
+
+    res.ok(userData);
+  },
+
+  update: function(req, res) {
+
+      console.log("update user data");
+
+      if (!req.param('name_first')) { console.log('param error: 1'); return res.badRequest(''); }
+      if (!req.param('name_last')) { console.log('param error: 2'); return res.badRequest(''); }
+      if (!req.param('email')) { console.log('param error: 3'); return res.badRequest(''); }
+      if (!req.param('phone')) { console.log('param error: 4'); return res.badRequest(''); }
+
+    res.ok();
   }
+
+
+
+
 };

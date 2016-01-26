@@ -17,7 +17,6 @@ module.exports = {
 
   auth: function(req, res, next) {
 
-
     console.log('controller: admin.auth');
 
       if (req.session.authenticated){

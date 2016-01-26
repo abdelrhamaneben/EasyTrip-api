@@ -6,50 +6,50 @@
                     <h3 class="panel-title">Please Sign Up</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" ng-submit="signup(user)">
+                    <form role="form" ng-submit="update(userData)">
                         <fieldset>
 
                             <div><p>Identity detail</p></div>
 
                             <div class="form-group">
-                                <input class="form-control" placeholder="First name" name="first_name" type="text" value="" ng-model="user.name_first">
+                                <input class="form-control" placeholder="First name" name="first_name" type="text" value="" ng-model="userData.name_first">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Last name" name="last_name" type="text" value="" ng-model="user.name_last">
+                                <input class="form-control" placeholder="Last name" name="last_name" type="text" value="" ng-model="userData.name_last">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Phone number 0033----------" name="contact_name" type="text" value="" ng-model="user.phone">
+                                <input class="form-control" placeholder="Phone number 0033----------" name="contact_name" type="text" value="" ng-model="userData.phone">
                             </div>
 
                             <div><p>Authentication and contact</p></div>
 
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus ng-model="user.email">
+                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus ng-model="userData.email">
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Confirm e-mail" name="email" type="email" autofocus>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="" ng-model="user.password">
+                                <input class="form-control" placeholder="Password" name="password" type="password" value="" ng-model="userData.password">
                             </div>
 
                             <div><p>Address</p></div>
 
                             <div class="form-group">
-                                <input class="form-control" placeholder="Street number" name="contact_name" type="text" value="" ng-model="user.address_str_nbr">
+                                <input class="form-control" placeholder="Street number" name="contact_name" type="text" value="" ng-model="userData.address_str_nbr">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Street name" name="contact_name" type="text" value="" ng-model="user.address_str_name">
+                                <input class="form-control" placeholder="Street name" name="contact_name" type="text" value="" ng-model="userData.address_str_name">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="City" name="contact_name" type="text" value="" ng-model="user.address_city">
+                                <input class="form-control" placeholder="City" name="contact_name" type="text" value="" ng-model="userData.address_city">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Zip code" name="contact_name" type="text" value="" ng-model="user.address_code_zip">
+                                <input class="form-control" placeholder="Zip code" name="contact_name" type="text" value="" ng-model="userData.address_code_zip">
                             </div>
                             <div class="form-group">
                                 <!--<input class="form-control" placeholder="Country" name="contact_name" type="text" value="" ng-model="user.address.country">-->
-                                <select class="form-control" ng-model="user.address_country">
+                                <select class="form-control" ng-model="userData.address_country">
                                     <option value="AFG">Afghanistan</option>
                                     <option value="ALA">Åland Islands</option>
                                     <option value="ALB">Albania</option>

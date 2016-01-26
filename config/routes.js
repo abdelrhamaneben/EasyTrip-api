@@ -68,11 +68,25 @@ module.exports.routes = {
   },
 
     // STATS
-    // A déplacer dans la partie admin [ 'get /admin/stats/':{ ]
+  'get /admin/stats/:serviceId':{
+    controller: 'stats',
+    action: 'getStat'
+  },
   'get /admin/stats/':{
     controller: 'stats',
     action: 'getStats'
   },
+
+
+  // USER
+  'get /admin/account/:uid':{
+      controller: 'User',
+      action: 'getData'
+    },
+  'post /admin/account/':{
+      controller: 'User',
+      action: 'update'
+    },
 
   // CATEGRIE
   'get /admin/category/':{

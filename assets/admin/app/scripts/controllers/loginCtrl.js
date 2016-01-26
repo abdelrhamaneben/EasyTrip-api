@@ -22,6 +22,7 @@ angular.module('sbAdminApp')
                 // when the response is available
 
                 $rootScope.user = response.data;
+                $rootScope.uid = $rootScope.user.user_id;
 
                 if ($rootScope.user.role == 'admin') {
                     $rootScope.isAdmin = true;

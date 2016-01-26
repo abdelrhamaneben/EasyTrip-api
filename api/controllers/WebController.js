@@ -40,10 +40,15 @@ module.exports = {
         if (err) {
           return res.serverError(err);
         }
+        var services = [];
+
+        if(req.param('category') == 30) {
+          services = found;
+        }
       return res.view('result',{
         'activities' : cat.activities,
         'category': cat.name,
-        'services' : found,
+        'services' : services,
         'latitude' : 48.856614,
         'longitude' : 2.3522219
         });

@@ -165,8 +165,9 @@ $stateProvider
         controller: 'activityCtrl'
     })
     .state('admin.activityEdit',{
-        templateUrl:'views/admin/activity_add.html',
-        url:'/admin/activity/edit'
+        templateUrl:'views/admin/activity_edit.html',
+        url:'/admin/activity/edit',
+        controller: 'activityCtrl'
     })
 
     .state('admin.serviceView',{
@@ -181,8 +182,9 @@ $stateProvider
 
     })
     .state('admin.serviceEdit',{
-        templateUrl:'views/admin/service_add.html',
-        url:'/admin/service/edit'
+        templateUrl:'views/admin/service_edit.html',
+        url:'/admin/service/edit',
+        controller: 'serviceCtrl'
     })
 
     .state('user', {

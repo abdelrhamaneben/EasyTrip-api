@@ -2,10 +2,11 @@
 
 
 angular.module('sbAdminApp')
-  .controller('serviceCtrl', function($scope,$http) {
+  .controller('serviceCtrl', function($scope,$http,$rootScope,$location) {
 
       $scope.services = [];
       $scope.activities = [];
+      $rootScope.serviceToEdit;
 
       $scope.loadServices = function() {
           var httpRequest = $http({
@@ -44,6 +45,177 @@ angular.module('sbAdminApp')
         });
       };
 
+      $scope.editService = function(id_service){
+          var httpRequest = $http({              
+              method : "GET",
+              url : "http://localhost:1337/service/" + id_service,
+              dataType : "json",
+              contentType : "application/json"
+          }).success(function(data, status){
+              console.log(data);
+              console.log(data.servicePrices.businessDay);
+              var tmp = data.servicePrices.businessDay.split(";");
+              for(var i = 0 ; i < tmp.length ; i++){
+                  var name = tmp[i].split(" ")[0];
+                  var value = "";
+                  for( var j = 1 ; j < tmp[i].split(" ").length ; j++){
+                    value += tmp[i].split(" ")[j] + " ";
+                  }
+                  data[name] = value;
+              }
+              var day = "";
+              var month = "";
+              var year = "";
+              var date_from = new Date(data.servicePrices.d_from);
+              if(date_from.getDate()<10){
+                  day='0'+date_from.getDate();
+              }else{
+                  day=date_from.getDate();
+              }
+              if((date_from.getMonth() + 1) <10){
+                  month='0'+ (date_from.getMonth() + 1);
+              }else{
+                  month=(date_from.getMonth() + 1);
+              }
+              var from = day+'/'+month+'/'+ date_from.getFullYear();
+
+              var date_to = new Date(data.servicePrices.d_to);
+
+              if(date_to.getDate()<10){
+                  day='0' + date_to.getDate();
+              }else{
+                  day=date_to.getDate();
+              } 
+              if((date_to.getMonth() + 1) <10){
+                  month='0'+ (date_to.getMonth() + 1);
+              }else{
+                  month=(date_to.getMonth() + 1);
+              } 
+
+              var to = day+'/'+month+'/'+ date_to.getFullYear();
+              
+              data.servicePrices.d_from = from;
+              data.servicePrices.d_to = to;
+              console.log(data);
+              $rootScope.serviceToEdit = data;
+              $location.path('/admin/admin/service/edit');
+          });              
+      };
+
+      $scope.updateService = function(id_service){
+          var data = '{'
+                +'"creator" : 2,'
+                +'"activities" : "' + service_activity.value + '",'
+                +'"geolati" : "' + service_geolati.value + '",'
+                +'"geolong" : "' + service_geolong.value + '",'
+                +'"name" : "' + service_name.value + '",'
+                +'"description" : "' + service_description.value + '",'
+                //+'"image" : "' + service_image_blob + '",'
+                +'"link" : "' + service_link.value + '"'
+              +'}';
+
+              var httpRequest = $http({
+                  method : "POST",
+                  url : "http://localhost:1337/service/" + id_service,
+                  data : data,
+                  dataType : "json",
+                  contentType : "application/json"
+              }).success(function(data, status) {
+                  var id_address_to_change = data.address.id_address; 
+                  var id_servicePrice_to_change = data.servicePrice.id_sp; 
+                  
+                  var monday_opening_hours = document.getElementById('monday_opening_hours');
+                  var tuesday_opening_hours = document.getElementById('tuesday_opening_hours');
+                  var wednesday_opening_hours = document.getElementById('wednesday_opening_hours');
+                  var thursday_opening_hours = document.getElementById('thursday_opening_hours');
+                  var friday_opening_hours = document.getElementById('friday_opening_hours');
+                  var saturday_opening_hours = document.getElementById('saturday_opening_hours');
+                  var sunday_opening_hours = document.getElementById('sunday_opening_hours');
+
+                  var service_geolati = document.getElementById('service_geolati');
+                  var service_geolong = document.getElementById('service_geolong');
+                  var service_name = document.getElementById('service_name');
+                  var service_description = document.getElementById('service_description');
+                  var service_image = document.getElementById('service_image');
+                  var service_activity = document.getElementById('service_activity');
+                  var service_link = document.getElementById('service_link');
+                  var businessDay = ""; 
+                  if(monday_opening_hours.value.length != 0){
+                    businessDay += "Lundi "+ monday_opening_hours.value + ";";
+                  }
+                  if(tuesday_opening_hours.value.length != 0){
+                    businessDay += "Mardi "+ tuesday_opening_hours.value + ";";
+                  }
+                  if(wednesday_opening_hours.value.length != 0){
+                    businessDay += "Mercredi "+ wednesday_opening_hours.value + ";";
+                  }
+                  if(thursday_opening_hours.value.length != 0){
+                    businessDay += "Jeudi "+ thursday_opening_hours.value + ";";
+                  }
+                  if(friday_opening_hours.value.length != 0){
+                    businessDay += "Vendredi "+ friday_opening_hours.value + ";";
+                  }
+                  if(saturday_opening_hours.value.length != 0){
+                    businessDay += "Samedi "+ saturday_opening_hours.value + ";";
+                  }
+                  if(sunday_opening_hours.value.length != 0){
+                    businessDay += "Dimanche "+ sunday_opening_hours.value + ";";
+                  }
+
+                  // ajout de l'adresse
+                  var address_str_nbr = document.getElementById('address_str_nbr');
+                  var address_str_name = document.getElementById('address_str_name');
+                  var address_code_zip = document.getElementById('address_code_zip');
+                  var address_city = document.getElementById('address_city');
+                  var address_country = document.getElementById('address_country');
+
+                  var data = '{'
+                    +'"str_nbr" : "' + address_str_nbr.value + '",'
+                    +'"str_name" : "' + address_str_name.value + '",'
+                    +'"code_zip" : "' + address_code_zip.value + '",'
+                    +'"city" : "' + address_city.value + '",'
+                    +'"country" : "' + address_country.value + '"'
+                  +'}';
+                  var httpRequest = $http({
+                        method : "POST",
+                        url : "http://localhost:1337/address/" + id_address_to_change,
+                        data : data,
+                        dataType : "json",
+                        contentType : "application/json"
+                  });
+
+                  var service_d_to = document.getElementById('service_d_to');
+                  var service_d_from = document.getElementById('service_d_from');
+                  var service_nb_person_min = document.getElementById('service_nb_person_min');
+                  var service_nb_person_max = document.getElementById('service_nb_person_max');
+                  var service_price_pp = document.getElementById('service_price_pp');
+
+                  var tmp = service_d_from.value.split("/");
+                  service_d_from.value = new Date(tmp[2], tmp[1] - 1, tmp[0]);
+
+                  tmp = service_d_to.value.split("/");
+                  service_d_to.value = new Date(tmp[2], tmp[1] - 1, tmp[0]);
+
+                  var data = '{'
+                    +'"d_from" : "' + service_d_from.value + '",'
+                    +'"d_to" : "' + service_d_to.value + '",'
+                    +'"nb_person_min" : "' + service_nb_person_min.value + '",'
+                    +'"nb_person_max" : "' + service_nb_person_max.value + '",'
+                    +'"price_per_person" : ' + service_price_pp.value + ','
+                    +'"businessDay" : "' + businessDay + '"'
+                  +'}';
+
+                  var httpRequest = $http({
+                      method : "POST",
+                      url : "http://localhost:1337/serviceprice/" + id_servicePrice_to_change,
+                      data : data,
+                      dataType : "json",
+                      contentType : "application/json"
+                  }).success(function(data,status){
+                      alert("Le service a bien été modifié.");
+                  });
+            });
+      };
 
       $scope.addService = function(){
           var service_image_blob = "";
@@ -184,8 +356,20 @@ angular.module('sbAdminApp')
                       dataType : "json",
                       contentType : "application/json"
                   }).success(function(data,status) {
-                      $scope.loadServices();
-                      alert("Le service a bien été ajouté.");
+                      var id_service = data.service;
+                      var data = '{'
+                        +'"servicePrice" : ' +  data.id_sp
+                      +'}';
+                      var httpRequest = $http({
+                        method : "POST",
+                        url : "http://localhost:1337/service/" + id_service,
+                        data : data,
+                        dataType : "json",
+                        contentType : "application/json"
+                      }).success(function(data,status){
+                        $scope.loadServices();
+                        alert("Le service a bien été ajouté.");
+                      });
                   });
               });
           });

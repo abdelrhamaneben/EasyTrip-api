@@ -19,12 +19,10 @@ module.exports = {
 		 	model : 'service'
 		 },
 		 d_from : {
-		 	type : 'datetime',
-      required: true
+		 	type : 'datetime'
 		 },
 		 d_to : {
-		 	type : 'datetime',
-      required: true
+		 	type : 'datetime'
 		 },
 	     nb_person_min : {
 	     	type : 'integer'
@@ -34,8 +32,7 @@ module.exports = {
 	     },
 	     price_per_person : {
     		type : 'integer',
- 			size : 8,
-      required: true
+ 			size : 8
 		 },
    		 promotion : {
     		type : 'boolean',

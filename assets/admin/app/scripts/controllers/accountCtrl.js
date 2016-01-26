@@ -8,7 +8,9 @@ angular.module('sbAdminApp')
 
         var httpRequest = $http({
             method: "GET",
-            url: ("http://localhost:1337/admin/account/"+$rootScope.user.user_id),
+            //url: ("http://localhost:1337/admin/account/"+$rootScope.user.user_id),
+            url: "172.28.1.101:1337/admin/account/"+$rootScope.user.user_id),
+
             async : false
         }).success(function(data, status) {
             // mettre un timer quelque part, bien que non nécessaire pk THEN renvoie un chargement
@@ -42,7 +44,8 @@ angular.module('sbAdminApp')
 
         var httpRequest = $http({
             method: "POST",
-            url: "http://localhost:1337/admin/account/",
+            //url: "http://localhost:1337/admin/account/",
+            url: "172.28.1.101:1337/admin/account/",
             async : false,
             data: user,
             withCredentials: false,

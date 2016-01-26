@@ -9,7 +9,8 @@ angular.module('sbAdminApp')
       $scope.loadCategories = function() {
           var httpRequest = $http({
             method: "GET",
-            url: "http://localhost:1337/category",
+            //url: "http://localhost:1337/category",
+            url: "172.28.1.101:1337/category",
             async : false,
             dataType : "json",
             contentType : "application/json"
@@ -21,7 +22,8 @@ angular.module('sbAdminApp')
       $scope.deleteCategory = function(id_category){
           var httpRequest = $http({
             method: "DELETE",
-            url: "http://localhost:1337/category/" + id_category,
+            //url: "http://localhost:1337/category/" + id_category,
+            url: "172.28.1.101:1337/category/" + id_category,
             async : false
           }).success(function() {
             //$route.reload();
@@ -33,7 +35,8 @@ angular.module('sbAdminApp')
       $scope.editCategory = function(id_category){
         var httpRequest = $http({              
             method : "GET",
-            url : "http://localhost:1337/category/" + id_category,
+            //url : "http://localhost:1337/category/" + id_category,
+            url: "172.28.1.101:1337/category/" + id_category,
             dataType : "json",
             contentType : "application/json"
         }).success(function(data, status){
@@ -64,7 +67,8 @@ angular.module('sbAdminApp')
 
         var httpRequest = $http({              
             method : "POST",
-            url : "http://localhost:1337/category/" + id_category,
+            //url : "http://localhost:1337/category/" + id_category,
+            url: "172.28.1.101:1337/category/" + id_category,
             data : data,
             dataType : "json",
             contentType : "application/json"
@@ -95,7 +99,8 @@ angular.module('sbAdminApp')
 
         var httpRequest = $http({              
             method : "POST",
-            url : "http://localhost:1337/category",
+            //url : "http://localhost:1337/category",
+            url: "172.28.1.101:1337/category",
             data : data,
             dataType : "json",
             contentType : "application/json"

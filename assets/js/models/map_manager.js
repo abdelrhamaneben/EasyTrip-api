@@ -60,7 +60,7 @@ var map_manager = {
 		var cc = null;
 		if(service.payed == 1) {
 			cc = "<div><h3>" + service.name
-						+ "</h3><div><center><img style='width:150px;height:150px;' src='/images/"
+						+ "</h3><div><center><img style='width:150px;height:150px;' src='"
 						+ service.img + "' /></center></div><div><p>"
 						+ service.description + "<p/><p>Address : <b>"
 						+  service.address + "</b></p><p>Tel : <b>"

@@ -226,6 +226,14 @@
         "city": "Vendin le vieil",
         "country": "France",
         "id_address": 26
+      },
+      {
+        "str_nbr": "122",
+        "str_name": "lavoisier",
+        "code_zip": 62880,
+        "city": "Vendin le vieil",
+        "country": "France",
+        "id_address": 27
       }
     ],
     "et_category": [
@@ -361,16 +369,16 @@
       },
       {
         "creator": 2,
-        "geolati": 54.1234,
-        "geolong": 23.1234,
-        "address": 26,
-        "name": "Nom du service",
-        "description": "AAAA",
+        "geolati": 54.2234,
+        "geolong": 23.2234,
+        "address": 27,
+        "name": "Karting",
+        "description": "Karting professionnel",
         "image": "",
-        "link": "",
+        "link": "www.youtube.fr",
         "premium": false,
-        "id_service": 15,
-        "servicePrice": 6
+        "id_service": 16,
+        "servicePrice": 5
       }
     ],
     "et_service_price": [
@@ -419,7 +427,7 @@
         "id_sp": 4
       },
       {
-        "service": "14",
+        "service": 14,
         "d_from": "2015-10-22T22:00:00.000Z",
         "d_to": "2016-12-09T23:00:00.000Z",
         "nb_person_min": 1,
@@ -430,7 +438,7 @@
         "id_sp": 5
       },
       {
-        "service": "15",
+        "service": 15,
         "d_from": "2015-10-22T22:00:00.000Z",
         "d_to": "2016-12-09T23:00:00.000Z",
         "nb_person_min": 3,
@@ -439,6 +447,17 @@
         "businessDay": "Lundi 11h30 12h00  ;",
         "promotion": false,
         "id_sp": 6
+      },
+      {
+        "service": 16,
+        "d_from": "2015-10-22T22:00:00.000Z",
+        "d_to": "2016-12-09T23:00:00.000Z",
+        "nb_person_min": 3,
+        "nb_person_max": 12,
+        "price_per_person": 30,
+        "businessDay": "Mercredi 8h30-11h30 13h00-18h00;Jeudi 8h30-11h30 13h00-18h00;",
+        "promotion": false,
+        "id_sp": 5
       }
     ],
     "et_subscription": [],
@@ -523,6 +542,11 @@
         "activity_services": 13,
         "service_activities": 3,
         "id": 14
+      },
+      {
+        "activity_services": 13,
+        "service_activities": 16,
+        "id": 15
       }
     ]
   },
@@ -685,12 +709,6 @@
       },
       "updatedAt": {
         "type": "datetime"
-      },
-      "servicePrice": {
-        "type": "integer",
-        "model": "serviceprice",
-        "foreignKey": true,
-        "alias": "servicePrice"
       }
     },
     "et_service_price": {
@@ -700,11 +718,17 @@
         "unique": true,
         "autoIncrement": true
       },
+      "service": {
+        "type": "integer",
+        "model": "service",
+        "foreignKey": true,
+        "alias": "service"
+      },
       "d_from": {
-        "type": "date"
+        "type": "datetime"
       },
       "d_to": {
-        "type": "date"
+        "type": "datetime"
       },
       "nb_person_min": {
         "type": "integer"
@@ -779,7 +803,8 @@
           "business",
           "private",
           "admin"
-        ]
+        ],
+        "defaultsTo": "private"
       },
       "password": {
         "type": "string"
@@ -851,17 +876,17 @@
       "id_activity": 16
     },
     "et_address": {
-      "id_address": 26
+      "id_address": 27
     },
     "et_category": {
       "id_category": 47
     },
     "et_reservation": {},
     "et_service": {
-      "id_service": 15
+      "id_service": 16
     },
     "et_service_price": {
-      "id_sp": 4
+      "id_sp": 5
     },
     "et_subscription": {},
     "et_user": {
@@ -871,7 +896,7 @@
       "id": 14
     },
     "activity_services__service_activities": {
-      "id": 14
+      "id": 15
     }
   }
 }

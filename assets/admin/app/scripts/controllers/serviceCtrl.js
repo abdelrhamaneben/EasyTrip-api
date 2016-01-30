@@ -56,8 +56,8 @@ angular.module('sbAdminApp')
               contentType : "application/json"
           }).success(function(data, status){
               console.log(data);
-              console.log(data.servicePrices.businessDay);
-              var tmp = data.servicePrices.businessDay.split(";");
+              console.log(data.servicePrices[0].businessDay);
+              var tmp = data.servicePrices[0].businessDay.split(";");
               for(var i = 0 ; i < tmp.length ; i++){
                   var name = tmp[i].split(" ")[0];
                   var value = "";
@@ -69,7 +69,7 @@ angular.module('sbAdminApp')
               var day = "";
               var month = "";
               var year = "";
-              var date_from = new Date(data.servicePrices.d_from);
+              var date_from = new Date(data.servicePrices[0].d_from);
               if(date_from.getDate()<10){
                   day='0'+date_from.getDate();
               }else{
@@ -82,7 +82,7 @@ angular.module('sbAdminApp')
               }
               var from = day+'/'+month+'/'+ date_from.getFullYear();
 
-              var date_to = new Date(data.servicePrices.d_to);
+              var date_to = new Date(data.servicePrices[0].d_to);
 
               if(date_to.getDate()<10){
                   day='0' + date_to.getDate();
@@ -97,8 +97,8 @@ angular.module('sbAdminApp')
 
               var to = day+'/'+month+'/'+ date_to.getFullYear();
               
-              data.servicePrices.d_from = from;
-              data.servicePrices.d_to = to;
+              data.servicePrices[0].d_from = from;
+              data.servicePrices[0].d_to = to;
               console.log(data);
               $rootScope.serviceToEdit = data;
               $location.path('/admin/admin/service/edit');

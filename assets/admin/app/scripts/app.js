@@ -96,6 +96,26 @@ $stateProvider
             }
         }
     })
+    .state('admin.homebu',{
+          url:'/hbu',
+          controller: 'MainCtrl',
+          templateUrl:'views/user/home.html',
+          resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+                  return $ocLazyLoad.load({
+                    name:'sbAdminApp',
+                    files:[
+                      'scripts/controllers/main.js',
+                      'scripts/controllers/dashboardCtrl.js',
+                      'scripts/directives/timeline/timeline.js',
+                      'scripts/directives/notifications/notifications.js',
+                      'scripts/directives/chat/chat.js',
+                      'scripts/directives/dashboard/stats/stats.js'
+                      ]
+                  })
+              }
+          }
+      })
     .state('admin.home',{
         url:'/home',
         controller: 'MainCtrl',
@@ -116,7 +136,6 @@ $stateProvider
         }
         }
     })
-
     .state('login',{
         templateUrl:'views/public/login.html',
         url:'/login',
@@ -126,6 +145,7 @@ $stateProvider
                 return $ocLazyLoad.load({
                     name:'sbAdminApp',
                     files:[
+                        'scripts/controllers/main.js',
                         'scripts/controllers/loginCtrl.js'
                     ]
                 })
@@ -137,7 +157,6 @@ $stateProvider
         url:'/signup',
         controller: 'loginCtrl'
     })
-
     .state('admin.categoryView',{
         templateUrl:'views/admin/category_view.html',
         url:'/admin/category',
@@ -154,7 +173,6 @@ $stateProvider
         url:'/admin/category/add',
         controller: 'categoryCtrl'
     })
-
     .state('admin.activityView',{
         templateUrl:'views/admin/activity_view.html',
         url:'/admin/activity/',
@@ -209,6 +227,8 @@ $stateProvider
             }
         }
     })
+}]);
+
 
 
     /*.state('user', {
@@ -275,24 +295,3 @@ $stateProvider
             }
         }
     })*/
-    .state('user.home',{
-        url:'/home',
-        //controller: 'dashboardCtrl',//Ctrl',
-        templateUrl:'views/user/home.html',
-        resolve: {
-            loadMyFiles:function($ocLazyLoad) {
-                return $ocLazyLoad.load({
-                  name:'sbAdminApp',
-                  files:[
-                    'scripts/controllers/main.js',
-                    'scripts/controllers/dashboardCtrl.js',
-                    'scripts/directives/timeline/timeline.js',
-                    'scripts/directives/notifications/notifications.js',
-                    'scripts/directives/chat/chat.js',
-                    'scripts/directives/dashboard/stats/stats.js'
-                    ]
-                })
-            }
-        }
-    })
-    }]);

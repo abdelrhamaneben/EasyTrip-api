@@ -7,8 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope,$rootScope,$position,$http) {
-
+  .controller('MainCtrl', function($scope,$rootScope,$position,$state,$http) {
 
     // initialisation de variables globales
     if ($rootScope.globalIsInit == 'undefined' || !$rootScope.globalIsInit || $rootScope.globalIsInit == false) {

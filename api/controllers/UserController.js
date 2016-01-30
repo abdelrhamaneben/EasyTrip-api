@@ -39,31 +39,29 @@ module.exports = {
               return res.notFound("Unknown email address");
           } else {
 
-          console.log('User found ! :)');
+              if (user.password != pass) {
+                  console.log('wrong password');
+                  return res.badRequest('wrong password, try again');
+              }
 
-          if (user.password != pass) {
-              console.log('wrong password');
-              return res.badRequest('wrong password, try again');
-          }
+              if (user.role == 'admin') {
+                  req.session.admin = true;
+                  console.log('login - is admin');
+              } else if (user.role == 'business') {
+                  req.session.admin = false;
+                  console.log('login - is business');
+              } else {
+                  console.log('user '+mail+' don\'t exist or simple user');
+                  //console.log('But we force connexion');
+                  return res.badRequest('you\'re not allowed to connect');
+              }
 
-          if (user.role == 'admin') {
-              req.session.admin = true;
-              console.log('login - is admin');
-          } else if (user.role == 'business') {
-              req.session.admin = false;
-              console.log('login - is business');
-          } else {
-              console.log('user '+mail+' don\'t exist or simple user');
-              //console.log('But we force connexion');
-              return res.badRequest('you\'re not allowed to connect');
-          }
+              req.session.userid = user.id_user;
+              req.session.authenticated = true;
+              res.set('isAdmin', req.session.admin);
 
-          req.session.userid = user.id_user;
-          req.session.authenticated = true;
-          res.set('isAdmin', req.session.admin);
-
-          console.log('authentified');
-          res.ok(user);
+              console.log('authentified');
+              res.ok(user);
 
           }
       });
@@ -139,15 +137,15 @@ module.exports = {
     var serviceId = req.param('userId');
 
     var userData = {};
-    userData.name_last = "Abdel";
-    userData.name_first = "ledba";
-    userData.email = "ed@gmail.com";
-    userData.phone = "003245678990";
-    userData.address_country = "FR";
-    userData.address_code_zip = "59000";
-    userData.address_city = "LILLE";
-    userData.address_str_name = "rue x";
-    userData.address_str_nbr = "42";
+        userData.name_last = "Abdel";
+        userData.name_first = "ledba";
+        userData.email = "ed@gmail.com";
+        userData.phone = "003245678990";
+        userData.address_country = "FR";
+        userData.address_code_zip = "59000";
+        userData.address_city = "LILLE";
+        userData.address_str_name = "rue x";
+        userData.address_str_nbr = "42";
 
     res.ok(userData);
   },

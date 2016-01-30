@@ -8,8 +8,11 @@
  *
  */
 module.exports = function(req, res, next) {
+
+    console.log("> sessionAuthAdmin: "+req.url);
+
   // Need authentificated user to execute controller
-  if(req.session.authenticated  && req.session.admin) {
+  if(req.url=='/admin.html' || req.url=='/admin' || (req.session.authenticated  && req.session.admin)) {
     return next();
   }
   // not authentificated so redirect to login

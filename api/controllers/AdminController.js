@@ -1,7 +1,7 @@
 
 module.exports = {
 
-  index: function(req, res) {
+  index: function(req, res, next) {
 
     console.log('controller: admin.index');
 
@@ -9,6 +9,8 @@ module.exports = {
         console.log('session ok : logged');
         res.redirect('admin/app/index.html#/admin/home')
     } else {
+
+        console.log("path: "+req.url);
         console.log('session ko : not logged');
         res.redirect('admin/app/index.html');
     }

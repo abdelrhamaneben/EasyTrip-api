@@ -45,8 +45,7 @@ $stateProvider
                             'scripts/controllers/categoryCtrl.js',
                             'scripts/controllers/serviceCtrl.js',
                             'scripts/controllers/loginCtrl.js',
-                            'scripts/controllers/accountCtrl.js',
-                            'config.js'
+                            'scripts/controllers/accountCtrl.js'
                         ]
                     })
                   },

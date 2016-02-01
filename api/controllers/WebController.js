@@ -42,7 +42,7 @@ module.exports = {
         }
         var services = [];
 
-        if(req.param('category') == 30) {
+        if(req.param('category') == 25) {
           services = found;
         }
       return res.view('result',{

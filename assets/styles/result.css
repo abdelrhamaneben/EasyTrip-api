@@ -16,13 +16,13 @@ html {
 }
 
 header {
-    background-color:#FDD835;
+    background-color:rgba(249, 216, 48, 0.96);
     margin:0px;
     padding:5px;
     margin-left:0px;
     margin-bottom:20px  ;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    text-shadow: -1px 0 #FBC02D, 0 1px #FBC02D, 1px 0 #FBC02D, 0 -1px #FBC02D;
+    text-shadow: -1px 0 #C79823, 0 1px #C79823, 1px 0 #C79823, 0 -1px #C79823;
 
 }
 
@@ -52,7 +52,7 @@ body { height: 100%; margin: 0px; padding: 0px }
 }
 
 #r-part {
-     
+
 }
 
 #c-part {
@@ -76,7 +76,7 @@ body { height: 100%; margin: 0px; padding: 0px }
 }
 
 .thumbnail:hover, .thumbnail:focus {
-    -moz-box-shadow: 0 0 5px #fed136; 
+    -moz-box-shadow: 0 0 5px #fed136;
     -webkit-box-shadow: 0 0 5px #fed136;
 }
 

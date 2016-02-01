@@ -1,6 +1,9 @@
 var services_manager = {
  build : function () {
     $('#c-part').html('');
+    if(this.data.length < 1) {
+      $('#c-part').html("<h4>Il n'y a pas de service disponible pour cette categorie</h4>");
+    }
     $.each(this.data, function(i, item) {
         var priceMin = $('#priceMin').val();
         var priceMax = $('#priceMax').val();

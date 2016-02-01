@@ -29,6 +29,5 @@ module.exports = {
       autoUpdatedAt: true
     }
   }
-  }
 };
 

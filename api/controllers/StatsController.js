@@ -137,146 +137,217 @@ module.exports = {
       stats.nbsearch90d = count;
 
       // NEXT
-      
+      User.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbSignupNu7d);
     };
 
-
-
-
-
-
-
-    var nbUsers7d = function(err, count) {
+    // SIGNUP PRIVATE ----------------------------------------------------------
+    var nbSignupNu7d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit7d = count;
+      stats.nbsignupnu7d = count;
 
-      User.count().where({createdAt: { '>': d15, '<=': d7}}).exec(nbUsers15d);
+      User.count().where({createdAt: { '>': d15, '<=': d7}, role: {'=': 'private'}}).exec(nbSignupNu15d);
     };
 
-
-
-    var nbUsers15d = function(err, count) {
+    var nbSignupNu15d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit15d = count;
+      stats.nbsignupnu15d = count;
 
-      User.count().where({createdAt: { '>': d30, '<=': d15}}).exec(nbUsers30d);
+      User.count().where({createdAt: { '>': d30, '<=': d15}, role: {'=': 'private'}}).exec(nbSignupNu30d);
     };
 
-
-
-    var nbUsers30d = function(err, count) {
+    var nbSignupNu30d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit30d = count;
+      stats.nbsignupnu30d = count;
 
-      User.count().where({createdAt: { '>': d45, '<=': d30}}).exec(nbUsers45d);
+      User.count().where({createdAt: { '>': d45, '<=': d30}, role: {'=': 'private'}}).exec(nbSignupNu45d);
     };
 
-
-
-    var nbUsers45d = function(err, count) {
+    var nbSignupNu45d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit45d = count;
+      stats.nbsignupnu45d = count;
 
-      User.count().where({createdAt: { '>': d60, '<=': d45}}).exec(nbUsers60d);
+      User.count().where({createdAt: { '>': d60, '<=': d45}, role: {'=': 'private'}}).exec(nbSignupNu60d);
     };
 
-
-
-    var nbUsers60d = function(err, count) {
+    var nbSignupNu60d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit60d = count;
+      stats.nbsignupnu60d = count;
 
-      User.count().where({createdAt: { '>': d75, '<=': d60}}).exec(nbUsers75d);
+      User.count().where({createdAt: { '>': d75, '<=': d60}, role: {'=': 'private'}}).exec(nbSignupNu75d);
     };
 
-
-
-    var nbUsers75d = function(err, count) {
+    var nbSignupNu75d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit75d = count;
+      stats.nbsignupnu75d = count;
 
-      User.count().where({createdAt: { '>': d90, '<=': d75}}).exec(nbUsers90d);
+      User.count().where({createdAt: { '>': d90, '<=': d75}, role: {'=': 'private'}}).exec(nbSignupNu90d);
     };
 
-
-
-    var nbUsers90d = function(err, count) {
+    var nbSignupNu90d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbvisit90d = count;
+      stats.nbsignupnu90d = count;
 
+      // NEXT
+      User.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbSignupBu7d);
     };
 
-    Stat.count({createdAt: {'>=': d7}}).exec(function(err, count) {
+    // SIGNUP BUSINESS ---------------------------------------------------------
+    var nbSignupBu7d = function(err, count) {
       if (err) return res.serverError({error: err})
       console.log(count);
 
-      stats.nbsearch7d = count;
+      stats.nbsignupbu7d = count;
 
-      console.log("ici");
+      User.count().where({createdAt: { '>': d15, '<=': d7}, role: {'=': 'business'}}).exec(nbSignupBu15d);
+    };
 
-      Stat.count().where({createdAt: {'>': d15, '<=': d7}, id_service: {'=': null}}).exec(function(err, count) {
-        console.log(count);
-      });
-    });
+    var nbSignupBu15d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbsignupbu15d = count;
+
+      User.count().where({createdAt: { '>': d30, '<=': d15}, role: {'=': 'business'}}).exec(nbSignupBu30d);
+    };
+
+    var nbSignupBu30d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbsignupbu30d = count;
+
+      User.count().where({createdAt: { '>': d45, '<=': d30}, role: {'=': 'business'}}).exec(nbSignupBu45d);
+    };
+
+    var nbSignupBu45d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbsignupbu45d = count;
+
+      User.count().where({createdAt: { '>': d60, '<=': d45}, role: {'=': 'business'}}).exec(nbSignupBu60d);
+    };
+
+    var nbSignupBu60d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbsignupbu60d = count;
+
+      User.count().where({createdAt: { '>': d75, '<=': d60}, role: {'=': 'business'}}).exec(nbSignupBu75d);
+    };
+
+    var nbSignupBu75d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbsignupbu75d = count;
+
+      User.count().where({createdAt: { '>': d90, '<=': d75}, role: {'=': 'business'}}).exec(nbSignupBu90d);
+    };
+
+    var nbSignupBu90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbsignupbu90d = count;
+
+      // NEXT
+      Service.count().exec(nbServices);
+    };
+
+    // SERVICES ----------------------------------------------------------------
+    var nbServices = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice = count;
+
+      Service.count().where({createdAt: { '>': d7, '<=': d0}}).exec(nbServices7d);
+    };
+
+    var nbServices7d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice7d = count;
+
+      Service.count().where({createdAt: { '>': d15, '<=': d7}}).exec(nbServices15d);
+    };
+
+    var nbServices15d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice15d = count;
+
+      Service.count().where({createdAt: { '>': d30, '<=': d15}}).exec(nbServices30d);
+    };
+
+    var nbServices30d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice30d = count;
+
+      Service.count().where({createdAt: { '>': d45, '<=': d30}}).exec(nbServices45d);
+    };
+
+    var nbServices45d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice45d = count;
+
+      Service.count().where({createdAt: { '>': d60, '<=': d45}}).exec(nbServices60d);
+    };
+
+    var nbServices60d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice60d = count;
+
+      Service.count().where({createdAt: { '>': d75, '<=': d60}}).exec(nbServices75d);
+    };
+
+    var nbServices75d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice75d = count;
+
+      User.count().where({createdAt: { '>': d90, '<=': d75}}).exec(nbServices90d);
+    };
+
+    var nbServices90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbservice90d = count;
+
+      // NEXT
+
+    };
 
     if (!req.session.authenticated) {
 
         // nombre de création de compte utilisateur Util & Business
         Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVisit7d);
-
-        //User.count().where({createdAt: { '>': d7, '<=': d0}}).exec(nbUsers7d);
-
-        // nombre de création de compte utilisateur Util & Business
-        //id_service dans stat
-        stats.nbsearch7d = 13;
-        stats.nbsearch15d = 17;
-        stats.nbsearch30d = 20;
-        stats.nbsearch45d = 32;
-        stats.nbsearch60d = 57;
-        stats.nbsearch75d = 68;
-        stats.nbsearch90d = 98;
-
-
-        // nombre de création de compte utilisateur Util & Business
-        stats.nbsignupnu7d = 3;
-        stats.nbsignupnu15d = 13;
-        stats.nbsignupnu30d = 20;
-        stats.nbsignupnu45d = 32;
-        stats.nbsignupnu60d = 41;
-        stats.nbsignupnu75d = 60;
-        stats.nbsignupnu90d = 67;
-
-        stats.nbsignupbu7d = 2;
-        stats.nbsignupbu15d = 3;
-        stats.nbsignupbu30d = 5;
-        stats.nbsignupbu45d = 9;
-        stats.nbsignupbu60d = 10;
-        stats.nbsignupbu75d = 11;
-        stats.nbsignupbu90d = 11;
-
-       // Nombre de nouveau services
-        stats.nbservice = 124;
-        stats.nbservice7d = 3;
-        stats.nbservice15d = 7;
-        stats.nbservice30d = 10;
-        stats.nbservice45d = 12;
-        stats.nbservice60d = 13;
-        stats.nbservice75d = 16;
-        stats.nbservice90d = 20;
 
         // nombre de promos
         stats.promosub = 5;

@@ -1,8 +1,8 @@
 var services_manager = {
- build : function () {
+ build : function (id_activity) {
     $('#c-part').html('');
     if(this.data.length < 1) {
-      $('#c-part').html("<h4>Il n'y a pas de service disponible pour cette categorie</h4>");
+      $('#c-part').html("<h4>There are no services available for this category</h4>");
     }
     $.each(this.data, function(i, item) {
         var priceMin = $('#priceMin').val();
@@ -13,9 +13,8 @@ var services_manager = {
         var dateEnd = new Date($('#dateEnd').val());
         var dateFrom = new Date(item.fromDate);
         var dateTo = new Date(item.toDate);
-
         //  Filters
-        if((capacity>=item.minCapacity && capacity<=item.maxCapacity || capacity =='') &&
+        if((typeof id_activity == "undefined" || item.activities[0] == id_activity) && (capacity>=item.minCapacity && capacity<=item.maxCapacity || capacity =='') &&
           (item.name.toUpperCase().indexOf(service) != -1 || service=='') &&
           ((item.price>= priceMin && item.price<=priceMax)  || (priceMin=='' && item.price<=priceMax) || (item.price>= priceMin && priceMax=='')
             || (priceMin=='' && priceMax=='')) &&
@@ -23,7 +22,6 @@ var services_manager = {
            ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='' ) ||
            ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
-        
         var itemService = "<div class=\"card\" id=\"service_" + item.id_service + "\">"
             + "<div class=\"thumbnail\">"
                 + "<div class=\"caption row\">";
@@ -62,25 +60,7 @@ var services_manager = {
 
  },
  load : function (rectangle,activities) {
-   /* $.ajax({
-              method: "POST",
-              url: "http://localhost:1337/service/search",
-              async : false,
-              data : {
-                'rectangle' : rectangle,
-                'activities' : activities
-              },
-              success : function (data) {
-                if(data){
-                    this.data = data;
-                    this.build(this.data);
-                }
-              },
-              error : function () {
-                alert("Impossible d'accéder au serveur EasyTrip");
-              }
-            });*/
-    this.build(this.data);
+    this.build();
  } ,
 
 popup : function(idService){

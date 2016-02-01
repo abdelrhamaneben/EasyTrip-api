@@ -109,7 +109,7 @@
     <!-- APP -->    
     <script type="text/javascript"> 
         
-        //------ FILTERS     
+        //----------------------- Gestion des FILTERS     
         $('#filters').hide();
         $('#hideFilter').hide();
         
@@ -136,12 +136,12 @@
                     $('#filters').hide();
                     $('#activities').removeClass(animationIn);
                     $('#activities').addClass(animationUp);
-                $('#hideFilter').hide();
-            $('#showFilter').show();
+                    $('#hideFilter').hide();
+                    $('#showFilter').show();
                     
             });       
         });
-        
+
          //Dates
        $( "#dateStart" ).datepicker({
             minDate: 0,
@@ -156,11 +156,27 @@
                 services_manager.build();
             }            
         });
-        
+
+
+        // ------------ défini l'action du click sur une activité  
+        $('#list_activities li').click(function () {
+            if($(this).hasClass('active')){
+                $('#list_activities li').removeClass('active');
+                services_manager.build();
+            }
+            else {
+                $('#list_activities li').removeClass('active');
+                $(this).addClass('active');
+                 services_manager.build($(this).attr('data-id'));
+            }
+        });
+
+        // ------------ défini la redirection vers le détail
         function review(service){
             $(location).attr('href',"/feature?service="+service);
         }
         
+        // ----------------  Initialize Services ----------------- (Service Controller)
        function initialize() {    
            
         <% for(var i=0; i< services.length; i++) {%>
@@ -168,7 +184,7 @@
          {
             "activities": [
              <% for(var j=0; j< services[i].activities.length; j++) { %>
-                <%= services[i].activities[j].id_activity + "," %>
+                <%= services[i].activities[j].id_activity + " , " %>
              <% } %> 
             ],
             "name": "<%= services[i].name %>",
@@ -198,37 +214,23 @@
              ]
         });
         <% } %>  
-        
-            // ----------------  Initialize Services ----------------- (Service Controller)
-            services_manager.load(null,[]);
-            services_manager.onClickService = function (service) {
-                map_manager.displayService(service);
-            };
-           
-            // ----------- initialize Google Map and add marker  ------- (Map Controller)
-            map_manager.init(0,0);
-            map_manager.loadMarker(services_manager.data);
-            map_manager.resize();
 
-            map_manager.onMapChanged(function () {
-                reload();
-            });
+        services_manager.load(null,[]);
+        services_manager.onClickService = function (service) {
+            map_manager.displayService(service);
+        };
+       
+        // ----------- initialize Google Map and add marker  ------- (Map Controller)
+        map_manager.init(0,0);
+        map_manager.loadMarker(services_manager.data);
+        map_manager.resize();
 
-            // define action Click on Marker map
-            map_manager.clickOnMarker = function (service) { 
-                $('.part h3').css('color','#333');
-                $('#service_' + service.id_service + ' h3').css('color','#AF2A47');
-            };
-
-            function reload() {
-                var activities = activities_manager.getActivities();
-                var restangle = map_manager.getRectangle();
-                // NEED SEARCH 
-                services_manager.load(restangle,activities);
-                map_manager.loadMarker(services_manager.data);
-            }           
-
-        }
+        // define action Click on Marker map
+        map_manager.clickOnMarker = function (service) { 
+            $('.part h3').css('color','#333');
+            $('#service_' + service.id_service + ' h3').css('color','#AF2A47');
+        };
+    }
     </script>
 </body>
 

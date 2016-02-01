@@ -7,8 +7,7 @@
 
 module.exports = {
 
-  attributes: {
-	tableName: 'et_criterion',
+  tableName: 'et_criterion',
 
   attributes: {
     id_criterion: {

@@ -25,7 +25,8 @@ module.exports = {
       size: 200
     },
     image: {
-      type: 'string'
+      type: 'string',
+      defaultsTo: 'default.jpg'
     },
     activities: {
       collection: 'activity',

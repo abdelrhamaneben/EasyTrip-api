@@ -53,6 +53,24 @@ describe('Subscription model', function() {
         });
       });
     });
+
+    it ('should not create a subscription without d_from', function(done) {
+      Subscription.create({id_subscription: 1, nb_month: 42}).exec(function(err, subscription) {
+        should.exist(err);
+        should.not.exist(subscription);
+
+        done();
+      });
+    });
+
+    it ('should not create a subscription without nb_month', function(done) {
+      Subscription.create({id_subscription: 1, d_from: new Date("2016-01-01T11:41:12.184Z")}).exec(function(err, subscription) {
+        should.exist(err);
+        should.not.exist(subscription);
+
+        done();
+      });
+    });
   });
 
   describe('update', function() {

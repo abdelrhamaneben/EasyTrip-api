@@ -1,39 +1,35 @@
 
 module.exports = {
 
+
+  // Renvoie les statistiques pour le dashboard des admin
   getStats: function(req, res) {
 
-    /*
-    *   LES STATS POUR LES ADMIN
-    */
-    if (req.session.admin) {
+    console.log('API get statistiques');
 
-        console.log("Get stats")
+    var stats = {};
 
-        var id = req.session.userid;
+    if (req.session.authenticated) {
 
-        var stats = {};
+        // nombre de création de compte utilisateur Util & Business
+        stats.nbvisit7d = 11;
+        stats.nbvisit15d = 14;
+        stats.nbvisit30d = 18;
+        stats.nbvisit45d = 46;
+        stats.nbvisit60d = 62;
+        stats.nbvisit75d = 63;
+        stats.nbvisit90d = 71;
 
-        // Sample réponse
-        // ADMIN
 
-         // Nombre de visites
-        stats.nbvisit7d = 31;
-        stats.nbvisit15d = 52;
-        stats.nbvisit30d = 67;
-        stats.nbvisit45d = 87;
-        stats.nbvisit60d = 92;
-        stats.nbvisit75d = 101;
-        stats.nbvisit90d = 101;
+        // nombre de création de compte utilisateur Util & Business
+        stats.nbsearch7d = 13;
+        stats.nbsearch15d = 17;
+        stats.nbsearch30d = 20;
+        stats.nbsearch45d = 32;
+        stats.nbsearch60d = 57;
+        stats.nbsearch75d = 68;
+        stats.nbsearch90d = 98;
 
-        // Nombre de recherches
-        stats.nbsearch7d = 15;
-        stats.nbsearch15d = 27;
-        stats.nbsearch30d = 54;
-        stats.nbsearch45d = 63;
-        stats.nbsearch60d = 76;
-        stats.nbsearch75d = 83;
-        stats.nbsearch90d = 83;
 
         // nombre de création de compte utilisateur Util & Business
         stats.nbsignupnu7d = 3;
@@ -110,7 +106,6 @@ module.exports = {
         *   LES STATS POUR LES AUTRES
         */
 
-
         var stats = {};
 
         // Sample réponse
@@ -154,6 +149,56 @@ module.exports = {
         res.ok(stats);
       }
 
-    }
+  },
+
+  // Renvoie les stats d'un service en particulier
+  getStat: function(req, res) {
+
+    var serviceId = req.param('serviceId');
+
+    var stats = {};
+
+    // Sample réponse
+    // ADMIN
+
+    // Nombre de visites
+    stats.nbvue7d = 3;
+    stats.nbvue15d = 5;
+    stats.nbvue30d = 6;
+    stats.nbvue45d = 8;
+    stats.nbvue60d = 9;
+    stats.nbvue75d = 10;
+    stats.nbvue90d = 10;
+
+    // Nombre de commentaires
+    stats.nbcmt7d = 1;
+    stats.nbcmt15d = 3;
+    stats.nbcmt30d = 5;
+    stats.nbcmt45d = 6;
+    stats.nbcmt60d = 6;
+    stats.nbcmt75d = 7;
+    stats.nbcmt90d = 7;
+
+    // nombre de favoris
+    stats.nveval7d = 3;
+    stats.nveval15d = 4;
+    stats.nveval30d = 4;
+    stats.nveval45d = 5;
+    stats.nveval60d = 6;
+    stats.nveval75d = 8;
+    stats.nveval90d = 9;
+
+    // moyenne des évaluations
+    stats.eval7d = 4.4;
+    stats.eval15d = 4.3;
+    stats.eval30d = 4.0;
+    stats.eval45d = 4.3;
+    stats.eval60d = 4.2;
+    stats.eval75d = 4.1;
+    stats.eval90d = 3.8;
+
+    res.ok(stats);
+
+  }
 
 };

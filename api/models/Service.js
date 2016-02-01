@@ -15,7 +15,7 @@ module.exports = {
 	  	 	primaryKey: true,
 	  	 	autoIncrement: true
     },
-    
+
     geolati :{
     	type : 'float',
     	required : true
@@ -32,11 +32,12 @@ module.exports = {
     },
     name :{
         type : 'string',
-        size : 50
+        size : 50,
+        required : true
     },
     description :{
 		type : 'string',
-    	size : 200    
+    	size : 200
     },
     image :{
         type : 'string'
@@ -51,7 +52,7 @@ module.exports = {
     createdAt :{
     	type : 'datetime',
         autoCreatedAt: true
-	},	    	
+	},
     updatedAt :{
     	type : 'datetime',
         autoUpdatedAt: true
@@ -59,6 +60,10 @@ module.exports = {
     activities : {
             collection: 'activity',
             via: 'services'
-     }
+    },
+    servicePrices : {
+            collection: 'servicePrice',
+            via: 'service'
+    }
   }
 };

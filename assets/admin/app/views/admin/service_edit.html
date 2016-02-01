@@ -17,20 +17,20 @@
 						<!-- INPUT TEXT -->
 						<div class="form-group">
 							<label for="service_name">Nom du service *</label>
-							<input class="form-control" id="service_name">
+							<input class="form-control" id="service_name" ng-value="serviceToEdit.name">
 							<p class="help-block">Example: Piscine olympique le possedon</p>
 						</div>
 
 						<!-- TEXT AREA -->
 						<div class="form-group">
 							<label for="service_description">Description du service *</label>
-							<textarea class="form-control" rows="7" id="service_description"></textarea>
+							<textarea class="form-control" rows="7" id="service_description">{{serviceToEdit.description}}</textarea>
 						</div>
 
 
 						<div class="form-group">
 							<label for="service_link">Lien du service</label>
-							<input class="form-control" id="service_link">
+							<input class="form-control" id="service_link" ng-value="serviceToEdit.link">
 						</div>
 
 
@@ -45,7 +45,7 @@
 						<div class="form-group">
 							<label for="service_activity">A quel activite le service appartient-il ? *</label>
 							<select id="service_activity">
-								<option ng-repeat="activity in activities" value="{{activity.id_activity}}">
+								<option ng-repeat="activity in activities" ng-value="activity.id_activity">
 									{{activity.name}}
 								</option>
 							</select>
@@ -53,10 +53,10 @@
 
 						<div class="form-group">
 							<label>Localisation du service *</label>
-							<input class="form-control" placeholder="Numero" id="address_str_nbr">
-							<input class="form-control" placeholder="rue" id="address_str_name">
-							<input class="form-control" placeholder="code postal" id="address_code_zip">
-							<input class="form-control" placeholder="ville" id="address_city">
+							<input class="form-control" placeholder="Numero" id="address_str_nbr" ng-value="serviceToEdit.address.str_nbr">
+							<input class="form-control" placeholder="rue" id="address_str_name" ng-value="serviceToEdit.address.str_name">
+							<input class="form-control" placeholder="code postal" id="address_code_zip" ng-value="serviceToEdit.address.code_zip">
+							<input class="form-control" placeholder="ville" id="address_city" ng-value="serviceToEdit.address.city">
 							<label for="address_country">Pays</label>
 							<select class="form-control" id="address_country">
 								<option>France</option>
@@ -69,32 +69,32 @@
 
 						<div class="form-group">
 							<label>Localisation du service *</label>
-							<input class="form-control" placeholder="Latitude" id="service_geolati" >
-							<input class="form-control" placeholder="Longitude" id="service_geolong" >
+							<input class="form-control" placeholder="Latitude" id="service_geolati" ng-value="serviceToEdit.geolati">
+							<input class="form-control" placeholder="Longitude" id="service_geolong" ng-value="serviceToEdit.geolong">
 							<p class="help-block">Example: 50,89345 latitude et 4,457890 longitude</p>
 						</div>
 						<div class="form-group">
 						    <label for="service_d_from">Date de debut</label>
-						    <input type="text" id="service_d_from" class="form-control"></input>
+						    <input type="text" id="service_d_from" class="form-control" ng-value="serviceToEdit.servicePrices[0].d_from"></input>
 						</div>
 						<div class="form-group">
 						  	<label for="service_d_to">Date de fin</label>
-						    <input type="text" id="service_d_to" class="form-control"></input>
+						    <input type="text" id="service_d_to" class="form-control" ng-value="serviceToEdit.servicePrices[0].d_to"></input>
 						</div>
 
 						<div class="form-group">
 							<label for="service_nb_person_min">Nombre de personne minimum</label>
-								<input type="text" id="service_nb_person_min" class="form-control bfh-number">
+								<input type="text" id="service_nb_person_min" class="form-control bfh-number" ng-value="serviceToEdit.servicePrices[0].nb_person_min">
 						</div>
 
 						<div class="form-group">
 							<label for="service_nb_person_max">Nombre de personne maximal</label>
-								<input type="text" id="service_nb_person_max" class="form-control bfh-number">
+								<input type="text" id="service_nb_person_max" class="form-control bfh-number" ng-value="serviceToEdit.servicePrices[0].nb_person_max">
 						</div>
 
 						<div class="form-group">
 							<label for="service_price_pp">Prix par personne</label>
-								<input type="text" id="service_price_pp" class="form-control bfh-number">
+								<input type="text" id="service_price_pp" class="form-control bfh-number" ng-value="serviceToEdit.servicePrices[0].price_per_person">
 						</div>
 
 						<div class="form-group">
@@ -111,31 +111,31 @@
 								<tbody>
 									<tr>
 										<td class="center">Lundi</td>
-										<td class="center"><input type="text" id="monday_opening_hours"/></td>
+										<td class="center"><input type="text" id="monday_opening_hours" ng-value="serviceToEdit.Lundi" /></td>
 									</tr>	
 									<tr>
 										<td class="center">Mardi</td>
-										<td class="center"><input type="text" id="tuesday_opening_hours"/></td>
+										<td class="center"><input type="text" id="tuesday_opening_hours" ng-value="serviceToEdit.Mardi"/></td>
 									</tr>	
 									<tr>
 										<td class="center">Mercredi</td>
-										<td class="center"><input type="text" id="wednesday_opening_hours"/></td>
+										<td class="center"><input type="text" id="wednesday_opening_hours" ng-value="serviceToEdit.Mercredi"/></td>
 									</tr>	
 									<tr>
 										<td class="center">Jeudi</td>
-										<td class="center"><input type="text" id="thursday_opening_hours"/></td>
+										<td class="center"><input type="text" id="thursday_opening_hours" ng-value="serviceToEdit.Jeudi"/></td>
 									</tr>	
 									<tr>
 										<td class="center">Vendredi</td>
-										<td class="center"><input type="text" id="friday_opening_hours"/></td>
+										<td class="center"><input type="text" id="friday_opening_hours" ng-value="serviceToEdit.Vendredi"/></td>
 									</tr>	
 									<tr>
 										<td class="center">Samedi</td>
-										<td class="center"><input type="text" id="saturday_opening_hours"/></td>
+										<td class="center"><input type="text" id="saturday_opening_hours" ng-value="serviceToEdit.Samedi"/></td>
 									</tr>
 									<tr>
 										<td class="center">Dimanche</td>
-										<td class="center"><input type="text" id="sunday_opening_hours"/></td>
+										<td class="center"><input type="text" id="sunday_opening_hours" ng-value="serviceToEdit.Dimanche"/></td>
 									</tr>								
 								</tbody>
 							</table>
@@ -146,7 +146,7 @@
 						<p class="help-block">Les champs marques d'un * sont obligatoire</p>
 
 						<!-- SUBMIT BUTTON -->
-						<button type="submit" id="submit" class="btn btn-default" ng-click="addService()">Ajouter un service</button>
+						<button type="submit" id="submit" class="btn btn-default" ng-click="updateService(serviceToEdit.id_service)">Modifier le service</button>
 
 						<!-- RESET BUTTON -->
 						<button type="reset" class="btn btn-default">Annuler</button>

@@ -1,0 +1,88 @@
+<div ng-controller="serviceCtrl" ng-init="loadStats()">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Stitistiques de service</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <h1>
+            <small>Activites ces 7 derniers jours</small>
+        </h1>
+    </div>
+    <div class="row">
+
+        <stats number="{{stats.nbvue7d}}" comments="# vues" colour="primary" type="user"></stats>
+        <stats number="{{stats.nbcmt7d}}" comments="# commentaires" colour="primary" type="user"></stats>
+        <stats number="{{stats.nveval7d}}" comments="# nv évaluations" colour="green" type="support"></stats>
+        <stats number="{{stats.eval7d}}" comments="évaluations" colour="red" type="shopping-cart"></stats>
+
+    </div>
+    <div class="row">
+        <h1>
+            <small>Progression ces 15 derniers jours</small>
+        </h1>
+
+        <stats number="{{ ( 100 / stats.nbvue15d * (stats.nbvue15d- stats.nbvue90d/6)) | number : 2 }}" comments="% vues" colour="yellow" type="user"></stats>
+        <stats number="{{ ( 100 / stats.nbcmt15d * (stats.nbcmt15d- stats.nbcmt90d/6)) | number : 2 }}" comments="% nv commentaires" colour="yellow" type="user"></stats>
+        <stats number="{{ ( 100 / stats.nveval15d * (stats.nveval15d- stats.nveval90d/6)) | number : 2 }}" comments="% nv evaluations" colour="yellow" type="user"></stats>
+        <stats number="{{ ( 100 / stats.eval15d * (stats.eval15d- stats.eval90d/6)) | number : 2 }} " comments="var evaluations" colour="yellow" type="shopping-cart"></stats>
+
+    </div>
+    
+    <!-- /.panel -->
+    <div class="row">
+
+        <div class="col-lg-8" id="line-chart" ng-controller="ChartCtrl">
+            <h1>
+                <small>Activités sur 90 jours</small>
+            </h1>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Nombre de visites sur le service</div>
+                <div class="panel-body">
+                    <canvas id="lineVues" class="chart chart-line chart-xl" data="lineVues.data" labels="lineVues.labels" legend="true"
+                            click="lineVues.onClick" series="lineVues.series"></canvas>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Nombre d'évaluations et de commentaires</div>
+                <div class="panel-body">
+                    <canvas id="lineEvalCmt" class="chart chart-line chart-xl" data="lineEvalCmt.data" labels="lineEvalCmt.labels" legend="true"
+                            click="lineEvalCmt.onClick" series="lineEvalCmt.series"></canvas>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Evaluations laisses sur ce service</div>
+                <div class="panel-body">
+                    <canvas id="lineEval" class="chart chart-line chart-xl" data="lineEval.data" labels="lineEval.labels" legend="true"
+                            click="lineEval.onClick" series="lineEval.series"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+            <h1>
+                <small>Dernières actualités</small>
+            </h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Actualités
+                </div>
+                <!-- /.panel-heading -->
+                <notifications></notifications> 
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>

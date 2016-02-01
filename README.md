@@ -1,5 +1,8 @@
 # easytrip
 
+Travis:
+[![Build Status](https://travis-ci.org/abdelrhamaneben/EasyTrip-api.svg)](https://travis-ci.org/abdelrhamaneben/EasyTrip-api)
+
 # Commit convention
 
 ## The seven rules of a great git commit message
@@ -113,3 +116,5 @@ that it needs to be explained in prose, that's what source comments are for).
 Just focus on making clear the reasons you made the change in the first
 place — the way things worked before the change (and what was wrong with that),
 the way they work now, and why you decided to solve it the way you did.
+
+

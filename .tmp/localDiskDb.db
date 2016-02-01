@@ -709,6 +709,21 @@
       }
     ],
     "et_subscription": [],
+    "et_stat": [
+      {
+        "id_service": 1,
+        "ip_stat": "192.168.1.88",
+        "createdAt": "2016-02-01T10:04:44.222Z",
+        "updatedAt": "2016-02-01T10:04:44.222Z",
+        "id_stat": 9
+      },
+      {
+        "ip_stat": "192.168.1.75",
+        "createdAt": "2016-02-01T10:04:56.740Z",
+        "updatedAt": "2016-02-01T10:04:56.740Z",
+        "id_stat": 10
+      }
+    ],
     "et_user": [
       {
         "name_first": "Slimane",
@@ -875,6 +890,12 @@
       },
       "image": {
         "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
       }
     },
     "et_address": {
@@ -928,6 +949,12 @@
       "image": {
         "type": "string",
         "defaultsTo": "default.jpg"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
       }
     },
     "et_reservation": {
@@ -1018,6 +1045,30 @@
         "type": "datetime"
       }
     },
+    "et_stat": {
+      "id_stat": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_service": {
+        "type": "integer",
+        "model": "service",
+        "foreignKey": true,
+        "alias": "id_service"
+      },
+      "ip_stat": {
+        "type": "string",
+        "size": 15
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
     "et_service_price": {
       "id_sp": {
         "type": "integer",
@@ -1074,6 +1125,12 @@
       },
       "nb_month": {
         "type": "integer"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
       }
     },
     "et_user": {
@@ -1204,6 +1261,9 @@
     },
     "activity_services__service_activities": {
       "id": 32
+    },
+    "et_stat": {
+      "id_stat": 10
     }
   }
 }

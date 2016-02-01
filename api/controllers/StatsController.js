@@ -1,7 +1,6 @@
 
 module.exports = {
 
-
   // Renvoie les statistiques pour le dashboard des admin
   getStats: function(req, res) {
 
@@ -9,17 +8,80 @@ module.exports = {
 
     var stats = {};
 
-    if (req.session.authenticated) {
+    var d0 = new Date();
+    var d7 = new Date().setDate(d0.getDate() - 7);
+    var d15 = new Date().setDate(d0.getDate() - 15);
+    var d30 = new Date().setDate(d0.getDate() - 30);
+    var d45 = new Date().setDate(d0.getDate() - 45);
+    var d60 = new Date().setDate(d0.getDate() - 60);
+    var d75 = new Date().setDate(d0.getDate() - 75);
+    var d90 = new Date().setDate(d0.getDate() - 90);
+
+    var nbUsers7d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit7d = count;
+
+      User.count().where({createdAt: { '>': d15, '<=': d7}}).exec(nbUsers15d);
+    };
+
+    var nbUsers15d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit15d = count;
+
+      User.count().where({createdAt: { '>': d30, '<=': d15}}).exec(nbUsers30d);
+    };
+
+    var nbUsers30d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit30d = count;
+
+      User.count().where({createdAt: { '>': d45, '<=': d30}}).exec(nbUsers45d);
+    };
+
+    var nbUsers45d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit45d = count;
+
+      User.count().where({createdAt: { '>': d60, '<=': d45}}).exec(nbUsers60d);
+    };
+
+    var nbUsers60d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit60d = count;
+
+      User.count().where({createdAt: { '>': d75, '<=': d60}}).exec(nbUsers75d);
+    };
+
+    var nbUsers75d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit75d = count;
+
+      User.count().where({createdAt: { '>': d90, '<=': d75}}).exec(nbUsers90d);
+    };
+
+    var nbUsers90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvisit90d = count;
+    };
+
+    if (!req.session.authenticated) {
 
         // nombre de création de compte utilisateur Util & Business
-        stats.nbvisit7d = 11;
-        stats.nbvisit15d = 14;
-        stats.nbvisit30d = 18;
-        stats.nbvisit45d = 46;
-        stats.nbvisit60d = 62;
-        stats.nbvisit75d = 63;
-        stats.nbvisit90d = 71;
-
+        User.count().where({createdAt: { '>': d7, '<=': d0}}).exec(nbUsers7d);
 
         // nombre de création de compte utilisateur Util & Business
         stats.nbsearch7d = 13;

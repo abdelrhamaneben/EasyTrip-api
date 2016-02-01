@@ -11,7 +11,7 @@ angular.module('sbAdminApp')
       $scope.loadServices = function() {
           var httpRequest = $http({
             method: "GET",
-            url: "http://localhost:1337/service",
+            url: urlServer + "service",
             //url: "172.28.1.101:1337/service",
             async : false,
             dataType : "json",
@@ -24,7 +24,7 @@ angular.module('sbAdminApp')
       $scope.deleteService = function(id_service){
           var httpRequest = $http({
             method: "DELETE",
-            url: "http://localhost:1337/service/" + id_service,
+            url: urlServer + "service/" + id_service,
             //url: "172.28.1.101:1337/service/" + id_service,
             async : false
           }).success(function() {
@@ -37,7 +37,7 @@ angular.module('sbAdminApp')
       $scope.loadActivities = function(){
           var httpRequest = $http({
             method: "GET",
-            url: "http://localhost:1337/activity",
+            url: urlServer + "activity",
             //url: "172.28.1.101:1337/activity",
             async : false,
             dataType : "json",
@@ -50,7 +50,7 @@ angular.module('sbAdminApp')
       $scope.editService = function(id_service){
           var httpRequest = $http({              
               method : "GET",
-              url : "http://localhost:1337/service/" + id_service,
+              url : urlServer + "service/" + id_service,
               //url: "172.28.1.101:1337/service/" + id_service,
               dataType : "json",
               contentType : "application/json"
@@ -119,7 +119,7 @@ angular.module('sbAdminApp')
 
               var httpRequest = $http({
                   method : "POST",
-                  url : "http://localhost:1337/service/" + id_service,
+                  url : urlServer + "service/" + id_service,
                   //url: "172.28.1.101:1337/service/" + id_service,
                   data : data,
                   dataType : "json",
@@ -182,7 +182,7 @@ angular.module('sbAdminApp')
                   +'}';
                   var httpRequest = $http({
                         method : "POST",
-                        //url : "http://localhost:1337/address/" + id_address_to_change,
+                        //url : urlServer + "address/" + id_address_to_change,
                         url: "172.28.1.101:1337/address/" + id_address_to_change,
                         data : data,
                         dataType : "json",
@@ -212,7 +212,7 @@ angular.module('sbAdminApp')
 
                   var httpRequest = $http({
                       method : "POST",
-                      url : "http://localhost:1337/serviceprice/" + id_servicePrice_to_change,
+                      url : urlServer + "serviceprice/" + id_servicePrice_to_change,
                       //url: "172.28.1.101:1337/serviceprice/" + id_servicePrice_to_change,
                       data : data,
                       dataType : "json",
@@ -320,7 +320,7 @@ angular.module('sbAdminApp')
         console.log(data);
         var httpRequest = $http({
               method : "POST",
-              url : "http://localhost:1337/address",
+              url : urlServer + "address",
               //url: "172.28.1.101:1337/address",
               data : data,
               dataType : "json",
@@ -341,7 +341,7 @@ angular.module('sbAdminApp')
 
               var httpRequest = $http({
                   method : "POST",
-                  url : "http://localhost:1337/service",
+                  url : urlServer + "service",
                   //url: "172.28.1.101:1337/service",
                   data : data,
                   dataType : "json",
@@ -359,7 +359,7 @@ angular.module('sbAdminApp')
                   +'}';
                   var httpRequest = $http({
                       method : "POST",
-                      url : "http://localhost:1337/serviceprice",
+                      url : urlServer + "serviceprice",
                       //url: "172.28.1.101:1337/serviceprice",
                       data : data,
                       dataType : "json",
@@ -371,7 +371,7 @@ angular.module('sbAdminApp')
                       +'}';
                       var httpRequest = $http({
                         method : "POST",
-                        url : "http://localhost:1337/service/" + id_service,
+                        url : urlServer + "service/" + id_service,
                         //url: "172.28.1.101:1337/serviceprice",
                         data : data,
                         dataType : "json",
@@ -403,7 +403,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "GET",
-            url: ("http://localhost:1337/admin/stats/"+id_service),
+            url: (urlServer + "admin/stats/"+id_service),
             //url: "172.28.1.101:1337/admin/stats/"+id_service,
             async : true,
             dataType : "json",

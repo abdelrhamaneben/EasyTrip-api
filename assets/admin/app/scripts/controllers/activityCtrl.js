@@ -11,7 +11,7 @@ angular.module('sbAdminApp')
       $scope.loadActivities = function() {
           var httpRequest = $http({
             method: "GET",
-            url: "http://localhost:1337/activity",
+            url: urlServer + "activity",
             //url: "172.28.1.101:1337/activity",
             async : false,
             dataType : "json",
@@ -24,7 +24,7 @@ angular.module('sbAdminApp')
       $scope.deleteActivity = function(id_activity){
           var httpRequest = $http({
             method: "DELETE",
-            url: "http://localhost:1337/activity/" + id_activity,
+            url: urlServer + "activity/" + id_activity,
             //url: "172.28.1.101:1337/admin/activity/"+id_activity,
             async : false
           }).success(function() {
@@ -36,7 +36,7 @@ angular.module('sbAdminApp')
       $scope.loadCategories = function(){
         var httpRequest = $http({
           method: "GET",
-          url: "http://localhost:1337/category",
+          url: urlServer + "category",
           //url: "172.28.1.101:1337/category",
           async : false,
           dataType : "json",
@@ -49,7 +49,7 @@ angular.module('sbAdminApp')
       $scope.editActivity = function(id_activity){
         var httpRequest = $http({              
             method : "GET",
-            url : "http://localhost:1337/activity/" + id_activity,
+            url : urlServer + "activity/" + id_activity,
             //url: "172.28.1.101:1337/activity/" + id_activity,
             dataType : "json",
             contentType : "application/json"
@@ -83,7 +83,7 @@ angular.module('sbAdminApp')
 
         var httpRequest = $http({ 
             method : "POST",
-            url : "http://localhost:1337/activity/" + id_activity,
+            url : urlServer + "activity/" + id_activity,
             //url: "172.28.1.101:1337/activity/" + id_activity,
             data : data,
             dataType : "json",
@@ -117,7 +117,7 @@ angular.module('sbAdminApp')
 
         var httpRequest = $http({ 
             method : "POST",
-            url : "http://localhost:1337/activity",
+            url : urlServer + "activity",
             //url: "172.28.1.101:1337/activity/",
             data : data,
             dataType : "json",

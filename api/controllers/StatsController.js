@@ -340,58 +340,91 @@ module.exports = {
 
       stats.nbservice90d = count;
 
-      // NEXT
-
+      // NEXT PROMOSUB
+      ServicePrice.count().exec(nbPromoSub)
     };
+
+    // PROMO -------------------------------------------------------------------
+    var nbPromoSub = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbpromosub = count;
+
+      ServicePrice.count().where({createdAt: { '>': d7, '<=': d0}}).exec(nbPromoSub7d);
+    };
+
+    var nbPromoSub7d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub7d = count;
+
+      ServicePrice.count().where({createdAt: { '>': d15, '<=': d7}}).exec(nbPromoSub15d);
+    };
+
+    var nbPromoSub15d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub15d = count;
+
+      ServicePrice.count().where({createdAt: { '>': d30, '<=': d15}}).exec(nbPromoSub30d);
+    };
+
+    var nbPromoSub30d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub30d = count;
+
+      ServicePrice.count().where({createdAt: { '>': d45, '<=': d30}}).exec(nbPromoSub45d);
+    };
+
+    var nbPromoSub45d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub45d = count;
+
+      ServicePrice.count().where({createdAt: { '>': d60, '<=': d45}}).exec(nbPromoSub60d);
+    };
+
+    var nbPromoSub60d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub60d = count;
+
+      ServicePrice.count().where({createdAt: { '>': d75, '<=': d60}}).exec(nbPromoSub75d);
+    };
+
+    var nbPromoSub75d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub75d = count;
+
+      ServicePrice.count().where({createdAt: { '>': d90, '<=': d75}}).exec(nbPromoSub90d);
+    };
+
+    var nbPromoSub90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.promosub90d = count;
+
+      // NEXT
+      res.ok(stats);
+    };
+
+    // Vue ---------------------------------------------------------------------
 
     if (!req.session.authenticated) {
 
         // nombre de création de compte utilisateur Util & Business
         Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVisit7d);
 
-        // nombre de promos
-        stats.promosub = 5;
-        stats.promosub7d = 2;
-        stats.promosub15d = 3;
-        stats.promosub30d = 7;
-        stats.promosub45d = 8;
-        stats.promosub60d = 8;
-        stats.promosub75d = 9;
-        stats.promosub90d = 9;
-
-         // USER
-        /*
-           Il faut récupérer
-            - Le nombre de réservations de ces 7 derniers jours des services du userid si il est business, sinon le total des résa
-            - Le nombre de fois qu'on a cliqué pour info sur le service ces 7, 30, 60 et 90 derniers jours
-            - Si admin : le nombre de nouveaux clients ces 7 derniers jours
-            - Si admin : le nombre de nouveaux clients totaux
-            - Si admin : le nombre de nouveaux clients
-            - Si admin : le nombre de recherches effectuées ces 7, 30 et OO derniers jours
-         */
-
-        //stats.reservation = Reservation.find({price.service})
-
-        /*
-        Category.find({id_category:id})
-                .exec(function (err,user) {
-                  if(err){
-                    return res.json({
-                      error:err
-                    });
-                  }
-                  if(user === undefined) {
-                    return res.notFound();
-                  }
-                  else
-                    return res.json({
-                      notFound:false,
-                      userData:user
-                    });
-                });
-        */
-
-        res.ok(stats);
       } else {
         /*
         *   LES STATS POUR LES AUTRES

@@ -775,6 +775,62 @@
         "subscribed": false,
         "id_user": 5,
         "createdAt": "2015-12-03T18:00:00.000Z"
+      },
+      {
+        "email": "ABDELRHAMANE@HOTMAIL.FR",
+        "name_first": "ds",
+        "name_last": "sf",
+        "role": "private",
+        "password": "debo",
+        "phone": "null",
+        "subscription": null,
+        "address": null,
+        "subscribed": false,
+        "createdAt": "2016-02-03T17:38:34.174Z",
+        "updatedAt": "2016-02-03T17:38:34.174Z",
+        "id_user": 6
+      },
+      {
+        "email": "ABDELRHAMANE@HOTMAIL.FR",
+        "name_first": "ds",
+        "name_last": "sf",
+        "role": "private",
+        "password": "debo",
+        "phone": "null",
+        "subscription": null,
+        "address": null,
+        "subscribed": false,
+        "createdAt": "2016-02-03T17:38:36.697Z",
+        "updatedAt": "2016-02-03T17:38:36.697Z",
+        "id_user": 7
+      },
+      {
+        "email": "sd",
+        "name_first": "sdfw",
+        "name_last": "sfdxc",
+        "role": "private",
+        "password": "q",
+        "phone": "null",
+        "subscription": null,
+        "address": null,
+        "subscribed": false,
+        "createdAt": "2016-02-03T17:40:38.755Z",
+        "updatedAt": "2016-02-03T17:40:38.755Z",
+        "id_user": 8
+      },
+      {
+        "email": "sd",
+        "name_first": "sdfw",
+        "name_last": "sfdxc",
+        "role": "private",
+        "password": "q",
+        "phone": "null",
+        "subscription": null,
+        "address": null,
+        "subscribed": false,
+        "createdAt": "2016-02-03T17:40:41.793Z",
+        "updatedAt": "2016-02-03T17:40:41.793Z",
+        "id_user": 9
       }
     ],
     "activity_categories__category_activities": [
@@ -913,7 +969,8 @@
         "updatedAt": "2016-02-03T08:34:08.880Z",
         "id_judgement": 4
       }
-    ]
+    ],
+    "et_criterion": []
   },
   "schema": {
     "et_activity": {
@@ -1318,6 +1375,24 @@
       "updatedAt": {
         "type": "datetime"
       }
+    },
+    "et_criterion": {
+      "id_criterion": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "criterion": {
+        "type": "string",
+        "size": 100
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
     }
   },
   "counters": {
@@ -1339,7 +1414,7 @@
     },
     "et_subscription": {},
     "et_user": {
-      "id_user": 5
+      "id_user": 9
     },
     "activity_categories__category_activities": {
       "id": 20
@@ -1352,6 +1427,7 @@
     },
     "et_judgement": {
       "id_judgement": 4
-    }
+    },
+    "et_criterion": {}
   }
 }

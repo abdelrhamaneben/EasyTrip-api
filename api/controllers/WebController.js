@@ -87,5 +87,11 @@ module.exports = {
       return res.badRequest('Need ServiceId Params !!');
     }
     return res.view('features');
+  }, 
+  loginpopin : function(req, res) {
+    return res.view('login');
+  },
+  signuppopin : function(req, res) {
+    return res.view('signup');
   }
 };

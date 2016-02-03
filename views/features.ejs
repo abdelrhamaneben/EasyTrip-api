@@ -120,12 +120,18 @@
                     label: 'Save',
                     action: function(dialog) {                        
                         var comment = document.getElementById('userComment').value;  
-                        //if(validateScores())                            
+                        if(validateScores()){                        
                             features_manager.addComment(id_service,comment,score1,score2,score3,score4,2);
+                            //update summary
+                            var summary = features_manager.initSummary(id_service);
+                            $('#summary').html(summary);
+                        
                             //update comments
-                            var res = features_manager.initComments(id_service);
+                            var res = features_manager.initComments();
                             $('#comments').html(res);
+                            
                             dialog.close();
+                        }
                             //alert(score1+"\n"+score2+"\n"+score3+"\n"+score4+"\n"+comment+"\n");
                         //else
                             //alert('error');

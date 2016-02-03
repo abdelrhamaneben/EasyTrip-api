@@ -419,6 +419,127 @@ module.exports = {
     };
 
     // Vue ---------------------------------------------------------------------
+    var nbVue7d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue7d = count;
+
+      Stat.count().where({createdAt: { '>': d15, '<=': d7}}).exec(nbVue15d);
+    };
+
+    var nbVue15d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue15d = count;
+
+      Stat.count().where({createdAt: { '>': d30, '<=': d15}}).exec(nbVue30d);
+    };
+
+    var nbVue30d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue30d = count;
+
+      Stat.count().where({createdAt: { '>': d45, '<=': d30}}).exec(nbVue45d);
+    };
+
+    var nbVue45d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue45d = count;
+
+      Stat.count().where({createdAt: { '>': d60, '<=': d45}}).exec(nbVue60d);
+    };
+
+    var nbVue60d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue60d = count;
+
+      Stat.count().where({createdAt: { '>': d75, '<=': d60}}).exec(nbVue75d);
+    };
+
+    var nbVue75d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue75d = count;
+
+      Stat.count().where({createdAt: { '>': d90, '<=': d75}}).exec(nbVue90d);
+    };
+
+    var nbVue90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+      console.log(count);
+
+      stats.nbvue90d = count;
+
+      // CMT
+      Stat.count().where({createdAt: {'>': d7, '<=': d0}, id_service: {'!': 'null'}}).exec(nbCmt7d);
+    };
+
+    // CMT ---------------------------------------------------------------------
+    var nbCmt7d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt7d = count;
+
+      Stat.count().where({createdAt: {'>': d15, '<=': d7}, id_service: {'!': 'null'}}).exec(nbCmt15d);
+    };
+
+    var nbCmt15d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt15d = count;
+
+      Stat.count().where({createdAt: {'>': d30, '<=': d15}, id_service: {'!': 'null'}}).exec(nbCmt30d);
+    };
+
+    var nbCmt30d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt30d = count;
+
+      Stat.count().where({createdAt: {'>': d45, '<=': d30}, id_service: {'!': 'null'}}).exec(nbCmt45d);
+    };
+
+    var nbCmt45d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt45d = count;
+
+      Stat.count().where({createdAt: {'>': d60, '<=': d45}, id_service: {'!': 'null'}}).exec(nbCmt60d);
+    };
+
+    var nbCmt60d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt60d = count;
+
+      Stat.count().where({createdAt: {'>': d75, '<=': d60}, id_service: {'!': 'null'}}).exec(nbCmt75d);
+    };
+
+    var nbCmt75d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt75d = count;
+
+      Stat.count().where({createdAt: {'>': d90, '<=': d75}, id_service: {'!': 'null'}}).exec(nbCmt90d);
+    };
+
+    var nbCmt90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbcmt90d = count;
+
+      // NEXT
+      User.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbSignupNu7d);
+    };
 
     if (!req.session.authenticated) {
 
@@ -435,23 +556,7 @@ module.exports = {
         // Sample réponse
         // ADMIN
 
-         // Nombre de visites
-        stats.nbvue7d = 31;
-        stats.nbvue15d = 52;
-        stats.nbvue30d = 67;
-        stats.nbvue45d = 87;
-        stats.nbvue60d = 92;
-        stats.nbvue75d = 101;
-        stats.nbvue90d = 101;
-
-        // Nombre de recherches
-        stats.nbcmt7d = 2;
-        stats.nbcmt15d = 7;
-        stats.nbcmt30d = 14;
-        stats.nbcmt45d = 23;
-        stats.nbcmt60d = 26;
-        stats.nbcmt75d = 33;
-        stats.nbcmt90d = 38;
+        Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVue7d);
 
         // nombre de création de compte utilisateur Util & Business
         stats.nveval7d = 3;

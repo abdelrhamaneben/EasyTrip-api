@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
                 
-            </div>
+            </div>                
         </div>
         <div class="row">
            <div class="panel panel-default col-md-12">
@@ -96,28 +96,22 @@
         }
         var id_service = $.urlParam('service');
         
-        //image
-        var src = features_manager.getImage();//"festival.png";
-        $("#image").attr("src", src);
-        
+        var info = features_manager.initInfo(id_service);
+        $('#information').html(info);
+
         //Summary
-        var summary = features_manager.summary();
+        var summary = features_manager.initSummary(id_service);
         $('#summary').html(summary);
         
-        //information
-        var info = features_manager.getInfo();
-        $('#information').html(info);
-        
-        //Comments
-        var results = features_manager.build();
-        $('#comments').html(results);
+        var res = features_manager.initComments(id_service);
+        $('#comments').html(res);
         
         //Bootstrap dialog (Review)
         $('#showPopup').click(function(){
             BootstrapDialog.show({
                 title: 'Review service',
                 message: function(dialog) {
-                    var $content = features_manager.popup(1);
+                    var $content = features_manager.popup(id_service);
                     return $content;
                 },
                 buttons: [
@@ -125,11 +119,16 @@
                     cssClass: 'btn-primary',
                     label: 'Save',
                     action: function(dialog) {                        
-                        var comment = $("#comment").val();  
-                        if(validateScores())
-                            alert(score1+"\n"+score2+"\n"+score3+"\n"+score4+"\n"+comment+"\n");
-                        else
-                            alert('error');
+                        var comment = document.getElementById('userComment').value;  
+                        //if(validateScores())                            
+                            features_manager.addComment(id_service,comment,score1,score2,score3,score4,2);
+                            //update comments
+                            var res = features_manager.initComments(id_service);
+                            $('#comments').html(res);
+                            dialog.close();
+                            //alert(score1+"\n"+score2+"\n"+score3+"\n"+score4+"\n"+comment+"\n");
+                        //else
+                            //alert('error');
                         }
                     },
                     {

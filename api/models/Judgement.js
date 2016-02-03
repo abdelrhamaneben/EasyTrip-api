@@ -7,40 +7,41 @@
 
 module.exports = {
 
-  tableName: 'et_judgement',
+ tableName: 'et_judgement',
 
-  attributes: {
-    id_judgement: {
+  attributes : {
+    id_judgement : {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
     },
-    user: {
-      model: 'user'
+    user : {
+      model : 'user'
     },
-    service: {
-      model: 'service'
+    service : {
+      model : 'service'
     },
-    judgement: {
-      type: 'string'
+    judgement : {
+      type: 'string',
+      size: 500
     },
-    gobal_score: {
-      type: 'integer'
+    global_score : {
+    	type : 'integer'
     },
-    score1: {
-      type: 'integer'
+    score1 : {
+    	type : 'integer'
     },
-    score2: {
-      type: 'integer'
+    score2 : {
+    	type : 'integer'
     },
-    score3: {
-      type: 'integer'
+    score3 : {
+    	type : 'integer'
     },
-    createdAt: {
+    createdAt : {
       type: 'datetime',
       autoCreatedAt: true
     },
-    updatedAt: {
+   	updatedAt : {
       type: 'datetime',
       autoUpdatedAt: true
     }

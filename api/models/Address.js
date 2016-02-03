@@ -17,22 +17,27 @@ module.exports = {
     },
     str_nbr: {
       type: 'string',
-      size: 5
+      size: 5,
+      required: true
     },
     str_name: {
       type: 'string',
-      size: 100
+      size: 100,
+      required: true
     },
     city: {
       type: 'string',
-      size: 50
+      size: 50,
+      required: true
     },
     code_zip: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     country: {
       type: 'string',
-      size: 50
+      size: 50,
+      required: true
     },
     createdAt: {
       type: 'datetime',

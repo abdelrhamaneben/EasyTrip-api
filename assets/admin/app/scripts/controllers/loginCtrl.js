@@ -9,7 +9,8 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "POST",
-            url: "http://localhost:1337/user/login",
+            url: urlServer + "user/login",
+            //url: "http://172.28.1.101:1337/user/login",
             async : false,
             data : user,
             headers: {
@@ -21,16 +22,24 @@ angular.module('sbAdminApp')
                 // this callback will be called asynchronously
                 // when the response is available
 
+                $rootScope.user = {};
                 $rootScope.user = response.data;
+                $rootScope.uid = $rootScope.user.id_user;
 
-                if ($rootScope.user.role == 'admin') {
+                if (response.data.role == 'admin') {
                     $rootScope.isAdmin = true;
+                    $rootScope.user.role = "admin";
                     console.log('user is admin');
                     $state.go('admin.home');
-                } else {
+                } else if (response.data.role == 'business') {
                     $rootScope.isAdmin = false;
-                    console.log('user is not admin');
-                    $state.go('user.home');
+                    $rootScope.user.role = "business";
+                    console.log('user is BU');
+                    $state.go('admin.homebu');
+                } else {
+                    $rootScope.user = null;
+                    $rootScope.uid = null;
+                    $scope.alertmessage = "User not allowed to connect";
                 }
 
               }, function errorCallback(response) {
@@ -43,11 +52,10 @@ angular.module('sbAdminApp')
 
       $scope.signup = function(user) {
 
-          alert('sign up');
-
           var httpRequest = $http({
               method: "POST",
-              url: "http://localhost:1337/user/signup",
+              url: urlServer + "user/signup",
+              //url: "172.28.1.101:1337/user/signup",
               async : false,
               data: user,
               withCredentials: false,

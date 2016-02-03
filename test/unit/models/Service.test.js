@@ -72,6 +72,60 @@ describe('Service model', function() {
         });
       });
     });
+
+    it ('should not create a service without a geolong', function(done) {
+      Service.create({
+        "creator": 2,
+        "geolati": 54.1234,
+        "address": 1,
+        "name": "CustomName",
+        "description": "Description du service",
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAADGUoyxRCPEq",
+        "premium": true,
+        "id_service": 1
+      }).exec(function(err, service) {
+        should.exist(err);
+        should.not.exist(service);
+
+        done();
+      });
+    });
+
+    it ('should not create a service without a geolati', function(done) {
+      Service.create({
+        "creator": 2,
+        "geolong": 23.1234,
+        "address": 1,
+        "name": "CustomName",
+        "description": "Description du service",
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAADGUoyxRCPEq",
+        "premium": true,
+        "id_service": 1
+      }).exec(function(err, service) {
+        should.exist(err);
+        should.not.exist(service);
+
+        done();
+      });
+    });
+
+    it ('should not create a service without a name', function(done) {
+      Service.create({
+        "creator": 2,
+        "geolong": 23.1234,
+        "geolati": 54.1234,
+        "address": 1,
+        "description": "Description du service",
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAADGUoyxRCPEq",
+        "premium": true,
+        "id_service": 1
+      }).exec(function(err, service) {
+        should.exist(err);
+        should.not.exist(service);
+
+        done();
+      });
+    });
   });
 
   describe('update', function() {

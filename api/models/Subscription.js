@@ -16,10 +16,12 @@ module.exports = {
       autoIncrement: true
     },
     d_from: {
-      type: 'datetime'
+      type: 'datetime',
+      required: true
     },
     nb_month: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     }
   }
 };

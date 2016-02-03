@@ -17,7 +17,7 @@ angular.module('sbAdminApp')
       scope :{
         isAdmin: '='
       },
-      controller:function($scope, $rootScope){
+      controller:function($scope,$rootScope,$location,$state){
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
@@ -40,7 +40,12 @@ angular.module('sbAdminApp')
         };
 
         $scope.isAdminf = function() {
-            return $rootScope.isAdmin;
+
+             if ($rootScope.user.role == 'business' || $rootScope.isAdmin == false) {
+                return false;
+            } else if ($rootScope.user.role == 'admin') {
+                return true;
+            }
         }
       }
     }

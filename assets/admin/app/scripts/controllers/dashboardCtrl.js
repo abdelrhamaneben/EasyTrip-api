@@ -2,23 +2,26 @@
 angular.module('sbAdminApp')
   .controller('dashboardCtrl', function($scope,$rootScope,$http) {
 
-      $scope.stats = [];
-      $scope.lineVisite = [];
-      $scope.lineInscription = [];
-      $scope.lineService = [];
+      $scope.stats = {};
 
       $scope.loadStats = function() {
 
           var httpRequest = $http({
             method: "GET",
-            url: ($rootScope.apiAddress+"stats/"),
+            url: (urlServer + "admin/stats/"),
+            //url: "172.28.1.101:1337/admin/stats/",
+            //url: ($rootScope.apiAddress+"stats/"),
             async : true,
             dataType : "json",
             contentType : "application/json"
           }).success(function(datar, status) {
+
             console.log("récup admin stat ok");
+
+            // def des stats dans scope
             $scope.stats = datar;
 
+            // Construction des données pour les graph
             $scope.lineVisite = {
               labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
               series: [ '# visites', '# recherches'],
@@ -73,9 +76,7 @@ angular.module('sbAdminApp')
               }
             };
 
-
-
-          $scope.lineService = {
+            $scope.lineService = {
               labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
               series: [ '# nouveau services', '# nouvelle promos'],
               data: [
@@ -106,21 +107,26 @@ angular.module('sbAdminApp')
 
         };
 
-
       $scope.loadStatsUser = function() {
+
+          console.log("load stats user");
 
           var httpRequest = $http({
             method: "GET",
-            url: ($rootScope.apiAddress+"stats/"),
+            url: (urlServer + "admin/stats/"),
+            //url: "172.28.1.101:1337/admin/stats/",
+            //url: ($rootScope.apiAddress+"stats/"),
             async : true,
             dataType : "json",
             contentType : "application/json"
           }).success(function(datar, status) {
+
             console.log("récup user stat ok");
+
+            // def des stats dans scope
             $scope.stats = datar;
 
-
-
+            // Construction des données pour les graph
             $scope.lineVisite = {
               labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
               series: [ '# commentaires' , '# vues'],
@@ -153,13 +159,13 @@ angular.module('sbAdminApp')
               series: [ '# evaluations'],
               data: [
                   [
-                      (datar.nveval90d-datar.nveval75d),
-                      (datar.nveval75d-datar.nveval60d),
-                      (datar.nveval60d-datar.nveval45d),
-                      (datar.nveval45d-datar.nveval30d),
-                      (datar.nveval30d-datar.nveval15d),
-                      (datar.nveval15d-datar.nveval7d),
-                      datar.nveval7d
+                      (datar.nbeval90d-datar.nbeval75d),
+                      (datar.nbeval75d-datar.nbeval60d),
+                      (datar.nbeval60d-datar.nbeval45d),
+                      (datar.nbeval45d-datar.nbeval30d),
+                      (datar.nbeval30d-datar.nbeval15d),
+                      (datar.nbeval15d-datar.nbeval7d),
+                      datar.nbeval7d
                   ]
               ],
               onClick: function (points, evt) {
@@ -167,9 +173,7 @@ angular.module('sbAdminApp')
               }
             };
 
-
-
-          $scope.lineService = {
+            $scope.lineService = {
               labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
               series: [ 'Evaluation moyenne' ],
               data: [
@@ -188,6 +192,7 @@ angular.module('sbAdminApp')
               }
             };
 
-          });
+        });
+
       };
 });

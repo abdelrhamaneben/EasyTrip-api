@@ -45,9 +45,10 @@
 </head>
 <body >
     <video autoplay loop poster="" id="bgvid" muted>
-    <source src="images\videoplayback.mp4" type="video/mp4" >
-    <source src="images\videoplayback.avi" type="video/avi" >
-    <source src="images\videoplayback.webm" type="video/webm" >
+        <source src="images\videoplayback.mp4" type="video/mp4" >
+        <source src="images\videoplayback.avi" type="video/avi" >
+        <source src="images\videoplayback.webm" type="video/webm" >
+        <source src="images\videoplayback.ogv" type="video/ogv" >
     </video>
     <header id="top" class="header">
         <div class="text-vertical-center" id="title">
@@ -66,7 +67,7 @@
                 <h3 style="color:#fed136;text-decoration:underline;">Choose a category to begin the experience</h3>
                 
                 <div class="imgmenu mphotos-1 commune"> 
-                    <a href="#top" data="7"> 
+                    <a href="#top" data="47"> 
                         <div class="mphotos"> 
                             <div class="mphoto"> 
                                 <img class="autosize" src="images/B.jpg" width="1140" height="300"></div> 
@@ -78,7 +79,26 @@
                     </a> 
                 </div>                       
                 
-                <ul class="grid effect-5" id="grid">                
+                <ul class="grid effect-5" id="grid">
+                <% for(var i=0; i<categories.length; i++) {%>
+                   <li>
+                        <div class='imgmenu mphotos-1 commune' >
+                            <a href='#top' data="<%= categories[i].id_category %>">
+                                <div class='mphotos'>
+                                    <div class='mphoto'>
+                                        <img class='autosize' src='images/<%= categories[i].image %>' />
+                                    </div> 
+                                </div> 
+                                <div class='title'> 
+                                    <div class='valign'>
+                                    </div>
+                                    <div class='name'><%= categories[i].name %>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                <% } %>                
                 </ul>
             </center>            
     </div>
@@ -90,7 +110,6 @@
     
     <!-- Script APP -->
     <script src="js/categories.js"></script>
-    <script src="js/JsonCategory.js"></script>
         
     
     <!-- Bootstrap -->
@@ -111,12 +130,6 @@
         }, false); 
         video.play();
 
-
-        // CATEGORIES
-        categories.data = categoryJson.categories;
-        var results = categories.Build();
-        $('#grid').html(results);
-        
         // creation de l'animation slider
         new AnimOnScroll( document.getElementById( 'grid' ), {
             minDuration : 0.4,

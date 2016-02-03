@@ -27,7 +27,8 @@
 <body onload="initialize()">
   <header class="text-center">
       <a href="/" style="float:left; color:white;">Change category</a>
-      <a href="#" id="signIn" style="float:right; color:white;">Sign in</a>
+<!--      <a href="#" id="signIn" style="float:right; color:white;">Sign in</a>
+      <a href="#" id="logout" style="float:right; color:white;">LOGOUT</a> -->
       <div id="titre" class="col-md-offset-5">
 
             <h1 class="text-center">EasyTrip</h1>
@@ -113,6 +114,7 @@
     <script src="js/jquery-ui-1.9.2.custom.min.js"></script>s
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
     <!-- Controller JS -->
     <script src="js/models/service.js"></script>
     <script src="js/models/map_manager.js"></script>
@@ -123,7 +125,7 @@
     <script type="text/javascript">
 
         //------ FILTERS
-
+        $('#logout').hide();
         $('#filters').hide();
         $('#hideFilter').hide();
 
@@ -246,6 +248,20 @@
 
         }
 
+/*
+        $('#logout').click(function (){
+          $.ajax({
+           url: '/user/logout/',
+           type: 'POST',
+           contentType: 'application/json;',
+           data: {},
+           success : function (data){
+             console.log('logged OUT!!!');
+             $('#signIn').show();
+             $('#logout').hide();
+           }
+         });
+        },
         $('#signIn').click(function (){
           BootstrapDialog.show({
               title: 'Sign In',
@@ -272,7 +288,7 @@
         function signUp(){
           BootstrapDialog.show({
               title: 'Sign Up',
-              message: $(' <label>First name</label><input type="text" id="firstName"/> <label>Last name</label><input type="text" id="lastName"/> <br> <label>E-mail</label><input type="text" id="mail"/> <label>Confirm E-mail</label><input type="text" id="cmail"/><br> <label>Password</label><input type="password" id="password"/> <label>Confirm Password</label><input type="cpassword" id="password"/>'),
+              message: $(' <label>First name</label><input type="text" id="firstName"/> <label>Last name</label><input type="text" id="lastName"/> <br> <label>E-mail</label><input type="text" id="mail"/> <label>Password</label><input type="password" id="password"/>'),
               buttons: [{
                 cssClass: 'btn-primary',
                 label: 'Save',
@@ -280,22 +296,41 @@
                     var firstName = document.getElementById("firstName").value;
                     var lastName = document.getElementById("lastName").value;
                     var mail = document.getElementById("mail").value;
-                    var cmail = document.getElementById("cmail").value;
                     var password = document.getElementById("password").value;
-                    var cpassword = document.getElementById("cpassword").value;
-                    saveSignUp(firstName,lastName,mail,cmail,password,cpassword);
+                    saveSignUp(firstName,lastName,mail,password);
                     dialog.close()
                 }
             }]
           });
         }
 
-        function signIn(username,password){
+        function signIn(username,pass){
+          console.log(username + ' ' + pass);
+          $.ajax({
+           url: '/user/login/',
+           type: 'POST',
+           contentType: 'application/json;',
+           data: { email: username, password: pass },
+           success : function (data){
+             console.log('logged in!!!');
+             $('#signIn').hide();
+             $('#logout').show();
+           }
+         });
         }
 
-        function saveSignUp(firstName,lastName,mail,cmail,password,cpassword){
-        }
-
+        function saveSignUp(firstName,lastName,mail,pass){
+          $.ajax({
+           url: '/user/signup/',
+           type: 'POST',
+           contentType: 'application/json;',
+           data: { name_first: firstName, name_last: lastName, email: mail, password: pass, role: 'private' },
+           success : function (data){
+             console.log('logged up!!!');
+           }
+         });
+       }
+*/
     </script>
 </body>
 

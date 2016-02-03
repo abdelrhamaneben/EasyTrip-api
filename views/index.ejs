@@ -229,10 +229,15 @@
             function signIn(username,pass){
                 data = { email: username, password: pass };
                 console.log(data);
-                $.post( "/user/login/", data).done(function (data){
+                $.post( "/user/login/", data).success(function (data){
                   $('#signIn').text('Log out');
                   console.log('logged in!!!');
+                }).error(function (data){
+                  BootstrapDialog.show({
+                      title: 'Error',
+                      message: 'Username and/or password is not valid!'
                 });
+              });
             }
 
             function saveSignUp(firstName,lastName,mail,pass){

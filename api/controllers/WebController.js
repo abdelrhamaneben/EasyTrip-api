@@ -36,23 +36,36 @@ module.exports = {
       // Category not exist
       if((cat === undefined)) return res.serverError("Impossible to find category");
       // Get List of service
-      Service.find().populate('activities').populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
+      var activitieslist = [];
+      for(var act in cat.activities) {
+        if(cat.activities[act].id_activity !== undefined) {
+          activitieslist.push(cat.activities[act].id_activity);
+        }
+      }
+      if(activitieslist.length == 0) {
+        return res.view('result',{
+          'activities' : [],
+          'category': cat.name,
+          'services' : [],
+          'latitude' : 48.856614,
+          'longitude' : 2.3522219
+          });
+      }
+      else {
+        Service.find().populate('activities',{ id_activity : activitieslist } ).populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
         if (err) {
           return res.serverError(err);
         }
-        var services = [];
-
-        if(req.param('category') == 30) {
-          services = found;
-        }
-      return res.view('result',{
-        'activities' : cat.activities,
-        'category': cat.name,
-        'services' : services,
-        'latitude' : 48.856614,
-        'longitude' : 2.3522219
+        return res.view('result',{
+          'activities' : cat.activities,
+          'category': cat.name,
+          'services' : found,
+          'latitude' : 48.856614,
+          'longitude' : 2.3522219
+          });
         });
-      });
+      }
+      
     });
   },
   /**

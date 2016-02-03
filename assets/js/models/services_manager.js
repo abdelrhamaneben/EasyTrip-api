@@ -1,6 +1,8 @@
 var services_manager = {
- build : function () {
+ build : function (id_activity) {
     $('#c-part').html('');
+
+    var nb_showed = 0;
     $.each(this.data, function(i, item) {
         var priceMin = $('#priceMin').val();
         var priceMax = $('#priceMax').val();
@@ -10,9 +12,8 @@ var services_manager = {
         var dateEnd = new Date($('#dateEnd').val());
         var dateFrom = new Date(item.fromDate);
         var dateTo = new Date(item.toDate);
-
         //  Filters
-        if((capacity>=item.minCapacity && capacity<=item.maxCapacity || capacity =='') &&
+        if((typeof id_activity == "undefined" || item.activities[0] == id_activity) && (capacity>=item.minCapacity && capacity<=item.maxCapacity || capacity =='') &&
           (item.name.toUpperCase().indexOf(service) != -1 || service=='') &&
           ((item.price>= priceMin && item.price<=priceMax)  || (priceMin=='' && item.price<=priceMax) || (item.price>= priceMin && priceMax=='')
             || (priceMin=='' && priceMax=='')) &&
@@ -20,31 +21,34 @@ var services_manager = {
            ((dateEnd<=dateTo || item.toDate=='') && $('#dateStart').val()=='' ) ||
            ($('#dateEnd').val()=='' && $('#dateStart').val()==''))
           ){
-        
+            nb_showed += 1;
         var itemService = "<div class=\"card\" id=\"service_" + item.id_service + "\">"
             + "<div class=\"thumbnail\">"
                 + "<div class=\"caption row\">";
         if(item.payed){
           itemService  += "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='" + item.img + "' /></div>";
         }
-        
+
         itemService +=  "<div class=\"col-md-6\"><h3>" + item.name + "</h3>"
                         + "<p>" + item.description + "</p>"
                         + "<p>Price : <b>" + item.price + " €</b></p><br>"
-                        + "</div>" 
+                        + "</div>"
           +"<div class='col-md-12'><div style='float:left;margin-left:20px;'>"
                 +"<a href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
           + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\" class='fa fa-google-plus-square fa-2x'></a><a href=\"https://twitter.com/share\" class=\"fa fa-twitter-square fa-2x\" data-url=\"http://fil.univ-lille1.fr/\"></a></div>"
-                 + "<div style='float:right;padding-right:30px;'><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button>"  
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div></div>"  
+                 + "<div style='float:right;padding-right:30px;'><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button>"
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div></div>"
               + "</div>"
               + "</div>"
             + "</div>";
 
-              
+
         $('#c-part').append($(itemService));
         }
         });
+        if(nb_showed == 0) {
+          $('#c-part').html("<h4 class='text-center' >There are no services available for this category</h4>");
+        }
        twttr.widgets.load();
  },
  click: function (id_service) {
@@ -59,31 +63,13 @@ var services_manager = {
 
  },
  load : function (rectangle,activities) {
-   /* $.ajax({
-              method: "POST",
-              url: "http://localhost:1337/service/search",
-              async : false,
-              data : {
-                'rectangle' : rectangle,
-                'activities' : activities
-              },
-              success : function (data) {
-                if(data){
-                    this.data = data;
-                    this.build(this.data);
-                }
-              },
-              error : function () {
-                alert("Impossible d'accéder au serveur EasyTrip");
-              }
-            });*/
-    this.build(this.data);
+    this.build();
  } ,
 
 popup : function(idService){
     var item = this.data[1];
     var html = "";
-    
+
     if(item.payed == 1 ){
             html= html+"<div class=\"card\" id=\"service_" + item.id_service + "\">"
                + "<div class=\"thumbnail payed\">"
@@ -110,9 +96,9 @@ popup : function(idService){
                + "</div>"
                + "</div>";
         }
-    
+
     html= html+"<table class=\"table table-hover \"></tbody>";
-    
+
     $.each(this.questions, function(i, item) {
         html = html + "<tr><td><h5>"+item.question+"</h5></td><td>"+
             "<div class=\"cont\"><div class=\"stars\"><form action=\"\">"+
@@ -126,12 +112,12 @@ popup : function(idService){
             "<label class=\"star star-2\" for=\""+item.id+"-2\"></label>"+
             "<input class=\"star star-1\" id=\""+item.id+"-1\" type=\"radio\" name=\"star\"/>"+
             "<label class=\"star star-1\" for=\""+item.id+"-1\"></label>"+
-            "</form></div></td></tr>";        
+            "</form></div></td></tr>";
     });
     html = html + "</tbody></table>"+
         "<div><div class=\"form-group\"><h5>Comment</h5>"+
         "<textarea class=\"form-control\" rows=\"2\" id=\"comment\"></textarea>"+
-        "</div>";    
+        "</div>";
     return html;
 },
  // Temporal data questions
@@ -155,5 +141,5 @@ popup : function(idService){
  ],
  // Temporal data
  data : []
-    
+
 };

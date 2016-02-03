@@ -9,7 +9,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "POST",
-            url: "http://localhost:1337/user/login",
+            url: urlServer + "user/login",
             //url: "http://172.28.1.101:1337/user/login",
             async : false,
             data : user,
@@ -54,7 +54,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
               method: "POST",
-              url: "http://localhost:1337/user/signup",
+              url: urlServer + "user/signup",
               //url: "172.28.1.101:1337/user/signup",
               async : false,
               data: user,

@@ -34,7 +34,10 @@ a:hover,
 a:active {
 	color: #333;
 }
-
+.form-control {
+	background-color:#FAFAFA;
+	color:black;
+}
 #signIn {
 	padding:5px;
 	background-color: rgba(80, 140, 183, 0.45);

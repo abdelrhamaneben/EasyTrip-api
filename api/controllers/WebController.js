@@ -28,7 +28,7 @@ module.exports = {
       return res.badRequest('Need location Params !!');
     }
 
-    // Get selected Category 
+    // Get selected Category
     Category.findOne({ id_category : req.param('category') }).populate('activities').exec(function finding(err, cat){
       if (err) {
           return res.serverError(err);
@@ -52,20 +52,31 @@ module.exports = {
           });
       }
       else {
-        Service.find().populate('activities',{ id_activity : activitieslist } ).populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
-        if (err) {
-          return res.serverError(err);
-        }
-        return res.view('result',{
-          'activities' : cat.activities,
-          'category': cat.name,
-          'services' : found,
-          'latitude' : 48.856614,
-          'longitude' : 2.3522219
+        var geocoder = require('geocoder');
+        geocoder.geocode(req.param('location'), function(err, data) {
+          if (err) {
+            res.serverError(err);
+          }
+          originLocation = data.results[0].geometry.location;
+          Service.find({
+            geolati : { '<=' : originLocation.lat +  1.5, '>=' : originLocation.lat - 1.5} ,
+            geolong : { '<=' : originLocation.lng + 2, '>=' : originLocation.lng - 2}
+          }).populate('activities',{ id_activity : activitieslist } ).populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
+          if (err) {
+            return res.serverError(err);
+          }
+          return res.view('result',{
+            'activities' : cat.activities,
+            'category': cat.name,
+            'services' : found,
+            'latitude' : originLocation.lat,
+            'longitude' : originLocation.lng
+            });
           });
         });
+
       }
-      
+
     });
   },
   /**

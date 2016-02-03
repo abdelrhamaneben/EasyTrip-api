@@ -1,93 +1,102 @@
 var features_manager = {
+result  :null,
+service :null,
     
 initSummary : function(id_srvice){
-    var result="";
+    var html="";
     $.ajax({
-              method: "GET",
-              url: "http://localhost:1337/judgement/",
-              async: false,
-              data: {
-                        service : id_srvice
-              },
-              success : function (data) {
-                if(data){
-                   console.log(data);
-                    result = this.summary(data);
-                }
-              },
-              error : function () {
-                alert("Impossible d'accéder au serveur EasyTrip");
-              },
-        
-            summary : function (data) {
-                var html="";
-                var global=0;
-                var score1=0;
-                var score2=0;
-                var score3=0;
-                jQuery.each(data, function(index, item) {
-                    global = global+item.gobal_score;
-                    score1 = score1+item.score1;
-                    score2 = score2+item.score2;
-                    score3 = score3+item.score3;
-                });
-                
-                //global
-                html+="<tr><td>General</td>"+
-                "<td>";
-                html+= this.value(Math.ceil(global/data.length));
-                html+="</td></tr>";
-                //1
-                html+="<tr><td>1</td>"+
-                "<td>";
-                html+= this.value(Math.ceil(score1/data.length));
-                html+="</td></tr>";
-                //2
-                html+="<tr><td>2</td>"+
-                "<td>";
-                html+= this.value(Math.ceil(score2/data.length));
-                html+="</td></tr>";
-                //3
-                html+="<tr><td>3</td>"+
-                "<td>";
-                html+= this.value(Math.ceil(score3/data.length));
-                html+="</td></tr>";
-                
-                return html;
-            },
-            value : function(score){
-                var html="";
-                alert(score);
-                if(score==0){
-                    html+="<i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/>"+
-                        "<i class=\"fa fa-star-o\"/>";
-                }
-                if(score==1){
-                    html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/>"+
-                        "<i class=\"fa fa-star-o\"/>";
-                }
-                if(score==2){
-                    html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/>"+
-                        "<i class=\"fa fa-star-o\"/>";
-                }
-                if(score==3){
-                    html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star-o\"/>"+
-                        "<i class=\"fa fa-star-o\"/>";
-                }
-                if(score==4){
-                    html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/>"+
-                        "<i class=\"fa fa-star-o\"/>";
-                }
-                if(score>=5){
-                    html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/>"+
-                        "<i class=\"fa fa-star\"/>";
-                }
-                return html;
+        method: "GET",
+        url: "http://localhost:1337/judgement/",
+        async: false,
+        data: {
+            service : id_srvice
+        },
+        success : function (data) {
+            if(data){
+                result = data;
+                //console.log(result);
             }
-        }); 
-    return result;
-    },
+        },
+        error : function () {
+            alert("Impossible d'accéder au serveur EasyTrip");
+        }            
+    }); 
+    html = this.summary(result);
+    return html;
+},
+summary : function (data) {
+    var html="";
+    var global=0;
+    var score1=0;
+    var score2=0;
+    var score3=0;
+
+    jQuery.each(data, function(index, item) {
+        global = global+parseInt(item.gobal_score);
+        score1 = score1+item.score1;
+        score2 = score2+item.score2;
+        score3 = score3+item.score3;
+    });s
+
+    if(data.length>0){
+        global = Math.ceil(global/data.length);
+        score1 = Math.ceil(score1/data.length);
+        score2 = Math.ceil(score2/data.length);
+        score3 = Math.ceil(score3/data.length);
+    }
+
+    //global
+    html+="<tr><td>General</td>"+
+    "<td>";
+    html+= this.value(global);
+    html+="</td></tr>";
+    //1
+    html+="<tr><td>1</td>"+
+    "<td>";
+    html+= this.value(score1);
+    html+="</td></tr>";
+    //2
+    html+="<tr><td>2</td>"+
+    "<td>";
+    html+= this.value(score2);
+    html+="</td></tr>";
+    //3
+    html+="<tr><td>3</td>"+
+    "<td>";
+    html+= this.value(score3);
+    html+="</td></tr>";
+
+    return html;
+},
     
+value : function(score){
+    var html="";
+    if(score==0){
+        html+="<i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/>"+
+            "<i class=\"fa fa-star-o\"/>";
+    }
+    if(score==1){
+        html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/>"+
+            "<i class=\"fa fa-star-o\"/>";
+    }
+    if(score==2){
+        html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star-o\"/><i class=\"fa fa-star-o\"/>"+
+            "<i class=\"fa fa-star-o\"/>";
+    }
+    if(score==3){
+        html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star-o\"/>"+
+            "<i class=\"fa fa-star-o\"/>";
+    }
+    if(score==4){
+        html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/>"+
+            "<i class=\"fa fa-star-o\"/>";
+    }
+    if(score>=5){
+        html+="<i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/><i class=\"fa fa-star\"/>"+
+            "<i class=\"fa fa-star\"/>";
+    }
+    return html;
+},
     
 popup : function(idService){   
     var result ="";
@@ -106,12 +115,12 @@ popup : function(idService){
           reviewInfo : function(data) {
                     var html = "";
                     if(data.premium ){
-                            html= html+"<div class=\"card\" id=\"service_" + data.id_service + "\">"
+                            html= html+"<div class=\"card\" id=\"" + data.id_service + "\">"
                                + "<div class=\"thumbnail payed\">"
                                + "<div class=\"caption row\">"
-                               + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='/images/" + data.activities[0].image + "' /></div>"
-                               + "<div class=\"col-md-6\"><h3>" + data.activities[0].name + "</h3>"
-                               + "<p>" + data.activities[0].description + "</p>"
+                               + "<div class=\"col-md-6\"><img class='img img-responsive img-rounded' src='" + data.image + "' /></div>"
+                               + "<div class=\"col-md-6\"><h3>" + data.name + "</h3>"
+                               + "<p>" + data.description + "</p>"
                                + "<p>Price : <b> €</b></p>"
                                + "<p class='text-right'></p>"
                                +"</div>"
@@ -119,11 +128,11 @@ popup : function(idService){
                                + "</div>"
                                + "</div>";
                         }else {
-                            html= html+"<div class=\"card\"  id=\"service_" + data.id_service + "\">"
+                            html= html+"<div class=\"card\"  id=\"" + data.id_service + "\">"
                                + " <div class=\"thumbnail\">"
                                + "<div class=\"caption\">"
-                               + "<h3>" + data.activities[0].name + "</h3>"
-                               + "<p>" + data.activities[0].description + "</p>"
+                               + "<h3>" + data.name + "</h3>"
+                               + "<p>" + data.description + "</p>"
                                 + "<p> Address : " +data.address.str_nbr+" "+data.address.str_name+","+data.address.city+"</p>"
                                 + "<p>Price : <b> €</b></p>"
                                + "<p class='text-right'></p>"
@@ -201,7 +210,6 @@ popup : function(idService){
         });
     return result;
 },    
-
         
 initInfo : function(id_srvice){
     var result="";
@@ -212,11 +220,11 @@ initInfo : function(id_srvice){
               success : function (data) {
                 if(data){
                    console.log(data);
-                    var info = this.getInfo(data);
-                    result = info;
-                    var img = data.img;
+                    service = data;
+                    result = this.getInfo(data);
+                    var img = data.image; 
                     if(img){
-                        $("#image").attr("src", "/images/"+img);
+                        $("#image").attr("src", ""+img);
                     }
                 }
               },
@@ -225,80 +233,65 @@ initInfo : function(id_srvice){
               },
         
             getInfo : function (data) {
-                var html="<li>"+data.activities[0].name+"</li>"+
-                    "<li>Description : "+data.activities[0].description+"</li>"+
-                    "<li>Price       : price</li>"+ 
-                    "<li>Address     : "+data.address.str_nbr+" "+data.address.str_name+","+data.address.city+"</li>";  
+                var html="<li>"+data.name+"</li>"+
+                    "<li>Description    : "+data.description+"</li>"+
+                    "<li>Price by person: "+data.servicePrices[0].price_per_person+"</li>"+ 
+                    "<li>Address        : "+data.address.str_nbr+" "+data.address.str_name+","+data.address.city+"</li>"+
+                    "<li>Open Hours     : "+data.servicePrices[0].businessDay+"</li>";  
                 return html;
             }
         }); 
     return result;
     },
  
-initComments : function(id_srvice){
-    var result = "";
-    $.ajax({            
-          method: "GET",
-          url: "http://localhost:1337/judgement/",
-          async: false,
-          data: {
-                    service : id_srvice
-          },
-          success : function (data) {
-            if(data){
-               console.log(data);
-                result = this.build(data);
-            }
-          },
-          error : function () {
-            alert("Impossible d'accéder au serveur EasyTrip");
-          },
-        build : function (data) {
-            var html="";
-            var right = false;
-            jQuery.each(data, function(index, item) {
-                if(right){
-                    right = false;
-                    html += "<li class=\"right clearfix\">"+
-                        "<span class=\"chat-img pull-right\">"+
-                            "<img src=\"/images/anonymous-male.png\" alt=\"User Avatar\" class=\"img-circle img-responsive\" />"+
-                        "</span>"+
-                        "<div class=\"chat-body clearfix\">"+
-                            "<div class=\"header\">"+
-                                "<small class=\" text-muted\">"+
-                                    "<span class=\"fa fa-clock-o\"></span>"+item.updatedAt+
-                                "</small>"+
-                                "<strong class=\"pull-right primary-font\">"+item.user.name_first+"</strong>"+
-                            "</div>"+
-                            "<div class=\"pull-right\"><p>"+item.judgement+
-                            "</p></div>"+
-                        "</div>"+
-                        "</li>";
-                }
-                else{
-                    right = true;
-                    html += "<li class=\"left clearfix\">"+
-                    "<span class=\"chat-img pull-left\">"+
-                        "<img src=\"/images/anonymous-male.png\" alt=\"User Avatar\" class=\"img-circle img-responsive\" />"+
-                    "</span>"+
-                    "<div class=\"chat-body clearfix\">"+
-                        "<div class=\"header\">"+
-                            "<strong class=\"primary-font\">"+item.user.name_first+"</strong>"+
-                            "<small class=\"pull-right text-muted\">"+
-                                "<span class=\"fa fa-clock-o\"></span>"+item.updatedAt+
-                            "</small>"+
-                        "</div>"+
-                        "<p>"+item.judgement+
-                        "</p>"+
+initComments : function(){
+    var html = this.build(result);
+    return html;    
+}, 
+    
+build : function (data) {
+    var html="";
+    var right = false;
+    jQuery.each(data, function(index, item) {
+        if(right){
+            right = false;
+            html += "<li class=\"right clearfix\">"+
+                "<span class=\"chat-img pull-right\">"+
+                    "<img src=\"/images/anonymous-male.png\" alt=\"User Avatar\" class=\"img-circle img-responsive\" />"+
+                "</span>"+
+                "<div class=\"chat-body clearfix\">"+
+                    "<div class=\"header\">"+
+                        "<small class=\" text-muted\">"+
+                            "<span class=\"fa fa-clock-o\"></span>"+item.updatedAt+
+                        "</small>"+
+                        "<strong class=\"pull-right primary-font\">"+item.user.name_first+"</strong>"+
                     "</div>"+
-                    "</li>";
-                }
-            });
-            return html;
+                    "<div class=\"pull-right\"><p>"+item.judgement+
+                    "</p></div>"+
+                "</div>"+
+                "</li>";
         }
-        });
-    return result;    
-} , 
+        else{
+            right = true;
+            html += "<li class=\"left clearfix\">"+
+            "<span class=\"chat-img pull-left\">"+
+                "<img src=\"/images/anonymous-male.png\" alt=\"User Avatar\" class=\"img-circle img-responsive\" />"+
+            "</span>"+
+            "<div class=\"chat-body clearfix\">"+
+                "<div class=\"header\">"+
+                    "<strong class=\"primary-font\">"+item.user.name_first+"</strong>"+
+                    "<small class=\"pull-right text-muted\">"+
+                        "<span class=\"fa fa-clock-o\"></span>"+item.updatedAt+
+                    "</small>"+
+                "</div>"+
+                "<p>"+item.judgement+
+                "</p>"+
+            "</div>"+
+            "</li>";
+        }
+    });
+    return html;
+},
     
 addComment : function(id_srvice,comment,gobal_score,score1,score2,score3,user){
 $.ajax({
@@ -325,31 +318,7 @@ $.ajax({
           }
         });    
 }
-    
-    // Temporal data questions
-// questions : [
-//     {
-//         "question": "General rate",
-//         "id":"1",
-//         "score":5
-//     },
-//     {
-//         "question": "Quality of service",
-//         "id":"2",
-//         "score":4
-//     },
-//     {
-//         "question": "Pertinence",
-//         "id":"3",
-//         "score":0
-//     },
-//     {
-//         "question": "Price",
-//         "id":"4",
-//         "score":1
-//     }
-// ]    
-    
+        
 };
 
  

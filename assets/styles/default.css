@@ -35,6 +35,17 @@ a:active {
 	color: #333;
 }
 
+#signIn {
+	padding:5px;
+	background-color: rgba(80, 140, 183, 0.45);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	float:right;
+	margin-right:15px;
+	margin-top:10px;
+	color:white;
+}
 /* Header Style */
 .container > header {
 	margin: 0 auto;

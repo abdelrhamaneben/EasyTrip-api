@@ -36,8 +36,8 @@ var services_manager = {
           +"<div class='col-md-12'><div style='float:left;margin-left:20px;'>"
                 +"<a href=\"https://plus.google.com/share?url=youtube.com\" onclick=\"javascript:window.open(this.href,"
           + "'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\" class='fa fa-google-plus-square fa-2x'></a><a href=\"https://twitter.com/share\" class=\"fa fa-twitter-square fa-2x\" data-url=\"http://fil.univ-lille1.fr/\"></a></div>"
-                 + "<div style='float:right;padding-right:30px;'><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"service_" + item.id_service + "\");'>See on map</button>"
-               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\"service_"+item.id_service+"\")'>Reviews</button></div></div>"
+                 + "<div style='float:right;padding-right:30px;'><button type=\"button\" class=\"btn btn-default\" id=\"showOnMap\" onclick='services_manager.click(\"" + item.id_service + "\");'>See on map</button>"
+               + "<button type=\"button\" class=\"btn btn-default\" id=\"Review\" onclick='review(\""+item.id_service+"\")'>Reviews</button></div></div>"
               + "</div>"
               + "</div>"
             + "</div>";

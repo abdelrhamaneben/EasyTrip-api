@@ -709,6 +709,21 @@
       }
     ],
     "et_subscription": [],
+    "et_stat": [
+      {
+        "id_service": 1,
+        "ip_stat": "192.168.1.88",
+        "createdAt": "2016-02-01T10:04:44.222Z",
+        "updatedAt": "2016-02-01T10:04:44.222Z",
+        "id_stat": 9
+      },
+      {
+        "ip_stat": "192.168.1.75",
+        "createdAt": "2016-02-01T10:04:56.740Z",
+        "updatedAt": "2016-02-01T10:04:56.740Z",
+        "id_stat": 10
+      }
+    ],
     "et_user": [
       {
         "name_first": "Slimane",
@@ -719,7 +734,8 @@
         "role": "admin",
         "password": "pass",
         "subscribed": false,
-        "id_user": 2
+        "id_user": 2,
+        "createdAt": "2016-01-27T22:00:00.000Z"
       },
       {
         "email": "jvdurieu@live.be",
@@ -731,7 +747,8 @@
         "subscription": null,
         "address": 16,
         "subscribed": false,
-        "id_user": 3
+        "id_user": 3,
+        "createdAt": "2016-01-28T23:00:00.000Z"
       },
       {
         "email": "elouadi.slimane@yahoo.fr",
@@ -743,7 +760,8 @@
         "subscription": null,
         "address": 20,
         "subscribed": false,
-        "id_user": 4
+        "id_user": 4,
+        "createdAt": "2016-01-14T23:00:00.000Z"
       },
       {
         "email": "elouadi.slimane@yahoo.fr",
@@ -755,7 +773,8 @@
         "subscription": null,
         "address": 21,
         "subscribed": false,
-        "id_user": 5
+        "id_user": 5,
+        "createdAt": "2015-12-03T18:00:00.000Z"
       }
     ],
     "activity_categories__category_activities": [
@@ -851,6 +870,49 @@
         "service_activities": 18,
         "id": 32
       }
+    ],
+    "et_judgement": [
+      {
+        "id_user": 1,
+        "id_service": 1,
+        "global_score": 4,
+        "createdAt": "2016-02-03T08:31:57.585Z",
+        "updatedAt": "2016-02-03T08:31:57.585Z",
+        "id_judgement": 1
+      },
+      {
+        "id_user": 1,
+        "id_service": 1,
+        "global_score": 4.4,
+        "score1": 4,
+        "score2": 4,
+        "score3": 5,
+        "createdAt": "2016-02-03T08:33:18.908Z",
+        "updatedAt": "2016-02-03T08:33:18.908Z",
+        "id_judgement": 2
+      },
+      {
+        "id_user": 1,
+        "id_service": 2,
+        "global_score": 5,
+        "score1": 5,
+        "score2": 5,
+        "score3": 5,
+        "createdAt": "2016-02-03T08:33:50.799Z",
+        "updatedAt": "2016-02-03T08:33:50.799Z",
+        "id_judgement": 3
+      },
+      {
+        "id_user": 1,
+        "id_service": 2,
+        "global_score": 3,
+        "score1": 3,
+        "score2": 3,
+        "score3": 3,
+        "createdAt": "2016-02-03T08:34:08.880Z",
+        "updatedAt": "2016-02-03T08:34:08.880Z",
+        "id_judgement": 4
+      }
     ]
   },
   "schema": {
@@ -871,6 +933,12 @@
       },
       "image": {
         "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
       }
     },
     "et_address": {
@@ -924,6 +992,12 @@
       "image": {
         "type": "string",
         "defaultsTo": "default.jpg"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
       }
     },
     "et_reservation": {
@@ -1014,6 +1088,30 @@
         "type": "datetime"
       }
     },
+    "et_stat": {
+      "id_stat": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_service": {
+        "type": "integer",
+        "model": "service",
+        "foreignKey": true,
+        "alias": "id_service"
+      },
+      "ip_stat": {
+        "type": "string",
+        "size": 15
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
     "et_service_price": {
       "id_sp": {
         "type": "integer",
@@ -1070,6 +1168,12 @@
       },
       "nb_month": {
         "type": "integer"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
       }
     },
     "et_user": {
@@ -1172,6 +1276,48 @@
         "on": "id_service",
         "via": "activity_services"
       }
+    },
+    "et_judgement": {
+      "id_judgement": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true
+      },
+      "id_user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "id_user"
+      },
+      "id_service": {
+        "type": "integer",
+        "model": "service",
+        "foreignKey": true,
+        "alias": "id_service"
+      },
+      "judgement": {
+        "type": "string",
+        "size": 500
+      },
+      "global_score": {
+        "type": "float"
+      },
+      "score1": {
+        "type": "integer"
+      },
+      "score2": {
+        "type": "integer"
+      },
+      "score3": {
+        "type": "integer"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
     }
   },
   "counters": {
@@ -1200,6 +1346,12 @@
     },
     "activity_services__service_activities": {
       "id": 32
+    },
+    "et_stat": {
+      "id_stat": 10
+    },
+    "et_judgement": {
+      "id_judgement": 4
     }
   }
 }

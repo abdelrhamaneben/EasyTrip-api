@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+module.exports = {
+
+  tableName: 'et_judgement',
+
+  attributes: {
+    id_judgement: {
+=======
 /**
 * Judgement.js
 *
@@ -15,36 +23,31 @@ module.exports = {
       primaryKey: true,
       autoIncrement: true
     },
-    user : {
-      model : 'user'
+    id_user: {
+      model: 'user'
     },
-    service : {
-      model : 'service'
+    id_service: {
+      model: 'service'
     },
-    judgement : {
+    judgement: {
       type: 'string',
       size: 500
     },
-    global_score : {
-    	type : 'integer'
+    global_score: {
+      type: 'float',
+      required: true
     },
-    score1 : {
-    	type : 'integer'
+    score1: {
+      type: 'integer',
+      required: true
     },
-    score2 : {
-    	type : 'integer'
+    score2: {
+      type: 'integer',
+      required: true
     },
-    score3 : {
-    	type : 'integer'
-    },
-    createdAt : {
-      type: 'datetime',
-      autoCreatedAt: true
-    },
-   	updatedAt : {
-      type: 'datetime',
-      autoUpdatedAt: true
+    score3: {
+      type: 'integer',
+      required: true
     }
   }
 };
-

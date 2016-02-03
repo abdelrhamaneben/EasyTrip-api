@@ -137,7 +137,7 @@ module.exports = {
       stats.nbsearch90d = count;
 
       // NEXT
-      User.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbSignupNu7d);
+      User.count().where({createdAt: {'>': d7, '<=': d0}, role: {'=': 'private'}}).exec(nbSignupNu7d);
     };
 
     // SIGNUP PRIVATE ----------------------------------------------------------
@@ -202,7 +202,7 @@ module.exports = {
       stats.nbsignupnu90d = count;
 
       // NEXT
-      User.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbSignupBu7d);
+      User.count().where({createdAt: {'>': d7, '<=': d0}, role: {'=': 'business'}}).exec(nbSignupBu7d);
     };
 
     // SIGNUP BUSINESS ---------------------------------------------------------
@@ -685,14 +685,6 @@ module.exports = {
       res.ok(stats);
     };
 
-
-
-
-
-
-
-
-
     // Vue Spec ----------------------------------------------------------------
     var nbVueSpec7d = function(err, count) {
       if (err) return res.serverError({error: err})
@@ -788,7 +780,7 @@ module.exports = {
 
       stats.nbcmt45d = count;
 
-      Stat.count().where({createdAt: {'>': d60, '<=': d45}, , id_service: serviceId}).exec(nbCmtSpec60d);
+      Stat.count().where({createdAt: {'>': d60, '<=': d45},id_service: serviceId}).exec(nbCmtSpec60d);
     };
 
     var nbCmtSpec60d = function(err, count) {
@@ -796,7 +788,7 @@ module.exports = {
 
       stats.nbcmt60d = count;
 
-      Stat.count().where({createdAt: {'>': d75, '<=': d60}, , id_service: serviceId}).exec(nbCmtSpec75d);
+      Stat.count().where({createdAt: {'>': d75, '<=': d60}, id_service: serviceId}).exec(nbCmtSpec75d);
     };
 
     var nbCmtSpec75d = function(err, count) {
@@ -804,7 +796,7 @@ module.exports = {
 
       stats.nbcmt75d = count;
 
-      Stat.count().where({createdAt: {'>': d90, '<=': d75}, , id_service: serviceId}).exec(nbCmt90d);
+      Stat.count().where({createdAt: {'>': d90, '<=': d75}, id_service: serviceId}).exec(nbCmt90d);
     };
 
     var nbCmt90d = function(err, count) {

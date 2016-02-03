@@ -19,7 +19,8 @@ module.exports = {
       size: 500
     },
     global_score: {
-      type: 'integer'
+      type: 'float',
+      required: true
     },
     score1: {
       type: 'integer'

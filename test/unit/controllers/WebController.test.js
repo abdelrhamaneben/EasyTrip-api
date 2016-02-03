@@ -29,5 +29,11 @@ describe('WebController', function() {
         .expect(400, done);
 
       });
+     it('category not found', function (done) {
+      request(sails.hooks.http.app)
+        .post('/result')
+        .send({ location : 'lille', category : '345324'})
+        .expect(500,done);
+      });
     });
 });

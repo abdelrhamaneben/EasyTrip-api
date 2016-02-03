@@ -8,15 +8,15 @@
     <meta name="author" content="">
 
     <title>EasyTrip</title>
-	
+
 	<!-- Bootstrap Core CSS -->
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="styles/stylish-portfolio.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="styles/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
-             
+
+
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="styles/default.css" />
     <link rel="stylesheet" type="text/css" href="styles/component.css" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="styles/toastr.min.css" />
     <script src="js/modernizr.custom.js"></script>
     <style>
-        video { 
+        video {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -36,7 +36,7 @@
             -webkit-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
         }
-        .form-control-width {        
+        .form-control-width {
             min-width: 0;
             width: 22%;
             display: inline;
@@ -51,6 +51,7 @@
         <source src="images\videoplayback.ogv" type="video/ogv" >
     </video>
     <header id="top" class="header">
+        <a href="#" id="signIn" style="float:left; color:white;">Sign in</a>
         <div class="text-vertical-center" id="title">
             <h1>EasyTrip</h1>
             <br>
@@ -62,23 +63,23 @@
     <div class="container animsition" id="afterSelectingCity">
             <center>
 				<br><br>
-                
+
                 <!-- h4 style="margin-bottom:20px;">What do you want to do?</h4-->
                 <h3 style="color:#fed136;text-decoration:underline;">Choose a category to begin the experience</h3>
-                
-                <div class="imgmenu mphotos-1 commune"> 
-                    <a href="#top" data="47"> 
-                        <div class="mphotos"> 
-                            <div class="mphoto"> 
-                                <img class="autosize" src="images/B.jpg" width="1140" height="300"></div> 
-                        </div> 
-                        <div class="title"> 
-                            <div class="valign"></div> 
-                            <div class="name">BEST DEALS</div> 
-                        </div> 
-                    </a> 
-                </div>                       
-                
+
+                <div class="imgmenu mphotos-1 commune">
+                    <a href="#top" data="47">
+                        <div class="mphotos">
+                            <div class="mphoto">
+                                <img class="autosize" src="images/B.jpg" width="1140" height="300"></div>
+                        </div>
+                        <div class="title">
+                            <div class="valign"></div>
+                            <div class="name">BEST DEALS</div>
+                        </div>
+                    </a>
+                </div>
+
                 <ul class="grid effect-5" id="grid">
                 <% for(var i=0; i<categories.length; i++) {%>
                    <li>
@@ -87,9 +88,9 @@
                                 <div class='mphotos'>
                                     <div class='mphoto'>
                                         <img class='autosize' src='images/<%= categories[i].image %>' />
-                                    </div> 
-                                </div> 
-                                <div class='title'> 
+                                    </div>
+                                </div>
+                                <div class='title'>
                                     <div class='valign'>
                                     </div>
                                     <div class='name'><%= categories[i].name %>
@@ -98,22 +99,23 @@
                             </a>
                         </div>
                     </li>
-                <% } %>                
+                <% } %>
                 </ul>
-            </center>            
+            </center>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/imagesloaded.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/AnimOnScroll.js"></script>
-    
+
     <!-- Script APP -->
     <script src="js/categories.js"></script>
-        
-    
+
+
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
     <script src="js/toastr.min.js"></script>
     <script>
         // VIDEO
@@ -124,10 +126,10 @@
 
         video.addEventListener('ended', function()
         {
-            // only functional if "loop" is removed 
+            // only functional if "loop" is removed
             video.pause();
             vidFade();
-        }, false); 
+        }, false);
         video.play();
 
         // creation de l'animation slider
@@ -148,20 +150,98 @@
                 $(location).attr('href',"/result?location=" + city + "&category=" + id);
             }
         });
-		
+
 		$('#btnDisplayForm').click(function (){
             $('html, body').animate({
 			 scrollTop: $('#afterSelectingCity').offset().top
             }, 1000);
-        });        
+        });
     </script>
 
 </body>
-   <!-- ----------SCRIPTS---------- --> 
+   <!-- ----------SCRIPTS---------- -->
      <!-- Include Google Maps JS API -->
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key= AIzaSyAyVD3_uVmC0hN-rYUCuzkjCeLrvHWUOBg"></script>
 
     <!-- Custom JS code to bind to Autocomplete API -->
     <script type="text/javascript" src="js/autocomplete.js"></script>
+    <script>
+
+
+            $('#signIn').click(function (){
+              var txt = $('#signIn').text();
+              if( txt == 'Sign in'){
+                BootstrapDialog.show({
+                  title: 'Sign In',
+                  message: $(' <label>E-mail</label><input type="text" id="username"/> <label>Password</label><input type="password" id="password"/>'),
+                  buttons: [{
+                    cssClass: 'btn-primary',
+                    label: 'Sign in',
+                    action: function(dialog) {
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById("password").value;
+                        signIn(username,password);
+                        dialog.close()
+                    }
+                },
+                {
+                  cssClass: 'btn-primary',
+                  label: 'Sign up',
+                  action: function(dialog) {
+                      dialog.close();
+                      signUp();
+                  }
+                }]
+              });
+            }
+            else if( txt == 'Log out'){
+              logout();
+            }
+            });
+            function signUp(){
+              BootstrapDialog.show({
+                  title: 'Sign Up',
+                  message: $(' <label>First name</label><input type="text" id="firstName"/> <label>Last name</label><input type="text" id="lastName"/> <br> <label>E-mail</label><input type="text" id="mail"/> <label>Password</label><input type="password" id="password"/>'),
+                  buttons: [{
+                    cssClass: 'btn-primary',
+                    label: 'Save',
+                    action: function(dialog) {
+                        var firstName = document.getElementById("firstName").value;
+                        var lastName = document.getElementById("lastName").value;
+                        var mail = document.getElementById("mail").value;
+                        var password = document.getElementById("password").value;
+                        saveSignUp(firstName,lastName,mail,password);
+                        dialog.close()
+                    }
+                }]
+              });
+            }
+
+            function logout(){
+                data = {};
+                $.post( "/user/logout/", data).done(function (data){
+                  $('#signIn').text('Sign in');
+                  console.log('logged OUT!!!');
+                });
+            }
+
+            function signIn(username,pass){
+                data = { email: username, password: pass };
+                console.log(data);
+                $.post( "/user/login/", data).done(function (data){
+                  $('#signIn').text('Log out');
+                  console.log('logged in!!!');
+                });
+            }
+
+            function saveSignUp(firstName,lastName,mail,pass){
+              data = { name_first: firstName, name_last: lastName, email: mail, password: pass, role: 'private' };
+              console.log(data);
+              $.post( "/user/signup/", data).done(function (data){
+                console.log(data);
+                console.log('Sign UP!!!');
+              });
+           }
+    </script>
 </html>

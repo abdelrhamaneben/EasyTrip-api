@@ -23,13 +23,16 @@ module.exports = {
       required: true
     },
     score1: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     score2: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     score3: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     }
   }
 };

@@ -49,7 +49,7 @@ module.exports.routes = {
     controller: 'web',
     action: 'feature'
   },
-  'get /user/login':{
+  '/user/login':{
     controller: 'user',
     action: 'login'
   },

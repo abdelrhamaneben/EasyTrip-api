@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-module.exports = {
-
-  tableName: 'et_judgement',
-
-  attributes: {
-    id_judgement: {
-=======
 /**
 * Judgement.js
 *

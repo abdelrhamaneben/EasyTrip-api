@@ -3,6 +3,7 @@
 *
 */
 module.exports = {
+
   /**
   *
   */
@@ -13,6 +14,7 @@ module.exports = {
       }
       return res.view('index',{
         'categories' : found,
+        'logged' : (req.session.authenticated  == true )
         });
     });
   },

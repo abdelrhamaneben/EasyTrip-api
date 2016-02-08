@@ -38,7 +38,7 @@ a:active {
 	background-color:#FAFAFA;
 	color:black;
 }
-#signIn {
+#signIn , #logout{
 	padding:5px;
 	background-color: rgba(80, 140, 183, 0.45);
 	-webkit-border-radius: 5px;

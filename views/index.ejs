@@ -50,7 +50,17 @@
         <source src="images\videoplayback.webm" type="video/webm" >
         <source src="images\videoplayback.ogv" type="video/ogv" >
     </video>
-    <a href="#" id="signIn">Sign in</a>
+    <% if(logged) {
+    %>
+    <a href="#" onClick="logout();" id="logout">Logout</a>
+    <%
+      } 
+    else {
+    %>
+      <a href="#" id="signIn">Sign in</a>
+    <%
+    }
+    %>
     <header id="top" class="header">
 
         <div class="text-vertical-center" id="title">
@@ -180,7 +190,7 @@
     }
     function signsubmit() {
       var username = $('#login_username').val();
-      var password = $('#flogin_password').val();
+      var password = $('#login_password').val();
       signIn(username,password);
     }
             $('#signIn').click(function (){
@@ -228,8 +238,12 @@
             function logout(){
                 data = {};
                 $.post( "/user/logout/", data).done(function (data){
-                  $('#signIn').text('Sign in');
-                  console.log('logged OUT!!!');
+                  location.reload();
+                }).error(function(){
+                   BootstrapDialog.show({
+                      title: 'Oups',
+                      message: 'Internal server Error caught'
+                  });
                 });
             }
 
@@ -237,21 +251,31 @@
                 data = { email: username, password: pass };
                 console.log(data);
                 $.post( "/user/login/", data).success(function (data){
-                  $('#signIn').text('Log out');
-                  console.log('logged in!!!');
+                  location.reload();
                 }).error(function (data){
-                  BootstrapDialog.show({
-                      title: 'Error',
-                      message: 'Username and/or password is not valid!'
-                });
+                   BootstrapDialog.show({
+                      title: 'Oups',
+                      message: 'Identifiant or password incorrect'
+                  });
               });
             }
 
             function saveSignUp(firstName,lastName,mail,pass){
               data = { name_first: firstName, name_last: lastName, email: mail, password: pass, role: 'private' };
               console.log(data);
-              $.post( "/user/signup/", data).success(function (data){
-                alert('Sign UP!!!');
+              $.post( "/user/signup/", data)
+              .success(function (data){
+                BootstrapDialog.show({
+                      title: 'Congratulation',
+                      message: 'You are now part of the adventure Easytrip'
+                });
+                location.reload();
+              })
+              .error(function() {
+                 BootstrapDialog.show({
+                      title: 'Error',
+                      message: 'Some fields are incorrectly entered'
+                  });
               });
            }
     </script>

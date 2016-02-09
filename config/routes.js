@@ -61,10 +61,9 @@ module.exports.routes = {
     controller: 'user',
     action: 'login'
   },
-
-  '/admin/login': {
+  '/user/login': {
     controller: 'user',
-    action: 'login'
+    action: 'loginUser'
   },
 
 

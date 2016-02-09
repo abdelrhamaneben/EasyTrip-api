@@ -91,6 +91,9 @@ module.exports = {
     return res.view('features');
   }, 
   loginpopin : function(req, res) {
+    if(req.session.authenticated  == true ) {
+      return res.ok("Vous êtes déja connecté");
+    }
     return res.view('login');
   },
   signuppopin : function(req, res) {

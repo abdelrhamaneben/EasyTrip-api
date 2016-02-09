@@ -352,14 +352,6 @@
         "city": "Lille",
         "country": "France",
         "id_address": 38
-      },
-      {
-        "str_nbr": "12",
-        "str_name": "du blabla",
-        "code_zip": 90887,
-        "city": "Arras",
-        "country": "France",
-        "id_address": 39
       }
     ],
     "et_category": [
@@ -714,17 +706,6 @@
         "businessDay": "Lundi 11h30 12h00 ;Mardi 8h30-11h30 13h00-18h00 ;Jeudi 8h30-11h30 13h00-18h00 ;",
         "promotion": false,
         "id_sp": 12
-      },
-      {
-        "service": 24,
-        "d_from": "2016-02-11T23:00:00.000Z",
-        "d_to": "2016-02-12T23:00:00.000Z",
-        "nb_person_min": 1,
-        "nb_person_max": 5,
-        "price_per_person": 34,
-        "businessDay": "",
-        "promotion": false,
-        "id_sp": 13
       }
     ],
     "et_subscription": [],
@@ -967,23 +948,9 @@
         "id": 31
       },
       {
-        "activity_services": 13,
+        "activity_services": 19,
         "service_activities": 18,
-        "id": 36
-      }
-    ],
-    "et_criterion": [
-      {
-        "criterion": "Price2",
-        "id_criterion": 1
-      },
-      {
-        "criterion": "Condition2",
-        "id_criterion": 2
-      },
-      {
-        "criterion": "Quality2",
-        "id_criterion": 3
+        "id": 32
       }
     ],
     "et_judgement": [
@@ -1030,7 +997,6 @@
       }
     ],
     "et_criterion": []
-    "et_judgement": []
   },
   "schema": {
     "et_activity": {
@@ -1203,24 +1169,6 @@
       },
       "updatedAt": {
         "type": "datetime"
-      },
-      "criterion1": {
-        "type": "integer",
-        "model": "criterion",
-        "foreignKey": true,
-        "alias": "criterion1"
-      },
-      "criterion2": {
-        "type": "integer",
-        "model": "criterion",
-        "foreignKey": true,
-        "alias": "criterion2"
-      },
-      "criterion3": {
-        "type": "integer",
-        "model": "criterion",
-        "foreignKey": true,
-        "alias": "criterion3"
       }
     },
     "et_stat": {
@@ -1412,24 +1360,6 @@
         "via": "activity_services"
       }
     },
-    "et_criterion": {
-      "id_criterion": {
-        "type": "integer",
-        "primaryKey": true,
-        "unique": true,
-        "autoIncrement": true
-      },
-      "criterion": {
-        "type": "string",
-        "size": 100
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
     "et_judgement": {
       "id_judgement": {
         "type": "integer",
@@ -1448,17 +1378,6 @@
         "model": "service",
         "foreignKey": true,
         "alias": "id_service"
-      "user": {
-        "type": "integer",
-        "model": "user",
-        "foreignKey": true,
-        "alias": "user"
-      },
-      "service": {
-        "type": "integer",
-        "model": "service",
-        "foreignKey": true,
-        "alias": "service"
       },
       "judgement": {
         "type": "string",
@@ -1507,17 +1426,17 @@
       "id_activity": 22
     },
     "et_address": {
-      "id_address": 39
+      "id_address": 38
     },
     "et_category": {
       "id_category": 47
     },
     "et_reservation": {},
     "et_service": {
-      "id_service": 24
+      "id_service": 23
     },
     "et_service_price": {
-      "id_sp": 13
+      "id_sp": 12
     },
     "et_subscription": {},
     "et_user": {
@@ -1535,8 +1454,6 @@
     "et_judgement": {
       "id_judgement": 4
     },
-    "et_criterion": {
-      "id_criterion": 3
-    },
+    "et_criterion": {}
   }
 }

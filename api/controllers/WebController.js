@@ -92,7 +92,7 @@ module.exports = {
     }
 
     // TODO: Add id_service
-    Stat.create({ip_stat: req.connection.remoteAddress, id_service: /*TODO*/}).exec(function(err, res) {});
+    Stat.create({ip_stat: req.connection.remoteAddress/*, id_service: TODO*/}).exec(function(err, res) {});
     return res.view('features');
   },
   loginpopin : function(req, res) {

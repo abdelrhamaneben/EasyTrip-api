@@ -8,6 +8,8 @@ module.exports = {
   *
   */
   index: function(req, res) {
+      Stat.create({ip_stat: req.connection.remoteAddress}).exec(function(err, res) {});
+
       Category.find().exec(function finding(err, found) {
       if (err) {
           return res.serverError(err);
@@ -88,8 +90,11 @@ module.exports = {
     if (!req.param('service')) {
       return res.badRequest('Need ServiceId Params !!');
     }
+
+    // TODO: Add id_service
+    /*Stat.create({ip_stat: req.connection.remoteAddress, id_service: TODO}).exec(function(err, res) {});*/
     return res.view('features');
-  }, 
+  },
   loginpopin : function(req, res) {
     if(req.session.authenticated  == true ) {
       return res.ok("Vous êtes déja connecté");

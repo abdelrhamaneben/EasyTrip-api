@@ -7,6 +7,8 @@ module.exports = {
   *
   */
   index: function(req, res) {
+      Stat.create({ip_stat: req.connection.remoteAddress}).exec(null);
+
       Category.find().exec(function finding(err, found) {
       if (err) {
           return res.serverError(err);
@@ -28,7 +30,7 @@ module.exports = {
       return res.badRequest('Need location Params !!');
     }
 
-    // Get selected Category 
+    // Get selected Category
     Category.findOne({ id_category : req.param('category') }).populate('activities').exec(function finding(err, cat){
       if (err) {
           return res.serverError(err);
@@ -63,5 +65,14 @@ module.exports = {
       return res.badRequest('Need ServiceId Params !!');
     }
     return res.view('features');
+  },
+  loginpopin : function(req, res) {
+    if(req.session.authenticated  == true ) {
+      return res.ok("Vous êtes déja connecté");
+    }
+    return res.view('login');
+  },
+  signuppopin : function(req, res) {
+    return res.view('signup');
   }
 };

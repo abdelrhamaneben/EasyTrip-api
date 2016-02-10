@@ -63,7 +63,7 @@ module.exports.routes = {
   },
   '/user/login': {
     controller: 'user',
-    action: 'loginUser'
+    action: 'login'
   },
 
 

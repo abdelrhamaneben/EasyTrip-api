@@ -57,10 +57,6 @@ module.exports.routes = {
     controller: 'web',
     action: 'signuppopin'
   },
-  '/admin/login': {
-    controller: 'user',
-    action: 'login'
-  },
   '/user/login': {
     controller: 'user',
     action: 'login'

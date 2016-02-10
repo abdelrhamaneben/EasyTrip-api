@@ -994,6 +994,18 @@
         "createdAt": "2016-02-03T08:34:08.880Z",
         "updatedAt": "2016-02-03T08:34:08.880Z",
         "id_judgement": 4
+      },
+      {
+        "service": "18",
+        "judgement": "good",
+        "global_score": 2,
+        "score1": 3,
+        "score2": 4,
+        "score3": 5,
+        "user": "2",
+        "createdAt": "2016-02-10T08:20:35.682Z",
+        "updatedAt": "2016-02-10T08:20:35.682Z",
+        "id_judgement": 5
       }
     ],
     "et_criterion": []
@@ -1169,6 +1181,24 @@
       },
       "updatedAt": {
         "type": "datetime"
+      },
+      "criterion1": {
+        "type": "integer",
+        "model": "criterion",
+        "foreignKey": true,
+        "alias": "criterion1"
+      },
+      "criterion2": {
+        "type": "integer",
+        "model": "criterion",
+        "foreignKey": true,
+        "alias": "criterion2"
+      },
+      "criterion3": {
+        "type": "integer",
+        "model": "criterion",
+        "foreignKey": true,
+        "alias": "criterion3"
       }
     },
     "et_stat": {
@@ -1452,7 +1482,7 @@
       "id_stat": 10
     },
     "et_judgement": {
-      "id_judgement": 4
+      "id_judgement": 5
     },
     "et_criterion": {}
   }

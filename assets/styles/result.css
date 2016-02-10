@@ -16,28 +16,45 @@ html {
 }
 
 header {
-    background-color:#FDD835;
+    background-color:#fed136;
     margin:0px;
-    padding:5px;
+    padding:0px;
     margin-left:0px;
     margin-bottom:20px  ;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    text-shadow: -1px 0 #FBC02D, 0 1px #FBC02D, 1px 0 #FBC02D, 0 -1px #FBC02D;
-
+    height:105px;
+    box-shadow: 3px 1px 3px rgba(0,0,0,0.12), 3px 1px 2px rgba(0,0,0,0.24);
 }
 
-html { height: 100% }
+header img {
+    width:20%;
+}
+header a {
+    left:10px;
+    top:10px;
+    color:white;
+    position :fixed;
+}
+header a:hover {
+    text-decoration:none;
+}
+
+html { height: 100%;margin: 0px; padding: 0px  }
 
 body { height: 100%; margin: 0px; padding: 0px }
 
 #map_canvas { height: 100% }
 
 #titre {
+    margin-top:5px;
+    margin-bottom:5px;
     color:white;
-    padding:2px;
-    width:20%;
     font-family: times;
-    font-style:italic;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+#titre h1, #titre p {
+     width:100%;
 }
 
 #app {
@@ -52,7 +69,7 @@ body { height: 100%; margin: 0px; padding: 0px }
 }
 
 #r-part {
-     
+
 }
 
 #c-part {
@@ -72,11 +89,11 @@ body { height: 100%; margin: 0px; padding: 0px }
 }
 
 #list_activities li:hover{
-	background-color:#1369B3;
+	background-color:red;
 }
 
 .thumbnail:hover, .thumbnail:focus {
-    -moz-box-shadow: 0 0 5px #fed136; 
+    -moz-box-shadow: 0 0 5px #fed136;
     -webkit-box-shadow: 0 0 5px #fed136;
 }
 

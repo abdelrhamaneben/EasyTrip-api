@@ -1,9 +1,16 @@
+/**
+* Judgement.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
+
 module.exports = {
 
-  tableName: 'et_judgement',
+ tableName: 'et_judgement',
 
-  attributes: {
-    id_judgement: {
+  attributes : {
+    id_judgement : {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
@@ -23,13 +30,16 @@ module.exports = {
       required: true
     },
     score1: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     score2: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     score3: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     }
   }
 };

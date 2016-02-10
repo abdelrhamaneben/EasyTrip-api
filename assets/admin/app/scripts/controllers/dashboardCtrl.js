@@ -8,7 +8,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "GET",
-            url: ("http://localhost:1337/admin/stats/"),
+            url: (urlServer + "admin/stats/"),
             //url: "172.28.1.101:1337/admin/stats/",
             //url: ($rootScope.apiAddress+"stats/"),
             async : true,
@@ -113,7 +113,7 @@ angular.module('sbAdminApp')
 
           var httpRequest = $http({
             method: "GET",
-            url: ("http://localhost:1337/admin/stats/"),
+            url: (urlServer + "admin/stats/"),
             //url: "172.28.1.101:1337/admin/stats/",
             //url: ($rootScope.apiAddress+"stats/"),
             async : true,

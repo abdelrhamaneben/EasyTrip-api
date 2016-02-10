@@ -3,6 +3,7 @@
 *
 */
 module.exports = {
+
   /**
   *
   */
@@ -15,6 +16,7 @@ module.exports = {
       }
       return res.view('index',{
         'categories' : found,
+        'logged' : (req.session.authenticated  == true )
         });
     });
   },
@@ -38,23 +40,47 @@ module.exports = {
       // Category not exist
       if((cat === undefined)) return res.serverError("Impossible to find category");
       // Get List of service
-      Service.find().populate('activities').populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
-        if (err) {
-          return res.serverError(err);
+      var activitieslist = [];
+      for(var act in cat.activities) {
+        if(cat.activities[act].id_activity !== undefined) {
+          activitieslist.push(cat.activities[act].id_activity);
         }
-        var services = [];
-
-        if(req.param('category') == 30) {
-          services = found;
-        }
-      return res.view('result',{
-        'activities' : cat.activities,
-        'category': cat.name,
-        'services' : services,
-        'latitude' : 48.856614,
-        'longitude' : 2.3522219
+      }
+      if(activitieslist.length == 0) {
+        return res.view('result',{
+          'activities' : [],
+          'category': cat.name,
+          'services' : [],
+          'latitude' : 48.856614,
+          'longitude' : 2.3522219
+          });
+      }
+      else {
+        var geocoder = require('geocoder');
+        geocoder.geocode(req.param('location'), function(err, data) {
+          if (err) {
+            res.serverError(err);
+          }
+          originLocation = data.results[0].geometry.location;
+          Service.find({
+            geolati : { '<=' : originLocation.lat +  1.5, '>=' : originLocation.lat - 1.5} ,
+            geolong : { '<=' : originLocation.lng + 2, '>=' : originLocation.lng - 2}
+          }).populate('activities',{ id_activity : activitieslist } ).populate('creator').populate('address').populate('servicePrices').exec(function finding(err, found) {
+          if (err) {
+            return res.serverError(err);
+          }
+          return res.view('result',{
+            'activities' : cat.activities,
+            'category': cat.name,
+            'services' : found,
+            'latitude' : originLocation.lat,
+            'longitude' : originLocation.lng
+            });
+          });
         });
-      });
+
+      }
+
     });
   },
   /**
@@ -65,7 +91,7 @@ module.exports = {
       return res.badRequest('Need ServiceId Params !!');
     }
     return res.view('features');
-  },
+  }, 
   loginpopin : function(req, res) {
     if(req.session.authenticated  == true ) {
       return res.ok("Vous êtes déja connecté");

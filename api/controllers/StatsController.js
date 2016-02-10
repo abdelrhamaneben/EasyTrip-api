@@ -4,7 +4,7 @@ module.exports = {
   // Renvoie les statistiques pour le dashboard des admin
   getStats: function(req, res) {
 
-    console.log('API get statistiques');
+    //console.log('API get statistiques');
 
     var stats = {};
 
@@ -17,10 +17,12 @@ module.exports = {
     var d75 = new Date(new Date().setDate(d0.getDate() - 75));
     var d90 = new Date(new Date().setDate(d0.getDate() - 90));
 
+    var serviceId = req.param('serviceId');
+
     // VISIT -------------------------------------------------------------------
     var nbVisit7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit7d = count;
 
@@ -29,7 +31,7 @@ module.exports = {
 
     var nbVisit15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit15d = count;
 
@@ -38,7 +40,7 @@ module.exports = {
 
     var nbVisit30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit30d = count;
 
@@ -47,7 +49,7 @@ module.exports = {
 
     var nbVisit45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit45d = count;
 
@@ -56,7 +58,7 @@ module.exports = {
 
     var nbVisit60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit60d = count;
 
@@ -65,7 +67,7 @@ module.exports = {
 
     var nbVisit75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit75d = count;
 
@@ -74,7 +76,7 @@ module.exports = {
 
     var nbVisit90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvisit90d = count;
 
@@ -143,7 +145,7 @@ module.exports = {
     // SIGNUP PRIVATE ----------------------------------------------------------
     var nbSignupNu7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu7d = count;
 
@@ -152,7 +154,7 @@ module.exports = {
 
     var nbSignupNu15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu15d = count;
 
@@ -161,7 +163,7 @@ module.exports = {
 
     var nbSignupNu30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu30d = count;
 
@@ -170,7 +172,7 @@ module.exports = {
 
     var nbSignupNu45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu45d = count;
 
@@ -179,7 +181,7 @@ module.exports = {
 
     var nbSignupNu60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu60d = count;
 
@@ -188,7 +190,7 @@ module.exports = {
 
     var nbSignupNu75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu75d = count;
 
@@ -197,7 +199,7 @@ module.exports = {
 
     var nbSignupNu90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupnu90d = count;
 
@@ -208,7 +210,7 @@ module.exports = {
     // SIGNUP BUSINESS ---------------------------------------------------------
     var nbSignupBu7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu7d = count;
 
@@ -217,7 +219,7 @@ module.exports = {
 
     var nbSignupBu15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu15d = count;
 
@@ -226,7 +228,7 @@ module.exports = {
 
     var nbSignupBu30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu30d = count;
 
@@ -235,7 +237,7 @@ module.exports = {
 
     var nbSignupBu45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu45d = count;
 
@@ -244,7 +246,7 @@ module.exports = {
 
     var nbSignupBu60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu60d = count;
 
@@ -253,7 +255,7 @@ module.exports = {
 
     var nbSignupBu75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu75d = count;
 
@@ -262,7 +264,7 @@ module.exports = {
 
     var nbSignupBu90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbsignupbu90d = count;
 
@@ -273,7 +275,7 @@ module.exports = {
     // SERVICES ----------------------------------------------------------------
     var nbServices = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice = count;
 
@@ -282,7 +284,7 @@ module.exports = {
 
     var nbServices7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice7d = count;
 
@@ -291,7 +293,7 @@ module.exports = {
 
     var nbServices15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice15d = count;
 
@@ -300,7 +302,7 @@ module.exports = {
 
     var nbServices30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice30d = count;
 
@@ -309,7 +311,7 @@ module.exports = {
 
     var nbServices45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice45d = count;
 
@@ -318,7 +320,7 @@ module.exports = {
 
     var nbServices60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice60d = count;
 
@@ -327,7 +329,7 @@ module.exports = {
 
     var nbServices75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice75d = count;
 
@@ -336,7 +338,7 @@ module.exports = {
 
     var nbServices90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbservice90d = count;
 
@@ -347,7 +349,7 @@ module.exports = {
     // PROMO -------------------------------------------------------------------
     var nbPromoSub = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbpromosub = count;
 
@@ -356,7 +358,7 @@ module.exports = {
 
     var nbPromoSub7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub7d = count;
 
@@ -365,7 +367,7 @@ module.exports = {
 
     var nbPromoSub15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub15d = count;
 
@@ -374,7 +376,7 @@ module.exports = {
 
     var nbPromoSub30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub30d = count;
 
@@ -383,7 +385,7 @@ module.exports = {
 
     var nbPromoSub45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub45d = count;
 
@@ -392,7 +394,7 @@ module.exports = {
 
     var nbPromoSub60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub60d = count;
 
@@ -401,7 +403,7 @@ module.exports = {
 
     var nbPromoSub75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub75d = count;
 
@@ -410,7 +412,7 @@ module.exports = {
 
     var nbPromoSub90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.promosub90d = count;
 
@@ -421,7 +423,7 @@ module.exports = {
     // Vue ---------------------------------------------------------------------
     var nbVue7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue7d = count;
 
@@ -430,7 +432,7 @@ module.exports = {
 
     var nbVue15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue15d = count;
 
@@ -439,7 +441,7 @@ module.exports = {
 
     var nbVue30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue30d = count;
 
@@ -448,7 +450,7 @@ module.exports = {
 
     var nbVue45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue45d = count;
 
@@ -457,7 +459,7 @@ module.exports = {
 
     var nbVue60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue60d = count;
 
@@ -466,7 +468,7 @@ module.exports = {
 
     var nbVue75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue75d = count;
 
@@ -475,7 +477,7 @@ module.exports = {
 
     var nbVue90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue90d = count;
 
@@ -685,10 +687,46 @@ module.exports = {
       res.ok(stats);
     };
 
+    if (!req.session.authenticated) {
+
+        // nombre de création de compte utilisateur Util & Business
+        Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVisit7d);
+
+      } else {
+        /*
+        *   LES STATS POUR LES AUTRES
+        */
+
+        var stats = {};
+
+        // Sample réponse
+        // ADMIN
+
+        Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVue7d);
+      }
+
+  },
+
+  // Renvoie les stats d'un service en particulier
+  getStat: function(req, res) {
+
+    var serviceId = req.param('serviceId');
+
+    var d0 = new Date();
+    var d7 = new Date(new Date().setDate(d0.getDate() - 7));
+    var d15 = new Date(new Date().setDate(d0.getDate() - 15));
+    var d30 = new Date(new Date().setDate(d0.getDate() - 30));
+    var d45 = new Date(new Date().setDate(d0.getDate() - 45));
+    var d60 = new Date(new Date().setDate(d0.getDate() - 60));
+    var d75 = new Date(new Date().setDate(d0.getDate() - 75));
+    var d90 = new Date(new Date().setDate(d0.getDate() - 90));
+
+    var stats = {};
+
     // Vue Spec ----------------------------------------------------------------
     var nbVueSpec7d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue7d = count;
 
@@ -697,7 +735,7 @@ module.exports = {
 
     var nbVueSpec15d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue15d = count;
 
@@ -706,7 +744,7 @@ module.exports = {
 
     var nbVueSpec30d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue30d = count;
 
@@ -715,7 +753,7 @@ module.exports = {
 
     var nbVueSpec45d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue45d = count;
 
@@ -724,7 +762,7 @@ module.exports = {
 
     var nbVueSpec60d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue60d = count;
 
@@ -733,7 +771,7 @@ module.exports = {
 
     var nbVueSpec75d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue75d = count;
 
@@ -742,7 +780,7 @@ module.exports = {
 
     var nbVueSpec90d = function(err, count) {
       if (err) return res.serverError({error: err})
-      console.log(count);
+      //console.log(count);
 
       stats.nbvue90d = count;
 
@@ -951,33 +989,6 @@ module.exports = {
       // NEXT
       res.ok(stats);
     };
-
-    if (!req.session.authenticated) {
-
-        // nombre de création de compte utilisateur Util & Business
-        Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVisit7d);
-
-      } else {
-        /*
-        *   LES STATS POUR LES AUTRES
-        */
-
-        var stats = {};
-
-        // Sample réponse
-        // ADMIN
-
-        Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVue7d);
-      }
-
-  },
-
-  // Renvoie les stats d'un service en particulier
-  getStat: function(req, res) {
-
-    var serviceId = req.param('serviceId');
-
-    var stats = {};
 
     // Sample réponse
     // ADMIN

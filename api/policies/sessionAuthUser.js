@@ -8,7 +8,7 @@
  *
  */
 module.exports = function(req, res, next) {
-  // Need authentificated user to execute controller  
+  // Need authentificated user to execute controller         
   if(req.session.authenticated) {
      return next();    
   }

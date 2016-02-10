@@ -32,11 +32,11 @@ summary : function (data) {
     var score3=0;
 
     jQuery.each(data, function(index, item) {
-        global = global+parseInt(item.gobal_score);
+        global = global+item.global_score;
         score1 = score1+item.score1;
         score2 = score2+item.score2;
         score3 = score3+item.score3;
-    });s
+    });
 
     if(data.length>0){
         global = Math.ceil(global/data.length);
@@ -300,7 +300,7 @@ $.ajax({
           data: {
                 service : id_srvice,
                 judgement : comment,
-                gobal_score : gobal_score,
+                global_score : gobal_score,
                 score1: score1,
                 score2 : score2,
                 score3 : score3,

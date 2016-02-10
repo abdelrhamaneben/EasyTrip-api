@@ -9,6 +9,18 @@ describe('WebController', function() {
         .expect(200, done);
     });
 
+     it('Get login popin', function (done) {
+      request(sails.hooks.http.app)
+        .get('/loginpopin')
+        .expect(200, done);
+    });
+
+      it('Get signup popin', function (done) {
+      request(sails.hooks.http.app)
+        .get('/signuppopin')
+        .expect(200, done);
+    });
+
     it('Bad Request without Service(id) param', function (done) {
       request(sails.hooks.http.app)
         .post('/feature')

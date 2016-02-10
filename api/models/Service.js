@@ -64,6 +64,15 @@ module.exports = {
     servicePrices : {
             collection: 'servicePrice',
             via: 'service'
+    },
+    criterion1 :{
+        model : 'criterion'
+    },
+    criterion2 :{
+        model : 'criterion'
+    },
+    criterion3 :{
+        model : 'criterion'
     }
   }
 };

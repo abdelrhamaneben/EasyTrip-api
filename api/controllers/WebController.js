@@ -3,6 +3,7 @@
 *
 */
 module.exports = {
+
   /**
   *
   */
@@ -13,6 +14,7 @@ module.exports = {
       }
       return res.view('index',{
         'categories' : found,
+        'logged' : (req.session.authenticated  == true )
         });
     });
   },
@@ -87,5 +89,14 @@ module.exports = {
       return res.badRequest('Need ServiceId Params !!');
     }
     return res.view('features');
+  }, 
+  loginpopin : function(req, res) {
+    if(req.session.authenticated  == true ) {
+      return res.ok("Vous êtes déja connecté");
+    }
+    return res.view('login');
+  },
+  signuppopin : function(req, res) {
+    return res.view('signup');
   }
 };

@@ -40,12 +40,17 @@ angular.module('sbAdminApp')
         };
 
         $scope.isAdminf = function() {
-
+            if(!$scope.isConnected()){
+              $location.path("/login");
+            }
              if ($rootScope.user.role == 'business' || $rootScope.isAdmin == false) {
                 return false;
             } else if ($rootScope.user.role == 'admin') {
                 return true;
             }
+        }
+        $scope.isConnected = function(){
+          return ($rootScope.user != null);
         }
       }
     }

@@ -49,9 +49,21 @@ module.exports.routes = {
     controller: 'web',
     action: 'feature'
   },
-  '/user/login':{
+  '/loginpopin': {
+    controller: 'web',
+    action: 'loginpopin'
+  },
+  '/signuppopin': {
+    controller: 'web',
+    action: 'signuppopin'
+  },
+  '/admin/login': {
     controller: 'user',
     action: 'login'
+  },
+  '/user/login': {
+    controller: 'user',
+    action: 'loginUser'
   },
 
 

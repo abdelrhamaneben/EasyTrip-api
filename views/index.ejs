@@ -50,8 +50,19 @@
         <source src="images\videoplayback.webm" type="video/webm" >
         <source src="images\videoplayback.ogv" type="video/ogv" >
     </video>
+    <% if(logged) {
+    %>
+    <a href="#" onClick="logout();" id="logout">Logout</a>
+    <%
+      } 
+    else {
+    %>
+      <a href="#" id="signIn">Sign in</a>
+    <%
+    }
+    %>
     <header id="top" class="header">
-        <a href="#" id="signIn" style="float:left; color:white;">Sign in</a>
+
         <div class="text-vertical-center" id="title">
             <h1>EasyTrip</h1>
             <br>
@@ -166,81 +177,102 @@
 
     <!-- Custom JS code to bind to Autocomplete API -->
     <script type="text/javascript" src="js/autocomplete.js"></script>
+    <script type="text/javascript" src="js/jquery.blockUI.js"></script>
     <script>
 
-
+    function signupsubmit() {
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var mail = $("#mail").val();
+        var password = $("#password").val();
+        saveSignUp(firstName,lastName,mail,password);
+    }
+    function signsubmit() {
+      var username = $('#login_username').val();
+      var password = $('#login_password').val();
+      signIn(username,password);
+    }
             $('#signIn').click(function (){
               var txt = $('#signIn').text();
               if( txt == 'Sign in'){
-                BootstrapDialog.show({
-                  title: 'Sign In',
-                  message: $(' <label>E-mail</label><input type="text" id="username"/> <label>Password</label><input type="password" id="password"/>'),
-                  buttons: [{
-                    cssClass: 'btn-primary',
-                    label: 'Sign in',
-                    action: function(dialog) {
-                        var username = document.getElementById("username").value;
-                        var password = document.getElementById("password").value;
-                        signIn(username,password);
-                        dialog.close()
-                    }
-                },
-                {
-                  cssClass: 'btn-primary',
-                  label: 'Sign up',
-                  action: function(dialog) {
-                      dialog.close();
-                      signUp();
-                  }
-                }]
-              });
+
+                $.get( "/loginpopin", function( data ) {
+                     $.blockUI({ message:  data ,
+                     css : {
+                       border: 'none' ,
+                       width: '400px' ,
+                       top : '10%',
+                       'cursor' : 'pointer',
+                       left: ($(window).width() - 400) /2 + 'px',
+                      '-webkit-border-radius': '10px',
+                      '-moz-border-radius': '10px',
+                     'border-radius' : '10px' }
+                   });
+                   $('.blockOverlay').attr('title','Click to unblock').click($.unblockUI);
+                });
+                
             }
             else if( txt == 'Log out'){
               logout();
             }
             });
             function signUp(){
-              BootstrapDialog.show({
-                  title: 'Sign Up',
-                  message: $(' <label>First name</label><input type="text" id="firstName"/> <label>Last name</label><input type="text" id="lastName"/> <br> <label>E-mail</label><input type="text" id="mail"/> <label>Password</label><input type="password" id="password"/>'),
-                  buttons: [{
-                    cssClass: 'btn-primary',
-                    label: 'Save',
-                    action: function(dialog) {
-                        var firstName = document.getElementById("firstName").value;
-                        var lastName = document.getElementById("lastName").value;
-                        var mail = document.getElementById("mail").value;
-                        var password = document.getElementById("password").value;
-                        saveSignUp(firstName,lastName,mail,password);
-                        dialog.close()
-                    }
-                }]
-              });
+
+                 $.get( "/signuppopin", function( data ) {
+                     $.blockUI({ message:  data ,
+                     css : {
+                       border: 'none' ,
+                       width: '400px' ,
+                       top : '10%',
+                       'cursor' : 'pointer',
+                       left: ($(window).width() - 400) /2 + 'px',
+                      '-webkit-border-radius': '10px',
+                      '-moz-border-radius': '10px',
+                     'border-radius' : '10px' }
+                   });
+                   $('.blockOverlay').attr('title','Click to unblock').click($.unblockUI);
+                });
             }
 
             function logout(){
                 data = {};
                 $.post( "/user/logout/", data).done(function (data){
-                  $('#signIn').text('Sign in');
-                  console.log('logged OUT!!!');
+                  location.reload();
+                }).error(function(){
+                   BootstrapDialog.show({
+                      title: 'Oups',
+                      message: 'Internal server Error caught'
+                  });
                 });
             }
 
             function signIn(username,pass){
                 data = { email: username, password: pass };
-                console.log(data);
-                $.post( "/user/login/", data).done(function (data){
-                  $('#signIn').text('Log out');
-                  console.log('logged in!!!');
-                });
+                $.post( "/user/login/", data).success(function (data){
+                  location.reload();
+                }).error(function (data){
+                   BootstrapDialog.show({
+                      title: 'Oups',
+                      message: 'Identifiant or password incorrect'
+                  });
+              });
             }
 
             function saveSignUp(firstName,lastName,mail,pass){
               data = { name_first: firstName, name_last: lastName, email: mail, password: pass, role: 'private' };
-              console.log(data);
-              $.post( "/user/signup/", data).done(function (data){
-                console.log(data);
-                console.log('Sign UP!!!');
+              $.post( "/user/signup/", data)
+              .success(function (data){
+                BootstrapDialog.show({
+                      title: 'Congratulation',
+                      message: 'You are now part of the adventure Easytrip'
+                });
+                location.reload();
+              })
+              .error(function() {
+                 BootstrapDialog.show({
+                      title: 'Error',
+                      message: 'Some fields are incorrectly entered'
+                  });
               });
            }
     </script>

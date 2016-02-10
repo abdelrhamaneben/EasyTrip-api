@@ -36,24 +36,20 @@ module.exports = {
           if(user === undefined) {
               console.log('not found');
               console.log(user);
-              return res.notFound("Unknown email address");
+              return res.notFound("Identifiant or password incorrect");
           } else {
 
               if (user.password != pass) {
                   console.log('wrong password');
-                  return res.badRequest('wrong password, try again');
+                  return res.badRequest('Identifiant or password incorrect');
               }
 
               if (user.role == 'admin') {
                   req.session.admin = true;
                   console.log('login - is admin');
-              } else if (user.role == 'business') {
+              } else {
                   req.session.admin = false;
                   console.log('login - is business');
-              } else {
-                  console.log('user '+mail+' don\'t exist or simple user');
-                  //console.log('But we force connexion');
-                  return res.badRequest('you\'re not allowed to connect');
               }
 
               req.session.userid = user.id_user;
@@ -66,16 +62,7 @@ module.exports = {
           }
       });
   },
-
   signup: function(req, res) {
-
-      console.log('API signup controller');
-      console.log(req.param('name_first'));
-      console.log(req.param('name_last'));
-      console.log(req.param('role'));
-      console.log(req.param('email'));
-      console.log(req.param('password'));
-      console.log('-------------------');
 
       // VERIFICATION DE LA PRESENCE DES PARAMETRES
 
@@ -113,48 +100,34 @@ module.exports = {
 
         }).exec(function (err,user) {
 
-                if(err){
-                    console.log('error');
-                    // return res.serverError('Could not create user');
-                    console.log('error while creating user :/');
-                    return res.json({
-                        error:err
-                    });
-                }
-
-                console.log('Business user created !');
-                return res.send(200);
+            if(err){
+                return res.json({
+                    error:err
+                });
+            }
+            req.session.userid = user.id_user;
+            req.session.authenticated = true;
+            return res.send(200);
         });
 
       }
-      console.log(req.param('email'));
-
-      User.create({
-
-          email:req.param('email'),
-          name_first:req.param('name_first'),
-          name_last:req.param('name_last'),
-          role:req.param('role'),
-          password:req.param('password'),
-          phone:'null',
-          subscription:null,
-          address:null
-      }).exec(function (err,user) {
-
-              if(err){
-                  console.log('error');
-                  // return res.serverError('Could not create user');
-                  console.log('error while creating user :/');
-                  return res.json({
-                      error:err
-                  });
-              }
-
-              console.log(req.param('role') + ' user created !');
-              return res.send(200);
-      });
-
-      //return res.send(200);
+      else {
+        User.create({
+            email:req.param('email'),
+            name_first:req.param('name_first'),
+            name_last:req.param('name_last'),
+            phone:'null',
+            role:'private',
+            password:req.param('password')
+        }).exec(function (err,user) {
+            if(err){
+                return res.serverError('Impossible to signup');
+            }
+            req.session.userid = user.id_user;
+            req.session.authenticated = true;
+            return res.send(200);
+        });
+      }
   },
 
   logout: function(req, res) {

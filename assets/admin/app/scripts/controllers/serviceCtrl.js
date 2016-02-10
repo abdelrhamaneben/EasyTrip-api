@@ -125,6 +125,10 @@ angular.module('sbAdminApp')
                   dataType : "json",
                   contentType : "application/json"
               }).success(function(data, status) {
+                  var idCriterion1 = data.criterion1.id_criterion;
+                  var idCriterion2 = data.criterion2.id_criterion;
+                  var idCriterion3 = data.criterion3.id_criterion;
+                  
                   var id_address_to_change = data.address.id_address; 
                   var id_servicePrice_to_change = data.servicePrice.id_sp; 
                   
@@ -189,6 +193,67 @@ angular.module('sbAdminApp')
                         contentType : "application/json"
                   });
 
+                  var criterion1 = document.getElementById('criterion1');
+                  var criterion2 = document.getElementById('criterion2');
+                  var criterion3 = document.getElementById('criterion3');
+        
+                 if(criterion1.value.length != 0){
+                      var data = '{'
+                      +'"criterion" : "' + criterion1.value + '"'
+                      +'}';
+                  }else{
+                    var data = '{'
+                      +'"criterion" : "Condition"'
+                      +'}';
+                  }
+                
+                  var httpRequest = $http({
+                        method : "POST",
+                        url : urlServer + "criterion/" + idCriterion1,
+                        data : data,
+                        async :false,
+                        dataType : "json",
+                        contentType : "application/json"
+                  });
+
+                  if(criterion2.value.length != 0){
+                      var data = '{'
+                      +'"criterion" : "' + criterion2.value + '"'
+                      +'}';
+                  }else{
+                    var data = '{'
+                      +'"criterion" : "Condition"'
+                      +'}';
+                  }
+
+                  var httpRequest = $http({
+                        method : "POST",
+                        url : urlServer + "criterion/" + idCriterion2,
+                        data : data,
+                        async :false,
+                        dataType : "json",
+                        contentType : "application/json"
+                  });
+
+                  if(criterion3.value.length != 0){
+                      var data = '{'
+                      +'"criterion" : "' + criterion3.value + '"'
+                      +'}';
+                  }else{
+                    var data = '{'
+                      +'"criterion" : "Condition"'
+                      +'}';
+                  }
+
+                  var httpRequest = $http({
+                        method : "POST",
+                        url : urlServer + "criterion/" + idCriterion3,
+                        data : data,
+                        async :false,
+                        dataType : "json",
+                        contentType : "application/json"
+                  });
+
                   var service_d_to = document.getElementById('service_d_to');
                   var service_d_from = document.getElementById('service_d_from');
                   var service_nb_person_min = document.getElementById('service_nb_person_min');
@@ -213,7 +278,6 @@ angular.module('sbAdminApp')
                   var httpRequest = $http({
                       method : "POST",
                       url : urlServer + "serviceprice/" + id_servicePrice_to_change,
-                      //url: "172.28.1.101:1337/serviceprice/" + id_servicePrice_to_change,
                       data : data,
                       dataType : "json",
                       contentType : "application/json"
@@ -297,14 +361,6 @@ angular.module('sbAdminApp')
         console.log(address_city.value);
         console.log(address_country.value);
 
-        var data = '{'
-          +'"str_nbr" : "' + address_str_nbr.value + '",'
-          +'"str_name" : "' + address_str_name.value + '",'
-          +'"code_zip" : "' + address_code_zip.value + '",'
-          +'"city" : "' + address_city.value + '",'
-          +'"country" : "' + address_country.value + '"'
-        +'}';
-
         var service_d_to = document.getElementById('service_d_to');
         var service_d_from = document.getElementById('service_d_from');
         var service_nb_person_min = document.getElementById('service_nb_person_min');
@@ -318,10 +374,87 @@ angular.module('sbAdminApp')
         service_d_to.value = new Date(tmp[2], tmp[1] - 1, tmp[0]);
 
         console.log(data);
+        var criterion1 = document.getElementById('criterion1');
+        var criterion2 = document.getElementById('criterion2');
+        var criterion3 = document.getElementById('criterion3');
+        var idCriterion1;
+        var idCriterion2;
+        var idCriterion3;
+        if(criterion1.value.length != 0){
+            var data = '{'
+            +'"criterion" : "' + criterion1.value + '"'
+            +'}';
+        }else{
+          var data = '{'
+            +'"criterion" : "Price"'
+            +'}';
+        }
+
+        var httpRequest = $http({
+              method : "POST",
+              url : urlServer + "criterion",
+              data : data,
+              async :false,
+              dataType : "json",
+              contentType : "application/json"
+        }).success(function(data, status) {
+          idCriterion1 = data.id_criterion;
+        });
+        
+        if(criterion2.value.length != 0){
+            var data = '{'
+            +'"criterion" : "' + criterion2.value + '"'
+            +'}';
+        }else{
+          var data = '{'
+            +'"criterion" : "Condition"'
+            +'}';
+        }
+          
+        var httpRequest = $http({
+              method : "POST",
+              url : urlServer + "criterion",
+              data : data,
+              async :false,
+              dataType : "json",
+              contentType : "application/json"
+        }).success(function(data, status) {
+          idCriterion2 = data.id_criterion;
+        });
+
+         if(criterion3.value.length != 0){
+            var data = '{'
+            +'"criterion" : "' + criterion3.value + '"'
+            +'}';
+        }else{
+          var data = '{'
+            +'"criterion" : "Condition"'
+            +'}';
+        }
+
+         var httpRequest = $http({
+              method : "POST",
+              url : urlServer + "criterion",
+              data : data,
+              async :false,
+              dataType : "json",
+              contentType : "application/json"
+        }).success(function(data, status) {
+          idCriterion3 = data.id_criterion;
+        });
+
+        var data = '{'
+          +'"str_nbr" : "' + address_str_nbr.value + '",'
+          +'"str_name" : "' + address_str_name.value + '",'
+          +'"code_zip" : "' + address_code_zip.value + '",'
+          +'"city" : "' + address_city.value + '",'
+          +'"country" : "' + address_country.value + '"'
+        +'}';
+
         var httpRequest = $http({
               method : "POST",
               url : urlServer + "address",
-              //url: "172.28.1.101:1337/address",
+              async :false,
               data : data,
               dataType : "json",
               contentType : "application/json"
@@ -336,13 +469,16 @@ angular.module('sbAdminApp')
                 +'"name" : "' + service_name.value + '",'
                 +'"description" : "' + service_description.value + '",'
                 +'"image" : "' + service_image_blob + '",'
+                +'"criterion1" : "' + idCriterion1 + '",'
+                +'"criterion2" : "' + idCriterion2 + '",'
+                +'"criterion3" : "' + idCriterion3 + '",'
                 +'"link" : "' + service_link.value + '"'
               +'}';
 
               var httpRequest = $http({
                   method : "POST",
                   url : urlServer + "service",
-                  //url: "172.28.1.101:1337/service",
+                  async :false,
                   data : data,
                   dataType : "json",
                   contentType : "application/json"
@@ -360,7 +496,7 @@ angular.module('sbAdminApp')
                   var httpRequest = $http({
                       method : "POST",
                       url : urlServer + "serviceprice",
-                      //url: "172.28.1.101:1337/serviceprice",
+                      async :false,
                       data : data,
                       dataType : "json",
                       contentType : "application/json"
@@ -372,7 +508,7 @@ angular.module('sbAdminApp')
                       var httpRequest = $http({
                         method : "POST",
                         url : urlServer + "service/" + id_service,
-                        //url: "172.28.1.101:1337/serviceprice",
+                        async :false,
                         data : data,
                         dataType : "json",
                         contentType : "application/json"

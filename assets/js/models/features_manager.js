@@ -51,17 +51,17 @@ summary : function (data) {
     html+= this.value(global);
     html+="</td></tr>";
     //1
-    html+="<tr><td>1</td>"+
+    html+="<tr><td>Price</td>"+
     "<td>";
     html+= this.value(score1);
     html+="</td></tr>";
     //2
-    html+="<tr><td>2</td>"+
+    html+="<tr><td>Service</td>"+
     "<td>";
     html+= this.value(score2);
     html+="</td></tr>";
     //3
-    html+="<tr><td>3</td>"+
+    html+="<tr><td>Location</td>"+
     "<td>";
     html+= this.value(score3);
     html+="</td></tr>";
@@ -158,7 +158,7 @@ popup : function(idService){
                             "<label class=\"star star-1\" for=\"1-1\"></label>"+
                             "</form></div></td></tr>";   
                 // question 1
-                  html = html + "<tr><td><h5>Question 1</h5></td><td>"+
+                  html = html + "<tr><td><h5>Price</h5></td><td>"+
                                 "<div class=\"cont\"><div class=\"stars\"><form action=\"\">"+
                                 "<input class=\"star star-5\" id=\"2-5\" type=\"radio\" onClick=\"starClicked(2,5)\" name=\"star\"/>"+ 
                                 "<label class=\"star star-5\" for=\"2-5\"></label>"+
@@ -172,7 +172,7 @@ popup : function(idService){
                                 "<label class=\"star star-1\" for=\"2-1\"></label>"+
                                 "</form></div></td></tr>"; 
                  // question 2
-                  html = html + "<tr><td><h5>Question 1</h5></td><td>"+
+                  html = html + "<tr><td><h5>Service</h5></td><td>"+
                                 "<div class=\"cont\"><div class=\"stars\"><form action=\"\">"+
                                 "<input class=\"star star-5\" id=\"3-5\" type=\"radio\" onClick=\"starClicked(3,5)\" name=\"star\"/>"+ 
                                 "<label class=\"star star-5\" for=\"3-5\"></label>"+
@@ -187,7 +187,7 @@ popup : function(idService){
                                 "</form></div></td></tr>"; 
               
               // question 3
-                  html = html + "<tr><td><h5>Question 1</h5></td><td>"+
+                  html = html + "<tr><td><h5>Location</h5></td><td>"+
                                 "<div class=\"cont\"><div class=\"stars\"><form action=\"\">"+
                                 "<input class=\"star star-5\" id=\"4-5\" type=\"radio\" onClick=\"starClicked(4,5)\" name=\"star\"/>"+ 
                                 "<label class=\"star star-5\" for=\"4-5\"></label>"+

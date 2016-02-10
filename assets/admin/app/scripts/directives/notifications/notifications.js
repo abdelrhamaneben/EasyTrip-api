@@ -19,7 +19,8 @@ angular.module('sbAdminApp')
 
             var httpRequest = $http({
                 method: "GET",
-                url: "http://localhost:1337/user/logout",
+                url: (urlServer + "user/logout",
+                //url: "http://localhost:1337/user/logout",
                 async : false,
                 headers: {}
             }).success(function(data, status) {

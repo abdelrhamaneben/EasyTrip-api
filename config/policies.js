@@ -64,6 +64,6 @@
      'judgement' : {
        'destroy' : 'sessionAuthUser',
        'create' : 'sessionAuthUser',
-       'update' : 'sessionAuthUser'
+       'update' : 'sessionAuthAdmin'
      }
  }

@@ -52,21 +52,20 @@ var services_manager = {
        twttr.widgets.load();
  },
  click: function (id_service) {
+    //alert(id_service);
     for(var i = 0;i < this.data.length;i++) {
-        if("service_" + this.data[i].id_service == id_service){
+        if(this.data[i].id_service == id_service){
             this.onClickService(this.data[i]);
             break;
         }
     }
  },
  onClickService : function (service) {
-
+ 
  },
  load : function (rectangle,activities) {
     this.build();
  } ,
-
-
  // Temporal data
  data : []
 

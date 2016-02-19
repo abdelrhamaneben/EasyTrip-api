@@ -125,13 +125,19 @@ angular.module('sbAdminApp')
                   dataType : "json",
                   contentType : "application/json"
               }).success(function(data, status) {
-                  var idCriterion1 = data.criterion1.id_criterion;
-                  var idCriterion2 = data.criterion2.id_criterion;
-                  var idCriterion3 = data.criterion3.id_criterion;
+                  var idCriterion1;
+                  var idCriterion2;
+                  var idCriterion3;
+                  if(data.criterion1 != null)
+                     idCriterion1 = data.criterion1.id_criterion;
+                  if(data.criterion2 != null)
+                     idCriterion2 = data.criterion2.id_criterion;
+                  if(data.criterion3 != null)
+                     idCriterion3 = data.criterion3.id_criterion;
                   
                   var id_address_to_change = data.address.id_address; 
-                  var id_servicePrice_to_change = data.servicePrice.id_sp; 
-                  
+                  var id_servicePrice_to_change = data.servicePrices[0].id_sp; 
+
                   var monday_opening_hours = document.getElementById('monday_opening_hours');
                   var tuesday_opening_hours = document.getElementById('tuesday_opening_hours');
                   var wednesday_opening_hours = document.getElementById('wednesday_opening_hours');
@@ -186,8 +192,8 @@ angular.module('sbAdminApp')
                   +'}';
                   var httpRequest = $http({
                         method : "POST",
-                        //url : urlServer + "address/" + id_address_to_change,
-                        url: "172.28.1.101:1337/address/" + id_address_to_change,
+                        url : urlServer + "address/" + id_address_to_change,
+                        //url: "172.28.1.101:1337/address/" + id_address_to_change,
                         data : data,
                         dataType : "json",
                         contentType : "application/json"
@@ -203,18 +209,42 @@ angular.module('sbAdminApp')
                       +'}';
                   }else{
                     var data = '{'
-                      +'"criterion" : "Condition"'
+                      +'"criterion" : "Prix"'
                       +'}';
                   }
-                
-                  var httpRequest = $http({
-                        method : "POST",
-                        url : urlServer + "criterion/" + idCriterion1,
-                        data : data,
-                        async :false,
-                        dataType : "json",
-                        contentType : "application/json"
-                  });
+                  if(idCriterion1 != null){
+                    var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "criterion/" + idCriterion1,
+                          data : data,
+                          async :false,
+                          dataType : "json",
+                          contentType : "application/json"
+                    });
+                  }else{
+                    var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "criterion",
+                          data : data,
+                          async :false,
+                          dataType : "json",
+                          contentType : "application/json"
+                    }).success(function(data, status) {
+                      var id_criterion1 = data.id_criterion;
+                      var data = '{'
+                        +'"criterion1" : "' + id_criterion1 + '"'
+                      +'}';
+                      var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "service/" + id_service,
+                          //url: "172.28.1.101:1337/service/" + id_service,
+                          data : data,
+                          dataType : "json",
+                          contentType : "application/json"
+                      });
+                    });
+                  }
+
 
                   if(criterion2.value.length != 0){
                       var data = '{'
@@ -226,14 +256,38 @@ angular.module('sbAdminApp')
                       +'}';
                   }
 
-                  var httpRequest = $http({
-                        method : "POST",
-                        url : urlServer + "criterion/" + idCriterion2,
-                        data : data,
-                        async :false,
-                        dataType : "json",
-                        contentType : "application/json"
-                  });
+                  if(idCriterion2 != null){
+                    var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "criterion/" + idCriterion2,
+                          data : data,
+                          async :false,
+                          dataType : "json",
+                          contentType : "application/json"
+                    });
+                  }else{
+                    var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "criterion",
+                          data : data,
+                          async :false,
+                          dataType : "json",
+                          contentType : "application/json"
+                    }).success(function(data, status) {
+                      var id_criterion2 = data.id_criterion;
+                      var data = '{'
+                        +'"criterion2" : "' + id_criterion2 + '"'
+                      +'}';
+                      var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "service/" + id_service,
+                          //url: "172.28.1.101:1337/service/" + id_service,
+                          data : data,
+                          dataType : "json",
+                          contentType : "application/json"
+                      });
+                    });
+                  }
 
                   if(criterion3.value.length != 0){
                       var data = '{'
@@ -241,18 +295,42 @@ angular.module('sbAdminApp')
                       +'}';
                   }else{
                     var data = '{'
-                      +'"criterion" : "Condition"'
+                      +'"criterion" : "Qualité"'
                       +'}';
                   }
 
-                  var httpRequest = $http({
-                        method : "POST",
-                        url : urlServer + "criterion/" + idCriterion3,
-                        data : data,
-                        async :false,
-                        dataType : "json",
-                        contentType : "application/json"
-                  });
+                  if(idCriterion3 != null){
+                    var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "criterion/" + idCriterion3,
+                          data : data,
+                          async :false,
+                          dataType : "json",
+                          contentType : "application/json"
+                    });
+                  }else{
+                    var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "criterion",
+                          data : data,
+                          async :false,
+                          dataType : "json",
+                          contentType : "application/json"
+                    }).success(function(data, status) {
+                      var id_criterion3 = data.id_criterion;
+                      var data = '{'
+                        +'"criterion3" : "' + id_criterion3 + '"'
+                      +'}';
+                      var httpRequest = $http({
+                          method : "POST",
+                          url : urlServer + "service/" + id_service,
+                          //url: "172.28.1.101:1337/service/" + id_service,
+                          data : data,
+                          dataType : "json",
+                          contentType : "application/json"
+                      });
+                    });
+                  }
 
                   var service_d_to = document.getElementById('service_d_to');
                   var service_d_from = document.getElementById('service_d_from');
@@ -386,7 +464,7 @@ angular.module('sbAdminApp')
             +'}';
         }else{
           var data = '{'
-            +'"criterion" : "Price"'
+            +'"criterion" : "Prix"'
             +'}';
         }
 
@@ -428,7 +506,7 @@ angular.module('sbAdminApp')
             +'}';
         }else{
           var data = '{'
-            +'"criterion" : "Condition"'
+            +'"criterion" : "Qualité"'
             +'}';
         }
 

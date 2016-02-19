@@ -22,9 +22,13 @@ angular.module('sbAdminApp')
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
 
-        $scope.isAdmin = $rootScope.isAdmin;
-        $scope.user = $rootScope.user;
-        
+        $scope.isAdmin = localStorage.isAdmin;
+        $scope.user = localStorage.user;
+        $scope.name_first = localStorage.name_first;
+        $scope.name_last = localStorage.name_last;
+        $scope.email = localStorage.email;
+        $scope.role = localStorage.role;
+
         $scope.check = function(x){
           if(x==$scope.collapseVar)
             $scope.collapseVar = 0;
@@ -43,14 +47,14 @@ angular.module('sbAdminApp')
             if(!$scope.isConnected()){
               $location.path("/login");
             }
-             if ($rootScope.user.role == 'business' || $rootScope.isAdmin == false) {
+             if (localStorage.role == 'business' || localStorage.isAdmin == false) {
                 return false;
-            } else if ($rootScope.user.role == 'admin') {
+            } else if (localStorage.role == 'admin') {
                 return true;
             }
         }
         $scope.isConnected = function(){
-          return ($rootScope.user != null);
+          return (localStorage.user != null);
         }
       }
     }

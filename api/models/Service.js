@@ -10,69 +10,69 @@ module.exports = {
   tableName: 'et_service',
 
   attributes: {
-  	id_service :{
-  			type : 'integer',
-	  	 	primaryKey: true,
-	  	 	autoIncrement: true
+    id_service: {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement: true
     },
 
-    geolati :{
-    	type : 'float',
-    	required : true
+    geolati: {
+      type: 'float',
+      required: true
     },
-    geolong :{
-        type : 'float',
-        required : true
-	},
-    creator : {
-        model : 'user'
+    geolong: {
+      type: 'float',
+      required: true
     },
-    address : {
-        model : 'address'
+    creator: {
+      model: 'user'
     },
-    name :{
-        type : 'string',
-        size : 50,
-        required : true
+    address: {
+      model: 'address'
     },
-    description :{
-		type : 'string',
-    	size : 200
+    name: {
+      type: 'string',
+      size: 50,
+      required: true
     },
-    image :{
-        type : 'string'
+    description: {
+      type: 'string',
+      size: 200
     },
-    link :{
-        type : 'string'
+    image: {
+      type: 'string'
     },
-    premium :{
-        type: 'boolean',
-        defaultsTo : false
+    link: {
+      type: 'string'
     },
-    createdAt :{
-    	type : 'datetime',
-        autoCreatedAt: true
-	},
-    updatedAt :{
-    	type : 'datetime',
-        autoUpdatedAt: true
+    premium: {
+      type: 'boolean',
+      defaultsTo: false
     },
-    activities : {
-            collection: 'activity',
-            via: 'services'
+    createdAt: {
+      type: 'datetime',
+      autoCreatedAt: true
     },
-    servicePrices : {
-            collection: 'servicePrice',
-            via: 'service'
+    updatedAt: {
+      type: 'datetime',
+      autoUpdatedAt: true
     },
-    criterion1 :{
-        model : 'criterion'
+    activities: {
+      collection: 'activity',
+      via: 'services'
     },
-    criterion2 :{
-        model : 'criterion'
+    servicePrices: {
+      collection: 'servicePrice',
+      via: 'service'
     },
-    criterion3 :{
-        model : 'criterion'
+    criterion1: {
+      model: 'criterion'
+    },
+    criterion2: {
+      model: 'criterion'
+    },
+    criterion3: {
+      model: 'criterion'
     }
   }
 };

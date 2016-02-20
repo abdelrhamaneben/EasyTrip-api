@@ -43,7 +43,7 @@ module.exports = {
       type: 'datetime',
       autoCreatedAt: true
     },
-   	updatedAt: {
+    updatedAt: {
       type: 'datetime',
       autoUpdatedAt: true
     }

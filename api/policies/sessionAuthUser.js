@@ -8,10 +8,10 @@
  *
  */
 module.exports = function(req, res, next) {
-  // Need authentificated user to execute controller         
-  if(req.session.authenticated) {
-     return next();    
+  // Need authentificated user to execute controller
+  if (req.session.authenticated) {
+    return next();
   }
   // not authentificated so redirect to login
-  return  res.forbidden('require authentificated');
+  return res.forbidden('require authentificated');
 };

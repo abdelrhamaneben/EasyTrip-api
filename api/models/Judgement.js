@@ -7,10 +7,10 @@
 
 module.exports = {
 
- tableName: 'et_judgement',
+  tableName: 'et_judgement',
 
-  attributes : {
-    id_judgement : {
+  attributes: {
+    id_judgement: {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true

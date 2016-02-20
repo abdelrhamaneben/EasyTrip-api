@@ -9,7 +9,7 @@ module.exports = {
       autoIncrement: true
     },
     id_service: {
-      model : 'service'
+      model: 'service'
     },
     ip_stat: {
       type: 'string',

@@ -10,21 +10,21 @@ module.exports = {
 
     var id = req.session.userid;
 
-    Category.find({id_category:id})
-            .exec(function (err,user) {
-              if(err){
+    Category.find({id_category: id})
+            .exec(function(err, user) {
+              if (err) {
                 return res.json({
-                  error:err
+                  error: err
                 });
               }
-              if(user === undefined) {
+              if (user === undefined) {
                 return res.notFound();
-              }
-              else
+              } else {
                 return res.json({
-                  notFound:false,
-                  userData:user
+                  notFound: false,
+                  userData: user
                 });
+              }
             });
 
   },

@@ -13,10 +13,10 @@
     </div>
     <div class="row">
 
-        <stats number="{{stats.nbvue7d}}" comments="# nv vues" colour="primary" type="user"></stats>
-        <stats number="{{stats.nbcmt7d}}" comments="# nv commenntaires" colour="primary" type="user"></stats>
-        <stats number="{{stats.nbeval7d}}" comments="# nv eval" colour="green" type="support"></stats>
-        <stats number="{{stats.eval7d}}" comments="# dernière eval" colour="red" type="shopping-cart"></stats>
+        <stats number="{{stats.nbvue7d}}" comments="# vues" colour="primary" type="user"></stats>
+        <stats number="{{stats.nbcmt7d}}" comments="# nouveaux commenntaires" colour="primary" type="user"></stats>
+        <stats number="{{stats.nbeval7d}}" comments="# nouvelles evals" colour="green" type="support"></stats>
+        <stats number="{{stats.eval7d}}" comments="# dernières evals" colour="red" type="shopping-cart"></stats>
 
     </div>
     <div class="row">
@@ -24,10 +24,12 @@
             <small>Progression ces 15 derniers jours</small>
         </h1>
 
-        <stats number="{{ ( 100 / stats.nbvue15d * (stats.nbnbvue15d - stats.nbvue90d/6)) | number : 2 }}" comments="% nv vue" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nbcmt15d * (stats.nbcmt15d - stats.nbcmt90d/6)) | number : 2 }}" comments="% nv commentaire" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nbeval15d * (stats.nveval15d- stats.nveval90d/6)) | number : 2 }}" comments="% nv evaluation" colour="yellow" type="user"></stats>
-        <stats number="{{ (stats.eval15d - ((stats.eval15d + stats.eval30d + stats.eval45d + stats.eval60d + stats.eval75d + stats.eval90d)/6)) | number : 2 }} " comments="evol moyenne des evaluations" colour="yellow" type="shopping-cart"></stats>
+
+
+        <stats number="{{ (((stats.nbvue7d - stats.nbvue15d) * 100) / (stats.nbvue15d === 0 ? 1 : stats.nbvue15d)) }}" comments="% vues" colour="yellow" type="user"></stats>
+        <stats number="{{ (((stats.nbcmt7d - stats.nbcmt15d) * 100) / (stats.nbcmt15d === 0 ? 1 : stats.nbcmt15d)) }}" comments="% nouveaux commentaires" colour="yellow" type="user"></stats>
+        <stats number="{{ (((stats.nbeval7d - stats.nbeval15d) * 100) / (stats.nbeval15d === 0 ? 1 : stats.nbeval15d)) }}" comments="% nouvelles evaluations" colour="yellow" type="user"></stats>
+        <stats number="{{ ((stats.eval7d + stats.eval15d) / 2) }} " comments="moyennes des evaluations" colour="yellow" type="shopping-cart"></stats>
 
     </div>
 

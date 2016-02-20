@@ -48,7 +48,7 @@ angular.module('sbAdminApp')
       };
 
       $scope.editService = function(id_service){
-          var httpRequest = $http({              
+          var httpRequest = $http({
               method : "GET",
               url : urlServer + "service/" + id_service,
               //url: "172.28.1.101:1337/service/" + id_service,
@@ -88,21 +88,21 @@ angular.module('sbAdminApp')
                   day='0' + date_to.getDate();
               }else{
                   day=date_to.getDate();
-              } 
+              }
               if((date_to.getMonth() + 1) <10){
                   month='0'+ (date_to.getMonth() + 1);
               }else{
                   month=(date_to.getMonth() + 1);
-              } 
+              }
 
               var to = day+'/'+month+'/'+ date_to.getFullYear();
-              
+
               data.servicePrices[0].d_from = from;
               data.servicePrices[0].d_to = to;
               console.log(data);
               $rootScope.serviceToEdit = data;
               $location.path('/admin/admin/service/edit');
-          });              
+          });
       };
 
       $scope.updateService = function(id_service){
@@ -134,9 +134,9 @@ angular.module('sbAdminApp')
                      idCriterion2 = data.criterion2.id_criterion;
                   if(data.criterion3 != null)
                      idCriterion3 = data.criterion3.id_criterion;
-                  
-                  var id_address_to_change = data.address.id_address; 
-                  var id_servicePrice_to_change = data.servicePrices[0].id_sp; 
+
+                  var id_address_to_change = data.address.id_address;
+                  var id_servicePrice_to_change = data.servicePrices[0].id_sp;
 
                   var monday_opening_hours = document.getElementById('monday_opening_hours');
                   var tuesday_opening_hours = document.getElementById('tuesday_opening_hours');
@@ -153,7 +153,7 @@ angular.module('sbAdminApp')
                   var service_image = document.getElementById('service_image');
                   var service_activity = document.getElementById('service_activity');
                   var service_link = document.getElementById('service_link');
-                  var businessDay = ""; 
+                  var businessDay = "";
                   if(monday_opening_hours.value.length != 0){
                     businessDay += "Lundi "+ monday_opening_hours.value + ";";
                   }
@@ -202,7 +202,7 @@ angular.module('sbAdminApp')
                   var criterion1 = document.getElementById('criterion1');
                   var criterion2 = document.getElementById('criterion2');
                   var criterion3 = document.getElementById('criterion3');
-        
+
                  if(criterion1.value.length != 0){
                       var data = '{'
                       +'"criterion" : "' + criterion1.value + '"'
@@ -478,7 +478,7 @@ angular.module('sbAdminApp')
         }).success(function(data, status) {
           idCriterion1 = data.id_criterion;
         });
-        
+
         if(criterion2.value.length != 0){
             var data = '{'
             +'"criterion" : "' + criterion2.value + '"'
@@ -488,7 +488,7 @@ angular.module('sbAdminApp')
             +'"criterion" : "Condition"'
             +'}';
         }
-          
+
         var httpRequest = $http({
               method : "POST",
               url : urlServer + "criterion",
@@ -631,12 +631,12 @@ angular.module('sbAdminApp')
               series: [ '# vues' ],
               data: [
                   [
-                      (datar.nbvue90d-datar.nbvue75d),
-                      (datar.nbvue75d-datar.nbvue60d),
-                      (datar.nbvue60d-datar.nbvue45d),
-                      (datar.nbvue45d-datar.nbvue30d),
-                      (datar.nbvue30d-datar.nbvue15d),
-                      (datar.nbvue15d-datar.nbvue7d),
+                      datar.nbvue90d,
+                      datar.nbvue75d,
+                      datar.nbvue60d,
+                      datar.nbvue45d,
+                      datar.nbvue30d,
+                      datar.nbvue15d,
                       datar.nbvue7d
                   ]
               ],
@@ -650,20 +650,20 @@ angular.module('sbAdminApp')
               series: [ '# évaluations', '# commentaires' ],
               data: [
                   [
-                      (datar.nveval90d-datar.nveval75d),
-                      (datar.nveval75d-datar.nveval60d),
-                      (datar.nveval60d-datar.nveval45d),
-                      (datar.nveval45d-datar.nveval30d),
-                      (datar.nveval30d-datar.nveval15d),
-                      (datar.nveval15d-datar.nveval7d),
-                      datar.nveval7d
+                      datar.nbeval90d,
+                      datar.nbeval75d,
+                      datar.nbeval60d,
+                      datar.nbbeval45d,
+                      datar.nbeval30d,
+                      datar.nbeval15d,
+                      datar.nbeval7d
                   ],[
-                      (datar.nbcmt90d-datar.nbcmt75d),
-                      (datar.nbcmt75d-datar.nbcmt60d),
-                      (datar.nbcmt60d-datar.nbcmt45d),
-                      (datar.nbcmt45d-datar.nbcmt30d),
-                      (datar.nbcmt30d-datar.nbcmt15d),
-                      (datar.nbcmt15d-datar.nbcmt7d),
+                      datar.nbcmt90d,
+                      datar.nbcmt75d,
+                      datar.nbcmt60d,
+                      datar.nbcmt45d,
+                      datar.nbcmt30d,
+                      datar.nbcmt15d,
                       datar.nbcmt7d
                   ]
               ],
@@ -674,15 +674,15 @@ angular.module('sbAdminApp')
 
           $scope.lineEval = {
               labels: ['90j', '75j', '60j', '45j', '30j', '15j', '7j'],
-              series: [ 'évaluation' ],
+              series: [ 'évaluations' ],
               data: [
                   [
-                      (datar.eval90d-datar.eval75d),
-                      (datar.eval75d-datar.eval60d),
-                      (datar.eval60d-datar.eval45d),
-                      (datar.eval45d-datar.eval30d),
-                      (datar.eval30d-datar.eval15d),
-                      (datar.eval15d-datar.eval7d),
+                      datar.eval90d,
+                      datar.eval75d,
+                      datar.eval60d,
+                      datar.eval45d,
+                      datar.eval30d,
+                      datar.eval15d,
                       datar.eval7d
                   ]
               ],

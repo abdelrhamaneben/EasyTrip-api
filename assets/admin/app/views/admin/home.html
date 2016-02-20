@@ -13,10 +13,10 @@
     </div>
     <div class="row">
 
-        <stats number="{{stats.nbsignupnu7d}}" comments="# nv user" colour="primary" type="user"></stats>
-        <stats number="{{stats.nbsignupbu7d}}" comments="# nv business user" colour="primary" type="user"></stats>
-        <stats number="{{stats.nbsearch7d}}" comments="# recherches" colour="green" type="support"></stats>
-        <stats number="{{stats.nbservice7d}}" comments="# services" colour="red" type="shopping-cart"></stats>
+        <stats number="{{stats.nbsignupnu7d}}" comments="# nouveaux utilisateurs" colour="primary" type="user"></stats>
+        <stats number="{{stats.nbsignupbu7d}}" comments="# nouveaux utilisateurs business" colour="primary" type="user"></stats>
+        <stats number="{{ stats.nbsearch7d }}" comments="# recherches" colour="green" type="support"></stats>
+        <stats number="{{ stats.nbservice7d }}" comments="# nouveaux services" colour="red" type="shopping-cart"></stats>
 
     </div>
     <div class="row">
@@ -24,13 +24,13 @@
             <small>Progression ces 15 derniers jours</small>
         </h1>
 
-        <stats number="{{ ( 100 / stats.nbsignupnu15d * (stats.nbsignupnu15d- stats.nbsignupnu90d/6)) | number : 2 }}" comments="% nv user" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nbsignupbu15d * (stats.nbsignupbu15d- stats.nbsignupbu90d/6)) | number : 2 }}" comments="% nv user" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nbsearch15d * (stats.nbsearch15d- stats.nbsearch90d/6)) | number : 2 }}" comments="% recherches" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nbservice15d * (stats.nbservice15d- stats.nbservice90d/6)) | number : 2 }} " comments="% nv promo" colour="yellow" type="shopping-cart"></stats>
+        <stats number="{{ (((stats.nbsignupnu7d - stats.nbsignupnu15d) * 100) / (stats.nbsignupnu15d === 0 ? 1 : stats.nbsignupnu15d)) }}" comments="% nouveaux utilisateurs" colour="yellow" type="user"></stats>
+        <stats number="{{ (((stats.nbsignupbu7d - stats.nbsignupbu15d) * 100) / (stats.nbsignupbu15d === 0 ? 1 : stats.nbsignupbu15d)) }}" comments="% nouveaux utilisateurs business" colour="yellow" type="user"></stats>
+        <stats number="{{ (((stats.nbsearch7d - stats.nbsearch15d) * 100) / (stats.nbsearch15d === 0 ? 1 : stats.nbsearch15d)) }}" comments="% recherches" colour="yellow" type="user"></stats>
+        <stats number="{{ (((stats.nbservice7d - stats.nbservice15d) * 100) / (stats.nbservice15d === 0 ? 1 : stats.nbservice15d)) }} " comments="% nouveaux services" colour="yellow" type="shopping-cart"></stats>
 
     </div>
-    
+
     <!-- /.panel -->
     <div class="row">
 
@@ -76,7 +76,7 @@
                     <i class="fa fa-bell fa-fw"></i> Notifications
                 </div>
                 <!-- /.panel-heading -->
-                <notifications></notifications> 
+                <notifications></notifications>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->

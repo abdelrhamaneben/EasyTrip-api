@@ -44,7 +44,7 @@ angular.module('sbAdminApp')
                     //$rootScope.isAdmin = false;
                     //$rootScope.user.role = "business";
                     //console.log('user is BU');
-                    $state.go('admin.home');
+                    $state.go('user.home');
                 } else {
                     localStorage.user = null;
                     localStorage.role = null;

@@ -15,7 +15,7 @@
 
         <stats number="{{stats.nbvue7d}}" comments="# vues" colour="primary" type="user"></stats>
         <stats number="{{stats.nbcmt7d}}" comments="# commentaires" colour="primary" type="user"></stats>
-        <stats number="{{stats.nveval7d}}" comments="# nv évaluations" colour="green" type="support"></stats>
+        <stats number="{{stats.nveval7d}}" comments="# nouvelles évaluations" colour="green" type="support"></stats>
         <stats number="{{stats.eval7d}}" comments="évaluations" colour="red" type="shopping-cart"></stats>
 
     </div>
@@ -24,13 +24,13 @@
             <small>Progression ces 15 derniers jours</small>
         </h1>
 
-        <stats number="{{ ( 100 / stats.nbvue15d * (stats.nbvue15d- stats.nbvue90d/6)) | number : 2 }}" comments="% vues" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nbcmt15d * (stats.nbcmt15d- stats.nbcmt90d/6)) | number : 2 }}" comments="% nv commentaires" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.nveval15d * (stats.nveval15d- stats.nveval90d/6)) | number : 2 }}" comments="% nv evaluations" colour="yellow" type="user"></stats>
-        <stats number="{{ ( 100 / stats.eval15d * (stats.eval15d- stats.eval90d/6)) | number : 2 }} " comments="var evaluations" colour="yellow" type="shopping-cart"></stats>
+        <stats number="{{ stats.nbvue15d }}" comments="% vues" colour="yellow" type="user"></stats>
+        <stats number="{{ stats.nbcmt15d }}" comments="% nouveaux commentaires" colour="yellow" type="user"></stats>
+        <stats number="{{ stats.nveval15d }}" comments="% nouvelles évaluations" colour="yellow" type="user"></stats>
+        <stats number="{{ stats.eval15d }} " comments="évaluations" colour="yellow" type="shopping-cart"></stats>
 
     </div>
-    
+
     <!-- /.panel -->
     <div class="row">
 
@@ -76,7 +76,7 @@
                     <i class="fa fa-bell fa-fw"></i> Actualités
                 </div>
                 <!-- /.panel-heading -->
-                <notifications></notifications> 
+                <notifications></notifications>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->

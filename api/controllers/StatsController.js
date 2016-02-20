@@ -4,7 +4,7 @@ module.exports = {
   // Renvoie les statistiques pour le dashboard des admin
   getStats: function(req, res) {
 
-    //console.log('API get statistiques');
+    console.log('API get statistiques');
 
     var stats = {};
 
@@ -16,8 +16,6 @@ module.exports = {
     var d60 = new Date(new Date().setDate(d0.getDate() - 60));
     var d75 = new Date(new Date().setDate(d0.getDate() - 75));
     var d90 = new Date(new Date().setDate(d0.getDate() - 90));
-
-    var serviceId = req.param('serviceId');
 
     // VISIT -------------------------------------------------------------------
     var nbVisit7d = function(err, count) {
@@ -139,7 +137,7 @@ module.exports = {
       stats.nbsearch90d = count;
 
       // NEXT
-      User.count().where({createdAt: {'>': d7, '<=': d0}, role: {'=': 'private'}}).exec(nbSignupNu7d);
+      User.count().where({createdAt: {'>': d7, '<=': d0}, role: 'private'}).exec(nbSignupNu7d);
     };
 
     // SIGNUP PRIVATE ----------------------------------------------------------
@@ -149,7 +147,7 @@ module.exports = {
 
       stats.nbsignupnu7d = count;
 
-      User.count().where({createdAt: { '>': d15, '<=': d7}, role: {'=': 'private'}}).exec(nbSignupNu15d);
+      User.count().where({createdAt: { '>': d15, '<=': d7}, role: 'private'}).exec(nbSignupNu15d);
     };
 
     var nbSignupNu15d = function(err, count) {
@@ -158,7 +156,7 @@ module.exports = {
 
       stats.nbsignupnu15d = count;
 
-      User.count().where({createdAt: { '>': d30, '<=': d15}, role: {'=': 'private'}}).exec(nbSignupNu30d);
+      User.count().where({createdAt: { '>': d30, '<=': d15}, role: 'private'}).exec(nbSignupNu30d);
     };
 
     var nbSignupNu30d = function(err, count) {
@@ -167,7 +165,7 @@ module.exports = {
 
       stats.nbsignupnu30d = count;
 
-      User.count().where({createdAt: { '>': d45, '<=': d30}, role: {'=': 'private'}}).exec(nbSignupNu45d);
+      User.count().where({createdAt: { '>': d45, '<=': d30}, role: 'private'}).exec(nbSignupNu45d);
     };
 
     var nbSignupNu45d = function(err, count) {
@@ -176,7 +174,7 @@ module.exports = {
 
       stats.nbsignupnu45d = count;
 
-      User.count().where({createdAt: { '>': d60, '<=': d45}, role: {'=': 'private'}}).exec(nbSignupNu60d);
+      User.count().where({createdAt: { '>': d60, '<=': d45}, role: 'private'}).exec(nbSignupNu60d);
     };
 
     var nbSignupNu60d = function(err, count) {
@@ -185,7 +183,7 @@ module.exports = {
 
       stats.nbsignupnu60d = count;
 
-      User.count().where({createdAt: { '>': d75, '<=': d60}, role: {'=': 'private'}}).exec(nbSignupNu75d);
+      User.count().where({createdAt: { '>': d75, '<=': d60}, role: 'private'}).exec(nbSignupNu75d);
     };
 
     var nbSignupNu75d = function(err, count) {
@@ -194,7 +192,7 @@ module.exports = {
 
       stats.nbsignupnu75d = count;
 
-      User.count().where({createdAt: { '>': d90, '<=': d75}, role: {'=': 'private'}}).exec(nbSignupNu90d);
+      User.count().where({createdAt: { '>': d90, '<=': d75}, role: 'private'}).exec(nbSignupNu90d);
     };
 
     var nbSignupNu90d = function(err, count) {
@@ -204,7 +202,7 @@ module.exports = {
       stats.nbsignupnu90d = count;
 
       // NEXT
-      User.count().where({createdAt: {'>': d7, '<=': d0}, role: {'=': 'business'}}).exec(nbSignupBu7d);
+      User.count().where({createdAt: {'>': d7, '<=': d0}, role: 'business'}).exec(nbSignupBu7d);
     };
 
     // SIGNUP BUSINESS ---------------------------------------------------------
@@ -214,7 +212,7 @@ module.exports = {
 
       stats.nbsignupbu7d = count;
 
-      User.count().where({createdAt: { '>': d15, '<=': d7}, role: {'=': 'business'}}).exec(nbSignupBu15d);
+      User.count().where({createdAt: { '>': d15, '<=': d7}, role: 'business'}).exec(nbSignupBu15d);
     };
 
     var nbSignupBu15d = function(err, count) {
@@ -223,7 +221,7 @@ module.exports = {
 
       stats.nbsignupbu15d = count;
 
-      User.count().where({createdAt: { '>': d30, '<=': d15}, role: {'=': 'business'}}).exec(nbSignupBu30d);
+      User.count().where({createdAt: { '>': d30, '<=': d15}, role: 'business'}).exec(nbSignupBu30d);
     };
 
     var nbSignupBu30d = function(err, count) {
@@ -232,7 +230,7 @@ module.exports = {
 
       stats.nbsignupbu30d = count;
 
-      User.count().where({createdAt: { '>': d45, '<=': d30}, role: {'=': 'business'}}).exec(nbSignupBu45d);
+      User.count().where({createdAt: { '>': d45, '<=': d30}, role: 'business'}).exec(nbSignupBu45d);
     };
 
     var nbSignupBu45d = function(err, count) {
@@ -241,7 +239,7 @@ module.exports = {
 
       stats.nbsignupbu45d = count;
 
-      User.count().where({createdAt: { '>': d60, '<=': d45}, role: {'=': 'business'}}).exec(nbSignupBu60d);
+      User.count().where({createdAt: { '>': d60, '<=': d45}, role: 'business'}).exec(nbSignupBu60d);
     };
 
     var nbSignupBu60d = function(err, count) {
@@ -250,7 +248,7 @@ module.exports = {
 
       stats.nbsignupbu60d = count;
 
-      User.count().where({createdAt: { '>': d75, '<=': d60}, role: {'=': 'business'}}).exec(nbSignupBu75d);
+      User.count().where({createdAt: { '>': d75, '<=': d60}, role: 'business'}).exec(nbSignupBu75d);
     };
 
     var nbSignupBu75d = function(err, count) {
@@ -259,7 +257,7 @@ module.exports = {
 
       stats.nbsignupbu75d = count;
 
-      User.count().where({createdAt: { '>': d90, '<=': d75}, role: {'=': 'business'}}).exec(nbSignupBu90d);
+      User.count().where({createdAt: { '>': d90, '<=': d75}, role: 'business'}).exec(nbSignupBu90d);
     };
 
     var nbSignupBu90d = function(err, count) {
@@ -417,7 +415,7 @@ module.exports = {
       stats.promosub90d = count;
 
       // NEXT
-      res.ok(stats);
+      Stat.count().where({createdAt: { '>': d7, '<=': d0}}).exec(nbVue7d);
     };
 
     // Vue ---------------------------------------------------------------------
@@ -540,62 +538,70 @@ module.exports = {
       stats.nbcmt90d = count;
 
       // NEXT
-      Judgement.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nvEval7d);
+      Judgement.count().exec(nbEval);
     };
 
-    // NVEVAL ------------------------------------------------------------------
-    var nvEval7d = function(err, count) {
+    // NBEVAL ------------------------------------------------------------------
+    var nbEval = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval7d = count;
+      stats.nbeval = count;
 
-      Judgement.count().where({createdAt: {'>': d15, '<=': d7}}).exec(nvEval15d);
+      Judgement.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbEval7d);
     };
 
-    var nvEval15d = function(err, count) {
+    var nbEval7d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval15d = count;
+      stats.nbeval7d = count;
 
-      Judgement.count().where({createdAt: {'>': d30, '<=': d15}}).exec(nvEval30d);
+      Judgement.count().where({createdAt: {'>': d15, '<=': d7}}).exec(nbEval15d);
     };
 
-    var nvEval30d = function(err, count) {
+    var nbEval15d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval30d = count;
+      stats.nbeval15d = count;
 
-      Judgement.count().where({createdAt: {'>': d45, '<=': d30}}).exec(nvEval45d);
+      Judgement.count().where({createdAt: {'>': d30, '<=': d15}}).exec(nbEval30d);
     };
 
-    var nvEval45d = function(err, count) {
+    var nbEval30d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval45d = count;
+      stats.nbeval30d = count;
 
-      Judgement.count().where({createdAt: {'>': d60, '<=': d45}}).exec(nvEval60d);
+      Judgement.count().where({createdAt: {'>': d45, '<=': d30}}).exec(nbEval45d);
     };
 
-    var nvEval60d = function(err, count) {
+    var nbEval45d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval60d = count;
+      stats.nbeval45d = count;
 
-      Judgement.count().where({createdAt: {'>': d75, '<=': d60}}).exec(nvEval75d);
+      Judgement.count().where({createdAt: {'>': d60, '<=': d45}}).exec(nbEval60d);
     };
 
-    var nvEval75d = function(err, count) {
+    var nbEval60d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval75d = count;
+      stats.nbeval60d = count;
 
-      Judgement.count().where({createdAt: {'>': d90, '<=': d75}}).exec(nvEval90d);
+      Judgement.count().where({createdAt: {'>': d75, '<=': d60}}).exec(nbEval75d);
     };
 
-    var nvEval90d = function(err, count) {
+    var nbEval75d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval90d = count;
+      stats.nbeval75d = count;
+
+      Judgement.count().where({createdAt: {'>': d90, '<=': d75}}).exec(nbEval90d);
+    };
+
+    var nbEval90d = function(err, count) {
+      if (err) return res.serverError({error: err})
+
+      stats.nbeval90d = count;
 
       // NEXT
       Judgement.find().average('global_score').where({createdAt: {'>': d7, '<=': d0}}).exec(eval7d);
@@ -606,9 +612,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval7d = 0;
+        stats.eval7d = 0;
       } else {
-        stats.nveval7d = average;
+        stats.eval7d = average[0].global_score;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d15, '<=': d7}}).exec(eval15d);
@@ -618,9 +624,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval15d = 0;
+        stats.eval15d = 0;
       } else {
-        stats.nveval15d = average;
+        stats.eval15d = average[0].global_score;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d30, '<=': d15}}).exec(eval30d);
@@ -630,9 +636,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval30d = 0;
+        stats.eval30d = 0;
       } else {
-        stats.nveval30d = average;
+        stats.eval30d = average[0].global_score;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d45, '<=': d30}}).exec(eval45d);
@@ -642,9 +648,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval45d = 0;
+        stats.eval45d = 0;
       } else {
-        stats.nveval45d = average;
+        stats.eval45d = average[0].global_score;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d60, '<=': d45}}).exec(eval60d);
@@ -654,9 +660,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval60d = 0;
+        stats.eval60d = 0;
       } else {
-        stats.nveval60d = average;
+        stats.eval60d = average[0].global_score;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d75, '<=': d60}}).exec(eval75d);
@@ -666,9 +672,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval75d = 0;
+        stats.eval75d = 0;
       } else {
-        stats.nveval75d = average;
+        stats.eval75d = average[0].global_score;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d90, '<=': d75}}).exec(eval90d);
@@ -678,16 +684,19 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval90d = 0;
+        stats.eval90d = 0;
       } else {
-        stats.nveval90d = average;
+        stats.eval90d = average[0].global_score;
       }
 
       // NEXT
       res.ok(stats);
     };
 
-    if (!req.session.authenticated) {
+    var stats = {};
+    Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVisit7d);
+
+    /*if (!req.session.authenticated) {
 
         // nombre de création de compte utilisateur Util & Business
         Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVisit7d);
@@ -697,13 +706,13 @@ module.exports = {
         *   LES STATS POUR LES AUTRES
         */
 
-        var stats = {};
+        /*var stats = {};
 
         // Sample réponse
         // ADMIN
 
         Stat.count().where({createdAt: {'>': d7, '<=': d0}}).exec(nbVue7d);
-      }
+      }*/
 
   },
 
@@ -834,71 +843,73 @@ module.exports = {
 
       stats.nbcmt75d = count;
 
-      Stat.count().where({createdAt: {'>': d90, '<=': d75}, id_service: serviceId}).exec(nbCmt90d);
+      Stat.count().where({createdAt: {'>': d90, '<=': d75}, id_service: serviceId}).exec(nbCmtSpec90d);
     };
 
-    var nbCmt90d = function(err, count) {
+    var nbCmtSpec90d = function(err, count) {
       if (err) return res.serverError({error: err})
 
       stats.nbcmt90d = count;
 
       // NEXT
-      Judgement.count().where({createdAt: {'>': d7, '<=': d0}, id_service: serviceId}).exec(nvEvalSpec7d);
+      Judgement.count().where({createdAt: {'>': d7, '<=': d0}, id_service: serviceId}).exec(nbEvalSpec7d);
     };
 
-    // NVEVAL ------------------------------------------------------------------
-    var nvEvalSpec7d = function(err, count) {
+    // nbEval ------------------------------------------------------------------
+    var nbEvalSpec7d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval7d = count;
+      console.log(count);
 
-      Judgement.count().where({createdAt: {'>': d15, '<=': d7}, id_service: serviceId}).exec(nvEvalSpec15d);
+      stats.nbeval7d = count;
+
+      Judgement.count().where({createdAt: {'>': d15, '<=': d7}, id_service: serviceId}).exec(nbEvalSpec15d);
     };
 
-    var nvEvalSpec15d = function(err, count) {
+    var nbEvalSpec15d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval15d = count;
+      stats.nbeval15d = count;
 
-      Judgement.count().where({createdAt: {'>': d30, '<=': d15}, id_service: serviceId}).exec(nvEvalSpec30d);
+      Judgement.count().where({createdAt: {'>': d30, '<=': d15}, id_service: serviceId}).exec(nbEvalSpec30d);
     };
 
-    var nvEvalSpec30d = function(err, count) {
+    var nbEvalSpec30d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval30d = count;
+      stats.nbeval30d = count;
 
-      Judgement.count().where({createdAt: {'>': d45, '<=': d30}, id_service: serviceId}).exec(nvEvalSpec45d);
+      Judgement.count().where({createdAt: {'>': d45, '<=': d30}, id_service: serviceId}).exec(nbEvalSpec45d);
     };
 
-    var nvEvalSpec45d = function(err, count) {
+    var nbEvalSpec45d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval45d = count;
+      stats.nbeval45d = count;
 
-      Judgement.count().where({createdAt: {'>': d60, '<=': d45}, id_service: serviceId}).exec(nvEvalSpec60d);
+      Judgement.count().where({createdAt: {'>': d60, '<=': d45}, id_service: serviceId}).exec(nbEvalSpec60d);
     };
 
-    var nvEvalSpec60d = function(err, count) {
+    var nbEvalSpec60d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval60d = count;
+      stats.nbeval60d = count;
 
-      Judgement.count().where({createdAt: {'>': d75, '<=': d60}, id_service: serviceId}).exec(nvEvalSpec75d);
+      Judgement.count().where({createdAt: {'>': d75, '<=': d60}, id_service: serviceId}).exec(nbEvalSpec75d);
     };
 
-    var nvEvalSpec75d = function(err, count) {
+    var nbEvalSpec75d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval75d = count;
+      stats.nbeval75d = count;
 
-      Judgement.count().where({createdAt: {'>': d90, '<=': d75}, id_service: serviceId}).exec(nvEvalSpec90d);
+      Judgement.count().where({createdAt: {'>': d90, '<=': d75}, id_service: serviceId}).exec(nbEvalSpec90d);
     };
 
-    var nvEvalSpec90d = function(err, count) {
+    var nbEvalSpec90d = function(err, count) {
       if (err) return res.serverError({error: err})
 
-      stats.nveval90d = count;
+      stats.nbeval90d = count;
 
       // NEXT
       Judgement.find().average('global_score').where({createdAt: {'>': d7, '<=': d0}, id_service: serviceId}).exec(evalSpec7d);
@@ -909,9 +920,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval7d = 0;
+        stats.eval7d = 0;
       } else {
-        stats.nveval7d = average;
+        stats.eval7d = average;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d15, '<=': d7}, id_service: serviceId}).exec(evalSpec15d);
@@ -921,9 +932,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval15d = 0;
+        stats.eval15d = 0;
       } else {
-        stats.nveval15d = average;
+        stats.eval15d = average;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d30, '<=': d15}, id_service: serviceId}).exec(evalSpec30d);
@@ -933,9 +944,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval30d = 0;
+        stats.eval30d = 0;
       } else {
-        stats.nveval30d = average;
+        stats.eval30d = average;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d45, '<=': d30}, id_service: serviceId}).exec(evalSpec45d);
@@ -945,9 +956,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval45d = 0;
+        stats.eval45d = 0;
       } else {
-        stats.nveval45d = average;
+        stats.eval45d = average;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d60, '<=': d45}, id_service: serviceId}).exec(evalSpec60d);
@@ -957,9 +968,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval60d = 0;
+        stats.eval60d = 0;
       } else {
-        stats.nveval60d = average;
+        stats.eval60d = average;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d75, '<=': d60}, id_service: serviceId}).exec(evalSpec75d);
@@ -969,9 +980,9 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval75d = 0;
+        stats.eval75d = 0;
       } else {
-        stats.nveval75d = average;
+        stats.eval75d = average;
       }
 
       Judgement.find().average('global_score').where({createdAt: {'>': d90, '<=': d75}, id_service: serviceId}).exec(evalSpec90d);
@@ -981,17 +992,14 @@ module.exports = {
       if (err) return res.serverError({error: err})
 
       if (average === 'undefined') {
-        stats.nveval90d = 0;
+        stats.eval90d = 0;
       } else {
-        stats.nveval90d = average;
+        stats.eval90d = average;
       }
 
       // NEXT
       res.ok(stats);
     };
-
-    // Sample réponse
-    // ADMIN
 
     Stat.count().where({createdAt: {'>': d7, '<=': d0}, id_service: serviceId}).exec(nbVueSpec7d);
   }

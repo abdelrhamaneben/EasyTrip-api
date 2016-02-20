@@ -22,29 +22,42 @@ angular.module('sbAdminApp')
                 // this callback will be called asynchronously
                 // when the response is available
 
-                $rootScope.user = {};
-                $rootScope.user = response.data;
-                $rootScope.uid = $rootScope.user.id_user;
+                //$rootScope.user = {};
+                //$rootScope.user = response.data;
+                localStorage.user = response.data;
+                localStorage.name_first = response.data.name_first;
+                localStorage.name_last = response.data.name_last;
+                localStorage.email = response.data.email;
+                localStorage.uid = response.data.id_user;
+                //$rootScope.uid = $rootScope.user.id_user;
 
                 if (response.data.role == 'admin') {
-                    $rootScope.isAdmin = true;
-                    $rootScope.user.role = "admin";
+                    localStorage.isAdmin = true;
+                    localStorage.role = "admin";
+                    //$rootScope.isAdmin = true;
+                    //$rootScope.user.role = "admin";
                     console.log('user is admin');
                     $state.go('admin.home');
                 } else if (response.data.role == 'business') {
-                    $rootScope.isAdmin = false;
-                    $rootScope.user.role = "business";
-                    console.log('user is BU');
-                    $state.go('admin.homebu');
+                    localStorage.isAdmin = false;
+                    localStorage.role = "business";
+                    //$rootScope.isAdmin = false;
+                    //$rootScope.user.role = "business";
+                    //console.log('user is BU');
+                    $state.go('admin.home');
                 } else {
-                    $rootScope.user = null;
-                    $rootScope.uid = null;
+                    localStorage.user = null;
+                    localStorage.role = null;
+                    localStorage.uid = null;
+                    //$rootScope.user = null;
+                    //$rootScope.uid = null;
                     $scope.alertmessage = "User not allowed to connect";
                 }
 
               }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
+                alert("Utilisateur inconnu ou mot de passe incorrecte");
                 $scope.alertmessage = "Could not connect, "+response.body;
                 //$scope.alert = true;
           });

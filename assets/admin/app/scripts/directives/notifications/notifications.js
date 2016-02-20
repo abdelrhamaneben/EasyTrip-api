@@ -19,15 +19,18 @@ angular.module('sbAdminApp')
 
             var httpRequest = $http({
                 method: "GET",
-                url: (urlServer + "user/logout",
+                url: urlServer + "user/logout",
                 //url: "http://localhost:1337/user/logout",
                 async : false,
                 headers: {}
             }).success(function(data, status) {
                 // mettre un timer quelque part, bien que non nécessaire pk THEN renvoie un chargement
+                localStorage.clear();
+
             }).then(function successCallback(response) {
                     // this callback will be called asynchronously
                     // when the response is available
+                    localStorage.clear();
                     console.log('disconnection successful');
                     $state.go('login');
                     $location.path('login');

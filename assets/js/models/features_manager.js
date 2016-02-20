@@ -6,7 +6,7 @@ initSummary : function(id_srvice){
     var html="";
     $.ajax({
         method: "GET",
-        url: "http://localhost:1337/judgement/",
+        url: "/judgement/",
         async: false,
         data: {
             service : id_srvice
@@ -102,7 +102,7 @@ popup : function(idService){
     var result ="";
     $.ajax({
           method: "GET",
-          url: "http://localhost:1337/service/"+idService, 
+          url: "/service/"+idService, 
           async: false,
           success : function (data) {
             if(data){
@@ -215,7 +215,7 @@ initInfo : function(id_srvice){
     var result="";
     $.ajax({
               method: "GET",
-              url: "http://localhost:1337/service/"+id_srvice,
+              url: "/service/"+id_srvice,
               async: false,
               success : function (data) {
                 if(data){
@@ -296,7 +296,7 @@ build : function (data) {
 addComment : function(id_srvice,comment,gobal_score,score1,score2,score3,user){
 $.ajax({
           method: "POST",
-          url: "http://localhost:1337/judgement",
+          url: "/judgement",
           data: {
                 service : id_srvice,
                 judgement : comment,

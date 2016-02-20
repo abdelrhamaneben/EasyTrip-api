@@ -5,6 +5,12 @@ angular.module('sbAdminApp')
 
       $scope.alert = false;
 
+      $scope.checkConnected = function(){
+          if(localStorage.user != null){
+              $state.go('admin.home');
+          }
+      }
+
       $scope.login = function(user) {
 
           var httpRequest = $http({

@@ -8,7 +8,23 @@ module.exports = {
   *
   */
   index: function(req, res) {
-      Stat.create({ip_stat: req.connection.remoteAddress}).exec(function(err, res) {});
+      Stat.find({ip_stat: req.connection.remoteAddress}).exec(function(err, stat) {
+        if (stat.length) {
+          // stat not empty
+          var today = new Date();
+          today.setHours(0);
+          today.setMinutes(0);
+          today.setSeconds(0);
+
+          Stat.find({ip_stat: req.connection.remoteAddress, createdAt: { '>=': today }}).exec(function(err, stat) {
+            if (stat.length === 0) {
+              Stat.create({ip_stat: req.connection.remoteAddress}).exec(console.log);
+            }
+          });
+        } else {
+          Stat.create({ip_stat: req.connection.remoteAddress}).exec(console.log);
+        }
+      });
 
       Category.find().exec(function finding(err, found) {
       if (err) {
@@ -91,8 +107,27 @@ module.exports = {
       return res.badRequest('Need ServiceId Params !!');
     }
 
-    // TODO: Add id_service
-    /*Stat.create({ip_stat: req.connection.remoteAddress, id_service: TODO}).exec(function(err, res) {});*/
+    console.log(req.param('service'));
+    var serviceId = req.param('service');
+
+    Stat.find({ip_stat: req.connection.remoteAddress, id_service: serviceId}).exec(function(err, stat) {
+      if (stat.length) {
+        // stat not empty
+        var today = new Date();
+        today.setHours(0);
+        today.setMinutes(0);
+        today.setSeconds(0);
+
+        Stat.find({ip_stat: req.connection.remoteAddress, id_service: serviceId, createdAt: { '>=': today }}).exec(function(err, stat) {
+          if (stat.length === 0) {
+            Stat.create({ip_stat: req.connection.remoteAddress, id_service: serviceId}).exec(console.log);
+          }
+        });
+      } else {
+        Stat.create({ip_stat: req.connection.remoteAddress, id_service: serviceId}).exec(console.log);
+      }
+    });
+
     return res.view('features');
   },
   loginpopin : function(req, res) {

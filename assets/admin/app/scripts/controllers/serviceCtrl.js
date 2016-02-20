@@ -7,6 +7,7 @@ angular.module('sbAdminApp')
       $scope.services = [];
       $scope.activities = [];
       $rootScope.serviceToEdit;
+      $scope.dataFile;
 
       $scope.loadServices = function() {
           var httpRequest = $http({
@@ -366,16 +367,6 @@ angular.module('sbAdminApp')
       };
 
       $scope.addService = function(){
-          var service_image_blob = "";
-          var fileInput = document.querySelector('#service_image');
-          fileInput.addEventListener('change', function() {
-              var reader = new FileReader();
-              reader.addEventListener('load', function() {
-                  //console.log('Contenu du fichier "' + fileInput.files[0].name + '" :\n\n' + reader.result);
-              service_image_blob = reader.result;
-              }, false);
-              reader.readAsDataURL(fileInput.files[0]);
-          }, false);
           var businessDay = "";
 
           var monday_opening_hours = document.getElementById('monday_opening_hours');
@@ -422,7 +413,6 @@ angular.module('sbAdminApp')
         console.log(service_geolong.value);
         console.log(service_name.value);
         console.log(service_description.value);
-        console.log(service_image_blob);
         console.log(service_activity.value);
         console.log(service_link.value);
 
@@ -546,7 +536,7 @@ angular.module('sbAdminApp')
                 +'"address" : ' + id_address + ','
                 +'"name" : "' + service_name.value + '",'
                 +'"description" : "' + service_description.value + '",'
-                +'"image" : "' + service_image_blob + '",'
+                +'"image" : "' + $scope.dataFile + '",'
                 +'"criterion1" : "' + idCriterion1 + '",'
                 +'"criterion2" : "' + idCriterion2 + '",'
                 +'"criterion3" : "' + idCriterion3 + '",'
@@ -597,6 +587,14 @@ angular.module('sbAdminApp')
                   });
               });
           });
+      };
+
+      $scope.loadImage = function(image) {
+          var fileReader = new FileReader();
+          fileReader.addEventListener("load", function(event) {
+              $scope.dataFile = fileReader.result;        
+          });
+          fileReader.readAsDataURL(image.files[0]);
       };
 
       $scope.detailService = function(id_service) {

@@ -30,7 +30,7 @@
 						<!-- FILE INPUT -->
 						<div class="form-group">
 							<label for="activity_image">Image principale de l'activite *</label>
-							<input type="file" id="activity_image">
+							<input type="file" id="activity_image"  onchange="angular.element(this).scope().loadImage(this)">
 						</div>
 
 						<!-- LISTE DEROULANTE -->

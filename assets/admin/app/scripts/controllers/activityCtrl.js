@@ -7,6 +7,7 @@ angular.module('sbAdminApp')
       $scope.activities = [];
       $scope.categories = [];
       $rootScope.activityToEdit;
+      $scope.dataFile;
 
       $scope.loadActivities = function() {
           var httpRequest = $http({
@@ -93,17 +94,15 @@ angular.module('sbAdminApp')
         });
       };
 
-      $scope.addActivity = function(){
-        var image = "";
-        var fileInput = document.querySelector('#activity_image');
-        fileInput.addEventListener('change', function() {
-            var reader = new FileReader();
-            reader.addEventListener('load', function() {
-            image = reader.result;
-            }, false);
-            reader.readAsDataURL(fileInput.files[0]);
-        }, false);
+      $scope.loadImage = function(image) {
+          var fileReader = new FileReader();
+          fileReader.addEventListener("load", function(event) {
+              $scope.dataFile = fileReader.result;        
+          });
+          fileReader.readAsDataURL(image.files[0]);
+      };
 
+      $scope.addActivity = function(){
         var name = $("#activity_name").val();
         var description = $("#activity_description").val();
         var category = $("#activity_category").val();
@@ -111,7 +110,7 @@ angular.module('sbAdminApp')
         var data = '{'
             +'"categories" : "' + category + '",'
             +'"name" : "' + name + '",'
-            +'"image" : "' + image + '",'
+            +'"image" : "' + $scope.dataFile + '",'
             +'"description" : "' + description + '"'
           +'}';
 

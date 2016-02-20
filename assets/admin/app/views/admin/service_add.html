@@ -37,7 +37,7 @@
 						<!-- FILE INPUT -->
 						<div class="form-group">
 							<label for="service_image">Image principale du service *</label>
-							<input type="file" id="service_image">
+							<input type="file" id="service_image"  onchange="angular.element(this).scope().loadImage(this)">
 							<p class="help-block">Vous pourrez ajouter d'aures photos par la suite</p>
 						</div>
 

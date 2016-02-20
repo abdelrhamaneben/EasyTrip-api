@@ -30,7 +30,7 @@
 						<!-- FILE INPUT -->
 						<div class="form-group">
 							<label for="category_image">Image principale de la categorie *</label>
-							<input type="file" id="category_image">
+							<input type="file" id="category_image" onchange="angular.element(this).scope().loadImage(this)">
 						</div>
 
 						<p class="help-block">Les champs marques d'un * sont obligatoire</p>

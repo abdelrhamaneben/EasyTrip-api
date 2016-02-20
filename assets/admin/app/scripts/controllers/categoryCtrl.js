@@ -5,6 +5,7 @@ angular.module('sbAdminApp')
 
       $scope.categories = [];
       $rootScope.categoryToEdit;
+      $scope.dataFile;
 
       $scope.loadCategories = function() {
           var httpRequest = $http({
@@ -77,23 +78,22 @@ angular.module('sbAdminApp')
         });
       };
 
-      $scope.addCategory = function(){
-        var image = "";
-        var fileInput = document.querySelector('#category_image');
-        fileInput.addEventListener('change', function() {
-            var reader = new FileReader();
-            reader.addEventListener('load', function() {
-            image = reader.result;
-            }, false);
-            reader.readAsDataURL(fileInput.files[0]);
-        }, false);
 
+      $scope.loadImage = function(image) {
+          var fileReader = new FileReader();
+          fileReader.addEventListener("load", function(event) {
+              $scope.dataFile = fileReader.result;        
+          });
+          fileReader.readAsDataURL(image.files[0]);
+      };
+
+      $scope.addCategory = function(){
         var name = $("#category_name").val();
         var description = $("#category_description").val();
 
         var data = '{'
           +'"name" : "' + name + '",'
-          +'"image" : "' + image + '",'
+          +'"image" : "' + $scope.dataFile + '",'
           +'"description" : "' + description + '"'
         +'}';
 

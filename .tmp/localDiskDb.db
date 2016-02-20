@@ -773,21 +773,7 @@
       }
     ],
     "et_subscription": [],
-    "et_stat": [
-      {
-        "id_service": 1,
-        "ip_stat": "192.168.1.88",
-        "createdAt": "2016-02-01T10:04:44.222Z",
-        "updatedAt": "2016-02-01T10:04:44.222Z",
-        "id_stat": 9
-      },
-      {
-        "ip_stat": "192.168.1.75",
-        "createdAt": "2016-02-01T10:04:56.740Z",
-        "updatedAt": "2016-02-01T10:04:56.740Z",
-        "id_stat": 10
-      }
-    ],
+    "et_stat": [],
     "et_user": [
       {
         "name_first": "Slimane",
@@ -1646,7 +1632,7 @@
       "id": 49
     },
     "et_stat": {
-      "id_stat": 10
+      "id_stat": 11
     },
     "et_judgement": {
       "id_judgement": 5

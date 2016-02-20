@@ -8,7 +8,23 @@ module.exports = {
   *
   */
   index: function(req, res) {
-      Stat.create({ip_stat: req.connection.remoteAddress}).exec(function(err, res) {});
+      Stat.find({ip_stat: req.connection.remoteAddress}).exec(function(err, stat) {
+        if (stat.length) {
+          // stat not empty
+          var today = new Date();
+          today.setHours(0);
+          today.setMinutes(0);
+          today.setSeconds(0);
+
+          Stat.find({ip_stat: req.connection.remoteAddress, createdAt: { '>=': today }}).exec(function(err, stat) {
+            if (stat.length !== 0) {
+              Stat.create({ip_stat: req.connection.remoteAddress}).exec(console.log);
+            }
+          });
+        } else {
+          Stat.create({ip_stat: req.connection.remoteAddress}).exec(console.log);
+        }
+      });
 
       Category.find().exec(function finding(err, found) {
       if (err) {

@@ -15,13 +15,6 @@ describe('AddressController', function() {
       	.expect(403, done);
     });
 
-    it('should Not Allow, POST address', function (done) {
-      request(sails.hooks.http.app)
-        .post('/address')
-        .send({  })
-      	.expect(403, done);
-    });
-
     it('should Not Allow, PUT address', function (done) {
       request(sails.hooks.http.app)
         .put('/address/1')

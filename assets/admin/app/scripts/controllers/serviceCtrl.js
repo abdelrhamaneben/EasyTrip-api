@@ -9,6 +9,14 @@ angular.module('sbAdminApp')
       $rootScope.serviceToEdit;
       $scope.dataFile;
 
+      $scope.isAdminf = function() {
+          if (localStorage.role == 'business' || localStorage.isAdmin == false) {
+              return false;
+          } else if (localStorage.role == 'admin') {
+              return true;
+          }
+      }
+
       $scope.loadServices = function() {
           var httpRequest = $http({
             method: "GET",
@@ -18,9 +26,25 @@ angular.module('sbAdminApp')
             dataType : "json",
             contentType : "application/json"
           }).success(function(data, status) {
+            if($scope.isAdminf()){
               $scope.services = data;
+              console.log(data);
+            }else{
+              var res = [];
+              for(var index in data) { 
+                  var o = data[index]; 
+                  if(o.creator.id_user == localStorage.uid){
+                    res.push(o);
+                  }
+              } 
+              $scope.services = res;           
+            }
           });
       };
+
+      $scope.myService = function(service){
+        return localStorage.uid == service.creator.id_user;
+      }
 
       $scope.deleteService = function(id_service){
           var httpRequest = $http({
@@ -108,7 +132,7 @@ angular.module('sbAdminApp')
 
       $scope.updateService = function(id_service){
           var data = '{'
-                +'"creator" : 2,'
+                +'"creator" : '+ localStorage.uid +','
                 +'"activities" : "' + service_activity.value + '",'
                 +'"geolati" : "' + service_geolati.value + '",'
                 +'"geolong" : "' + service_geolong.value + '",'
@@ -529,7 +553,7 @@ angular.module('sbAdminApp')
         }).success(function(data, status) {
           var id_address = data.id_address;
           var data = '{'
-                +'"creator" : 2,'
+                +'"creator" : '+ localStorage.uid +','
                 +'"activities" : "' + service_activity.value + '",'
                 +'"geolati" : "' + service_geolati.value + '",'
                 +'"geolong" : "' + service_geolong.value + '",'

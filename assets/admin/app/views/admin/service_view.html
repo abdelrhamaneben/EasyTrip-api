@@ -51,11 +51,13 @@
 							Non
 						</td>
 						<td>
+							
 							<button type="button" class="btn-xs btn-primary" 
-								ng-click="editService(service.id_service)">Éditer</button>
+								ng-click="editService(service.id_service)" ng-if="isAdminf() || myService(service)">Éditer</button>
 							<button type="button" class="btn-xs btn-danger" 
-								ng-click="deleteService(service.id_service)">Supprimer</button>
-							<button type="button" class="btn-xs btn-primary" ui-sref="admin.servicestat"
+								ng-click="deleteService(service.id_service)" ng-if="isAdminf() || myService(service)">Supprimer</button>
+							<button type="button" class="btn-xs btn-primary" ui-sref="admin.servicestat" 
+									ng-if="isAdminf() || myService(service)"
 									<!--ng-click="detailService(service.id_service)-->">Détail</button>
 						</td>
 					</tr>

@@ -40,6 +40,9 @@ module.exports = {
       });
     });
   },
+  unless : function (data) {
+   
+  },
   /**
   *
   */
@@ -85,21 +88,31 @@ module.exports = {
               res.serverError(err);
             }
             originLocation = data.results[0].geometry.location;
+            console.log(activitieslist);
             Service.find({
               geolati: {'<=': originLocation.lat +  1.5,
                 '>=': originLocation.lat - 1.5},
               geolong: {'<=': originLocation.lng + 2,
                 '>=': originLocation.lng - 2}
-            }).populate('activities',{id_activity: activitieslist})
-            .populate('creator').populate('address').populate('servicePrices')
+            })
+            .populate('creator')
+            .populate('address')
+            .populate('servicePrices')
+            .populate('activities', {id_activity : activitieslist})
             .exec(function finding(err, found) {
               if (err) {
                 return res.serverError(err);
               }
+              var services = [];
+              for (var d in found) {
+                if ( found[d].activities.length !=0 ) {
+                  services.push(found[d]);
+                }
+              }
               return res.view('result',{
                 'activities': cat.activities,
                 'category': cat.name,
-                'services': found,
+                'services': services,
                 'latitude': originLocation.lat,
                 'longitude': originLocation.lng
               });
@@ -110,6 +123,8 @@ module.exports = {
 
       });
   },
+
+ 
   /**
   *
   */
@@ -118,7 +133,6 @@ module.exports = {
       return res.badRequest('Need ServiceId Params !!');
     }
 
-    console.log(req.param('service'));
     var serviceId = req.param('service');
 
     Stat.find({ip_stat: req.connection.remoteAddress, id_service: serviceId})

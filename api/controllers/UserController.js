@@ -51,6 +51,11 @@ module.exports = {
                 req.session.admin = false;
                 console.log('login - is business');
               }
+              if (user.role == 'business') {
+                req.session.business = true;
+              }else{
+                req.session.business = false;
+              }
 
               req.session.userid = user.id_user;
               req.session.authenticated = true;

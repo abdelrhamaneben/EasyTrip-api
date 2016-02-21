@@ -13,7 +13,7 @@ module.exports = function(req, res, next) {
 
   // Need authentificated user to execute controller
   if (req.url == '/admin.html' || req.url == '/admin' ||
-    (req.session.authenticated  && req.session.admin)) {
+    (req.session.authenticated  && req.session.admin) || (req.session.authenticated  && req.session.business)) {
     return next();
   }
   // not authentificated so redirect to login

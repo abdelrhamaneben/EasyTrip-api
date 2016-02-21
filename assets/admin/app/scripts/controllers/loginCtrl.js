@@ -71,7 +71,34 @@ angular.module('sbAdminApp')
 
       $scope.signup = function(user) {
 
-          var httpRequest = $http({
+        var data = '{'
+         + '"city" : "' + user.address_city + '",'
+         + '"code_zip" : "' + user.address_code_zip + '",'
+         + '"country" : "' + user.address_country + '",'
+         + '"str_name" : "' + user.address_str_name + '",'
+         + '"str_nbr" : "' + user.address_str_nbr + '"'
+         + '}';
+
+        console.log(data);
+
+        var httpRequest = $http({
+              method: "POST",
+              url: urlServer + "address",
+              //url: "172.28.1.101:1337/user/signup",
+              async : false,
+              data: data,
+              withCredentials: false,
+              headers: {
+                contentType : "application/x-www-form-urlencoded"
+              }
+          }).success(function(data, status) {
+            var id_address = data.id_address;
+
+            user.role = "business";
+            user.subscribed = false;
+            user.address = id_address;
+
+            var httpRequest = $http({
               method: "POST",
               url: urlServer + "user/signup",
               //url: "172.28.1.101:1337/user/signup",
@@ -94,6 +121,9 @@ angular.module('sbAdminApp')
               $scope.alertmessage = response.body;
               $scope.alert = true;
           });
+          });
+
+        
       };
 
 });

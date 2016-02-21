@@ -35,7 +35,6 @@
      ,
      'Address' : {
        'destroy' : 'sessionAuthAdmin',
-       'create' : 'sessionAuthAdmin',
        'update' : 'sessionAuthAdmin',
        'find' : 'sessionAuthAdmin',
        'findOrCreate' : 'sessionAuthAdmin'

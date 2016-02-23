@@ -792,6 +792,24 @@
         "createdAt": "2016-02-20T13:42:32.735Z",
         "updatedAt": "2016-02-20T13:42:32.735Z",
         "id_stat": 16
+      },
+      {
+        "ip_stat": "::1",
+        "createdAt": "2016-02-21T14:46:21.804Z",
+        "updatedAt": "2016-02-21T14:46:21.804Z",
+        "id_stat": 17
+      },
+      {
+        "ip_stat": "::1",
+        "createdAt": "2016-02-22T07:13:42.048Z",
+        "updatedAt": "2016-02-22T07:13:42.048Z",
+        "id_stat": 18
+      },
+      {
+        "ip_stat": "::1",
+        "createdAt": "2016-02-23T09:27:59.239Z",
+        "updatedAt": "2016-02-23T09:27:59.239Z",
+        "id_stat": 19
       }
     ],
     "et_user": [
@@ -938,17 +956,17 @@
         "id": 31
       },
       {
-        "activity_services": 13,
+        "activity_services": 19,
         "service_activities": 22,
         "id": 41
       },
       {
-        "activity_services": 13,
+        "activity_services": 19,
         "service_activities": 23,
         "id": 48
       },
       {
-        "activity_services": 13,
+        "activity_services": 19,
         "service_activities": 18,
         "id": 49
       }
@@ -1606,7 +1624,7 @@
       "id": 49
     },
     "et_stat": {
-      "id_stat": 16
+      "id_stat": 19
     },
     "et_judgement": {
       "id_judgement": 7
